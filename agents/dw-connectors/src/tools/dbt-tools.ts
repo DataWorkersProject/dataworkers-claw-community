@@ -21,7 +21,7 @@ export const listDbtModelsDefinition: ToolDefinition = {
 
 export const listDbtModelsHandler: ToolHandler = async (_args) => {
   try {
-    const models = dbt.listModels();
+    const models = await dbt.listModels();
     return { content: [{ type: 'text', text: JSON.stringify(models, null, 2) }] };
   } catch (err) {
     return {
@@ -52,7 +52,7 @@ export const getDbtModelLineageHandler: ToolHandler = async (args) => {
   const modelId = (args.modelId ?? args.modelName ?? args.model) as string;
 
   try {
-    const lineage = dbt.getModelLineage(modelId);
+    const lineage = await dbt.getModelLineage(modelId);
     return { content: [{ type: 'text', text: JSON.stringify(lineage, null, 2) }] };
   } catch (err) {
     return {
@@ -81,7 +81,7 @@ export const getDbtTestResultsHandler: ToolHandler = async (args) => {
   const runId = args.runId as string | undefined;
 
   try {
-    const results = dbt.getTestResults(runId);
+    const results = await dbt.getTestResults(runId);
     return { content: [{ type: 'text', text: JSON.stringify(results, null, 2) }] };
   } catch (err) {
     return {
@@ -110,7 +110,7 @@ export const getDbtRunHistoryHandler: ToolHandler = async (args) => {
   const limit = args.limit as number | undefined;
 
   try {
-    const history = dbt.getRunHistory(limit);
+    const history = await dbt.getRunHistory(limit);
     return { content: [{ type: 'text', text: JSON.stringify(history, null, 2) }] };
   } catch (err) {
     return {
