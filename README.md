@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">Data Workers</h1>
+  <h1 align="center">Data Workers - Open-Source Community Edition</h1>
   <p align="center"><strong>Open-source autonomous AI agents for data engineering</strong></p>
   <p align="center">Stop writing boilerplate pipelines. Stop debugging data incidents manually.<br/>Describe what you need in natural language. The agents handle execution.</p>
 </p>
