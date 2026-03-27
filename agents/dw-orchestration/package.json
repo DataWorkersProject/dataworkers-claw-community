@@ -1,0 +1,17 @@
+{
+  "name": "@data-workers/dw-orchestration",
+  "version": "0.1.0",
+  "description": "Internal orchestration service — swarm scheduling, heartbeat monitoring, agent registry, event choreography",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@data-workers/infrastructure-stubs": "*"
+  },
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discord Community
+    url: https://discord.com/invite/b8DR5J53
+    about: Ask questions and discuss Data Workers with the community.
+  - name: Documentation
+    url: https://github.com/DhanushAShetty/dw-claw-community/wiki
+    about: Check the docs before opening an issue.

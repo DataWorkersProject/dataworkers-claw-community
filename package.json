@@ -1,0 +1,66 @@
+{
+  "name": "data-workers",
+  "version": "0.1.0",
+  "description": "AI agent platform for autonomous data engineering — catalog, quality, pipelines, observability, and more",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DhanushAShetty/dw-claw-oss.git"
+  },
+  "homepage": "https://dataworkers.dev",
+  "bugs": {
+    "url": "https://github.com/DhanushAShetty/dw-claw-oss/issues"
+  },
+  "workspaces": [
+    "agents/*",
+    "core/*",
+    "connectors/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:integration": "npm run test:integration --workspaces --if-present",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "typecheck": "tsc --noEmit",
+    "clean": "npm run clean --workspaces --if-present",
+    "benchmark": "vitest run tests/benchmarks/",
+    "persona-benchmark": "vitest run tests/eval/persona-benchmark/"
+  },
+  "keywords": [
+    "data-engineering",
+    "ai-agents",
+    "mcp",
+    "model-context-protocol",
+    "data-quality",
+    "data-catalog",
+    "data-observability",
+    "data-pipelines",
+    "autonomous-agents",
+    "llm"
+  ],
+  "author": "Data Workers, Inc. <hello@dataworkers.dev>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@aws-sdk/node-http-handler": "^3.370.0",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitest/coverage-v8": "^1.6.1",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0",
+    "zod": "^4.3.6"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@databricks/sql": "^1.13.0",
+    "@google-cloud/bigquery": "^8.1.1",
+    "snowflake-sdk": "^2.3.5"
+  }
+}

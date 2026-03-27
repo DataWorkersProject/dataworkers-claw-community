@@ -1,0 +1,13 @@
+{
+  "name": "@data-workers/orchestrator",
+  "version": "0.1.0",
+  "description": "Swarm orchestration: scheduling, agent registry, health monitoring, dependency discovery",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "license": "Apache-2.0"
+}

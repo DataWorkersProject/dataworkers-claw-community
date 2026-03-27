@@ -1,0 +1,21 @@
+{
+  "name": "@data-workers/dw-ml",
+  "version": "0.1.0",
+  "description": "MLOps & Models Agent — feature engineering, model selection, training, evaluation, deployment",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@data-workers/mcp-framework": "*",
+    "@data-workers/context-layer": "*",
+    "@data-workers/infrastructure-stubs": "*",
+    "@data-workers/enterprise": "*",
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "license": "Apache-2.0"
+}

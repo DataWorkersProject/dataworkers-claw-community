@@ -1,0 +1,24 @@
+{
+  "name": "@data-workers/dw-governance",
+  "version": "0.1.0",
+  "description": "Governance & Security Agent — policy enforcement, PII detection, access control, compliance",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "bin": { "dw-governance": "dist/index.js" },
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@data-workers/mcp-framework": "*",
+    "@data-workers/agent-lifecycle": "*",
+    "@data-workers/context-layer": "*",
+    "@data-workers/validation": "*",
+    "@data-workers/infrastructure-stubs": "*",
+    "@data-workers/enterprise": "*",
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "license": "Apache-2.0"
+}

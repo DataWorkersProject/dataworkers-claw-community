@@ -1,0 +1,126 @@
+# CI gate to catch leaked enterprise code in the OSS repo.
+#
+# This workflow mirrors the enterprise marker scan from oss-sync.sh (step 4d)
+# and runs on every push/PR to the OSS repo. If any enterprise-only patterns
+# are detected, the check fails and blocks the merge.
+#
+# Patterns are kept in sync with scripts/oss-sync.sh MARKER_PATTERNS array.
+
+name: Enterprise Leak Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  enterprise-leak-scan:
+    name: Scan for enterprise markers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Scan for enterprise code markers
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          FAILED=0
+
+          # ── Helper ──────────────────────────────────────────────────────
+          # scan PATTERN DESCRIPTION
+          # Greps the repo for PATTERN (case-insensitive) in .ts and .md
+          # files, excluding known-safe locations.
+          scan() {
+            local pattern="$1"
+            local description="$2"
+
+            HITS="$(grep -rln \
+              --include='*.ts' --include='*.tsx' --include='*.js' --include='*.md' --include='*.yml' --include='*.yaml' --include='*.json' \
+              --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=.github \
+              --exclude=package-lock.json --exclude=pnpm-lock.yaml --exclude=yarn.lock --exclude=package.json \
+              -i "$pattern" . 2>/dev/null \
+              | grep -v 'core/enterprise/src/index.ts' \
+              | grep -v 'vitest.config.ts' \
+              || true)"
+
+            if [[ -n "$HITS" ]]; then
+              if [[ $FAILED -eq 0 ]]; then
+                echo "::error::Enterprise markers detected in repository!"
+                echo ""
+              fi
+              FAILED=1
+              echo "FAIL  Pattern: '$pattern' ($description)"
+              echo "$HITS" | sed 's/^/        /'
+              echo ""
+            fi
+          }
+
+          echo "=== Enterprise Leak Scan ==="
+          echo ""
+
+          # ── Enterprise module imports ───────────────────────────────────
+          scan 'core/enterprise'          "Enterprise module import"
+          scan 'core/metering'            "Metering/billing module import"
+          scan 'connectors/enterprise'    "Enterprise connector import"
+
+          # ── Business / pricing logic ────────────────────────────────────
+          scan 'stripe billing'           "Payment provider reference"
+          scan 'pricing\.tier'            "Pricing tier logic"
+
+          # ── Internal PRD and competitive intel ──────────────────────────
+          scan 'PRD_METERING'             "Internal PRD reference"
+          scan 'COMPETITOR_CODE_REVIEW'   "Competitive intel reference"
+          scan 'paying\.customers'        "Business metrics reference"
+          scan 'Series B.*SaaS'           "ICP targeting language"
+
+          # ── License / crypto ────────────────────────────────────────────
+          scan 'license-validator'        "Private-repo license validator"
+          scan 'DW_LICENSE_KEY'           "License key env var"
+          scan 'generate-license-keypair' "License keypair generator script"
+          scan 'issue-license'            "License issuing script"
+
+          # ── Real infrastructure adapters (only stubs allowed in OSS) ───
+          scan 'RedisAdapter'             "Real Redis adapter class"
+          scan 'KafkaAdapter'             "Real Kafka adapter class"
+          scan 'PostgresAdapter'          "Real Postgres adapter class"
+          scan 'Neo4jAdapter'             "Real Neo4j adapter class"
+          scan 'LLMProviderBridge'        "Real LLM bridge adapter class"
+          scan 'WarehouseBridge'          "Real warehouse bridge adapter class"
+          scan 'AirflowAdapter'           "Real Airflow adapter class"
+
+          # ── Real client imports ─────────────────────────────────────────
+          scan 'from.*real-client'        "Real warehouse client import"
+          scan 'real-client\.ts'          "Real client file reference"
+
+          # ── Files / markers that should never exist in OSS ──────────────
+          scan '\.oss-exclude'            ".oss-exclude marker file"
+          scan 'data-workers-review'      "Private repo name reference"
+
+          # ── Internal docs that should have been stripped ─────────────────
+          # Check for internal doc filenames in the tree
+          for doc_pattern in "PRD_*.md" "SPEC_*.md" "DEEP_TEST_*.md" "AUDIT-REPORT.md" "DEEP-TEST-REPORT.md" "GAP-ANALYSIS-REPORT.md" "LAUNCH_AUDIT_REPORT.md" "SECURITY_SCAN_REPORT.md"; do
+            FOUND="$(find . -name "$doc_pattern" -not -path './.git/*' -not -path './node_modules/*' 2>/dev/null || true)"
+            if [[ -n "$FOUND" ]]; then
+              if [[ $FAILED -eq 0 ]]; then
+                echo "::error::Enterprise markers detected in repository!"
+                echo ""
+              fi
+              FAILED=1
+              echo "FAIL  Internal doc pattern: '$doc_pattern'"
+              echo "$FOUND" | sed 's/^/        /'
+              echo ""
+            fi
+          done
+
+          # ── Summary ─────────────────────────────────────────────────────
+          if [[ $FAILED -eq 1 ]]; then
+            echo "::error::BLOCKED: Enterprise content detected. See above for details."
+            echo ""
+            echo "If this is a false positive, update the scan patterns in"
+            echo ".github/workflows/enterprise-leak-scan.yml"
+            exit 1
+          fi
+
+          echo "PASS  No enterprise markers found."

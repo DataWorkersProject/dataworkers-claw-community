@@ -1,0 +1,41 @@
+{
+  "name": "opencode-data-workers",
+  "version": "0.1.0",
+  "description": "OpenCode plugin for Data Workers — 13 autonomous AI agents for data engineering",
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "data-engineering",
+    "mcp",
+    "data-workers",
+    "ai-agents",
+    "pipelines",
+    "data-quality",
+    "data-catalog",
+    "data-governance"
+  ],
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DhanushAShetty/dw-claw-community.git",
+    "directory": "packages/opencode-data-workers"
+  },
+  "homepage": "https://dataworkers.dev/docs/setup/opencode",
+  "bugs": "https://github.com/DhanushAShetty/dw-claw-community/issues",
+  "license": "Apache-2.0",
+  "author": "Data Workers <hello@dataworkers.dev>",
+  "peerDependencies": {
+    "opencode": ">=1.3.0"
+  },
+  "peerDependenciesMeta": {
+    "opencode": {
+      "optional": true
+    }
+  }
+}
