@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Schema Evolution Agent \u2014 real-time detection, migration generation, impact analysis",
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "bin": {
     "dw-schema": "dist/index.js"
   },

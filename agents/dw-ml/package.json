@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "MLOps & Models Agent \u2014 feature engineering, model selection, training, evaluation, deployment",
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "scripts": {
     "build": "tsc -b",
     "dev": "tsx watch src/index.ts",

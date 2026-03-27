@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Internal orchestration service \u2014 swarm scheduling, heartbeat monitoring, agent registry, event choreography",
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "scripts": {
     "build": "tsc -b",
     "dev": "tsx watch src/index.ts",

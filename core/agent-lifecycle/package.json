@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Agent state machine, confidence scoring, and lifecycle management",
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "scripts": {
     "build": "tsc -b",
     "test": "vitest run",

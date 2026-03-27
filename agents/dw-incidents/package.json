@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Incident Debugging Agent \u2014 anomaly detection, RCA, auto-remediation",
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "bin": {
     "dw-incidents": "dist/index.js"
   },

@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Quality Monitoring Agent \u2014 profiling, SLAs, anomaly detection, auto-remediation",
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "bin": {
     "dw-quality": "dist/index.js"
   },

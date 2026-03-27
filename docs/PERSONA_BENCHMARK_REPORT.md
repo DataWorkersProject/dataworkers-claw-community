@@ -1,6 +1,6 @@
 # Persona Benchmark Report
 
-**Generated:** 2026-03-27T18:10:37.064Z
+**Generated:** 2026-03-27T18:18:16.433Z
 **Total scenarios evaluated:** 140
 **Overall composite score:** 65.0%
 
@@ -189,18 +189,18 @@
 
 | Scenario | Persona | Seed | Routing | Complete | Ground | Action | Specific | NegHdl | Structure | Latency | Composite | Ms |
 |----------|---------|------|---------|----------|--------|--------|----------|--------|-----------|---------|-----------|-----|
-| de-search-customer-tables | data_engineer | jaffle-shop | 100.0% | 66.7% | 11.4% | 50.0% | 36.4% | 100.0% | 100.0% | 100.0% | 69.4% | 1ms |
-| de-search-revenue-data | data_engineer | jaffle-shop | 100.0% | 50.0% | 13.6% | 50.0% | 2.7% | 100.0% | 100.0% | 100.0% | 63.1% | 0ms |
+| de-search-customer-tables | data_engineer | jaffle-shop | 100.0% | 66.7% | 11.4% | 50.0% | 36.4% | 100.0% | 100.0% | 100.0% | 69.4% | 11ms |
+| de-search-revenue-data | data_engineer | jaffle-shop | 100.0% | 50.0% | 13.6% | 50.0% | 2.7% | 100.0% | 100.0% | 100.0% | 63.1% | 1ms |
 | de-trace-orders-lineage | data_engineer | jaffle-shop | 100.0% | 75.0% | 20.0% | 29.2% | 38.0% | 100.0% | 100.0% | 100.0% | 69.1% | 0ms |
 | de-check-freshness | data_engineer | jaffle-shop | 100.0% | 100.0% | 16.7% | 37.5% | 73.3% | 100.0% | 100.0% | 100.0% | 77.6% | 0ms |
 | de-blast-radius | data_engineer | jaffle-shop | 100.0% | 33.3% | 10.7% | 45.8% | 72.1% | 100.0% | 0.0% | 100.0% | 56.1% | 0ms |
 | de-generate-pipeline | data_engineer | jaffle-shop | 100.0% | 0.0% | 0.0% | 8.3% | 70.0% | 100.0% | 0.0% | 100.0% | 45.2% | 0ms |
-| de-run-quality-check | data_engineer | jaffle-shop | 100.0% | 100.0% | 20.0% | 25.0% | 76.0% | 100.0% | 100.0% | 100.0% | 76.7% | 0ms |
-| de-detect-schema-changes | data_engineer | jaffle-shop | 100.0% | 100.0% | 0.0% | 12.5% | 70.0% | 100.0% | 100.0% | 100.0% | 71.7% | 0ms |
-| de-validate-pipeline | data_engineer | jaffle-shop | 100.0% | 50.0% | 0.0% | 33.3% | 70.0% | 100.0% | 100.0% | 100.0% | 67.9% | 0ms |
+| de-run-quality-check | data_engineer | jaffle-shop | 100.0% | 100.0% | 20.0% | 25.0% | 76.0% | 100.0% | 100.0% | 100.0% | 76.7% | 2ms |
+| de-detect-schema-changes | data_engineer | jaffle-shop | 100.0% | 100.0% | 0.0% | 12.5% | 70.0% | 100.0% | 100.0% | 100.0% | 71.7% | 1ms |
+| de-validate-pipeline | data_engineer | jaffle-shop | 100.0% | 50.0% | 0.0% | 33.3% | 70.0% | 100.0% | 100.0% | 100.0% | 67.9% | 2ms |
 | de-monitor-stream-lag | data_engineer | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 30.0% | 100.0% | 0.0% | 100.0% | 38.9% | 0ms |
-| de-cross-platform-search | data_engineer | jaffle-shop | 100.0% | 100.0% | 15.2% | 50.0% | 73.9% | 100.0% | 100.0% | 100.0% | 79.1% | 0ms |
-| de-diagnose-incident | data_engineer | jaffle-shop | 100.0% | 66.7% | 5.4% | 75.0% | 72.1% | 100.0% | 50.0% | 100.0% | 70.0% | 1ms |
+| de-cross-platform-search | data_engineer | jaffle-shop | 100.0% | 100.0% | 15.2% | 50.0% | 73.9% | 100.0% | 100.0% | 100.0% | 79.1% | 1ms |
+| de-diagnose-incident | data_engineer | jaffle-shop | 100.0% | 66.7% | 5.4% | 75.0% | 72.1% | 100.0% | 50.0% | 100.0% | 70.0% | 2ms |
 | ms-safe-schema-migration | data_engineer | jaffle-shop | 100.0% | 60.0% | 4.5% | 87.5% | 70.9% | 100.0% | 0.0% | 100.0% | 64.0% | 0ms |
 | ms-investigate-pipeline-failure | data_engineer | jaffle-shop | 100.0% | 60.0% | 5.7% | 83.3% | 72.0% | 100.0% | 50.0% | 100.0% | 70.2% | 0ms |
 | neg-search-nonexistent-table | data_engineer | jaffle-shop | 100.0% | 100.0% | 14.3% | 37.5% | 70.0% | 75.0% | 100.0% | 100.0% | 74.3% | 0ms |
@@ -217,9 +217,9 @@
 | de-cross-platform-search | data_engineer | openmetadata | 100.0% | 100.0% | 13.0% | 50.0% | 73.9% | 100.0% | 100.0% | 100.0% | 78.8% | 0ms |
 | neg-search-nonexistent-table | data_engineer | openmetadata | 100.0% | 100.0% | 21.4% | 37.5% | 70.0% | 75.0% | 100.0% | 100.0% | 75.3% | 0ms |
 | neg-lineage-nonexistent-asset | data_engineer | openmetadata | 100.0% | 100.0% | 0.0% | 29.2% | 70.0% | 50.0% | 100.0% | 100.0% | 68.9% | 0ms |
-| ae-explain-orders-table | analytics_engineer | jaffle-shop | 100.0% | 66.7% | 13.6% | 75.0% | 2.6% | 100.0% | 100.0% | 100.0% | 68.5% | 1ms |
+| ae-explain-orders-table | analytics_engineer | jaffle-shop | 100.0% | 66.7% | 13.6% | 75.0% | 2.6% | 100.0% | 100.0% | 100.0% | 68.5% | 6ms |
 | ae-set-sla | analytics_engineer | jaffle-shop | 100.0% | 100.0% | 10.5% | 70.8% | 71.6% | 100.0% | 100.0% | 100.0% | 80.9% | 0ms |
-| ae-generate-docs | analytics_engineer | jaffle-shop | 100.0% | 50.0% | 50.0% | 20.8% | 85.0% | 100.0% | 0.0% | 100.0% | 61.8% | 0ms |
+| ae-generate-docs | analytics_engineer | jaffle-shop | 100.0% | 50.0% | 50.0% | 20.8% | 85.0% | 100.0% | 0.0% | 100.0% | 61.8% | 1ms |
 | ae-get-anomalies | analytics_engineer | jaffle-shop | 100.0% | 100.0% | 0.0% | 20.8% | 70.0% | 100.0% | 100.0% | 100.0% | 72.8% | 0ms |
 | ae-validate-schema-compat | analytics_engineer | jaffle-shop | 100.0% | 0.0% | 0.0% | 45.8% | 0.0% | 100.0% | 0.0% | 100.0% | 41.0% | 0ms |
 | ae-resolve-metric | analytics_engineer | jaffle-shop | 100.0% | 33.3% | 16.7% | 0.0% | 75.0% | 100.0% | 0.0% | 100.0% | 51.2% | 0ms |
@@ -232,18 +232,18 @@
 | ms-setup-revenue-monitoring | analytics_engineer | jaffle-shop | 100.0% | 80.0% | 10.4% | 70.8% | 1.9% | 100.0% | 100.0% | 100.0% | 69.2% | 0ms |
 | neg-explain-nonexistent-table | analytics_engineer | jaffle-shop | 100.0% | 100.0% | 0.0% | 37.5% | 70.0% | 75.0% | 100.0% | 100.0% | 72.5% | 0ms |
 | neg-resolve-nonexistent-metric | analytics_engineer | jaffle-shop | 100.0% | 100.0% | 0.0% | 0.0% | 70.0% | 87.5% | 100.0% | 100.0% | 68.8% | 0ms |
-| ae-explain-orders-table | analytics_engineer | openmetadata | 100.0% | 100.0% | 7.9% | 75.0% | 71.7% | 100.0% | 100.0% | 100.0% | 81.1% | 1ms |
+| ae-explain-orders-table | analytics_engineer | openmetadata | 100.0% | 100.0% | 7.9% | 75.0% | 71.7% | 100.0% | 100.0% | 100.0% | 81.1% | 0ms |
 | ae-get-anomalies | analytics_engineer | openmetadata | 100.0% | 100.0% | 12.5% | 20.8% | 70.0% | 100.0% | 100.0% | 100.0% | 74.4% | 0ms |
 | ae-quality-score | analytics_engineer | openmetadata | 100.0% | 100.0% | 12.5% | 0.0% | 77.5% | 100.0% | 100.0% | 100.0% | 72.7% | 0ms |
 | dpl-cost-dashboard | data_platform_lead | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
 | dpl-estimate-savings | data_platform_lead | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
 | dpl-find-unused-data | data_platform_lead | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
-| dpl-scan-pii | data_platform_lead | jaffle-shop | 100.0% | 33.3% | 14.3% | 20.8% | 74.3% | 100.0% | 0.0% | 100.0% | 53.6% | 0ms |
+| dpl-scan-pii | data_platform_lead | jaffle-shop | 100.0% | 33.3% | 14.3% | 20.8% | 74.3% | 100.0% | 0.0% | 100.0% | 53.6% | 1ms |
 | dpl-audit-report | data_platform_lead | jaffle-shop | 100.0% | 0.0% | 5.8% | 50.0% | 73.5% | 100.0% | 0.0% | 100.0% | 51.8% | 0ms |
-| dpl-adoption-dashboard | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 5.7% | 58.3% | 70.6% | 100.0% | 50.0% | 100.0% | 65.5% | 2ms |
+| dpl-adoption-dashboard | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 5.7% | 58.3% | 70.6% | 100.0% | 50.0% | 100.0% | 65.5% | 7ms |
 | dpl-check-agent-health | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 8.3% | 33.3% | 72.5% | 100.0% | 50.0% | 100.0% | 62.8% | 0ms |
-| dpl-provision-access | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 6.3% | 41.7% | 71.9% | 100.0% | 50.0% | 100.0% | 63.6% | 0ms |
-| dpl-check-policy | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 6.3% | 33.3% | 73.8% | 100.0% | 50.0% | 100.0% | 62.7% | 0ms |
+| dpl-provision-access | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 6.3% | 41.7% | 71.9% | 100.0% | 50.0% | 100.0% | 63.6% | 1ms |
+| dpl-check-policy | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 6.3% | 33.3% | 73.8% | 100.0% | 50.0% | 100.0% | 62.7% | 1ms |
 | dpl-recommend-archival | data_platform_lead | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
 | ms-optimize-platform-costs | data_platform_lead | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
 | neg-blast-radius-nonexistent | data_platform_lead | jaffle-shop | 100.0% | 100.0% | 0.0% | 45.8% | 70.0% | 87.5% | 100.0% | 100.0% | 74.8% | 0ms |
@@ -251,12 +251,12 @@
 | ds-nl-query-top-customers | data_scientist | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
 | ds-generate-insight-revenue | data_scientist | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
 | ds-explain-anomaly | data_scientist | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
-| ds-search-ml-features | data_scientist | jaffle-shop | 100.0% | 100.0% | 11.4% | 50.0% | 71.4% | 100.0% | 100.0% | 100.0% | 78.3% | 0ms |
+| ds-search-ml-features | data_scientist | jaffle-shop | 100.0% | 100.0% | 11.4% | 50.0% | 71.4% | 100.0% | 100.0% | 100.0% | 78.3% | 1ms |
 | ds-get-context-orders | data_scientist | jaffle-shop | 100.0% | 50.0% | 25.0% | 0.0% | 77.5% | 100.0% | 0.0% | 100.0% | 54.8% | 0ms |
 | ds-nl-query-engagement | data_scientist | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
 | ds-export-results | data_scientist | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
 | ds-search-events | data_scientist | jaffle-shop | 100.0% | 50.0% | 14.3% | 37.5% | 0.0% | 100.0% | 100.0% | 100.0% | 61.2% | 0ms |
-| ds-correlate-metadata | data_scientist | jaffle-shop | 100.0% | 50.0% | 22.7% | 25.0% | 74.5% | 100.0% | 0.0% | 100.0% | 57.4% | 0ms |
+| ds-correlate-metadata | data_scientist | jaffle-shop | 100.0% | 50.0% | 22.7% | 25.0% | 74.5% | 100.0% | 0.0% | 100.0% | 57.4% | 1ms |
 | ds-estimate-query-cost | data_scientist | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
 | ds-golden-path | data_scientist | jaffle-shop | 100.0% | 100.0% | 20.0% | 45.8% | 76.0% | 100.0% | 100.0% | 100.0% | 79.4% | 0ms |
 | ds-analyze-query-history | data_scientist | jaffle-shop | 100.0% | 50.0% | 10.0% | 12.5% | 73.0% | 100.0% | 0.0% | 100.0% | 53.9% | 0ms |
@@ -274,7 +274,7 @@
 | ml-search-training-data | ml_engineer | jaffle-shop | 100.0% | 50.0% | 14.3% | 37.5% | 0.0% | 100.0% | 100.0% | 100.0% | 61.2% | 0ms |
 | ml-check-freshness-for-training | ml_engineer | jaffle-shop | 100.0% | 100.0% | 16.7% | 37.5% | 73.3% | 100.0% | 100.0% | 100.0% | 77.6% | 0ms |
 | ml-generate-feature-pipeline | ml_engineer | jaffle-shop | 100.0% | 0.0% | 0.0% | 8.3% | 70.0% | 100.0% | 0.0% | 100.0% | 45.2% | 0ms |
-| ml-detect-drift | ml_engineer | jaffle-shop | 100.0% | 0.0% | 5.6% | 37.5% | 70.0% | 100.0% | 0.0% | 100.0% | 49.7% | 0ms |
+| ml-detect-drift | ml_engineer | jaffle-shop | 100.0% | 0.0% | 5.6% | 37.5% | 70.0% | 100.0% | 0.0% | 100.0% | 49.7% | 1ms |
 | ml-check-data-quality | ml_engineer | openmetadata | 100.0% | 100.0% | 10.0% | 25.0% | 76.0% | 100.0% | 100.0% | 100.0% | 75.4% | 0ms |
 | ocu-search-tables | openclaw_user | jaffle-shop | 100.0% | 100.0% | 16.1% | 58.3% | 73.2% | 100.0% | 100.0% | 100.0% | 80.2% | 0ms |
 | ocu-explain-table | openclaw_user | jaffle-shop | 100.0% | 100.0% | 8.6% | 58.3% | 70.5% | 100.0% | 100.0% | 100.0% | 78.9% | 0ms |
@@ -303,7 +303,7 @@
 | gov-quality-check-compliance | governance_officer | jaffle-shop | 100.0% | 100.0% | 20.0% | 25.0% | 76.0% | 100.0% | 100.0% | 100.0% | 76.7% | 0ms |
 | gov-search-sensitive-data | governance_officer | jaffle-shop | 100.0% | 100.0% | 11.4% | 50.0% | 71.4% | 100.0% | 100.0% | 100.0% | 78.3% | 0ms |
 | gov-schema-change-impact | governance_officer | jaffle-shop | 100.0% | 0.0% | 0.0% | 45.8% | 0.0% | 100.0% | 0.0% | 100.0% | 41.0% | 0ms |
-| ms-soc2-audit-prep | governance_officer | jaffle-shop | 100.0% | 50.0% | 6.3% | 70.8% | 72.5% | 100.0% | 0.0% | 100.0% | 60.9% | 0ms |
+| ms-soc2-audit-prep | governance_officer | jaffle-shop | 100.0% | 50.0% | 6.3% | 70.8% | 72.5% | 100.0% | 0.0% | 100.0% | 60.9% | 1ms |
 | neg-policy-deny-write | governance_officer | jaffle-shop | 100.0% | 50.0% | 9.1% | 33.3% | 75.5% | 75.0% | 100.0% | 100.0% | 67.3% | 0ms |
 | neg-provision-unauthorized-admin | governance_officer | jaffle-shop | 100.0% | 100.0% | 0.0% | 33.3% | 70.0% | 75.0% | 100.0% | 100.0% | 71.9% | 0ms |
 | neg-pii-scan-nonexistent-table | governance_officer | jaffle-shop | 100.0% | 100.0% | 0.0% | 20.8% | 70.0% | 100.0% | 100.0% | 100.0% | 72.8% | 0ms |
@@ -328,7 +328,7 @@
 | dp-simple-lineage | data_practitioner | openmetadata | 100.0% | 100.0% | 20.0% | 29.2% | 73.0% | 100.0% | 100.0% | 100.0% | 76.9% | 0ms |
 | dp-check-anomalies | data_practitioner | openmetadata | 100.0% | 100.0% | 12.5% | 20.8% | 70.0% | 100.0% | 100.0% | 100.0% | 74.4% | 0ms |
 | dp-get-full-context | data_practitioner | openmetadata | 100.0% | 50.0% | 25.0% | 0.0% | 77.5% | 100.0% | 0.0% | 100.0% | 54.8% | 0ms |
-| ms-new-member-onboarding | data_practitioner | openmetadata | 100.0% | 100.0% | 9.0% | 75.0% | 71.8% | 100.0% | 100.0% | 100.0% | 81.3% | 1ms |
+| ms-new-member-onboarding | data_practitioner | openmetadata | 100.0% | 100.0% | 9.0% | 75.0% | 71.8% | 100.0% | 100.0% | 100.0% | 81.3% | 0ms |
 
 ## Errors
 
