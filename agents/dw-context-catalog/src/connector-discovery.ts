@@ -267,7 +267,7 @@ export async function discoverAndRegisterConnectors(
       registry.register(spec.type, () => connector);
       registered.push(spec.type);
       setHealth(spec.type, 'healthy');
-      console.log(`[connector-discovery] Registered connector: ${spec.type}`);
+      console.error(`[connector-discovery] Registered connector: ${spec.type}`);
     } else {
       setHealth(spec.type, 'degraded', 'Factory returned null / timed out');
       console.warn(`[connector-discovery] Failed to load connector: ${spec.type}`);
@@ -275,17 +275,17 @@ export async function discoverAndRegisterConnectors(
   }
 
   if (registered.length === 0) {
-    console.log(
+    console.error(
       '[connector-discovery] No connectors discovered — using InMemory fallback.',
     );
   } else {
-    console.log(
+    console.error(
       `[connector-discovery] ${registered.length} connector(s) registered: ${registered.join(', ')}`,
     );
   }
 
   if (skipped.length > 0) {
-    console.log(
+    console.error(
       `[connector-discovery] ${skipped.length} connector(s) skipped (env vars not set): ${skipped.join(', ')}`,
     );
   }
