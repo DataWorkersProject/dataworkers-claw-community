@@ -38,20 +38,20 @@ cd dataworkers-claw-community
 npm install
 ```
 
-Then add agents to Claude Code:
+Then add agents to Claude Code (run from inside the cloned repo):
 
 ```bash
-claude mcp add dw-pipelines -- npx tsx agents/dw-pipelines/src/index.ts && \
-claude mcp add dw-incidents -- npx tsx agents/dw-incidents/src/index.ts && \
-claude mcp add dw-catalog -- npx tsx agents/dw-context-catalog/src/index.ts && \
-claude mcp add dw-schema -- npx tsx agents/dw-schema/src/index.ts && \
-claude mcp add dw-quality -- npx tsx agents/dw-quality/src/index.ts && \
-claude mcp add dw-governance -- npx tsx agents/dw-governance/src/index.ts && \
-claude mcp add dw-usage -- npx tsx agents/dw-usage-intelligence/src/index.ts && \
-claude mcp add dw-observability -- npx tsx agents/dw-observability/src/index.ts && \
-claude mcp add dw-connectors -- npx tsx agents/dw-connectors/src/index.ts && \
-claude mcp add dw-ml -- npx tsx agents/dw-ml/src/index.ts && \
-claude mcp add dw-orchestration -- npx tsx agents/dw-orchestration/src/index.ts
+claude mcp add dw-pipelines -- npx tsx "$(pwd)/agents/dw-pipelines/src/index.ts" && \
+claude mcp add dw-incidents -- npx tsx "$(pwd)/agents/dw-incidents/src/index.ts" && \
+claude mcp add dw-catalog -- npx tsx "$(pwd)/agents/dw-context-catalog/src/index.ts" && \
+claude mcp add dw-schema -- npx tsx "$(pwd)/agents/dw-schema/src/index.ts" && \
+claude mcp add dw-quality -- npx tsx "$(pwd)/agents/dw-quality/src/index.ts" && \
+claude mcp add dw-governance -- npx tsx "$(pwd)/agents/dw-governance/src/index.ts" && \
+claude mcp add dw-usage -- npx tsx "$(pwd)/agents/dw-usage-intelligence/src/index.ts" && \
+claude mcp add dw-observability -- npx tsx "$(pwd)/agents/dw-observability/src/index.ts" && \
+claude mcp add dw-connectors -- npx tsx "$(pwd)/agents/dw-connectors/src/index.ts" && \
+claude mcp add dw-ml -- npx tsx "$(pwd)/agents/dw-ml/src/index.ts" && \
+claude mcp add dw-orchestration -- npx tsx "$(pwd)/agents/dw-orchestration/src/index.ts"
 ```
 
 Start Claude Code and ask:
@@ -66,7 +66,7 @@ Everything works instantly with in-memory seed data — no infrastructure requir
 
 ### Client configuration
 
-Add agents to your MCP client. Replace `/path/to/dataworkers-claw-community` with your clone location.
+Add agents to your MCP client. Use **absolute paths** to the agent entry points in your clone.
 
 **Claude Code** (`.mcp.json` in your project root):
 
@@ -75,37 +75,32 @@ Add agents to your MCP client. Replace `/path/to/dataworkers-claw-community` wit
   "mcpServers": {
     "dw-pipelines": {
       "command": "npx",
-      "args": ["tsx", "agents/dw-pipelines/src/index.ts"],
-      "cwd": "/path/to/dataworkers-claw-community"
+      "args": ["tsx", "/absolute/path/to/dataworkers-claw-community/agents/dw-pipelines/src/index.ts"]
     },
     "dw-catalog": {
       "command": "npx",
-      "args": ["tsx", "agents/dw-context-catalog/src/index.ts"],
-      "cwd": "/path/to/dataworkers-claw-community"
+      "args": ["tsx", "/absolute/path/to/dataworkers-claw-community/agents/dw-context-catalog/src/index.ts"]
     },
     "dw-quality": {
       "command": "npx",
-      "args": ["tsx", "agents/dw-quality/src/index.ts"],
-      "cwd": "/path/to/dataworkers-claw-community"
+      "args": ["tsx", "/absolute/path/to/dataworkers-claw-community/agents/dw-quality/src/index.ts"]
     }
   }
 }
 ```
 
-**Cursor** (`.cursor/mcp.json`):
+**Cursor** (`.cursor/mcp.json`) — same format:
 
 ```json
 {
   "mcpServers": {
     "dw-pipelines": {
       "command": "npx",
-      "args": ["tsx", "agents/dw-pipelines/src/index.ts"],
-      "cwd": "/path/to/dataworkers-claw-community"
+      "args": ["tsx", "/absolute/path/to/dataworkers-claw-community/agents/dw-pipelines/src/index.ts"]
     },
     "dw-incidents": {
       "command": "npx",
-      "args": ["tsx", "agents/dw-incidents/src/index.ts"],
-      "cwd": "/path/to/dataworkers-claw-community"
+      "args": ["tsx", "/absolute/path/to/dataworkers-claw-community/agents/dw-incidents/src/index.ts"]
     }
   }
 }
@@ -118,12 +113,12 @@ Add agents to your MCP client. Replace `/path/to/dataworkers-claw-community` wit
   "mcp": {
     "dw-pipelines": {
       "type": "local",
-      "command": ["npx", "tsx", "agents/dw-pipelines/src/index.ts"],
+      "command": ["npx", "tsx", "/absolute/path/to/dataworkers-claw-community/agents/dw-pipelines/src/index.ts"],
       "enabled": true
     },
     "dw-catalog": {
       "type": "local",
-      "command": ["npx", "tsx", "agents/dw-context-catalog/src/index.ts"],
+      "command": ["npx", "tsx", "/absolute/path/to/dataworkers-claw-community/agents/dw-context-catalog/src/index.ts"],
       "enabled": true
     }
   }
