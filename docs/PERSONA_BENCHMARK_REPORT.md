@@ -1,6 +1,6 @@
 # Persona Benchmark Report
 
-**Generated:** 2026-03-27T18:03:49.439Z
+**Generated:** 2026-03-27T18:10:37.064Z
 **Total scenarios evaluated:** 140
 **Overall composite score:** 65.0%
 
@@ -228,11 +228,11 @@
 | ae-list-semantic-defs | analytics_engineer | jaffle-shop | 100.0% | 100.0% | 12.5% | 12.5% | 70.0% | 100.0% | 100.0% | 100.0% | 73.3% | 0ms |
 | ae-dbt-model-lineage | analytics_engineer | jaffle-shop | 100.0% | 66.7% | 33.3% | 0.0% | 80.0% | 100.0% | 0.0% | 100.0% | 58.4% | 0ms |
 | ae-check-staleness | analytics_engineer | jaffle-shop | 100.0% | 50.0% | 9.1% | 70.8% | 72.7% | 100.0% | 0.0% | 100.0% | 61.3% | 0ms |
-| ae-import-tribal-knowledge | analytics_engineer | jaffle-shop | 100.0% | 50.0% | 0.0% | 25.0% | 0.0% | 100.0% | 100.0% | 100.0% | 57.8% | 0ms |
+| ae-import-tribal-knowledge | analytics_engineer | jaffle-shop | 100.0% | 50.0% | 0.0% | 12.5% | 0.0% | 100.0% | 100.0% | 100.0% | 56.1% | 0ms |
 | ms-setup-revenue-monitoring | analytics_engineer | jaffle-shop | 100.0% | 80.0% | 10.4% | 70.8% | 1.9% | 100.0% | 100.0% | 100.0% | 69.2% | 0ms |
 | neg-explain-nonexistent-table | analytics_engineer | jaffle-shop | 100.0% | 100.0% | 0.0% | 37.5% | 70.0% | 75.0% | 100.0% | 100.0% | 72.5% | 0ms |
 | neg-resolve-nonexistent-metric | analytics_engineer | jaffle-shop | 100.0% | 100.0% | 0.0% | 0.0% | 70.0% | 87.5% | 100.0% | 100.0% | 68.8% | 0ms |
-| ae-explain-orders-table | analytics_engineer | openmetadata | 100.0% | 100.0% | 7.9% | 75.0% | 71.7% | 100.0% | 100.0% | 100.0% | 81.1% | 0ms |
+| ae-explain-orders-table | analytics_engineer | openmetadata | 100.0% | 100.0% | 7.9% | 75.0% | 71.7% | 100.0% | 100.0% | 100.0% | 81.1% | 1ms |
 | ae-get-anomalies | analytics_engineer | openmetadata | 100.0% | 100.0% | 12.5% | 20.8% | 70.0% | 100.0% | 100.0% | 100.0% | 74.4% | 0ms |
 | ae-quality-score | analytics_engineer | openmetadata | 100.0% | 100.0% | 12.5% | 0.0% | 77.5% | 100.0% | 100.0% | 100.0% | 72.7% | 0ms |
 | dpl-cost-dashboard | data_platform_lead | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
@@ -328,7 +328,7 @@
 | dp-simple-lineage | data_practitioner | openmetadata | 100.0% | 100.0% | 20.0% | 29.2% | 73.0% | 100.0% | 100.0% | 100.0% | 76.9% | 0ms |
 | dp-check-anomalies | data_practitioner | openmetadata | 100.0% | 100.0% | 12.5% | 20.8% | 70.0% | 100.0% | 100.0% | 100.0% | 74.4% | 0ms |
 | dp-get-full-context | data_practitioner | openmetadata | 100.0% | 50.0% | 25.0% | 0.0% | 77.5% | 100.0% | 0.0% | 100.0% | 54.8% | 0ms |
-| ms-new-member-onboarding | data_practitioner | openmetadata | 100.0% | 100.0% | 9.0% | 75.0% | 71.8% | 100.0% | 100.0% | 100.0% | 81.3% | 0ms |
+| ms-new-member-onboarding | data_practitioner | openmetadata | 100.0% | 100.0% | 9.0% | 75.0% | 71.8% | 100.0% | 100.0% | 100.0% | 81.3% | 1ms |
 
 ## Errors
 
