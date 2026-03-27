@@ -26,7 +26,7 @@
  * - ab_test_models: A/B test configuration for model comparison (write)
  */
 
-import { DataWorkersMCPServer } from '@data-workers/mcp-framework';
+import { DataWorkersMCPServer, startStdioTransport } from '@data-workers/mcp-framework';
 import { withMiddleware } from '@data-workers/enterprise';
 
 // v1 tools
@@ -90,6 +90,11 @@ server.registerTool(detectModelDriftDefinition, withMiddleware(AGENT_ID, 'detect
 server.registerTool(abTestModelsDefinition, withMiddleware(AGENT_ID, 'ab_test_models', abTestModelsHandler));
 
 server.captureCapabilities();
+
+// Stdio transport for standalone MCP server mode
+if (process.env.DW_STDIO === '1' || !process.env.DW_HEALTH_PORT) {
+  startStdioTransport(server);
+}
 
 export { server };
 export { messageBus } from './backends.js';

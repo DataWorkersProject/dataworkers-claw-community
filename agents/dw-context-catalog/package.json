@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "description": "Data Context & Catalog Agent \u2014 crawling, documentation, lineage, search",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "types": "dist/index.d.ts",
   "bin": {
     "dw-context-catalog": "dist/index.js"

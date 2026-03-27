@@ -7,7 +7,7 @@
 
 import type { ICatalogProvider, CatalogCapability, Permission, TableMetadata } from '../../shared/types.js';
 
-export {
+export type {
   PolarisCatalog,
   PolarisPrincipal,
   PolarisPrivilege,

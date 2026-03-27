@@ -1,6 +1,6 @@
 # Persona Benchmark Report
 
-**Generated:** 2026-03-27T03:04:33.067Z
+**Generated:** 2026-03-27T06:10:20.938Z
 **Total scenarios evaluated:** 140
 **Overall composite score:** 65.0%
 
@@ -37,7 +37,7 @@
 | dw-connectors | 1 | 58.4% | 100% |
 | dw-cost | 6 | 48.0% | 0% |
 | dw-governance | 15 | 59.5% | 100% |
-| dw-usage-intelligence | 1 | 65.4% | 100% |
+| dw-usage-intelligence | 1 | 65.5% | 100% |
 | dw-observability | 2 | 56.3% | 100% |
 | dw-insights | 7 | 48.0% | 0% |
 | dw-ml | 5 | 51.1% | 100% |
@@ -240,7 +240,7 @@
 | dpl-find-unused-data | data_platform_lead | jaffle-shop | 0.0% | 0.0% | 100.0% | 0.0% | 100.0% | 100.0% | 0.0% | 100.0% | 48.0% | 0ms |
 | dpl-scan-pii | data_platform_lead | jaffle-shop | 100.0% | 33.3% | 14.3% | 20.8% | 74.3% | 100.0% | 0.0% | 100.0% | 53.6% | 0ms |
 | dpl-audit-report | data_platform_lead | jaffle-shop | 100.0% | 0.0% | 5.8% | 50.0% | 73.5% | 100.0% | 0.0% | 100.0% | 51.8% | 0ms |
-| dpl-adoption-dashboard | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 4.7% | 58.3% | 70.6% | 100.0% | 50.0% | 100.0% | 65.4% | 2ms |
+| dpl-adoption-dashboard | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 5.7% | 58.3% | 70.6% | 100.0% | 50.0% | 100.0% | 65.5% | 2ms |
 | dpl-check-agent-health | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 8.3% | 33.3% | 72.5% | 100.0% | 50.0% | 100.0% | 62.8% | 0ms |
 | dpl-provision-access | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 6.3% | 41.7% | 71.9% | 100.0% | 50.0% | 100.0% | 63.6% | 0ms |
 | dpl-check-policy | data_platform_lead | jaffle-shop | 100.0% | 50.0% | 6.3% | 33.3% | 73.8% | 100.0% | 50.0% | 100.0% | 62.7% | 0ms |

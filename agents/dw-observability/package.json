@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "description": "Agent Observability (Trust Layer) \u2014 deterministic metrics, audit trails, health checks, drift detection",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",
