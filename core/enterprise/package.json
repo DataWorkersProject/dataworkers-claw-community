@@ -1,7 +1,8 @@
 {
   "name": "@data-workers/enterprise",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "types": "src/index.ts"
 }

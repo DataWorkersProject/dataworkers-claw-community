@@ -1,8 +1,9 @@
 {
   "name": "@data-workers/dw-orchestration",
+  "type": "module",
   "version": "0.1.0",
-  "description": "Internal orchestration service — swarm scheduling, heartbeat monitoring, agent registry, event choreography",
-  "main": "src/index.ts",
+  "description": "Internal orchestration service \u2014 swarm scheduling, heartbeat monitoring, agent registry, event choreography",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",

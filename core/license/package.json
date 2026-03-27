@@ -1,8 +1,9 @@
 {
   "name": "@data-workers/license",
+  "type": "module",
   "version": "0.1.0",
-  "description": "License tier gating for MCP tool operations — community edition is read-only",
-  "main": "src/index.ts",
+  "description": "License tier gating for MCP tool operations \u2014 community edition is read-only",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",

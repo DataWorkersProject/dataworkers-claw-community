@@ -1,10 +1,13 @@
 {
   "name": "@data-workers/dw-schema",
+  "type": "module",
   "version": "0.1.0",
-  "description": "Schema Evolution Agent — real-time detection, migration generation, impact analysis",
-  "main": "src/index.ts",
+  "description": "Schema Evolution Agent \u2014 real-time detection, migration generation, impact analysis",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "bin": { "dw-schema": "dist/index.js" },
+  "bin": {
+    "dw-schema": "dist/index.js"
+  },
   "scripts": {
     "build": "tsc -b",
     "dev": "tsx watch src/index.ts",

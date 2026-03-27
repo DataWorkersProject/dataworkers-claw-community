@@ -1,8 +1,9 @@
 {
   "name": "@data-workers/medallion",
+  "type": "module",
   "version": "0.1.0",
-  "description": "Medallion architecture — autonomous Bronze→Silver→Gold lakehouse management",
-  "main": "src/index.ts",
+  "description": "Medallion architecture \u2014 autonomous Bronze\u2192Silver\u2192Gold lakehouse management",
+  "main": "dist/index.js",
   "types": "src/index.ts",
   "scripts": {
     "build": "tsc -b",

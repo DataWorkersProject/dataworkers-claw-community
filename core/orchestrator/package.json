@@ -1,8 +1,9 @@
 {
   "name": "@data-workers/orchestrator",
+  "type": "module",
   "version": "0.1.0",
   "description": "Swarm orchestration: scheduling, agent registry, health monitoring, dependency discovery",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",

@@ -1,10 +1,15 @@
 {
   "name": "@data-workers/bigquery-connector",
+  "type": "module",
   "version": "0.1.0",
   "description": "Google BigQuery connector",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "types": "src/index.ts",
-  "scripts": { "build": "tsc -b", "test": "vitest run", "clean": "rm -rf dist" },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
   "license": "Apache-2.0",
   "dependencies": {
     "@google-cloud/bigquery": "^7.0.0"

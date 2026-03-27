@@ -1,8 +1,9 @@
 {
   "name": "@data-workers/dw-ml",
+  "type": "module",
   "version": "0.1.0",
-  "description": "MLOps & Models Agent — feature engineering, model selection, training, evaluation, deployment",
-  "main": "src/index.ts",
+  "description": "MLOps & Models Agent \u2014 feature engineering, model selection, training, evaluation, deployment",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",

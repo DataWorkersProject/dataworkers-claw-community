@@ -32,29 +32,29 @@ Read more: [Why We Open-Sourced Data Workers](https://dataworkers.io/blog/why-we
 
 ## Get Started
 
-### Quick start — add the catalog agent to Claude Code:
-
 ```bash
-claude mcp add dw-catalog -- npx -y data-context-mcp
+git clone https://github.com/DataWorkersProject/dataworkers-claw-community.git
+cd dataworkers-claw-community
+npm install
 ```
 
-### Full agent suite — paste this into your terminal:
+Then add agents to Claude Code:
 
 ```bash
-claude mcp add dw-pipelines -- npx -y dw-claw pipelines && \
-claude mcp add dw-incidents -- npx -y dw-claw incidents && \
-claude mcp add dw-catalog -- npx -y dw-claw catalog && \
-claude mcp add dw-schema -- npx -y dw-claw schema && \
-claude mcp add dw-quality -- npx -y dw-claw quality && \
-claude mcp add dw-governance -- npx -y dw-claw governance && \
-claude mcp add dw-usage -- npx -y dw-claw usage && \
-claude mcp add dw-observability -- npx -y dw-claw observe && \
-claude mcp add dw-connectors -- npx -y dw-claw connectors && \
-claude mcp add dw-ml -- npx -y dw-claw ml && \
-claude mcp add dw-orchestration -- npx -y dw-claw orchestration
+claude mcp add dw-pipelines -- npx tsx agents/dw-pipelines/src/index.ts && \
+claude mcp add dw-incidents -- npx tsx agents/dw-incidents/src/index.ts && \
+claude mcp add dw-catalog -- npx tsx agents/dw-context-catalog/src/index.ts && \
+claude mcp add dw-schema -- npx tsx agents/dw-schema/src/index.ts && \
+claude mcp add dw-quality -- npx tsx agents/dw-quality/src/index.ts && \
+claude mcp add dw-governance -- npx tsx agents/dw-governance/src/index.ts && \
+claude mcp add dw-usage -- npx tsx agents/dw-usage-intelligence/src/index.ts && \
+claude mcp add dw-observability -- npx tsx agents/dw-observability/src/index.ts && \
+claude mcp add dw-connectors -- npx tsx agents/dw-connectors/src/index.ts && \
+claude mcp add dw-ml -- npx tsx agents/dw-ml/src/index.ts && \
+claude mcp add dw-orchestration -- npx tsx agents/dw-orchestration/src/index.ts
 ```
 
-Then start Claude Code and ask:
+Start Claude Code and ask:
 
 - *"Search the catalog for customer-related tables"*
 - *"Show me the full lineage for the orders table"*
@@ -66,7 +66,7 @@ Everything works instantly with in-memory seed data — no infrastructure requir
 
 ### Client configuration
 
-Add agents to your MCP client to start using them immediately.
+Add agents to your MCP client. Replace `/path/to/dataworkers-claw-community` with your clone location.
 
 **Claude Code** (`.mcp.json` in your project root):
 
@@ -75,15 +75,18 @@ Add agents to your MCP client to start using them immediately.
   "mcpServers": {
     "dw-pipelines": {
       "command": "npx",
-      "args": ["-y", "dw-claw", "pipelines"]
+      "args": ["tsx", "agents/dw-pipelines/src/index.ts"],
+      "cwd": "/path/to/dataworkers-claw-community"
     },
     "dw-catalog": {
       "command": "npx",
-      "args": ["-y", "dw-claw", "catalog"]
+      "args": ["tsx", "agents/dw-context-catalog/src/index.ts"],
+      "cwd": "/path/to/dataworkers-claw-community"
     },
     "dw-quality": {
       "command": "npx",
-      "args": ["-y", "dw-claw", "quality"]
+      "args": ["tsx", "agents/dw-quality/src/index.ts"],
+      "cwd": "/path/to/dataworkers-claw-community"
     }
   }
 }
@@ -96,11 +99,13 @@ Add agents to your MCP client to start using them immediately.
   "mcpServers": {
     "dw-pipelines": {
       "command": "npx",
-      "args": ["-y", "dw-claw", "pipelines"]
+      "args": ["tsx", "agents/dw-pipelines/src/index.ts"],
+      "cwd": "/path/to/dataworkers-claw-community"
     },
     "dw-incidents": {
       "command": "npx",
-      "args": ["-y", "dw-claw", "incidents"]
+      "args": ["tsx", "agents/dw-incidents/src/index.ts"],
+      "cwd": "/path/to/dataworkers-claw-community"
     }
   }
 }
@@ -113,42 +118,17 @@ Add agents to your MCP client to start using them immediately.
   "mcp": {
     "dw-pipelines": {
       "type": "local",
-      "command": ["npx", "-y", "dw-claw", "pipelines"],
+      "command": ["npx", "tsx", "agents/dw-pipelines/src/index.ts"],
       "enabled": true
     },
     "dw-catalog": {
       "type": "local",
-      "command": ["npx", "-y", "dw-claw", "catalog"],
+      "command": ["npx", "tsx", "agents/dw-context-catalog/src/index.ts"],
       "enabled": true
     }
   }
 }
 ```
-
-Or generate the full config with all agents:
-
-```bash
-npx dw-claw opencode
-```
-
-<details>
-<summary><strong>Quick install (npm / Homebrew / Docker)</strong></summary>
-
-```bash
-# Free 5-tool data context MCP server
-npx data-context-mcp
-
-# Full 11-agent CLI
-npx dw-claw
-
-# Homebrew
-brew install DataWorkersProject/homebrew-tap/dw-claw
-
-# Docker
-docker pull ghcr.io/dataworkersproject/dataworkers-claw-community:latest
-```
-
-</details>
 
 ---
 
@@ -297,17 +277,8 @@ dataworkers-claw-community/
 ## Development
 
 ```bash
-# Clone and build from source
-git clone https://github.com/DataWorkersProject/dataworkers-claw-community.git
-cd dataworkers-claw-community
-npm install
-npm run build
-```
-
-### Development commands
-
-```bash
-npm test          # Run all tests (2,900+, no external services required)
+npm test          # Run all tests (2,700+, no external services required)
+npm run build     # Build all packages
 npm run lint      # Lint
 npm run typecheck # Type-check
 cd agents/dw-pipelines && npm run dev  # Run a single agent in dev mode

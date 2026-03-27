@@ -1,10 +1,13 @@
 {
   "name": "@data-workers/dw-incidents",
+  "type": "module",
   "version": "0.1.0",
-  "description": "Incident Debugging Agent — anomaly detection, RCA, auto-remediation",
-  "main": "src/index.ts",
+  "description": "Incident Debugging Agent \u2014 anomaly detection, RCA, auto-remediation",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "bin": { "dw-incidents": "dist/index.js" },
+  "bin": {
+    "dw-incidents": "dist/index.js"
+  },
   "scripts": {
     "build": "tsc -b",
     "dev": "tsx watch src/index.ts",

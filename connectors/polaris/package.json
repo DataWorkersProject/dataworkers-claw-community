@@ -1,10 +1,17 @@
 {
   "name": "@data-workers/polaris-connector",
+  "type": "module",
   "version": "0.1.0",
   "description": "Apache Polaris catalog connector",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "types": "src/index.ts",
-  "scripts": { "build": "tsc -b", "test": "vitest run", "clean": "rm -rf dist" },
-  "dependencies": { "@data-workers/infrastructure-stubs": "*" },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@data-workers/infrastructure-stubs": "*"
+  },
   "license": "Apache-2.0"
 }

@@ -1,8 +1,9 @@
 {
   "name": "@data-workers/context-layer",
+  "type": "module",
   "version": "0.1.0",
   "description": "Cross-agent context layer: Redis, Kafka, context propagation",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",

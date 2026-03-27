@@ -1,5 +1,6 @@
 {
   "name": "@data-workers/cli",
+  "type": "module",
   "version": "0.1.0",
   "description": "CLI for managing Data Workers agent swarm",
   "bin": {

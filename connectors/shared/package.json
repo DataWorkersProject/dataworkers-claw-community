@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Shared types and interfaces for data platform connectors",
   "type": "module",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "types": "index.ts",
   "scripts": {
     "build": "tsc -b",
