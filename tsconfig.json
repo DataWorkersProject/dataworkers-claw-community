@@ -20,7 +20,24 @@
       "@data-workers/agent-lifecycle": ["./core/agent-lifecycle/src"],
       "@data-workers/validation": ["./core/validation/src"],
       "@data-workers/infrastructure-stubs": ["./core/infrastructure-stubs/src"],
-      "@data-workers/iceberg-connector": ["./connectors/iceberg/src"]
+      "@data-workers/license": ["./core/license/src"],
+      "@data-workers/orchestrator": ["./core/orchestrator/src"],
+      "@data-workers/connector-shared": ["./connectors/shared/src"],
+      "@data-workers/enterprise": ["./core/enterprise/src"],
+      "@data-workers/iceberg-connector": ["./connectors/iceberg/src"],
+      "@data-workers/bigquery-connector": ["./connectors/bigquery/src"],
+      "@data-workers/databricks-connector": ["./connectors/databricks/src"],
+      "@data-workers/datahub-connector": ["./connectors/datahub/src"],
+      "@data-workers/dataplex-connector": ["./connectors/dataplex/src"],
+      "@data-workers/dbt-connector": ["./connectors/dbt/src"],
+      "@data-workers/glue-connector": ["./connectors/glue/src"],
+      "@data-workers/hive-metastore-connector": ["./connectors/hive-metastore/src"],
+      "@data-workers/nessie-connector": ["./connectors/nessie/src"],
+      "@data-workers/openlineage-connector": ["./connectors/openlineage/src"],
+      "@data-workers/openmetadata-connector": ["./connectors/openmetadata/src"],
+      "@data-workers/polaris-connector": ["./connectors/polaris/src"],
+      "@data-workers/purview-connector": ["./connectors/purview/src"],
+      "@data-workers/snowflake-connector": ["./connectors/snowflake/src"]
     }
   },
   "exclude": ["node_modules", "dist", "**/dist", "**/*.test.ts"]
