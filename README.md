@@ -6,10 +6,8 @@
 
 <p align="center">
   <a href="https://github.com/DataWorkersProject/dataworkers-claw-community/actions"><img src="https://github.com/DataWorkersProject/dataworkers-claw-community/actions/workflows/ci.yml/badge.svg" alt="Build Status" /></a>
-  <a href="https://codecov.io/gh/DataWorkersProject/dataworkers-claw-community"><img src="https://codecov.io/gh/DataWorkersProject/dataworkers-claw-community/graph/badge.svg" alt="Coverage" /></a>
   <a href="https://github.com/DataWorkersProject/dataworkers-claw-community/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License" /></a>
   <a href="https://www.npmjs.com/org/data-workers"><img src="https://img.shields.io/badge/npm-v0.1.0-cb3837?logo=npm" alt="npm" /></a>
-  <a href="https://discord.com/invite/b8DR5J53"><img src="https://img.shields.io/discord/1486510336046665858?label=Discord&logo=discord&color=5865F2" alt="Discord" /></a>
 </p>
 
 <p align="center">
