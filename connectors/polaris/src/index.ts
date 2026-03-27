@@ -151,6 +151,7 @@ export class PolarisConnector implements ICatalogProvider {
       // 3-arg Polaris-specific: (catalog, namespace[], table)
       const icebergMeta = await this.client.loadTable(namespaceOrCatalog, tableOrNamespace, maybeTable);
       return {
+        ...icebergMeta,
         name: maybeTable,
         namespace: tableOrNamespace,
         schema: (icebergMeta.schema ?? { schemaId: 0, fields: [] }) as any,
