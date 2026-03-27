@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createGatedHandler, registerToolWithGate } from '../tool-registration.js';
-import type { ToolDefinition, ToolHandler, ToolResult } from '../types.js';
+import type { ToolDefinition, ToolHandler } from '../types.js';
 
 const readToolDef: ToolDefinition = {
   name: 'search_datasets',

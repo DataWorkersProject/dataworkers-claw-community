@@ -1,4 +1,4 @@
-import type { RootCauseAnalysis, RemediationResult, IncidentType } from '../types.js';
+import type { RootCauseAnalysis, IncidentType } from '../types.js';
 
 export interface PRGenerationRequest {
   incidentId: string;

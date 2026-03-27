@@ -32,7 +32,7 @@ export const getAdoptionDashboardHandler: ToolHandler = async (args) => {
     const dayMs = 24 * 60 * 60 * 1000;
     const now = getCurrentTimestamp();
     const cutoff = now - days * dayMs;
-    const priorCutoff = cutoff - days * dayMs;
+    // priorCutoff reserved for future trend comparison: cutoff - days * dayMs
     const weekCutoff = now - 7 * dayMs;
     const priorWeekCutoff = weekCutoff - 7 * dayMs;
 

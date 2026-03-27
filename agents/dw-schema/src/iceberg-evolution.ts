@@ -6,7 +6,7 @@
  */
 
 import type { IcebergConnector } from '@data-workers/iceberg-connector';
-import type { SchemaChange, ChangeType, ChangeSeverity, DetectionMethod } from './types.js';
+import type { SchemaChange, ChangeType, ChangeSeverity } from './types.js';
 
 interface IcebergField {
   id: number;

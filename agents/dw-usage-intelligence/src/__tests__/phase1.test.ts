@@ -5,10 +5,9 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { createHash } from 'crypto';
 import { EventIngester } from '../event-ingester.js';
 import { relationalStore } from '../backends.js';
-import { server, eventIngester, messageBus } from '../index.js';
+import { eventIngester, messageBus } from '../index.js';
 
 describe('Phase 1: Event Ingestion', () => {
   describe('EventIngester', () => {

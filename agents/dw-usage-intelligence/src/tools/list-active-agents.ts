@@ -9,7 +9,7 @@
  */
 
 import type { ToolDefinition, ToolHandler } from '@data-workers/mcp-framework';
-import type { HealthStatus, ActiveAgent } from '../types.js';
+import type { ActiveAgent } from '../types.js';
 import { kvStore, getCurrentTimestamp } from '../backends.js';
 import { classifyHealth } from './check-agent-health.js';
 
@@ -28,7 +28,7 @@ export const listActiveAgentsHandler: ToolHandler = async () => {
   try {
     // Try importing AgentRegistry for real agent status
     try {
-      const { AgentRegistry } = await import('@data-workers/orchestrator');
+      await import('@data-workers/orchestrator');
       // AgentRegistry available — could enrich with registry data in future
     } catch {
       // AgentRegistry not available — fall back to KV health cache only

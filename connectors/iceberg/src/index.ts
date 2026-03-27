@@ -9,8 +9,6 @@ import type { ICatalogProvider, CatalogCapability } from '../../shared/types.js'
 import { IcebergRESTClient } from './rest-client.js';
 import type {
   IcebergNamespace,
-  IcebergTable,
-  IcebergTableMetadata,
   IcebergSnapshot,
   IcebergSchema,
 } from './types.js';

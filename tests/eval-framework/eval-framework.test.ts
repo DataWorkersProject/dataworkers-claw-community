@@ -26,7 +26,7 @@ import type { AgentEvalResult, DimensionScore, MCPServer } from './types.js';
 import { AGENT_REGISTRY } from './config.js';
 import { evaluateAIEvals } from './dimensions/ai-evals.js';
 import { evaluateProductQuality } from './dimensions/product-quality.js';
-import { buildAgentEvalResult, computeCompositeScore, aggregateSummary } from './scoring/aggregator.js';
+import { buildAgentEvalResult, aggregateSummary } from './scoring/aggregator.js';
 import { scoreToGrade } from './scoring/rubrics.js';
 
 // ── Server map ──────────────────────────────────────────────────────────────

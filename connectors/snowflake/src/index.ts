@@ -7,7 +7,6 @@
  */
 
 import type {
-  IDataPlatformConnector,
   ICatalogProvider,
   CatalogCapability,
   NamespaceInfo,
@@ -17,7 +16,6 @@ import type {
 import { SnowflakeStubClient } from './stub-client.js';
 import type {
   ISnowflakeClient,
-  SnowflakeConnectionConfig,
   SnowflakeDatabase,
   SnowflakeSchema,
   SnowflakeTableDDL,

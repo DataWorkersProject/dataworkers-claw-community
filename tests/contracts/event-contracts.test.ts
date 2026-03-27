@@ -393,6 +393,7 @@ describe('Event Schema Definitions', () => {
   });
 
   it('accepts access_granted without optional expiresAt', () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { expiresAt, ...withoutExpiry } = sampleEvents.access_granted;
     const result = AccessGrantedSchema.safeParse(withoutExpiry);
     expect(result.success).toBe(true);

@@ -44,7 +44,7 @@ export class InMemoryOrchestratorAPI implements IOrchestratorAPI {
    */
   async restartTask(dagId: string, taskId: string): Promise<RestartResult> {
     const key = `${dagId}:${taskId}`;
-    const existing = this.tasks.get(key);
+    this.tasks.get(key);
     const now = Date.now();
 
     this.tasks.set(key, {
@@ -73,7 +73,7 @@ export class InMemoryOrchestratorAPI implements IOrchestratorAPI {
   /**
    * Trigger a DAG run with optional configuration.
    */
-  async triggerDag(dagId: string, conf?: Record<string, unknown>): Promise<DagRunResult> {
+  async triggerDag(dagId: string, _conf?: Record<string, unknown>): Promise<DagRunResult> {
     const dagRunId = `run-${dagId}-${Date.now()}`;
     const now = Date.now();
 

@@ -11,7 +11,7 @@
  */
 
 import type { IVectorStore, IFullTextSearch, IGraphDB } from '@data-workers/infrastructure-stubs';
-import type { ICatalogProvider, TableInfo } from '@data-workers/connector-shared';
+import type { TableInfo } from '@data-workers/connector-shared';
 import type { CatalogRegistry } from '@data-workers/connector-shared';
 import type { DataAsset, SearchResult, AssetType } from '../types.js';
 import { Reranker } from './reranker.js';

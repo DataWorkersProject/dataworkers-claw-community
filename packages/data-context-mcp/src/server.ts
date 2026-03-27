@@ -12,7 +12,6 @@
  */
 
 import { DataWorkersMCPServer } from '@data-workers/mcp-framework';
-import type { ToolDefinition, ToolHandler, ToolResult } from '@data-workers/mcp-framework';
 import { withMiddleware } from '@data-workers/enterprise';
 
 // ── Tool imports from dw-context-catalog ──

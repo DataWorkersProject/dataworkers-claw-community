@@ -5,7 +5,7 @@ import {
   zeroRowCountRule,
   latencyBaselineRule,
 } from '../engine/metric-monitor.js';
-import type { SemanticRule, SemanticViolation } from '../engine/metric-monitor.js';
+import type { SemanticRule } from '../engine/metric-monitor.js';
 import type { MetricDataPoint } from '../engine/statistical-detector.js';
 
 describe('Semantic Pattern Detection', () => {

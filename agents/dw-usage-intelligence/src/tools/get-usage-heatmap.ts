@@ -42,7 +42,7 @@ export const getUsageHeatmapHandler: ToolHandler = async (args) => {
       },
     );
 
-    let heatmap: HeatmapCell[] = [];
+    const heatmap: HeatmapCell[] = [];
     let peakBucket: number | string = 0;
     let quietBucket: number | string = 0;
     let peakCount = 0;

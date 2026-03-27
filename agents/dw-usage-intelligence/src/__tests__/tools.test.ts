@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { createHash } from 'crypto';
 import { server } from '../index.js';
-import { relationalStore, kvStore } from '../backends.js';
 
 describe('dw-usage-intelligence MCP Server', () => {
   it('registers all 26 tools', () => {

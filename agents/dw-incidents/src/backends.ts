@@ -13,8 +13,6 @@ import {
   InMemoryGraphDB,
   InMemoryVectorStore,
   InMemoryRelationalStore,
-  InMemoryKeyValueStore,
-  InMemoryMessageBus,
   InMemoryOrchestratorAPI,
 } from '@data-workers/infrastructure-stubs';
 import { IncidentLogger } from './learning/incident-logger.js';

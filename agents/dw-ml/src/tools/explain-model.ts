@@ -33,8 +33,8 @@ export const explainModelDefinition: ToolDefinition = {
  */
 function simulateFeatureImportance(
   features: string[],
-  algorithm: string,
-  method: string,
+  _algorithm: string,
+  _method: string,
 ): { feature: string; importance: number; direction: 'positive' | 'negative' | 'mixed' }[] {
   // Deterministic importance based on feature name hash
   const importances = features.map((f, i) => {

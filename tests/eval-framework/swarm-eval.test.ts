@@ -30,13 +30,11 @@ import { dataDiscoveryScenario } from './scenarios/swarm/data-discovery.js';
 
 // ─── Dimensions ─────────────────────────────────────────────────────────────
 import {
-  measureTaskCompletion,
   measureStepsSaved,
   measureAutomationCoverage,
 } from './dimensions/productivity.js';
 import {
   measureActionability,
-  measureRelevance,
   measureTrustSignals,
 } from './dimensions/user-value.js';
 

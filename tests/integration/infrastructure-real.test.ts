@@ -18,7 +18,6 @@ import {
   createMessageBus,
   createVectorStore,
   createFullTextSearch,
-  createOrchestratorAPI,
   disconnectAll,
   type IKeyValueStore,
   type IRelationalStore,

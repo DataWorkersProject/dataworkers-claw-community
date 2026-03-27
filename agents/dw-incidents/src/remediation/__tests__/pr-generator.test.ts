@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { PRGenerator } from '../pr-generator.js';
 import type { PRGenerationRequest } from '../pr-generator.js';
-import type { RootCauseAnalysis, IncidentType } from '../../types.js';
+import type { RootCauseAnalysis } from '../../types.js';
 
 function makeRootCause(overrides?: Partial<RootCauseAnalysis>): RootCauseAnalysis {
   return {

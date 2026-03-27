@@ -5,7 +5,7 @@
  */
 
 import type { IRelationalStore, IMessageBus, MessageBusEvent } from '@data-workers/infrastructure-stubs';
-import type { SLADefinition, SLARule, SLAViolation, QualityCheckResult, AnomalySeverity } from './types.js';
+import type { SLADefinition, SLARule, SLAViolation, QualityCheckResult } from './types.js';
 
 export class SLAEvaluator {
   private store: IRelationalStore;

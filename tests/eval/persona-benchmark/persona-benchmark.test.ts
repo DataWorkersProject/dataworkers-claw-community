@@ -18,9 +18,9 @@
 import { describe, it, expect } from 'vitest';
 import { SCENARIOS } from './scenarios.js';
 import { runPersonaBenchmark, getDefaultServers } from './runner.js';
-import { generatePersonaReport, buildPersonaReport } from './report.js';
+import { generatePersonaReport } from './report.js';
 import { jaccardSimilarity } from './scoring.js';
-import type { PersonaResult, SeedDataset, PersonaScenario } from './types.js';
+import type { PersonaResult, SeedDataset } from './types.js';
 
 const SEEDS: SeedDataset[] = ['jaffle-shop', 'openmetadata'];
 

@@ -9,7 +9,6 @@ import type {
   IcebergTableMetadata,
   IcebergSnapshot,
   IcebergSchema,
-  IcebergField,
   IcebergPartitionSpec,
   IcebergSortOrder,
 } from './types.js';

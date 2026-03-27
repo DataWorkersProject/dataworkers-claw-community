@@ -6,10 +6,8 @@ import type {
   MarquezConnectionConfig,
   MarquezNamespace,
   MarquezDataset,
-  DatasetField,
   MarquezJob,
   MarquezLineageGraph,
-  MarquezLineageNode,
 } from './types.js';
 
 export class MarquezRestClient {

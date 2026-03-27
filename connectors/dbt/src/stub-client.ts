@@ -5,7 +5,6 @@
 
 import type {
   DbtModel,
-  DbtColumn,
   DbtTestResult,
   DbtRunHistory,
   DbtLineageEdge,

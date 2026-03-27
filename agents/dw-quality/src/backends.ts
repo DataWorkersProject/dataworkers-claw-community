@@ -12,7 +12,6 @@ import {
   createWarehouseConnector,
   InMemoryWarehouseConnector,
   createKeyValueStore,
-  InMemoryKeyValueStore,
   createRelationalStore,
   InMemoryRelationalStore,
   createMessageBus,

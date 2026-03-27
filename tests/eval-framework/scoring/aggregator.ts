@@ -12,7 +12,7 @@ import type {
   AgentEvalResult,
   LetterGrade,
 } from '../types.js';
-import { scoreToGrade, computeComposite, DIMENSIONS } from './rubrics.js';
+import { scoreToGrade, computeComposite } from './rubrics.js';
 
 // ---------------------------------------------------------------------------
 // Build a DimensionScore from raw sub-scores

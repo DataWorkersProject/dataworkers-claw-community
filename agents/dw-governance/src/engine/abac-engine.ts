@@ -5,7 +5,7 @@
  * and environmental conditions. Supplements the existing RBAC engine.
  */
 
-import type { ABACPolicy, ABACContext, ABACEvaluation, PolicyAction } from '../types.js';
+import type { ABACPolicy, ABACContext, ABACEvaluation } from '../types.js';
 
 /**
  * Match a single attribute condition against a context value.

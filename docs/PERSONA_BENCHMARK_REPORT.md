@@ -1,6 +1,6 @@
 # Persona Benchmark Report
 
-**Generated:** 2026-03-27T16:07:28.059Z
+**Generated:** 2026-03-27T18:03:49.439Z
 **Total scenarios evaluated:** 140
 **Overall composite score:** 65.0%
 
@@ -9,7 +9,7 @@
 | Persona | Scenarios | Avg Composite |
 |---------|-----------|---------------|
 | data_engineer | 28 | 69.5% |
-| analytics_engineer | 18 | 66.4% |
+| analytics_engineer | 18 | 66.8% |
 | data_platform_lead | 13 | 56.0% |
 | data_scientist | 17 | 58.1% |
 | ml_engineer | 11 | 58.3% |
@@ -21,7 +21,7 @@
 
 | Seed | Scenarios | Avg Composite |
 |------|-----------|---------------|
-| jaffle-shop | 105 | 63.0% |
+| jaffle-shop | 105 | 63.1% |
 | openmetadata | 35 | 70.8% |
 
 ## Results by Agent
@@ -34,7 +34,7 @@
 | dw-schema | 3 | 51.2% | 100% |
 | dw-streaming | 1 | 38.9% | 0% |
 | dw-incidents | 3 | 72.1% | 100% |
-| dw-connectors | 1 | 51.9% | 100% |
+| dw-connectors | 1 | 58.4% | 100% |
 | dw-cost | 6 | 48.0% | 0% |
 | dw-governance | 15 | 59.5% | 100% |
 | dw-usage-intelligence | 1 | 65.5% | 100% |
@@ -47,7 +47,7 @@
 | Difficulty | Scenarios | Avg Composite | Weighted Composite |
 |------------|-----------|---------------|--------------------|
 | basic | 78 | 68.9% | 68.9% |
-| intermediate | 48 | 59.9% | 74.9% |
+| intermediate | 48 | 60.1% | 75.1% |
 | advanced | 14 | 60.7% | 91.1% |
 
 ## Latency Compliance
@@ -226,9 +226,9 @@
 | ae-quality-score | analytics_engineer | jaffle-shop | 100.0% | 100.0% | 25.0% | 0.0% | 77.5% | 100.0% | 100.0% | 100.0% | 74.3% | 0ms |
 | ae-define-business-rule | analytics_engineer | jaffle-shop | 100.0% | 66.7% | 16.7% | 8.3% | 73.3% | 100.0% | 50.0% | 100.0% | 63.0% | 0ms |
 | ae-list-semantic-defs | analytics_engineer | jaffle-shop | 100.0% | 100.0% | 12.5% | 12.5% | 70.0% | 100.0% | 100.0% | 100.0% | 73.3% | 0ms |
-| ae-dbt-model-lineage | analytics_engineer | jaffle-shop | 100.0% | 0.0% | 100.0% | 0.0% | 30.0% | 100.0% | 0.0% | 100.0% | 51.9% | 0ms |
+| ae-dbt-model-lineage | analytics_engineer | jaffle-shop | 100.0% | 66.7% | 33.3% | 0.0% | 80.0% | 100.0% | 0.0% | 100.0% | 58.4% | 0ms |
 | ae-check-staleness | analytics_engineer | jaffle-shop | 100.0% | 50.0% | 9.1% | 70.8% | 72.7% | 100.0% | 0.0% | 100.0% | 61.3% | 0ms |
-| ae-import-tribal-knowledge | analytics_engineer | jaffle-shop | 100.0% | 50.0% | 0.0% | 12.5% | 0.0% | 100.0% | 100.0% | 100.0% | 56.1% | 0ms |
+| ae-import-tribal-knowledge | analytics_engineer | jaffle-shop | 100.0% | 50.0% | 0.0% | 25.0% | 0.0% | 100.0% | 100.0% | 100.0% | 57.8% | 0ms |
 | ms-setup-revenue-monitoring | analytics_engineer | jaffle-shop | 100.0% | 80.0% | 10.4% | 70.8% | 1.9% | 100.0% | 100.0% | 100.0% | 69.2% | 0ms |
 | neg-explain-nonexistent-table | analytics_engineer | jaffle-shop | 100.0% | 100.0% | 0.0% | 37.5% | 70.0% | 75.0% | 100.0% | 100.0% | 72.5% | 0ms |
 | neg-resolve-nonexistent-metric | analytics_engineer | jaffle-shop | 100.0% | 100.0% | 0.0% | 0.0% | 70.0% | 87.5% | 100.0% | 100.0% | 68.8% | 0ms |

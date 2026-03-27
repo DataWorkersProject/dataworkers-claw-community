@@ -9,7 +9,7 @@
  */
 
 import type { ToolDefinition, ToolHandler } from '@data-workers/mcp-framework';
-import type { EvaluationBreakdown, EvaluationReport } from '../types.js';
+import type { EvaluationReport } from '../types.js';
 import { relationalStore, getCurrentTimestamp } from '../backends.js';
 
 export const getEvaluationReportDefinition: ToolDefinition = {

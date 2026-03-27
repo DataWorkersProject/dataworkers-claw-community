@@ -26,7 +26,7 @@ export class OpenAIProvider extends VercelAIAdapter {
   protected override createModel(modelId: string): unknown {
     let openaiFn: ((id: string) => unknown) | undefined;
     try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
       const mod = require('@ai-sdk/openai');
       openaiFn = mod.openai ?? mod.default?.openai;
     } catch {

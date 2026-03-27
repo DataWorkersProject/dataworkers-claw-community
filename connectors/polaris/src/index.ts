@@ -5,7 +5,7 @@
  * table metadata retrieval, and access-control checks.
  */
 
-import type { ICatalogProvider, CatalogCapability, Permission, TableMetadata, NamespaceInfo } from '../../shared/types.js';
+import type { ICatalogProvider, CatalogCapability, TableMetadata, NamespaceInfo } from '../../shared/types.js';
 
 export type {
   PolarisCatalog,
@@ -19,7 +19,6 @@ export { PolarisRESTClient } from './rest-client.js';
 
 import type {
   PolarisCatalog,
-  PolarisPermission,
   PolarisAuthToken,
 } from './types.js';
 

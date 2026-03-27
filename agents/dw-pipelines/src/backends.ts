@@ -8,8 +8,6 @@ import {
   createLLMClient,
   createVectorStore,
   createFullTextSearch,
-  InMemoryMessageBus,
-  InMemoryLLMClient,
   InMemoryVectorStore,
   InMemoryFullTextSearch,
 } from '@data-workers/infrastructure-stubs';

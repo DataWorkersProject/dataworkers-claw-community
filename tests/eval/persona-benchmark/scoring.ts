@@ -319,17 +319,17 @@ const STRUCTURED_ACTION_PATTERNS = {
   ],
   /** Structured data indicators (JSON keys that imply actionable structure) */
   structuredData: [
-    /\"steps\"/i,
-    /\"actions\"/i,
-    /\"recommendations\"/i,
-    /\"checks\"/i,
-    /\"rules\"/i,
-    /\"pipeline\"/i,
-    /\"diagnosis\"/i,
-    /\"possibleCauses\"/i,
-    /\"impactedAssets\"/i,
-    /\"score\":\s*\d/i,
-    /\"status\":\s*\"/i,
+    /"steps"/i,
+    /"actions"/i,
+    /"recommendations"/i,
+    /"checks"/i,
+    /"rules"/i,
+    /"pipeline"/i,
+    /"diagnosis"/i,
+    /"possibleCauses"/i,
+    /"impactedAssets"/i,
+    /"score":\s*\d/i,
+    /"status":\s*"/i,
   ],
   /** Contextual specificity -- references to actual data entities */
   contextualRef: [
@@ -418,7 +418,7 @@ export function scoreSeedSpecificity(
 
   const text = stringify(response).toLowerCase();
   let found = 0;
-  let totalRequired = expected.requiredEntities.length;
+  const totalRequired = expected.requiredEntities.length;
 
   // Check explicitly required entities
   for (const entity of expected.requiredEntities) {
@@ -725,7 +725,7 @@ const DIFFICULTY_WEIGHTS: Record<string, number> = {
  */
 export function computeComposite(
   scores: Omit<PersonaScore, 'composite'>,
-  difficulty?: 'basic' | 'intermediate' | 'advanced',
+  _difficulty?: 'basic' | 'intermediate' | 'advanced',
 ): number {
   const raw =
     scores.routingAccuracy * 0.13 +

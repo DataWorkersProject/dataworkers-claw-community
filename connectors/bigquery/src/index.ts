@@ -11,12 +11,10 @@ import { BigQueryStubClient } from './stub-client.js';
 import type {
   BQDataset,
   BQTable,
-  BQColumn,
   BQTableSchema,
   BQJob,
   BQCostEstimate,
   IBigQueryClient,
-  BigQueryConnectionConfig,
 } from './types.js';
 
 export class BigQueryConnector implements ICatalogProvider {

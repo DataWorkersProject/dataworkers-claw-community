@@ -378,7 +378,7 @@ export const explainTableHandler: ToolHandler = async (args) => {
     ]);
 
     // ── Step 4: Unwrap allSettled results ──
-    const unwrap = <T>(settled: PromiseSettledResult<Section<T>>, name: string): Section<T> => {
+    const unwrap = <T>(settled: PromiseSettledResult<Section<T>>, _name: string): Section<T> => {
       if (settled.status === 'fulfilled') return settled.value;
       return { available: false, reason: settled.reason?.message ?? 'unknown_error' };
     };

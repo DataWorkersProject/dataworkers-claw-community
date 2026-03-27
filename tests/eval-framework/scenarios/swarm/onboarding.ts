@@ -11,7 +11,7 @@
  * 4. get_quality_score -> assess data quality
  */
 
-import type { SwarmScenario, SwarmStep, SwarmStepResult } from './types.js';
+import type { SwarmScenario, SwarmStepResult } from './types.js';
 
 // ---------------------------------------------------------------------------
 // Scenario definition
