@@ -6,28 +6,11 @@ dist/
 build/
 *.tsbuildinfo
 
-# TypeScript compilation artifacts in source directories
-# (build output belongs in dist/, not next to .ts source files)
-agents/**/src/**/*.js
-agents/**/src/**/*.d.ts
-agents/**/src/**/*.js.map
-agents/**/src/**/*.d.ts.map
-connectors/**/src/**/*.js
-connectors/**/src/**/*.d.ts
-connectors/**/src/**/*.js.map
-connectors/**/src/**/*.d.ts.map
-connectors/shared/*.js
-connectors/shared/*.d.ts
-connectors/shared/*.js.map
-connectors/shared/*.d.ts.map
-core/**/src/**/*.js
-core/**/src/**/*.d.ts
-core/**/src/**/*.js.map
-core/**/src/**/*.d.ts.map
-packages/**/src/**/*.js
-packages/**/src/**/*.d.ts
-packages/**/src/**/*.js.map
-packages/**/src/**/*.d.ts.map
+# Prevent stale compiled JS in source directories
+**/src/**/*.js
+**/src/**/*.js.map
+**/src/**/*.d.ts
+!**/src/**/__tests__/**
 
 # Test / coverage
 coverage/
