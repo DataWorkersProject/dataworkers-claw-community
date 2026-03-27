@@ -1,0 +1,13 @@
+{
+  "name": "@data-workers/platform",
+  "version": "0.1.0",
+  "description": "Platform services: onboarding, deployment, evaluation, load testing",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "license": "Apache-2.0"
+}

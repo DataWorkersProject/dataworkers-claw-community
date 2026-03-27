@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": { "outDir": "dist", "rootDir": "src", "composite": true },
+  "references": [
+    { "path": "../../core/mcp-framework" },
+    { "path": "../../core/agent-lifecycle" },
+    { "path": "../../core/context-layer" },
+    { "path": "../../core/validation" },
+    { "path": "../../core/infrastructure-stubs" },
+    { "path": "../../core/license" },
+    { "path": "../../core/orchestrator" }
+  ],
+  "include": ["src/**/*"]
+}

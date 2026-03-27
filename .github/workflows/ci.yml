@@ -1,0 +1,231 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  # ─── Lint ────────────────────────────────────────────────────────────
+  lint:
+    name: Lint & Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: ESLint
+        run: npm run lint -- --format json --output-file eslint-report.json || true
+
+      - name: Annotate ESLint results
+        if: always()
+        uses: ataylorme/eslint-annotate-action@v3
+        with:
+          report-json: eslint-report.json
+          only-pr-files: true
+        continue-on-error: true
+
+      - name: ESLint (fail on errors)
+        run: npm run lint
+
+      - name: TypeScript type check
+        run: npm run typecheck
+
+  # ─── Unit Tests ──────────────────────────────────────────────────────
+  test:
+    name: Tests (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests with coverage
+        run: npx vitest run --coverage --reporter=default --reporter=junit --outputFile.junit=test-results.xml
+
+      - name: Test report annotations
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Test Results (Node ${{ matrix.node-version }})
+          path: test-results.xml
+          reporter: java-junit
+          fail-on-error: false
+
+      - name: Coverage report card
+        if: always() && github.event_name == 'pull_request'
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          json-summary-path: ./coverage/coverage-summary.json
+          json-final-path: ./coverage/coverage-final.json
+          vite-config-path: ./vitest.config.ts
+        continue-on-error: true
+
+      - name: Check coverage thresholds
+        run: |
+          node -e "
+          const report = require('./coverage/coverage-summary.json');
+          const { lines, branches, functions, statements } = report.total;
+          const checks = [
+            { name: 'Lines', pct: lines.pct, min: 60 },
+            { name: 'Branches', pct: branches.pct, min: 50 },
+            { name: 'Functions', pct: functions.pct, min: 60 },
+            { name: 'Statements', pct: statements.pct, min: 60 },
+          ];
+          const fails = checks.filter(c => c.pct < c.min);
+          console.log('Coverage Summary:');
+          checks.forEach(c => console.log('  ' + c.name + ': ' + c.pct + '% (min: ' + c.min + '%)' + (c.pct < c.min ? ' FAIL' : ' OK')));
+          if (fails.length > 0) { process.exit(1); }
+          "
+
+      - name: Upload coverage to Codecov
+        if: always()
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  # ─── Build ───────────────────────────────────────────────────────────
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build all workspaces
+        run: npm run build
+
+  # ─── Security Audit ─────────────────────────────────────────────────
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Security Audit
+        run: npm audit --omit=dev --audit-level=critical
+
+      - name: npm audit summary
+        run: |
+          echo "## Security Audit" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          npm audit --omit=dev 2>&1 | tail -20 >> $GITHUB_STEP_SUMMARY || true
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+  # ─── Integration Tests (PR only, needs services) ────────────────────
+  integration:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    needs: [test]
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: dw_user
+          POSTGRES_PASSWORD: dw_local_dev
+          POSTGRES_DB: data_workers
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      neo4j:
+        image: neo4j:5
+        env:
+          NEO4J_AUTH: neo4j/dw_local_dev
+        ports:
+          - 7474:7474
+          - 7687:7687
+        options: >-
+          --health-cmd "curl -sf http://localhost:7474 || exit 1"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://dw_user:dw_local_dev@localhost:5432/data_workers
+      REDIS_URL: redis://localhost:6379
+      NEO4J_URI: bolt://localhost:7687
+      NEO4J_USER: neo4j
+      NEO4J_PASSWORD: dw_local_dev
+      PGVECTOR_ENABLED: "true"
+      PG_FTS_ENABLED: "true"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Wait for services
+        run: |
+          # Inline service check (wait-for-services.sh needs CLI tools not in the runner)
+          for i in $(seq 1 30); do
+            pg_isready -h localhost -p 5432 -U dw_user -d data_workers && break
+            echo "Waiting for PostgreSQL... ($i/30)"
+            sleep 2
+          done
+
+      - name: Run integration tests
+        run: npx vitest run tests/integration/ --reporter=verbose
+        timeout-minutes: 10

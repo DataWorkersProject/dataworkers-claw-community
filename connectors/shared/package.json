@@ -1,0 +1,13 @@
+{
+  "name": "@data-workers/connector-shared",
+  "version": "0.1.0",
+  "description": "Shared types and interfaces for data platform connectors",
+  "type": "module",
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "license": "Apache-2.0"
+}

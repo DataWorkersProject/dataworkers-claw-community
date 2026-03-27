@@ -1,0 +1,10 @@
+{
+  "name": "@data-workers/dw-connectors",
+  "version": "0.1.0",
+  "description": "Data Platform Connectors Agent — unified access to Snowflake, BigQuery, dbt, Databricks",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": { "build": "tsc -b", "test": "vitest run", "clean": "rm -rf dist" },
+  "dependencies": { "@data-workers/mcp-framework": "*", "@data-workers/enterprise": "*", "@data-workers/license": "*" },
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,95 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# TypeScript compilation artifacts in source directories
+# (build output belongs in dist/, not next to .ts source files)
+agents/**/src/**/*.js
+agents/**/src/**/*.d.ts
+agents/**/src/**/*.js.map
+agents/**/src/**/*.d.ts.map
+connectors/**/src/**/*.js
+connectors/**/src/**/*.d.ts
+connectors/**/src/**/*.js.map
+connectors/**/src/**/*.d.ts.map
+connectors/shared/*.js
+connectors/shared/*.d.ts
+connectors/shared/*.js.map
+connectors/shared/*.d.ts.map
+core/**/src/**/*.js
+core/**/src/**/*.d.ts
+core/**/src/**/*.js.map
+core/**/src/**/*.d.ts.map
+packages/**/src/**/*.js
+packages/**/src/**/*.d.ts
+packages/**/src/**/*.js.map
+packages/**/src/**/*.d.ts.map
+
+# Test / coverage
+coverage/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.json
+service-account.json
+
+# Logs
+*.log
+logs/
+
+# Python (python-sdk, scripts)
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.ruff_cache/
+
+# Temp / research files
+Agent-Overview-Research.md
+
+# Internal strategy & research docs (must never appear in OSS)
+docs/BAD_ACTOR_ANALYSIS_REPORT.md
+docs/research/HERO_METRIC_ANALYSIS.md
+docs/research/MULTI_CLOUD_STATS.md
+docs/research/SIMPLE_MCP_ENTRY_POINT.md
+docs/research/COMPETITOR_MCP_ANALYSIS.md
+docs/research/USER_NEEDS_MESSAGING.md
+
+# Internal docs (not for public repo)
+docs/eval-results/
+docs/research/
+docs/blog/
+docs/AGENT_REPORT_CARD.md
+docs/BENCHMARK_REPORT.md
+docs/EVAL_REPORT.md
+docs/PERSONA_BENCHMARK_REPORT.md
+docs/SEMANTIC_LAYER_DIAGRAM.md
+docs/SIMPLIFICATION_REPORT.md
+docs/NPM_PUBLISH_CHECKLIST.md
+docs/TECH_STACK_ARCHITECTURE.md
+
+# Paid agents (not included in OSS)
+agents/dw-cost/
+agents/dw-migration/
+agents/dw-insights/
+agents/dw-streaming/

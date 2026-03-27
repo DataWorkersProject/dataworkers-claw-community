@@ -1,0 +1,26 @@
+{
+  "name": "@data-workers/dw-incidents",
+  "version": "0.1.0",
+  "description": "Incident Debugging Agent — anomaly detection, RCA, auto-remediation",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "bin": { "dw-incidents": "dist/index.js" },
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@data-workers/mcp-framework": "*",
+    "@data-workers/agent-lifecycle": "*",
+    "@data-workers/context-layer": "*",
+    "@data-workers/validation": "*",
+    "@data-workers/infrastructure-stubs": "*",
+    "@data-workers/enterprise": "*",
+    "@data-workers/license": "*",
+    "@data-workers/orchestrator": "*",
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "license": "Apache-2.0"
+}

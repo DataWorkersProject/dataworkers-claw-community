@@ -1,0 +1,50 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "dw-pipelines": {
+      "type": "local",
+      "command": ["npx", "-y", "@data-workers/dw-pipelines"],
+      "enabled": true
+    },
+    "dw-incidents": {
+      "type": "local",
+      "command": ["npx", "-y", "@data-workers/dw-incidents"],
+      "enabled": true
+    },
+    "dw-catalog": {
+      "type": "local",
+      "command": ["npx", "-y", "@data-workers/dw-context-catalog"],
+      "enabled": true
+    },
+    "dw-quality": {
+      "type": "local",
+      "command": ["npx", "-y", "@data-workers/dw-quality"],
+      "enabled": true
+    },
+    "dw-schema": {
+      "type": "local",
+      "command": ["npx", "-y", "@data-workers/dw-schema"],
+      "enabled": true
+    },
+    "dw-governance": {
+      "type": "local",
+      "command": ["npx", "-y", "@data-workers/dw-governance"],
+      "enabled": true
+    },
+    "dw-observability": {
+      "type": "local",
+      "command": ["npx", "-y", "@data-workers/dw-observability"],
+      "enabled": true
+    },
+    "dw-connectors": {
+      "type": "local",
+      "command": ["npx", "-y", "@data-workers/dw-connectors"],
+      "enabled": true
+    },
+    "dw-usage-intelligence": {
+      "type": "local",
+      "command": ["npx", "-y", "@data-workers/dw-usage-intelligence"],
+      "enabled": true
+    }
+  }
+}

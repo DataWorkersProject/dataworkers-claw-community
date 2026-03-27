@@ -1,0 +1,25 @@
+{
+  "name": "@data-workers/dw-context-catalog",
+  "version": "0.1.0",
+  "description": "Data Context & Catalog Agent — crawling, documentation, lineage, search",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "bin": { "dw-context-catalog": "dist/index.js" },
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@data-workers/infrastructure-stubs": "*",
+    "@data-workers/mcp-framework": "*",
+    "@data-workers/agent-lifecycle": "*",
+    "@data-workers/context-layer": "*",
+    "@data-workers/validation": "*",
+    "@data-workers/iceberg-connector": "*",
+    "@data-workers/enterprise": "*",
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "license": "Apache-2.0"
+}

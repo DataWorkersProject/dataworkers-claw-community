@@ -1,0 +1,24 @@
+{
+  "name": "@data-workers/dw-quality",
+  "version": "0.1.0",
+  "description": "Quality Monitoring Agent — profiling, SLAs, anomaly detection, auto-remediation",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "bin": { "dw-quality": "dist/index.js" },
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@data-workers/mcp-framework": "*",
+    "@data-workers/agent-lifecycle": "*",
+    "@data-workers/context-layer": "*",
+    "@data-workers/validation": "*",
+    "@data-workers/infrastructure-stubs": "*",
+    "@data-workers/enterprise": "*",
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,32 @@
+# Data Workers - Development Overrides
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+#
+# Adds hot-reload via volume mounts and tsx watch mode.
+# Source changes are reflected immediately without rebuilding.
+
+services:
+  data-workers:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder          # Use the builder stage (has devDependencies)
+    environment:
+      NODE_ENV: development
+      LOG_LEVEL: debug
+    volumes:
+      # Mount source code for hot-reload
+      - ./agents:/app/agents
+      - ./core:/app/core
+      - ./connectors:/app/connectors
+      - ./packages:/app/packages
+      - ./scripts:/app/scripts
+      - ./tsconfig.json:/app/tsconfig.json
+      # Prevent overwriting container's node_modules
+      - /app/node_modules
+      - /app/agents/dw-pipelines/node_modules
+      - /app/core/mcp-framework/node_modules
+      - /app/core/agent-lifecycle/node_modules
+      - /app/core/validation/node_modules
+      - /app/core/infrastructure-stubs/node_modules
+    command: ["npx", "tsx", "watch", "agents/dw-pipelines/src/index.ts"]
+    restart: "no"

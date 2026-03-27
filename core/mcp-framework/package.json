@@ -1,0 +1,16 @@
+{
+  "name": "@data-workers/mcp-framework",
+  "version": "0.1.0",
+  "description": "Base MCP server class and protocol utilities for Data Workers agents",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "license": "Apache-2.0"
+}

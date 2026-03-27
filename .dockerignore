@@ -1,0 +1,42 @@
+# Dependencies
+node_modules
+
+# Build output (rebuilt in container)
+dist
+*.tsbuildinfo
+
+# Test & coverage
+coverage
+.nyc_output
+
+# IDE & OS
+.vscode
+.idea
+*.swp
+.DS_Store
+
+# Git
+.git
+.gitignore
+
+# Docker (prevent recursive context)
+docker-compose*.yml
+Dockerfile
+docker/
+
+# Documentation
+*.md
+docs/
+LICENSE
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+
+# Environment files (secrets)
+.env
+.env.*
+
+# Misc
+seed-data/
+packaging/

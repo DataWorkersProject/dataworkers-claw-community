@@ -1,0 +1,17 @@
+{
+  "name": "@data-workers/context-layer",
+  "version": "0.1.0",
+  "description": "Cross-agent context layer: Redis, Kafka, context propagation",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "ioredis": "^5.3.0",
+    "kafkajs": "^2.2.0"
+  },
+  "license": "Apache-2.0"
+}

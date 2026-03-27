@@ -1,0 +1,62 @@
+name: Integration Tests
+
+on: [pull_request]
+
+jobs:
+  integration:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: data_workers
+          POSTGRES_USER: dw_user
+          POSTGRES_PASSWORD: dw_local_dev
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U dw_user -d data_workers"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run health check
+        run: npx tsx scripts/health-check.ts
+        continue-on-error: true
+
+      - name: Run unit tests
+        run: npx vitest run tests/
+
+      - name: Run integration tests
+        run: npx vitest run tests/integration/
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
+          POSTGRES_USER: dw_user
+          POSTGRES_PASSWORD: dw_local_dev
+          POSTGRES_DB: data_workers
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
