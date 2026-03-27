@@ -39,7 +39,7 @@ jobs:
             HITS="$(grep -rln \
               --include='*.ts' --include='*.tsx' --include='*.js' --include='*.yml' --include='*.yaml' --include='*.json' \
               --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=.github \
-              --exclude=package-lock.json --exclude=pnpm-lock.yaml --exclude=yarn.lock --exclude=package.json \
+              --exclude=package-lock.json --exclude=pnpm-lock.yaml --exclude=yarn.lock --exclude=package.json --exclude=tsconfig.json \
               -i "$pattern" . 2>/dev/null \
               | grep -v 'core/enterprise/src/index.ts' \
               | grep -v 'vitest.config.ts' \

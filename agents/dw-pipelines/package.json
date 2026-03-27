@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Pipeline Building Agent \u2014 NL-to-pipeline generation, validation, deployment",
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "bin": {
     "dw-pipelines": "dist/index.js"
   },

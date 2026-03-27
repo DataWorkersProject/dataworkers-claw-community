@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Governance & Security Agent \u2014 policy enforcement, PII detection, access control, compliance",
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "bin": {
     "dw-governance": "dist/index.js"
   },

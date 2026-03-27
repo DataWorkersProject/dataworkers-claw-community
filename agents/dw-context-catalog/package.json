@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Data Context & Catalog Agent \u2014 crawling, documentation, lineage, search",
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "bin": {
     "dw-context-catalog": "dist/index.js"
   },

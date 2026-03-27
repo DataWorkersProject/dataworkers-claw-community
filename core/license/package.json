@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "License tier gating for MCP tool operations \u2014 community edition is read-only",
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "scripts": {
     "build": "tsc -b",
     "test": "vitest run",

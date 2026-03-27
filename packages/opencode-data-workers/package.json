@@ -16,7 +16,7 @@
     "data-governance"
   ],
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "scripts": {
     "build": "tsc -b",
     "test": "vitest run --passWithNoTests",

@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Usage Intelligence Agent \u2014 See how your data team actually works. Practitioner usage analytics, workflow patterns, adoption metrics.",
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "scripts": {
     "build": "tsc -b",
     "dev": "tsx watch src/index.ts",
