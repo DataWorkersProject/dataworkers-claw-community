@@ -139,7 +139,7 @@ Each agent can be started via the `start-agent.sh` script, which handles working
 | **Usage Intelligence** | `dw-usage-intelligence` | Practitioner analytics, workflow patterns, adoption dashboards, heatmaps (zero LLM) | 26 |
 | **Observability** | `dw-observability` | SHA-256 audit trail, drift detection, agent metrics (p50/p95/p99), health monitoring | 6 |
 | **Connectors** | `dw-connectors` | Unified MCP gateway to 15 catalog connectors | 56 |
-| **Orchestration** | `dw-orchestration` | Priority scheduler, heartbeat monitor, agent registry, event choreography | internal |
+| **Orchestration** | `dw-orchestration` | Priority scheduler, heartbeat monitor, agent registry, event choreography | internal (not MCP) |
 | **MLOps & Models** | `dw-ml` | Experiment tracking, model registry, feature pipelines, SHAP explainability, drift detection, A/B testing. Write tools (`train_model`, `deploy_model`, `create_experiment`, `log_metrics`, `register_model`, `create_feature_pipeline`, `ab_test_models`) require Pro. | 16 |
 
 ---
@@ -271,12 +271,30 @@ dataworkers-claw-community/
 ## Development
 
 ```bash
-npm test          # Run all tests (2,700+, no external services required)
+npm test          # Run all tests (2,900+, no external services required)
 npm run build     # Build all packages
 npm run lint      # Lint
 npm run typecheck # Type-check
 cd agents/dw-pipelines && npm run dev  # Run a single agent in dev mode
 ```
+
+---
+
+## Troubleshooting
+
+**Agent fails to start:** Ensure you're using `start-agent.sh` (not `node` directly). The script sets the working directory correctly for tsx module resolution. See [docs/MCP-STARTUP-BUG-REPORT.md](docs/MCP-STARTUP-BUG-REPORT.md) for details.
+
+**Module not found errors:** Run `npm install` from the repo root. The monorepo uses npm workspaces — all dependencies are hoisted.
+
+**Tests fail on fresh clone:** Make sure Node.js >= 20 is installed. Run `npm install` before `npm test`.
+
+---
+
+## Known Limitations
+
+- **npm packages require the cloned repo.** `npx dw-claw` and `npx data-context-mcp` depend on workspace packages that aren't published individually. Use the `start-agent.sh` approach for now.
+- **dw-orchestration is an internal service**, not an MCP agent. It provides task scheduling and agent coordination APIs used by other agents.
+- **Write operations require Pro.** Tools like `generate_pipeline`, `deploy_model`, and `train_model` return upgrade prompts in the Community Edition.
 
 ---
 
