@@ -1,8 +1,9 @@
 {
   "name": "@data-workers/infrastructure-stubs",
+  "type": "module",
   "version": "0.1.0",
   "description": "In-memory infrastructure stubs for development and testing",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "types": "src/index.ts",
   "scripts": {
     "build": "tsc -b",

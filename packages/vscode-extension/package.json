@@ -1,5 +1,6 @@
 {
   "name": "data-workers-vscode",
+  "type": "module",
   "displayName": "Data Workers",
   "description": "VS Code extension for managing Data Workers agent swarm",
   "version": "0.1.0",

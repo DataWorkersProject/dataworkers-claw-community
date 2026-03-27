@@ -1,10 +1,13 @@
 {
   "name": "@data-workers/dw-context-catalog",
+  "type": "module",
   "version": "0.1.0",
-  "description": "Data Context & Catalog Agent — crawling, documentation, lineage, search",
-  "main": "src/index.ts",
+  "description": "Data Context & Catalog Agent \u2014 crawling, documentation, lineage, search",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "bin": { "dw-context-catalog": "dist/index.js" },
+  "bin": {
+    "dw-context-catalog": "dist/index.js"
+  },
   "scripts": {
     "build": "tsc -b",
     "dev": "tsx watch src/index.ts",

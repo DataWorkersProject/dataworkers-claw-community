@@ -1,8 +1,9 @@
 {
   "name": "@data-workers/llm-provider",
+  "type": "module",
   "version": "0.1.0",
-  "description": "Multi-provider LLM abstraction — Claude, OpenAI, Bedrock, Vertex, Ollama, Azure OpenAI",
-  "main": "src/index.ts",
+  "description": "Multi-provider LLM abstraction \u2014 Claude, OpenAI, Bedrock, Vertex, Ollama, Azure OpenAI",
+  "main": "dist/index.js",
   "types": "src/index.ts",
   "scripts": {
     "build": "tsc -b",

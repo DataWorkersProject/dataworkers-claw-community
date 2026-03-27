@@ -1,8 +1,9 @@
 {
   "name": "@data-workers/dw-observability",
+  "type": "module",
   "version": "0.1.0",
-  "description": "Agent Observability (Trust Layer) — deterministic metrics, audit trails, health checks, drift detection",
-  "main": "src/index.ts",
+  "description": "Agent Observability (Trust Layer) \u2014 deterministic metrics, audit trails, health checks, drift detection",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",

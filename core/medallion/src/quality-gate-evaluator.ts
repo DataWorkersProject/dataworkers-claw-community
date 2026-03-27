@@ -63,8 +63,8 @@ export class QualityGateEvaluator {
     if (data.length === 0) return 0;
 
     const columns =
-      gate && (gate as Record<string, unknown>)['columns']
-        ? ((gate as Record<string, unknown>)['columns'] as string[])
+      gate && (gate as unknown as Record<string, unknown>)['columns']
+        ? ((gate as unknown as Record<string, unknown>)['columns'] as string[])
         : Object.keys(data[0]);
 
     let totalCells = 0;

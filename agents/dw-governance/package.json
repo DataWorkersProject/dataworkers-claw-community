@@ -1,10 +1,13 @@
 {
   "name": "@data-workers/dw-governance",
+  "type": "module",
   "version": "0.1.0",
-  "description": "Governance & Security Agent — policy enforcement, PII detection, access control, compliance",
-  "main": "src/index.ts",
+  "description": "Governance & Security Agent \u2014 policy enforcement, PII detection, access control, compliance",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "bin": { "dw-governance": "dist/index.js" },
+  "bin": {
+    "dw-governance": "dist/index.js"
+  },
   "scripts": {
     "build": "tsc -b",
     "dev": "tsx watch src/index.ts",

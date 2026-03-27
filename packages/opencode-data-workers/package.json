@@ -1,7 +1,8 @@
 {
   "name": "opencode-data-workers",
+  "type": "module",
   "version": "0.1.0",
-  "description": "OpenCode plugin for Data Workers — 13 autonomous AI agents for data engineering",
+  "description": "OpenCode plugin for Data Workers \u2014 13 autonomous AI agents for data engineering",
   "keywords": [
     "opencode",
     "opencode-plugin",
@@ -14,7 +15,7 @@
     "data-catalog",
     "data-governance"
   ],
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",

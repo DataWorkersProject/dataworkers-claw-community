@@ -1,9 +1,14 @@
 {
   "name": "@data-workers/datahub-connector",
+  "type": "module",
   "version": "0.1.0",
   "description": "DataHub metadata platform connector",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "types": "src/index.ts",
-  "scripts": { "build": "tsc -b", "test": "vitest run", "clean": "rm -rf dist *.tsbuildinfo" },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
   "license": "Apache-2.0"
 }
