@@ -40,12 +40,8 @@ export class DataplexConnector implements ICatalogProvider {
     const project = process.env.GOOGLE_CLOUD_PROJECT;
     const location = process.env.DATAPLEX_LOCATION;
 
-    if (project && location) {
-      const realClient = new DataplexRealClient(project, location);
-      const connector = new DataplexConnector(realClient);
-      connector.mode = 'real';
-      return connector;
-    }
+    // Real client stripped in OSS edition — always use stub
+    void project; void location;
     return new DataplexConnector();
   }
 

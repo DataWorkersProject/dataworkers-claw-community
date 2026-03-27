@@ -52,13 +52,8 @@ export class GlueConnector implements ICatalogProvider {
     const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
     const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
-    if (region && accessKeyId && secretAccessKey) {
-      const realClient = new GlueRealClient({ region, accessKeyId, secretAccessKey });
-      const lfClient = new LakeFormationRealClient({ region, accessKeyId, secretAccessKey });
-      const connector = new GlueConnector(realClient, lfClient);
-      connector.mode = 'real';
-      return connector;
-    }
+    // Real client stripped in OSS edition — always use stub
+    void region; void accessKeyId; void secretAccessKey;
     return new GlueConnector();
   }
 

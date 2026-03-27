@@ -7,7 +7,7 @@
  */
 
 /** No-op middleware wrapper — returns the handler unchanged. */
-export function withMiddleware(_agentId: string, _toolName: string, handler: Function) {
+export function withMiddleware<T extends (...args: any[]) => any>(_agentId: string, _toolName: string, handler: T): T {
   return handler;
 }
 

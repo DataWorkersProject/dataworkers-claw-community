@@ -42,12 +42,8 @@ export class NessieConnector implements ICatalogProvider {
     const url = process.env.NESSIE_URL;
     const token = process.env.NESSIE_AUTH_TOKEN;
 
-    if (url) {
-      const realClient = new NessieRealClient(url, token);
-      const connector = new NessieConnector(realClient);
-      connector.mode = 'real';
-      return connector;
-    }
+    // Real client stripped in OSS edition — always use stub
+    void url; void token;
     return new NessieConnector();
   }
 

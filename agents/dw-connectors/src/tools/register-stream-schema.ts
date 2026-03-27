@@ -49,8 +49,8 @@ export const registerStreamSchemaHandler: ToolHandler = async (args) => {
       body: JSON.stringify({ schema, schemaType }),
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    return { content: [{ type: 'text', text: JSON.stringify({ subject, registered: true, ...data }, null, 2) }] };
+    const data = await res.json() as Record<string, unknown>;
+    return { content: [{ type: 'text' as const, text: JSON.stringify({ subject, registered: true, ...data }, null, 2) }] };
   } catch (e) {
     return {
       content: [{ type: 'text', text: JSON.stringify({

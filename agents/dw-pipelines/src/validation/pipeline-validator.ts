@@ -44,7 +44,7 @@ export class PipelineValidator {
     const semanticWarnings: ValidationReport['semanticWarnings'] = [];
 
     // Normalize: accept both spec.tasks and spec.steps (common caller variant)
-    const tasks = spec.tasks ?? (spec as Record<string, unknown>).steps as PipelineSpec['tasks'] | undefined;
+    const tasks = spec.tasks ?? (spec as unknown as Record<string, unknown>).steps as PipelineSpec['tasks'] | undefined;
     if (!tasks || !Array.isArray(tasks)) {
       return {
         valid: false,
@@ -165,7 +165,7 @@ export class PipelineValidator {
     spec: PipelineSpec,
   ): Promise<Array<{ task: string; warning: string }>> {
     const warnings: Array<{ task: string; warning: string }> = [];
-    const tasks = spec.tasks ?? (spec as Record<string, unknown>).steps as PipelineSpec['tasks'] | undefined;
+    const tasks = spec.tasks ?? (spec as unknown as Record<string, unknown>).steps as PipelineSpec['tasks'] | undefined;
     if (!tasks) return warnings;
 
     for (const task of tasks) {
@@ -205,7 +205,7 @@ export class PipelineValidator {
       };
     }
 
-    const tasks = spec.tasks ?? (spec as Record<string, unknown>).steps as PipelineSpec['tasks'] | undefined;
+    const tasks = spec.tasks ?? (spec as unknown as Record<string, unknown>).steps as PipelineSpec['tasks'] | undefined;
     if (!tasks || tasks.length === 0) {
       return { success: true, output: 'No tasks to sandbox-validate' };
     }
@@ -401,7 +401,7 @@ export class PipelineValidator {
         const columnTypeMap = new Map(resolved.columns.map(c => [c.name, c.type]));
 
         // Extract column references from SQL in tasks
-        const connTasks = spec.tasks ?? (spec as Record<string, unknown>).steps as PipelineSpec['tasks'] ?? [];
+        const connTasks = spec.tasks ?? (spec as unknown as Record<string, unknown>).steps as PipelineSpec['tasks'] ?? [];
         for (const task of connTasks) {
           const sqlColumns = this.extractSQLColumnReferences(task.code);
           for (const col of sqlColumns) {

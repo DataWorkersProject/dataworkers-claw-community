@@ -134,7 +134,7 @@ const CONNECTOR_SPECS: ConnectorSpec[] = [
       const { IcebergConnector } = await import('@data-workers/iceberg-connector');
       const connector = new IcebergConnector();
       connector.connect(process.env.ICEBERG_REST_ENDPOINT!);
-      return connector;
+      return connector as unknown as ICatalogProvider;
     },
   },
   {
@@ -147,7 +147,7 @@ const CONNECTOR_SPECS: ConnectorSpec[] = [
       const clientId = process.env.POLARIS_CLIENT_ID ?? '';
       const clientSecret = process.env.POLARIS_CLIENT_SECRET ?? '';
       await connector.connect(endpoint, clientId, clientSecret);
-      return connector;
+      return connector as unknown as ICatalogProvider;
     },
   },
   {

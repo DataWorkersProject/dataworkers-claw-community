@@ -13,7 +13,7 @@
  */
 
 import { DataWorkersMCPServer } from '@data-workers/mcp-framework';
-import type { ToolDefinition, ToolHandler, ToolResult } from '@data-workers/mcp-framework';
+import type { ToolDefinition, ToolHandler, ToolResult, ContentBlock } from '@data-workers/mcp-framework';
 import { withMiddleware } from '@data-workers/enterprise';
 
 // ── Resources (static metadata, ) ──
@@ -80,7 +80,7 @@ function createDeprecatedAliasHandler(
     const result = await realHandler(args);
 
     // Append deprecation notice to the first text content block
-    const content = result.content.map((block: { type: string; text?: string; [key: string]: unknown }) => {
+    const content = (result.content as any[]).map((block: { type: string; text?: string; [key: string]: unknown }) => {
       if (block.type === 'text' && block.text) {
         try {
           const parsed = JSON.parse(block.text);
@@ -107,7 +107,7 @@ function createDeprecatedAliasHandler(
       return block;
     });
 
-    return { ...result, content };
+    return { ...result, content: content as ContentBlock[] };
   };
 }
 

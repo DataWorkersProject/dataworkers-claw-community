@@ -84,16 +84,22 @@ function withToolTracking(toolName: string, handler: ToolHandler): ToolHandler {
 
     // Emit tool_invoked event (fire-and-forget)
     sharedMessageBus.publish('tool_invoked', {
-      agentName: AGENT_ID,
-      toolName,
-      userId: (args._userId as string) ?? 'system',
-      teamId: (args._teamId as string) ?? 'system',
-      inputSummary: `tool=${toolName}`,
-      outcome: result.isError ? 'error' : 'success',
-      durationMs,
-      tokenCount: 0,
-      sessionId: (args._sessionId as string) ?? `sess-${start}`,
-      sequenceIndex: 0,
+      id: `tool-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      type: 'tool_invoked',
+      timestamp: start,
+      customerId: (args._teamId as string) ?? 'system',
+      payload: {
+        agentName: AGENT_ID,
+        toolName,
+        userId: (args._userId as string) ?? 'system',
+        teamId: (args._teamId as string) ?? 'system',
+        inputSummary: `tool=${toolName}`,
+        outcome: result.isError ? 'error' : 'success',
+        durationMs,
+        tokenCount: 0,
+        sessionId: (args._sessionId as string) ?? `sess-${start}`,
+        sequenceIndex: 0,
+      },
     }).catch(() => { /* best-effort emission */ });
 
     return result;

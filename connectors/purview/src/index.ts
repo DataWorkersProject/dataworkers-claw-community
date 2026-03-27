@@ -44,12 +44,8 @@ export class PurviewConnector implements ICatalogProvider {
     const clientId = process.env.AZURE_CLIENT_ID;
     const clientSecret = process.env.AZURE_CLIENT_SECRET;
 
-    if (endpoint && tenantId && clientId && clientSecret) {
-      const realClient = new PurviewRealClient({ endpoint, tenantId, clientId, clientSecret });
-      const connector = new PurviewConnector(realClient);
-      connector.mode = 'real';
-      return connector;
-    }
+    // Real client stripped in OSS edition — always use stub
+    void endpoint; void tenantId; void clientId; void clientSecret;
     return new PurviewConnector();
   }
 

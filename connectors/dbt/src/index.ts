@@ -39,12 +39,11 @@ export class DbtConnector implements ICatalogProvider {
    * Create a DbtConnector backed by the real dbt Cloud API.
    * The connector is returned in a connected state.
    */
-  static createReal(config: DbtCloudConfig): DbtConnector {
-    const realClient = new DbtCloudRealClient(config);
-    const connector = new DbtConnector(realClient);
+  static createReal(_config: DbtCloudConfig): DbtConnector {
+    // Real client stripped in OSS edition — always use stub
+    const connector = new DbtConnector();
     connector.connected = true;
     connector.mode = 'cloud';
-    connector.clientMode = 'real';
     return connector;
   }
 
@@ -118,9 +117,9 @@ export class DbtConnector implements ICatalogProvider {
   // --- IDataPlatformConnector operations ---
 
   /** List schemas as namespaces. */
-  listNamespaces(): NamespaceInfo[] {
+  async listNamespaces(): Promise<NamespaceInfo[]> {
     this.ensureConnected();
-    const models = this.getModelsFromActiveMode();
+    const models = await this.getModelsFromActiveMode();
     const schemaSet = new Map<string, NamespaceInfo>();
 
     for (const model of models) {
@@ -137,19 +136,19 @@ export class DbtConnector implements ICatalogProvider {
   }
 
   /** List models within a schema (namespace). */
-  listTables(namespace: string): TableMetadata[] {
+  async listTables(namespace: string): Promise<TableMetadata[]> {
     this.ensureConnected();
-    const models = this.getModelsFromActiveMode();
+    const models = await this.getModelsFromActiveMode();
     return models
-      .filter((m) => m.schema === namespace)
-      .map((m) => this.modelToTableMetadata(m));
+      .filter((m: DbtModel) => m.schema === namespace)
+      .map((m: DbtModel) => this.modelToTableMetadata(m));
   }
 
   /** Get metadata for a specific model. */
-  getTableMetadata(namespace: string, model: string): TableMetadata {
+  async getTableMetadata(namespace: string, model: string): Promise<TableMetadata> {
     this.ensureConnected();
-    const models = this.getModelsFromActiveMode();
-    const found = models.find((m) => m.schema === namespace && m.name === model);
+    const models = await this.getModelsFromActiveMode();
+    const found = models.find((m: DbtModel) => m.schema === namespace && m.name === model);
     if (!found) {
       throw new Error(`Model not found: ${namespace}.${model}`);
     }
@@ -159,23 +158,23 @@ export class DbtConnector implements ICatalogProvider {
   // --- dbt-specific operations ---
 
   /** List all dbt models. */
-  listModels(): DbtModel[] {
+  async listModels(): Promise<DbtModel[]> {
     this.ensureConnected();
-    return this.getModelsFromActiveMode();
+    return await this.getModelsFromActiveMode();
   }
 
   /** Get lineage edges for a model. */
-  getModelLineage(uniqueId: string): DbtLineageEdge[] {
+  async getModelLineage(uniqueId: string): Promise<DbtLineageEdge[]> {
     this.ensureConnected();
     if (this.mode === 'manifest') {
       return this.parser.getModelLineage(uniqueId);
     }
-    return this.client.getModelLineage(uniqueId);
+    return await this.client.getModelLineage(uniqueId);
   }
 
   /** ICatalogProvider.getLineage — converts dbt lineage edges to a LineageGraph. */
-  getLineage(entityId: string, direction: 'upstream' | 'downstream', _depth?: number): LineageGraph {
-    const edges = this.getModelLineage(entityId);
+  async getLineage(entityId: string, direction: 'upstream' | 'downstream', _depth?: number): Promise<LineageGraph> {
+    const edges = await this.getModelLineage(entityId);
     const nodeSet = new Map<string, { entityId: string; entityType: string; name: string }>();
 
     const graphEdges = edges
@@ -199,21 +198,21 @@ export class DbtConnector implements ICatalogProvider {
   }
 
   /** Get test results, optionally filtered by runId. Cloud mode only. */
-  getTestResults(runId?: string): DbtTestResult[] {
+  async getTestResults(runId?: string): Promise<DbtTestResult[]> {
     this.ensureConnected();
     if (this.mode === 'manifest') {
       throw new Error('Test results are not available in manifest mode');
     }
-    return this.client.getTestResults(runId);
+    return await this.client.getTestResults(runId);
   }
 
   /** Get run history, optionally limited. Cloud mode only. */
-  getRunHistory(limit?: number): DbtRunHistory[] {
+  async getRunHistory(limit?: number): Promise<DbtRunHistory[]> {
     this.ensureConnected();
     if (this.mode === 'manifest') {
       throw new Error('Run history is not available in manifest mode');
     }
-    return this.client.getRunHistory(limit);
+    return await this.client.getRunHistory(limit);
   }
 
   // --- Private helpers ---
@@ -224,11 +223,11 @@ export class DbtConnector implements ICatalogProvider {
     }
   }
 
-  private getModelsFromActiveMode(): DbtModel[] {
+  private async getModelsFromActiveMode(): Promise<DbtModel[]> {
     if (this.mode === 'manifest') {
       return this.parser.listModels();
     }
-    return this.client.listModels();
+    return await this.client.listModels();
   }
 
   private modelToTableMetadata(model: DbtModel): TableMetadata {

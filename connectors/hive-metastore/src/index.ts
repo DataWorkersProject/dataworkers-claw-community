@@ -40,12 +40,8 @@ export class HiveMetastoreConnector implements ICatalogProvider {
     const authMode = process.env.HIVE_AUTH_MODE;
     const kerberosPrincipal = process.env.HIVE_KERBEROS_PRINCIPAL;
 
-    if (uri) {
-      const realClient = new HiveRealClient({ uri, authMode, kerberosPrincipal });
-      const connector = new HiveMetastoreConnector(realClient);
-      connector.mode = 'real';
-      return connector;
-    }
+    // Real client stripped in OSS edition — always use stub
+    void uri; void authMode; void kerberosPrincipal;
     return new HiveMetastoreConnector();
   }
 
