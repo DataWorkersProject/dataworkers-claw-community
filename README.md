@@ -30,28 +30,28 @@ Everything runs locally with in-memory stubs by default. No external services re
 
 Read more: [Why We Open-Sourced Data Workers](https://dataworkers.io/blog/why-we-open-sourced-14-autonomous-data-engineering-agents)
 
-## Get Started with Claude Code (1 command)
+## Get Started
 
-Add all 11 agents to Claude Code in one shot:
+### Quick start — add the catalog agent to Claude Code:
 
 ```bash
 claude mcp add dw-catalog -- npx -y data-context-mcp
 ```
 
-Or add the full agent suite — paste this into your terminal:
+### Full agent suite — paste this into your terminal:
 
 ```bash
-claude mcp add dw-pipelines -- npx -y @data-workers/dw-pipelines && \
-claude mcp add dw-incidents -- npx -y @data-workers/dw-incidents && \
-claude mcp add dw-catalog -- npx -y @data-workers/dw-context-catalog && \
-claude mcp add dw-schema -- npx -y @data-workers/dw-schema && \
-claude mcp add dw-quality -- npx -y @data-workers/dw-quality && \
-claude mcp add dw-governance -- npx -y @data-workers/dw-governance && \
-claude mcp add dw-usage -- npx -y @data-workers/dw-usage-intelligence && \
-claude mcp add dw-observability -- npx -y @data-workers/dw-observability && \
-claude mcp add dw-connectors -- npx -y @data-workers/dw-connectors && \
-claude mcp add dw-ml -- npx -y @data-workers/dw-ml && \
-claude mcp add dw-orchestration -- npx -y @data-workers/dw-orchestration
+claude mcp add dw-pipelines -- npx -y dw-claw pipelines && \
+claude mcp add dw-incidents -- npx -y dw-claw incidents && \
+claude mcp add dw-catalog -- npx -y dw-claw catalog && \
+claude mcp add dw-schema -- npx -y dw-claw schema && \
+claude mcp add dw-quality -- npx -y dw-claw quality && \
+claude mcp add dw-governance -- npx -y dw-claw governance && \
+claude mcp add dw-usage -- npx -y dw-claw usage && \
+claude mcp add dw-observability -- npx -y dw-claw observe && \
+claude mcp add dw-connectors -- npx -y dw-claw connectors && \
+claude mcp add dw-ml -- npx -y dw-claw ml && \
+claude mcp add dw-orchestration -- npx -y dw-claw orchestration
 ```
 
 Then start Claude Code and ask:
@@ -64,12 +64,72 @@ Then start Claude Code and ask:
 
 Everything works instantly with in-memory seed data — no infrastructure required.
 
-<details>
-<summary><strong>Other MCP clients (Cursor, OpenCode, VS Code)</strong></summary>
+### Client configuration
 
-See [docs/setup](docs/setup) for Cursor, OpenCode, GitHub Copilot, and Microsoft Copilot configuration guides.
+Add agents to your MCP client to start using them immediately.
 
-</details>
+**Claude Code** (`.mcp.json` in your project root):
+
+```json
+{
+  "mcpServers": {
+    "dw-pipelines": {
+      "command": "npx",
+      "args": ["-y", "dw-claw", "pipelines"]
+    },
+    "dw-catalog": {
+      "command": "npx",
+      "args": ["-y", "dw-claw", "catalog"]
+    },
+    "dw-quality": {
+      "command": "npx",
+      "args": ["-y", "dw-claw", "quality"]
+    }
+  }
+}
+```
+
+**Cursor** (`.cursor/mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "dw-pipelines": {
+      "command": "npx",
+      "args": ["-y", "dw-claw", "pipelines"]
+    },
+    "dw-incidents": {
+      "command": "npx",
+      "args": ["-y", "dw-claw", "incidents"]
+    }
+  }
+}
+```
+
+**OpenCode** (`opencode.json` in your project root):
+
+```json
+{
+  "mcp": {
+    "dw-pipelines": {
+      "type": "local",
+      "command": ["npx", "-y", "dw-claw", "pipelines"],
+      "enabled": true
+    },
+    "dw-catalog": {
+      "type": "local",
+      "command": ["npx", "-y", "dw-claw", "catalog"],
+      "enabled": true
+    }
+  }
+}
+```
+
+Or generate the full config with all agents:
+
+```bash
+npx dw-claw opencode
+```
 
 <details>
 <summary><strong>Quick install (npm / Homebrew / Docker)</strong></summary>
@@ -242,12 +302,15 @@ git clone https://github.com/DataWorkersProject/dataworkers-claw-community.git
 cd dataworkers-claw-community
 npm install
 npm run build
+```
 
-# Run tests (2,900+, no external services required)
-npm test
+### Development commands
 
-# Run a single agent in dev mode
-cd agents/dw-pipelines && npm run dev
+```bash
+npm test          # Run all tests (2,900+, no external services required)
+npm run lint      # Lint
+npm run typecheck # Type-check
+cd agents/dw-pipelines && npm run dev  # Run a single agent in dev mode
 ```
 
 ---
