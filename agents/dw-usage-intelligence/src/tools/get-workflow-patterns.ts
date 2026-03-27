@@ -74,7 +74,7 @@ export const getWorkflowPatternsHandler: ToolHandler = async (args) => {
 
     // Extract sequences from sessions
     const sequenceCounts: Record<string, { count: number; users: Set<string>; totalDurationMs: number }> = {};
-    let totalEvents = rows.length;
+    const totalEvents = rows.length;
     let isolatedEvents = 0;
 
     // Cross-agent flow tracking

@@ -8,8 +8,7 @@
 
 import type { ToolDefinition, ToolHandler } from '@data-workers/mcp-framework';
 import { InvalidParameterError, ServerToolCallError } from '@data-workers/mcp-framework';
-import type { LineageNode, ColumnLineage, AssetType } from '../types.js';
-import { graphDB, columnLineageExpander, catalogRegistry } from '../backends.js';
+import { graphDB, catalogRegistry } from '../backends.js';
 import type { IGraphDB } from '@data-workers/infrastructure-stubs';
 import { traceAcrossPlatforms } from '../search/lineage-api.js';
 

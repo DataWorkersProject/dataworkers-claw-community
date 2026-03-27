@@ -87,7 +87,7 @@ export class QualityGateEvaluator {
    */
   evaluateUniqueness(
     data: Record<string, unknown>[],
-    gate: QualityGate
+    _gate: QualityGate
   ): number {
     if (data.length === 0) return 100;
 
@@ -105,7 +105,7 @@ export class QualityGateEvaluator {
    */
   evaluateFreshness(
     data: Record<string, unknown>[],
-    gate: QualityGate
+    _gate: QualityGate
   ): number {
     if (data.length === 0) return 0;
 
@@ -148,7 +148,7 @@ export class QualityGateEvaluator {
    */
   evaluateAccuracy(
     data: Record<string, unknown>[],
-    gate: QualityGate
+    _gate: QualityGate
   ): number {
     if (data.length === 0) return 0;
 
@@ -177,7 +177,7 @@ export class QualityGateEvaluator {
    */
   evaluateSchemaConformance(
     data: Record<string, unknown>[],
-    gate: QualityGate
+    _gate: QualityGate
   ): number {
     if (data.length === 0) return 0;
 

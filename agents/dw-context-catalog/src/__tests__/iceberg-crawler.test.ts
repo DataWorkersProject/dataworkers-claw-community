@@ -120,7 +120,7 @@ describe('IcebergCrawler', () => {
 
   describe('classification', () => {
     it('classifies assets with domain tags', async () => {
-      const result = await crawler.crawl();
+      await crawler.crawl();
       connector.connect('http://localhost:8181');
       const assets = await crawler.extractAssets();
 

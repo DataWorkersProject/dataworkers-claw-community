@@ -15,7 +15,6 @@ import type {
 
 import type {
   IcebergTableMetadata,
-  IcebergNamespace,
 } from '../../../connectors/iceberg/src/types.js';
 
 /** In-memory seed data for the stubbed client. */

@@ -16,11 +16,8 @@ import { PolicyStore } from '../policy-store.js';
 import { InMemoryRelationalStore } from '@data-workers/infrastructure-stubs';
 import type {
   ActivityLog,
-  ActorType,
   AccessRequestContext,
-  EphemeralAccessGrant,
   GovernancePolicy,
-  AgentIdentityRecord,
 } from '../types.js';
 
 // ── actorType on ActivityLog + policy evaluation ──────────

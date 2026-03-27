@@ -13,7 +13,6 @@ import type {
   DatabricksSchema,
   DatabricksTable,
   DatabricksQueryHistoryEntry,
-  DatabricksConnectionConfig,
   IDatabricksClient,
 } from './types.js';
 

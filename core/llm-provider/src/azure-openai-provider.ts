@@ -32,7 +32,7 @@ export class AzureOpenAIProvider extends VercelAIAdapter {
   protected override createModel(modelId: string): unknown {
     let azureFn: ((id: string) => unknown) | undefined;
     try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
       const mod = require('@ai-sdk/azure');
       azureFn = mod.azure ?? mod.default?.azure;
     } catch {

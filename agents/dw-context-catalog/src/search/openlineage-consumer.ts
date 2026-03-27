@@ -4,7 +4,6 @@
  */
 
 import type { IGraphDB } from '@data-workers/infrastructure-stubs';
-import type { GraphNode, GraphEdge } from '@data-workers/infrastructure-stubs';
 
 export interface OpenLineageRunEvent {
   eventType: 'START' | 'RUNNING' | 'COMPLETE' | 'FAIL' | 'ABORT';

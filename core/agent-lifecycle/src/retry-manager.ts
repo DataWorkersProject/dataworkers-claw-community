@@ -58,6 +58,7 @@ export class RetryManager {
    * Returns the result on success, or throws after all retries exhausted.
    */
   async executeWithRetry<T>(fn: () => Promise<T>): Promise<T> {
+    // eslint-disable-next-line no-constant-condition
     while (true) {
       try {
         const result = await fn();

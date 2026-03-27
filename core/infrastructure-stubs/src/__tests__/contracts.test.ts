@@ -7,7 +7,7 @@
  * 
  */
 
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import {
   InMemoryKeyValueStore,
   InMemoryRelationalStore,
@@ -213,7 +213,7 @@ describe('IRelationalStore contract', () => {
 describe('IMessageBus contract', () => {
   let bus: IMessageBus;
 
-  const mkEvent = (id: string, type: string, topic?: string): MessageBusEvent => ({
+  const mkEvent = (id: string, type: string, _topic?: string): MessageBusEvent => ({
     id,
     type,
     payload: { data: id },

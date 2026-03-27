@@ -1,5 +1,4 @@
 import type { IncidentRecord } from './incident-logger.js';
-import type { IncidentType, IncidentSeverity } from '../types.js';
 
 /**
  * MTTR Tracker (REQ-INC-008).

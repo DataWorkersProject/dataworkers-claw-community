@@ -11,7 +11,6 @@ import { PIIScanner } from '../pii-scanner.js';
 import { PolicyStore } from '../policy-store.js';
 import { setupGovernanceSubscriptions, GOVERNANCE_TOPICS, publishGovernanceEvent } from '../subscriptions.js';
 import { server } from '../index.js';
-import { messageBus } from '../backends.js';
 
 describe('P2 Integration: LLM PII Detection', () => {
   it('uses LLM client for Pass 3 classification when provided', async () => {

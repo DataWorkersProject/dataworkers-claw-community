@@ -26,7 +26,7 @@ export class AuditEngine {
     const { customerId, from, to, reportType = 'full' } = params;
 
     let evidence: AuditEvidence[] = [];
-    let summary = {
+    const summary = {
       totalActions: 0,
       policiesEvaluated: 0,
       accessGrants: 0,

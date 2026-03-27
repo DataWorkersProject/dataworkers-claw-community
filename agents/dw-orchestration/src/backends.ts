@@ -7,11 +7,9 @@
 
 import {
   createKeyValueStore,
-  InMemoryKeyValueStore,
   createRelationalStore,
   InMemoryRelationalStore,
   createMessageBus,
-  InMemoryMessageBus,
 } from '@data-workers/infrastructure-stubs';
 
 /** KV store for priority queue (sorted set emulation) and heartbeat tracking. */

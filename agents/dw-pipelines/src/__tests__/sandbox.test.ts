@@ -48,7 +48,8 @@ describe('SandboxRunner', () => {
 
       // Override the private method behavior by replacing validatePythonAST
       // with a version that simulates ENOENT error handling
-      const originalMethod = mockRunner.validatePythonAST.bind(mockRunner);
+      // Keep reference to original method before overriding
+      mockRunner.validatePythonAST.bind(mockRunner);
       mockRunner.validatePythonAST = async (_code: string) => {
         // Simulate what happens when python3 is not found
         return {

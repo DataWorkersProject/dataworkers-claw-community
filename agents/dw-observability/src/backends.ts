@@ -60,9 +60,9 @@ if (relationalStore instanceof InMemoryRelationalStore) {
 
   // ── SHA-256 hash-chain audit trail (20 entries) ─────────────────────
 
-  function computeHash(content: string, previousHash: string): string {
+  const computeHash = (content: string, previousHash: string): string => {
     return createHash('sha256').update(content + previousHash).digest('hex');
-  }
+  };
 
   const auditActions = [
     'pipeline_executed', 'schema_validated', 'incident_detected', 'catalog_updated',

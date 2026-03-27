@@ -2,7 +2,6 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { createVectorStore, createRelationalStore } from '@data-workers/infrastructure-stubs';
 import type { IVectorStore, IRelationalStore } from '@data-workers/infrastructure-stubs';
 import { HistoryMatcher } from '../rca/history-matcher.js';
-import type { KnowledgeLevel } from '../rca/history-matcher.js';
 
 describe('Hierarchical Knowledge (buildKnowledge)', () => {
   let vectorStore: IVectorStore;

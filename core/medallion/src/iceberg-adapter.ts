@@ -65,7 +65,7 @@ export class IcebergMedallionAdapter implements MedallionPlatformAdapter {
   /** Compact small files in an Iceberg table. */
   async compact(layer: MedallionLayer, table: string): Promise<void> {
     // In production: CALL system.rewrite_data_files(table => '...')
-    const _location = this.resolveLayerLocation(layer, table);
+    this.resolveLayerLocation(layer, table);
     // Stub: no-op
   }
 }

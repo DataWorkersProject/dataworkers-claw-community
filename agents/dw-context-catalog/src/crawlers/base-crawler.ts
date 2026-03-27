@@ -5,7 +5,7 @@
  * Each crawler connects via MCP to extract metadata.
  */
 
-import type { DataAsset, ColumnInfo, AssetType } from '../types.js';
+import type { DataAsset } from '../types.js';
 import type { GraphPersister, PersistResult } from './graph-persister.js';
 
 export interface CrawlResult {

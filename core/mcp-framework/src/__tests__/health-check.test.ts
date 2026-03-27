@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { HealthChecker } from '../health-check.js';
-import type { HealthCheck, HealthStatus } from '../health-check.js';
 
 describe('HealthChecker', () => {
   let checker: HealthChecker;

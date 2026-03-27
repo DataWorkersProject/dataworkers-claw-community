@@ -4,7 +4,7 @@
  */
 
 import type { IGraphDB } from '@data-workers/infrastructure-stubs';
-import type { GraphNode, GraphEdge } from '@data-workers/infrastructure-stubs';
+import type { GraphNode } from '@data-workers/infrastructure-stubs';
 import type { DataAsset } from '../types.js';
 
 export interface PersistResult {

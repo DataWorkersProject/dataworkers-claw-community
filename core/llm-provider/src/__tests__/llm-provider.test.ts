@@ -5,7 +5,7 @@
  * CircuitBreaker, all real provider adapters, and migration helpers.
  */
 
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { InMemoryLLMProvider } from '../in-memory-provider.js';
 import { ModelRouter } from '../model-router.js';
 import { ProviderFallback, CircuitBreaker } from '../provider-fallback.js';

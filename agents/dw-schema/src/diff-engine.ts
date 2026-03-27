@@ -3,7 +3,7 @@
  * Detects additions, removals, type changes, and renames via Levenshtein heuristic.
  */
 
-import type { SchemaChange, ChangeType, ChangeSeverity } from './types.js';
+import type { SchemaChange, ChangeSeverity } from './types.js';
 import { loadSchemaAgentConfig } from './types.js';
 import type { ColumnDef } from '@data-workers/infrastructure-stubs';
 

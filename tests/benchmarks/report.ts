@@ -95,7 +95,6 @@ export function generateMarkdownReport(metrics: OverallMetrics): string {
     lines.push('|----------|------|--------:|---------:|-----------:|--------:|--------|');
 
     for (const r of results) {
-      const qualityOk = r.qualityChecks.length === 0 || r.qualityChecks.every((c) => c.passed);
       const status = r.success ? 'PASS' : 'FAIL';
       const qualityStr = r.qualityChecks.length > 0 ? pct(r.qualityChecks.filter((c) => c.passed).length / r.qualityChecks.length) : 'n/a';
 

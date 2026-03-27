@@ -6,7 +6,6 @@
 import type {
   BQDataset,
   BQTable,
-  BQColumn,
   BQTableSchema,
   BQJob,
   BQCostEstimate,

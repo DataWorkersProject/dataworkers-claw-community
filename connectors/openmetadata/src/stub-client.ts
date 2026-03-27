@@ -10,7 +10,6 @@ import type {
   OMColumn,
   OMTag,
   OMLineageGraph,
-  OMLineageEdge,
   OMQualityTestResult,
 } from './types.js';
 

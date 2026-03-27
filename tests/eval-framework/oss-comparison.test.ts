@@ -92,14 +92,15 @@ async function loadAgentServers(
 
 describe('OSS Comparison', () => {
   let communityServers: Record<string, MCPServer>;
-  let enterpriseServers: Record<string, MCPServer>;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  let _enterpriseServers: Record<string, MCPServer>;
   let gatingResult: GatingVerificationResult;
   let ossValueResult: OSSValueResult;
 
   beforeAll(async () => {
     // Load servers for both tiers
     communityServers = await loadAgentServers(COMMUNITY_AGENTS);
-    enterpriseServers = await loadAgentServers(ALL_AGENTS);
+    _enterpriseServers = await loadAgentServers(ALL_AGENTS);
   }, 60_000);
 
   describe('Tool Gating Verification', () => {
@@ -291,7 +292,7 @@ describe('OSS Comparison', () => {
   describe('Cross-Tier Tool Evaluation', () => {
     it('should show write tools fail under community and pass under enterprise', async () => {
       // Pick a representative write tool from an available server
-      for (const [agent, server] of Object.entries(communityServers)) {
+      for (const [, server] of Object.entries(communityServers)) {
         const tools = server.listTools();
         const writeTool = tools.find((t) => {
           return classifyTool(t.name) !== 'read';

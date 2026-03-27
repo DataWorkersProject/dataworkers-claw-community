@@ -199,7 +199,7 @@ describe('dw-incidents', () => {
 // ══════════════════════════════════════════
 describe('dw-schema', () => {
   test('detect_schema_change', async () => {
-    const { result, text } = await callAndLog(schemaServer, 'detect_schema_change', {
+    const { text } = await callAndLog(schemaServer, 'detect_schema_change', {
       source: 'snowflake', customerId: 'test-customer-1', table: 'orders',
     });
     // May return isError if warehouse connector stub is not seeded -- still valid output

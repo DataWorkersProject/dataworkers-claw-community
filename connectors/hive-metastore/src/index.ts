@@ -18,7 +18,6 @@ import type {
   HiveDatabase,
   HiveTable,
   HivePartition,
-  HiveConnectionConfig,
 } from './types.js';
 
 export class HiveMetastoreConnector implements ICatalogProvider {

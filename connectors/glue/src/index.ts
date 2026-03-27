@@ -22,7 +22,6 @@ import type {
   GlueTable,
   GluePartition,
   GlueDatabase,
-  GlueConnectionConfig,
 } from './types.js';
 import type {
   ILakeFormationClient,

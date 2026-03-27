@@ -202,7 +202,7 @@ export class MedallionCoordinator {
   private failedResult(
     rule: PromotionRule,
     startTime: number,
-    reason: string
+    _reason: string
   ): PromotionResult {
     return {
       promotionId: `promo_failed_${Date.now()}`,

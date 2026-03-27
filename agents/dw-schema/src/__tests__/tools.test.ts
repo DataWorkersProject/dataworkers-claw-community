@@ -1,19 +1,7 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { server } from '../index.js';
-import { warehouseConnector, kvStore } from '../backends.js';
+import { warehouseConnector } from '../backends.js';
 import type { SchemaChange, MigrationScript } from '../types.js';
-
-/**
- * Reset backends to a clean seeded state before each test.
- * This ensures tests are independent and don't leak state.
- */
-function resetBackends(): void {
-  // Re-seed the warehouse connector so each test starts fresh.
-  // We clear the KV store by creating a new snapshot-less state.
-  // Note: Since InMemoryKeyValueStore doesn't expose a clear(), we use
-  // the fact that snapshots are per-table and tests use different tables
-  // or we just accept baseline behavior.
-}
 
 describe('dw-schema MCP Server', () => {
   it('registers all 9 tools', () => {

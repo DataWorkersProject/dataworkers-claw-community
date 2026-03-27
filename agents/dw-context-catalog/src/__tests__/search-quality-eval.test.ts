@@ -133,7 +133,7 @@ function formatPercent(val: number): string {
 describe('Search Quality Evaluation Suite', () => {
   let engine: CatalogSearchEngine;
   let goldenDataset: GoldenDataset;
-  let allMetrics: QueryMetrics[] = [];
+  const allMetrics: QueryMetrics[] = [];
   const metricsByCategory = new Map<string, QueryMetrics[]>();
 
   beforeAll(async () => {

@@ -7,7 +7,7 @@
  */
 
 import type { BenchmarkScenario } from '../types.js';
-import { nonEmptyCheck, typeCheck, rangeCheck } from '../framework.js';
+import { nonEmptyCheck, typeCheck } from '../framework.js';
 
 const CID = 'test-customer-1';
 

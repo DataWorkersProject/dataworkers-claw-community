@@ -30,10 +30,6 @@ describe('Phase 3 — Usage Intelligence P3 features', () => {
       const result = await server.callTool('get_workflow_patterns', { period: '30d' });
       const data = JSON.parse(result.content[0].text!);
 
-      // At least one pattern should have readable tool names (no underscores)
-      const hasReadable = data.patterns.some(
-        (p: { description: string }) => /workflow:/.test(p.description) && !/_/.test(p.description.split('workflow:')[1] ?? ''),
-      );
       // Descriptions should have arrow separators
       const hasArrows = data.patterns.some(
         (p: { description: string }) => p.description.includes(' → '),

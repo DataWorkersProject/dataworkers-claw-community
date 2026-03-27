@@ -21,7 +21,6 @@ import type {
   MarquezJob,
   MarquezLineageGraph,
   OpenLineageRunEvent,
-  MarquezConnectionConfig,
 } from './types.js';
 
 export class OpenLineageConnector implements ICatalogProvider {
@@ -40,8 +39,8 @@ export class OpenLineageConnector implements ICatalogProvider {
   /** Create an OpenLineageConnector from environment variables. */
   static fromEnv(): OpenLineageConnector {
     const marquezUrl = process.env.MARQUEZ_URL;
-    const openlineageUrl = process.env.OPENLINEAGE_URL;
-    const apiKey = process.env.OPENLINEAGE_API_KEY;
+    // Future: process.env.OPENLINEAGE_URL and process.env.OPENLINEAGE_API_KEY
+    // will be used when real OpenLineage event producer is wired up.
 
     if (marquezUrl) {
       // For real mode, we'd use MarquezRestClient + OpenLineageEventProducer

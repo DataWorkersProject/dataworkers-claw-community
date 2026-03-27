@@ -31,7 +31,7 @@ describe('Phase 3: Cross-Agent Event Integration', () => {
 
   it('message bus request/reply works for quality context', async () => {
     // Register a mock quality context handler
-    messageBus.onRequest('get_quality_context', async (payload) => {
+    messageBus.onRequest('get_quality_context', async (_payload) => {
       return { qualityScore: 0.85, issues: ['null_rate_high'] };
     });
 

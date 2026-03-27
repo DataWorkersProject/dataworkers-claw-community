@@ -26,7 +26,7 @@ export class VertexProvider extends VercelAIAdapter {
   protected override createModel(modelId: string): unknown {
     let vertexFn: ((id: string) => unknown) | undefined;
     try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
       const mod = require('@ai-sdk/google-vertex');
       vertexFn = mod.vertex ?? mod.default?.vertex;
     } catch {

@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { server } from '../index.js';
 import { addTestTable, relationalStore } from '../backends.js';
 import { calculateQualityScore } from '../score-calculator.js';

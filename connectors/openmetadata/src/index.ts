@@ -23,7 +23,6 @@ import type {
   OMTable,
   OMLineageGraph,
   OMQualityTestResult,
-  OpenMetadataConnectionConfig,
 } from './types.js';
 
 export class OpenMetadataConnector implements ICatalogProvider {
