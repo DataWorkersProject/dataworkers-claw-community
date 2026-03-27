@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "description": "MLOps & Models Agent \u2014 feature engineering, model selection, training, evaluation, deployment",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",
