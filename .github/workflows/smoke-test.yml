@@ -1,0 +1,135 @@
+name: MCP Smoke Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  mcp-smoke-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: MCP initialize — all agents (from repo root)
+        run: |
+          AGENTS=(
+            dw-pipelines
+            dw-incidents
+            dw-context-catalog
+            dw-schema
+            dw-quality
+            dw-governance
+            dw-usage-intelligence
+            dw-observability
+            dw-connectors
+            dw-ml
+          )
+          FAILED=0
+          for agent in "${AGENTS[@]}"; do
+            echo "--- Testing $agent ---"
+            RESPONSE=$(echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"smoke-test","version":"0.1.0"}}}' \
+              | timeout 15 ./start-agent.sh "$agent" 2>/dev/null \
+              | head -1)
+            if echo "$RESPONSE" | grep -q '"serverInfo"'; then
+              echo "PASS: $agent"
+            else
+              echo "FAIL: $agent — response: $RESPONSE"
+              FAILED=1
+            fi
+          done
+          if [ "$FAILED" -eq 1 ]; then
+            echo "::error::One or more agents failed MCP initialize"
+            exit 1
+          fi
+
+      - name: MCP initialize — all agents (from /tmp, catches CWD bugs)
+        run: |
+          AGENTS=(
+            dw-pipelines
+            dw-incidents
+            dw-context-catalog
+            dw-schema
+            dw-quality
+            dw-governance
+            dw-usage-intelligence
+            dw-observability
+            dw-connectors
+            dw-ml
+          )
+          REPO="$GITHUB_WORKSPACE"
+          FAILED=0
+          cd /tmp
+          for agent in "${AGENTS[@]}"; do
+            echo "--- Testing $agent (from /tmp) ---"
+            RESPONSE=$(echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"smoke-test","version":"0.1.0"}}}' \
+              | timeout 15 "$REPO/start-agent.sh" "$agent" 2>/dev/null \
+              | head -1)
+            if echo "$RESPONSE" | grep -q '"serverInfo"'; then
+              echo "PASS: $agent"
+            else
+              echo "FAIL: $agent — response: $RESPONSE"
+              FAILED=1
+            fi
+          done
+          if [ "$FAILED" -eq 1 ]; then
+            echo "::error::One or more agents failed MCP initialize from /tmp (CWD bug)"
+            exit 1
+          fi
+
+      - name: Lint — all workspace packages have "type":"module"
+        run: |
+          FAILED=0
+          for pkg in agents/*/package.json core/*/package.json connectors/*/package.json packages/*/package.json; do
+            [ -f "$pkg" ] || continue
+            if ! grep -q '"type":\s*"module"' "$pkg"; then
+              echo "FAIL: $pkg missing \"type\": \"module\""
+              FAILED=1
+            fi
+          done
+          if [ "$FAILED" -eq 1 ]; then
+            echo "::error::Some workspace packages are missing type:module"
+            exit 1
+          fi
+          echo "PASS: all workspace packages have type:module"
+
+      - name: Lint — no .js files in src/ directories
+        run: |
+          STALE=$(find agents core connectors packages -name "*.js" -path "*/src/*" -not -path "*/node_modules/*" 2>/dev/null || true)
+          if [ -n "$STALE" ]; then
+            echo "::error::Stale .js files found in src/ directories:"
+            echo "$STALE"
+            exit 1
+          fi
+          echo "PASS: no .js files in src/ directories"
+
+      - name: Lint — all agent index.ts files contain startStdioTransport
+        run: |
+          FAILED=0
+          for idx in agents/*/src/index.ts; do
+            [ -f "$idx" ] || continue
+            AGENT_DIR=$(echo "$idx" | cut -d/ -f2)
+            # Skip orchestration agent
+            if [ "$AGENT_DIR" = "dw-orchestration" ]; then
+              continue
+            fi
+            if ! grep -q 'startStdioTransport' "$idx"; then
+              echo "FAIL: $idx missing startStdioTransport"
+              FAILED=1
+            fi
+          done
+          if [ "$FAILED" -eq 1 ]; then
+            echo "::error::Some agent index.ts files are missing startStdioTransport"
+            exit 1
+          fi
+          echo "PASS: all agent index.ts files contain startStdioTransport"
