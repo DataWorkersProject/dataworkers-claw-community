@@ -44,12 +44,8 @@ export class OpenMetadataConnector implements ICatalogProvider {
     const url = process.env.OPENMETADATA_URL;
     const token = process.env.OPENMETADATA_TOKEN;
 
-    if (url && token) {
-      const realClient = new OpenMetadataRealClient({ url, token });
-      const connector = new OpenMetadataConnector(realClient);
-      connector.mode = 'real';
-      return connector;
-    }
+    // Real client stripped in OSS edition — always use stub
+    void url; void token;
     return new OpenMetadataConnector();
   }
 

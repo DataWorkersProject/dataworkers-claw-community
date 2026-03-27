@@ -54,6 +54,7 @@ export class VercelAIAdapter implements ILLMProvider {
 
     let generateText: (opts: Record<string, unknown>) => Promise<Record<string, unknown>>;
     try {
+      // @ts-ignore — 'ai' package may not be installed in OSS edition
       const aiModule = await import('ai');
       generateText = aiModule.generateText as typeof generateText;
     } catch {

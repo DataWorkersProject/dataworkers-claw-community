@@ -95,9 +95,9 @@ describe('DbtConnector', () => {
   // --- listModels ---
 
   describe('listModels', () => {
-    it('should return all 5 seeded models', () => {
+    it('should return all 5 seeded models', async () => {
       connector.connect('dbt_cloud_token_123');
-      const models = connector.listModels();
+      const models = await connector.listModels();
       expect(models).toHaveLength(5);
       const names = models.map((m) => m.name).sort();
       expect(names).toEqual([
@@ -113,9 +113,9 @@ describe('DbtConnector', () => {
   // --- getModelLineage ---
 
   describe('getModelLineage', () => {
-    it('should return lineage edges for a model with dependencies', () => {
+    it('should return lineage edges for a model with dependencies', async () => {
       connector.connect('dbt_cloud_token_123');
-      const edges = connector.getModelLineage('model.project.int_order_items');
+      const edges = await connector.getModelLineage('model.project.int_order_items');
       expect(edges.length).toBeGreaterThanOrEqual(1);
 
       // Should have stg_orders as parent
@@ -129,9 +129,9 @@ describe('DbtConnector', () => {
       expect(childEdge).toBeDefined();
     });
 
-    it('should return empty lineage for a model with no dependencies', () => {
+    it('should return empty lineage for a model with no dependencies', async () => {
       connector.connect('dbt_cloud_token_123');
-      const edges = connector.getModelLineage('model.project.stg_orders');
+      const edges = await connector.getModelLineage('model.project.stg_orders');
 
       // stg_orders has no parents (dependsOn is empty)
       const parentEdges = edges.filter((e) => e.child === 'model.project.stg_orders');
@@ -146,15 +146,15 @@ describe('DbtConnector', () => {
   // --- getTestResults ---
 
   describe('getTestResults', () => {
-    it('should return all 8 test results', () => {
+    it('should return all 8 test results', async () => {
       connector.connect('dbt_cloud_token_123');
-      const results = connector.getTestResults();
+      const results = await connector.getTestResults();
       expect(results).toHaveLength(8);
     });
 
-    it('should have correct pass/fail distribution', () => {
+    it('should have correct pass/fail distribution', async () => {
       connector.connect('dbt_cloud_token_123');
-      const results = connector.getTestResults();
+      const results = await connector.getTestResults();
       const pass = results.filter((r) => r.status === 'pass').length;
       const fail = results.filter((r) => r.status === 'fail').length;
       const warn = results.filter((r) => r.status === 'warn').length;
@@ -170,17 +170,17 @@ describe('DbtConnector', () => {
   // --- getRunHistory ---
 
   describe('getRunHistory', () => {
-    it('should return all 3 run history entries (newest first)', () => {
+    it('should return all 3 run history entries (newest first)', async () => {
       connector.connect('dbt_cloud_token_123');
-      const history = connector.getRunHistory();
+      const history = await connector.getRunHistory();
       expect(history).toHaveLength(3);
       expect(history[0].runId).toBe('run_003');
       expect(history[2].runId).toBe('run_001');
     });
 
-    it('should respect custom limit', () => {
+    it('should respect custom limit', async () => {
       connector.connect('dbt_cloud_token_123');
-      const history = connector.getRunHistory(2);
+      const history = await connector.getRunHistory(2);
       expect(history).toHaveLength(2);
       expect(history[0].runId).toBe('run_003');
       expect(history[1].runId).toBe('run_002');
@@ -197,19 +197,19 @@ describe('DbtConnector', () => {
       expect(health.healthy).toBe(true);
     });
 
-    it('should list models from manifest', () => {
+    it('should list models from manifest', async () => {
       const manifest = buildTestManifest();
       connector.loadManifest(manifest);
-      const models = connector.listModels();
+      const models = await connector.listModels();
       expect(models).toHaveLength(2); // only nodes, not sources
       const names = models.map((m) => m.name).sort();
       expect(names).toEqual(['model_a', 'model_b']);
     });
 
-    it('should build lineage from manifest', () => {
+    it('should build lineage from manifest', async () => {
       const manifest = buildTestManifest();
       connector.loadManifest(manifest);
-      const edges = connector.getModelLineage('model.test.model_b');
+      const edges = await connector.getModelLineage('model.test.model_b');
       expect(edges).toHaveLength(1);
       expect(edges[0].parent).toBe('model.test.model_a');
       expect(edges[0].child).toBe('model.test.model_b');
@@ -220,9 +220,9 @@ describe('DbtConnector', () => {
   // --- listNamespaces ---
 
   describe('listNamespaces', () => {
-    it('should return unique schemas as namespaces', () => {
+    it('should return unique schemas as namespaces', async () => {
       connector.connect('dbt_cloud_token_123');
-      const namespaces = connector.listNamespaces();
+      const namespaces = await connector.listNamespaces();
       expect(namespaces.length).toBeGreaterThanOrEqual(3);
       const schemaNames = namespaces.map((ns) => ns.name[1]).sort();
       expect(schemaNames).toEqual(expect.arrayContaining(['staging', 'intermediate', 'marts']));
@@ -232,9 +232,9 @@ describe('DbtConnector', () => {
   // --- listTables ---
 
   describe('listTables', () => {
-    it('should return models in a specific schema', () => {
+    it('should return models in a specific schema', async () => {
       connector.connect('dbt_cloud_token_123');
-      const tables = connector.listTables('staging');
+      const tables = await connector.listTables('staging');
       expect(tables).toHaveLength(2);
       const names = tables.map((t) => t.name).sort();
       expect(names).toEqual(['stg_customers', 'stg_orders']);
@@ -244,9 +244,9 @@ describe('DbtConnector', () => {
   // --- getTableMetadata ---
 
   describe('getTableMetadata', () => {
-    it('should return metadata for a specific model', () => {
+    it('should return metadata for a specific model', async () => {
       connector.connect('dbt_cloud_token_123');
-      const meta = connector.getTableMetadata('marts', 'fct_orders');
+      const meta = await connector.getTableMetadata('marts', 'fct_orders');
       expect(meta.name).toBe('fct_orders');
       expect(meta.namespace).toEqual(['analytics', 'marts']);
       expect(meta.schema.length).toBeGreaterThanOrEqual(2);
@@ -258,13 +258,13 @@ describe('DbtConnector', () => {
   // --- error handling ---
 
   describe('error handling', () => {
-    it('should throw on operations when not connected', () => {
-      expect(() => connector.listModels()).toThrow('Not connected');
+    it('should throw on operations when not connected', async () => {
+      await expect(connector.listModels()).rejects.toThrow('Not connected');
     });
 
-    it('should throw for unknown model in getTableMetadata', () => {
+    it('should throw for unknown model in getTableMetadata', async () => {
       connector.connect('dbt_cloud_token_123');
-      expect(() => connector.getTableMetadata('marts', 'nonexistent')).toThrow('Model not found');
+      await expect(connector.getTableMetadata('marts', 'nonexistent')).rejects.toThrow('Model not found');
     });
   });
 });

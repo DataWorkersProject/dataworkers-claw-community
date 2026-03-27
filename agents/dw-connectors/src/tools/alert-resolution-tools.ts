@@ -3,15 +3,15 @@
  * All are admin operations requiring Enterprise tier.
  */
 
-import type { ToolDefinition, ToolHandler } from '@data-workers/mcp-framework';
+import type { ToolDefinition, ToolHandler, ToolResult } from '@data-workers/mcp-framework';
 import { isToolAllowed } from '@data-workers/license';
 
 // ── Helper ─────────────────────────────────────────────────────────────
 
-function tierGate(toolName: string) {
+function tierGate(toolName: string): ToolResult | null {
   if (!isToolAllowed(toolName)) {
     return {
-      content: [{ type: 'text', text: JSON.stringify({ error: 'pro_feature', message: 'This feature requires Data Workers Pro. Visit https://dataworkers.io/pricing', tool: toolName }) }],
+      content: [{ type: 'text' as const, text: JSON.stringify({ error: 'pro_feature', message: 'This feature requires Data Workers Pro. Visit https://dataworkers.io/pricing', tool: toolName }) }],
       isError: true,
     };
   }

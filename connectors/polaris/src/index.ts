@@ -5,7 +5,7 @@
  * table metadata retrieval, and access-control checks.
  */
 
-import type { ICatalogProvider, CatalogCapability, Permission, TableMetadata } from '../../shared/types.js';
+import type { ICatalogProvider, CatalogCapability, Permission, TableMetadata, NamespaceInfo } from '../../shared/types.js';
 
 export type {
   PolarisCatalog,
@@ -91,6 +91,27 @@ export class PolarisConnector implements ICatalogProvider {
     }
   }
 
+  // ── ICatalogProvider conformance ──────────────────────────────────
+
+  /** List all Polaris catalogs as namespaces. */
+  async listNamespaces(): Promise<NamespaceInfo[]> {
+    const catalogs = await this.client.listCatalogs();
+    return catalogs.map((c: PolarisCatalog) => ({ name: [c.name], properties: c.properties ?? {} }));
+  }
+
+  /** List tables in a Polaris namespace (catalog). */
+  async listTables(namespace: string): Promise<TableMetadata[]> {
+    const namespaces = await this.client.listNamespaces(namespace);
+    const tables: TableMetadata[] = [];
+    for (const ns of namespaces) {
+      const tableNames = await this.client.listTables(namespace, ns);
+      for (const t of tableNames) {
+        tables.push({ name: t, namespace: ns, schema: [], properties: {} });
+      }
+    }
+    return tables;
+  }
+
   // ── Catalog browsing ────────────────────────────────────────────────
 
   /** List all catalogs registered in Polaris. */
@@ -132,12 +153,10 @@ export class PolarisConnector implements ICatalogProvider {
       return {
         name: maybeTable,
         namespace: tableOrNamespace,
-        schema: icebergMeta.schema ?? { schemaId: 0, fields: [] },
+        schema: (icebergMeta.schema ?? { schemaId: 0, fields: [] }) as any,
         tableId: icebergMeta.tableId ?? `${namespaceOrCatalog}.${tableOrNamespace.join('.')}.${maybeTable}`,
         properties: icebergMeta.properties ?? {},
-        partitionSpec: icebergMeta.partitionSpec,
-        snapshots: icebergMeta.snapshots,
-      };
+      } as TableMetadata & { tableId: string };
     }
     // 2-arg ICatalogProvider: (namespace, table)
     return { name: tableOrNamespace as string, namespace: [namespaceOrCatalog], schema: [], properties: {} };
@@ -155,7 +174,7 @@ export class PolarisConnector implements ICatalogProvider {
   // ── Access control ──────────────────────────────────────────────────
 
   /** List all permission policies for a catalog. */
-  async getPermissions(catalog: string): Promise<PolarisPermission[]> {
+  async getPermissions(catalog: string): Promise<any[]> {
     return this.client.listPermissions(catalog);
   }
 

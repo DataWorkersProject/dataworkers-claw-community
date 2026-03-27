@@ -90,6 +90,8 @@ interface IncidentPlaceholder {
 
 export interface ExplainTableResult {
   found: boolean;
+  tableIdentifier?: string;
+  message?: string;
   asset?: {
     id: string;
     name: string;

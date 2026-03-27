@@ -53,10 +53,11 @@ export const flagStaleContextHandler: ToolHandler = async (args) => {
 
   // Publish event for cross-agent subscription
   await messageBus.publish('context.stale', {
+    id: `ctx-stale-${Date.now()}`,
     type: 'context.stale',
-    source: 'dw-context-catalog',
     timestamp: Date.now(),
-    payload: { assetId, customerId, reason, flaggedBy },
+    customerId,
+    payload: { assetId, source: 'dw-context-catalog', reason, flaggedBy },
   });
 
   return {

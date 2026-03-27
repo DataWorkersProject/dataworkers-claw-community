@@ -40,12 +40,8 @@ export class DataHubConnector implements ICatalogProvider {
     const url = process.env.DATAHUB_URL;
     const token = process.env.DATAHUB_TOKEN;
 
-    if (url && token) {
-      const realClient = new DataHubRealClient(url, token);
-      const connector = new DataHubConnector(realClient);
-      connector.mode = 'real';
-      return connector;
-    }
+    // Real client stripped in OSS edition — always use stub
+    void url; void token;
     return new DataHubConnector();
   }
 

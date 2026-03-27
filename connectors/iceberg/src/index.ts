@@ -65,13 +65,13 @@ export class IcebergConnector implements ICatalogProvider {
     return this.client.listNamespaces();
   }
 
-  listTables(namespace: string): IcebergTable[] {
+  listTables(namespace: string): any[] {
     this.ensureConnected();
     this.validateNamespace(namespace);
     return this.client.listTables(namespace);
   }
 
-  getTableMetadata(namespace: string, table: string): IcebergTableMetadata {
+  getTableMetadata(namespace: string, table: string): any {
     this.ensureConnected();
     return this.client.loadTable(namespace, table);
   }

@@ -70,12 +70,13 @@ await messageBus.subscribe('schema.changed', (event) => {
     const customerId = (payload.customerId as string) || 'cust-1';
     // Fire-and-forget: publish a context.stale event
     void messageBus.publish('context.stale', {
+      id: `ctx-stale-${Date.now()}`,
       type: 'context.stale',
-      source: 'dw-context-catalog',
       timestamp: Date.now(),
+      customerId,
       payload: {
         assetId,
-        customerId,
+        source: 'dw-context-catalog',
         reason: 'Schema change detected — context may be stale.',
         flaggedBy: 'schema.changed-subscription',
       },

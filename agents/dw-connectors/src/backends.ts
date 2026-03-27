@@ -63,10 +63,10 @@ catalogRegistry.register('iceberg', () => {
   connector.connect('http://localhost:8181');
   return connector;
 });
-catalogRegistry.register('polaris', () => {
+catalogRegistry.register('polaris', (() => {
   const connector = new PolarisConnector();
   return connector;
-});
+}) as any);
 catalogRegistry.register('glue', () => glue);
 catalogRegistry.register('hive-metastore', () => hiveMetastore);
 catalogRegistry.register('openmetadata', () => openmetadata);
