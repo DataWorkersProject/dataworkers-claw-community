@@ -1,0 +1,23 @@
+{
+  "name": "@data-workers/dw-observability",
+  "version": "0.1.0",
+  "description": "Agent Observability (Trust Layer) — deterministic metrics, audit trails, health checks, drift detection",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@data-workers/mcp-framework": "*",
+    "@data-workers/agent-lifecycle": "*",
+    "@data-workers/context-layer": "*",
+    "@data-workers/validation": "*",
+    "@data-workers/infrastructure-stubs": "*",
+    "@data-workers/enterprise": "*",
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "license": "Apache-2.0"
+}

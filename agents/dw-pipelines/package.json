@@ -1,0 +1,27 @@
+{
+  "name": "@data-workers/dw-pipelines",
+  "version": "0.1.0",
+  "description": "Pipeline Building Agent — NL-to-pipeline generation, validation, deployment",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "dw-pipelines": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@data-workers/agent-lifecycle": "*",
+    "@data-workers/iceberg-connector": "*",
+    "@data-workers/infrastructure-stubs": "*",
+    "@data-workers/mcp-framework": "*",
+    "@data-workers/validation": "*",
+    "@data-workers/enterprise": "*",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "yaml": "^2.8.3"
+  },
+  "license": "Apache-2.0"
+}

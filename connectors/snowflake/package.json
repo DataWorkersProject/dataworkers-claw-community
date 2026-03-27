@@ -1,0 +1,12 @@
+{
+  "name": "@data-workers/snowflake-connector",
+  "version": "0.1.0",
+  "description": "Snowflake data warehouse connector",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": { "build": "tsc -b", "test": "vitest run", "clean": "rm -rf dist" },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "snowflake-sdk": "^2.3.5"
+  }
+}

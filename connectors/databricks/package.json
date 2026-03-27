@@ -1,0 +1,12 @@
+{
+  "name": "@data-workers/databricks-connector",
+  "version": "0.1.0",
+  "description": "Databricks Unity Catalog connector",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": { "build": "tsc -b", "test": "vitest run", "clean": "rm -rf dist" },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@databricks/sql": "^1.8.0"
+  }
+}

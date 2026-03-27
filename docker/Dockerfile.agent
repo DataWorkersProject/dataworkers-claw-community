@@ -1,0 +1,135 @@
+# =============================================================================
+# Data Workers Agent - Individual agent Dockerfile
+# =============================================================================
+# Build:  docker build -f docker/Dockerfile.agent -t data-workers/agent .
+# Run:    docker run -p 3001:3000 -e DW_AGENT_NAME=dw-pipelines data-workers/agent
+# =============================================================================
+# NOTE: Build context must be the repo root (not the docker/ directory).
+
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Install build toolchain needed by native modules
+RUN apk add --no-cache python3 make g++
+
+# Copy root package manifests first for layer caching
+COPY package.json package-lock.json tsconfig.json ./
+
+# Copy all workspace package.json files preserving directory structure
+COPY agents/dw-pipelines/package.json ./agents/dw-pipelines/
+COPY agents/dw-incidents/package.json ./agents/dw-incidents/
+COPY agents/dw-context-catalog/package.json ./agents/dw-context-catalog/
+COPY agents/dw-cost/package.json ./agents/dw-cost/
+COPY agents/dw-governance/package.json ./agents/dw-governance/
+COPY agents/dw-migration/package.json ./agents/dw-migration/
+COPY agents/dw-insights/package.json ./agents/dw-insights/
+COPY agents/dw-observability/package.json ./agents/dw-observability/
+COPY agents/dw-streaming/package.json ./agents/dw-streaming/
+COPY agents/dw-orchestration/package.json ./agents/dw-orchestration/
+COPY agents/dw-schema/package.json ./agents/dw-schema/
+COPY agents/dw-quality/package.json ./agents/dw-quality/
+COPY agents/dw-connectors/package.json ./agents/dw-connectors/
+COPY agents/dw-usage-intelligence/package.json ./agents/dw-usage-intelligence/
+
+COPY core/mcp-framework/package.json ./core/mcp-framework/
+COPY core/context-layer/package.json ./core/context-layer/
+COPY core/agent-lifecycle/package.json ./core/agent-lifecycle/
+COPY core/validation/package.json ./core/validation/
+COPY core/infrastructure-stubs/package.json ./core/infrastructure-stubs/
+COPY core/orchestrator/package.json ./core/orchestrator/
+COPY core/llm-provider/package.json ./core/llm-provider/
+COPY core/enterprise/package.json ./core/enterprise/
+COPY core/license/package.json ./core/license/
+COPY core/medallion/package.json ./core/medallion/
+COPY core/metering/package.json ./core/metering/
+COPY core/platform/package.json ./core/platform/
+COPY core/conflict-resolution/package.json ./core/conflict-resolution/
+
+COPY connectors/snowflake/package.json ./connectors/snowflake/
+COPY connectors/bigquery/package.json ./connectors/bigquery/
+COPY connectors/databricks/package.json ./connectors/databricks/
+COPY connectors/datahub/package.json ./connectors/datahub/
+COPY connectors/openmetadata/package.json ./connectors/openmetadata/
+COPY connectors/dbt/package.json ./connectors/dbt/
+COPY connectors/iceberg/package.json ./connectors/iceberg/
+COPY connectors/nessie/package.json ./connectors/nessie/
+COPY connectors/openlineage/package.json ./connectors/openlineage/
+COPY connectors/purview/package.json ./connectors/purview/
+COPY connectors/glue/package.json ./connectors/glue/
+COPY connectors/hive-metastore/package.json ./connectors/hive-metastore/
+COPY connectors/polaris/package.json ./connectors/polaris/
+COPY connectors/dataplex/package.json ./connectors/dataplex/
+COPY connectors/enterprise/package.json ./connectors/enterprise/
+COPY connectors/shared/package.json ./connectors/shared/
+
+COPY packages/cli/package.json ./packages/cli/
+COPY packages/vscode-extension/package.json ./packages/vscode-extension/
+
+# Install all dependencies (including devDependencies for building)
+RUN npm ci --ignore-scripts && npm cache clean --force
+
+# Copy all source code and build
+COPY agents/ ./agents/
+COPY core/ ./core/
+COPY connectors/ ./connectors/
+COPY packages/ ./packages/
+COPY scripts/ ./scripts/
+COPY tsconfig.json ./
+
+RUN npm run build
+
+# ---------------------------------------------------------------------------
+# Stage 2: Runtime
+# ---------------------------------------------------------------------------
+FROM node:20-alpine AS runtime
+
+LABEL maintainer="Data Workers <hello@dataworkers.io>"
+LABEL description="Data Workers Agent - autonomous data engineering agent"
+
+WORKDIR /app
+
+# Install tini for proper signal handling and wget for health checks
+RUN apk add --no-cache tini wget
+
+# Copy root manifests
+COPY package.json package-lock.json ./
+
+# Copy full workspace structure from builder (includes built dist/ dirs)
+COPY --from=builder /app/agents/ ./agents/
+COPY --from=builder /app/core/ ./core/
+COPY --from=builder /app/connectors/ ./connectors/
+COPY --from=builder /app/packages/ ./packages/
+
+# Install production-only deps with workspace support
+RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
+
+# Remove source files, keep only dist and package.json in each workspace
+RUN find /app/agents /app/core /app/connectors /app/packages \
+    -name 'src' -type d -exec rm -rf {} + 2>/dev/null; \
+    find /app/agents /app/core /app/connectors /app/packages \
+    -name '*.ts' ! -name '*.d.ts' -delete 2>/dev/null; \
+    true
+
+# Non-root user for security
+RUN addgroup -S dwagent && adduser -S -G dwagent dwagent && \
+    chown -R dwagent:dwagent /app
+
+USER dwagent
+
+# Health check endpoint
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:${DW_AGENT_PORT:-3000}/health || exit 1
+
+EXPOSE 3000
+
+ENV NODE_ENV=production
+ENV DW_AGENT_PORT=3000
+
+# Use tini as PID 1 for proper signal handling
+ENTRYPOINT ["tini", "--"]
+
+# The agent to run is determined by DW_AGENT_NAME env var.
+# The entrypoint script resolves it to agents/<name>/dist/index.js
+# Default: dw-pipelines. Override with -e DW_AGENT_NAME=dw-incidents etc.
+CMD ["sh", "-c", "node agents/${DW_AGENT_NAME:-dw-pipelines}/dist/index.js"]

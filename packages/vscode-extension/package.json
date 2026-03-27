@@ -1,0 +1,72 @@
+{
+  "name": "data-workers-vscode",
+  "displayName": "Data Workers",
+  "description": "VS Code extension for managing Data Workers agent swarm",
+  "version": "0.1.0",
+  "publisher": "dataworkers",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DataWorkersProject/dataworkers-claw-community"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Data Science",
+    "Other"
+  ],
+  "keywords": [
+    "data-engineering",
+    "ai-agents",
+    "mcp",
+    "data-workers"
+  ],
+  "activationEvents": [
+    "workspaceContains:.mcp.json",
+    "onCommand:dataWorkers.init"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "dataWorkers.init",
+        "title": "Data Workers: Initialize Config"
+      },
+      {
+        "command": "dataWorkers.listAgents",
+        "title": "Data Workers: List Agents"
+      },
+      {
+        "command": "dataWorkers.checkStatus",
+        "title": "Data Workers: Check Agent Status"
+      },
+      {
+        "command": "dataWorkers.refreshSidebar",
+        "title": "Data Workers: Refresh Agent Panel"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "data-workers",
+          "title": "Data Workers",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "data-workers": [
+        {
+          "id": "dataWorkers.agentStatus",
+          "name": "Agent Status"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "package": "vsce package"
+  }
+}

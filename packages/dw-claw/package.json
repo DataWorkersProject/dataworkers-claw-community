@@ -1,0 +1,19 @@
+{
+  "name": "dw-claw",
+  "version": "0.1.0",
+  "description": "Data Workers CLI — autonomous AI agent swarm for data engineering",
+  "bin": {
+    "dw-claw": "./bin/dw-claw.js"
+  },
+  "files": ["bin"],
+  "dependencies": {
+    "@data-workers/cli": "0.1.0"
+  },
+  "keywords": ["data-workers", "cli", "mcp", "data-engineering", "ai-agents"],
+  "author": "Data Workers, Inc.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DataWorkersProject/dataworkers-claw-community.git"
+  }
+}

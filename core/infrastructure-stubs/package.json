@@ -1,0 +1,13 @@
+{
+  "name": "@data-workers/infrastructure-stubs",
+  "version": "0.1.0",
+  "description": "In-memory infrastructure stubs for development and testing",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "license": "Apache-2.0"
+}

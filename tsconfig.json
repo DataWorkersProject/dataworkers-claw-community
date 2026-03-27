@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "outDir": "dist",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "paths": {
+      "@data-workers/mcp-framework": ["./core/mcp-framework/src"],
+      "@data-workers/context-layer": ["./core/context-layer/src"],
+      "@data-workers/agent-lifecycle": ["./core/agent-lifecycle/src"],
+      "@data-workers/validation": ["./core/validation/src"],
+      "@data-workers/infrastructure-stubs": ["./core/infrastructure-stubs/src"],
+      "@data-workers/iceberg-connector": ["./connectors/iceberg/src"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "**/dist", "**/*.test.ts"]
+}

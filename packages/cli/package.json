@@ -1,0 +1,33 @@
+{
+  "name": "@data-workers/cli",
+  "version": "0.1.0",
+  "description": "CLI for managing Data Workers agent swarm",
+  "bin": {
+    "data-workers": "./dist/index.js",
+    "dw-claw": "./dist/claw.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run --passWithNoTests",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "data-workers",
+    "cli",
+    "mcp",
+    "data-engineering",
+    "ai-agents",
+    "dw-claw"
+  ],
+  "author": "Data Workers, Inc.",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
