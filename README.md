@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  15 AI agents &middot; 240+ MCP tools &middot; 15 connectors &middot; 2,900+ tests &middot; Zero config to start
+  11 AI agents &middot; 160+ MCP tools &middot; 15 connectors &middot; 2,900+ tests &middot; Zero config to start
 </p>
 
 ---
@@ -130,17 +130,13 @@ Each agent can be started via the `start-agent.sh` script, which handles working
 |-------|---------|-------------|:-----:|
 | **Pipelines** | `dw-pipelines` | NL-to-pipeline generation, template engine, Iceberg MERGE INTO, Kafka events, Airflow deployment. Write tools (`generate_pipeline`, `deploy_pipeline`) require Pro. | 4 |
 | **Incidents** | `dw-incidents` | Statistical anomaly detection, graph-based root cause analysis, playbook execution | 5 |
-| **Catalog** | `dw-context-catalog` | Hybrid search (vector + BM25 + graph), lineage traversal, Iceberg crawler | 39 |
+| **Catalog** | `dw-context-catalog` | Hybrid search (vector + BM25 + graph), lineage traversal, Iceberg crawler | 35 |
 | **Schema** | `dw-schema` | INFORMATION_SCHEMA diffs, rename detection, Iceberg snapshot evolution | 9 |
-| **Quality** | `dw-quality` | Weighted 5-dimension scoring, z-score anomaly detection, 14-day baselines | 7 |
+| **Quality** | `dw-quality` | Weighted 5-dimension scoring, z-score anomaly detection, 14-day baselines | 6 |
 | **Governance** | `dw-governance` | Priority-based policy engine, 3-pass PII scanner (regex + values + LLM) | 6 |
-| **Cost** | `dw-cost` | Query cost analysis, resource optimization, budget tracking | 5 |
-| **Insights** | `dw-insights` | Natural language data querying, automated insight generation | 8 |
-| **Migration** | `dw-migration` | Cross-platform migration planning, validation, execution tracking | 7 |
-| **Streaming** | `dw-streaming` | Stream health monitoring, topology management, consumer lag analysis | 4 |
-| **Usage Intelligence** | `dw-usage-intelligence` | Practitioner analytics, workflow patterns, adoption dashboards, heatmaps (zero LLM) | 30 |
+| **Usage Intelligence** | `dw-usage-intelligence` | Practitioner analytics, workflow patterns, adoption dashboards, heatmaps (zero LLM) | 26 |
 | **Observability** | `dw-observability` | SHA-256 audit trail, drift detection, agent metrics (p50/p95/p99), health monitoring | 6 |
-| **Connectors** | `dw-connectors` | Unified MCP gateway to 15 catalog connectors | 83 |
+| **Connectors** | `dw-connectors` | Unified MCP gateway to 15 catalog connectors | 56 |
 | **Orchestration** | `dw-orchestration` | Priority scheduler, heartbeat monitor, agent registry, event choreography | internal (not MCP) |
 | **MLOps & Models** | `dw-ml` | Experiment tracking, model registry, feature pipelines, SHAP explainability, drift detection, A/B testing. Write tools (`train_model`, `deploy_model`, `create_experiment`, `log_metrics`, `register_model`, `create_feature_pipeline`, `ab_test_models`) require Pro. | 16 |
 
@@ -156,11 +152,11 @@ Each agent can be started via the `start-agent.sh` script, which handles working
                              │  MCP Protocol (JSON-RPC 2.0 / stdio)
                              │
 ┌────────────────────────────▼────────────────────────────────────┐
-│                     15 AI Agents (240+ tools)                   │
+│                     11 AI Agents (160+ tools)                   │
 │                                                                 │
 │  pipelines · incidents · catalog · schema · quality · governance│
-│  cost · insights · migration · streaming · usage-intelligence   │
-│  observability · connectors · orchestration · ml                │
+│  usage-intelligence · observability · connectors · orchestration│
+│  ml                                                             │
 └────────────────────────────┬────────────────────────────────────┘
                              │  Factory-injected dependencies
                              │
@@ -240,17 +236,13 @@ Community Edition includes up to 3 enterprise connectors. See [pricing](https://
 
 ```
 dataworkers-claw-community/
-├── agents/                    # 15 agent MCP servers
+├── agents/                    # 11 agent MCP servers
 │   ├── dw-pipelines/          # Write tools (generate, deploy) require Pro
 │   ├── dw-incidents/
 │   ├── dw-context-catalog/
 │   ├── dw-schema/
 │   ├── dw-quality/
 │   ├── dw-governance/
-│   ├── dw-cost/
-│   ├── dw-insights/
-│   ├── dw-migration/
-│   ├── dw-streaming/
 │   ├── dw-usage-intelligence/
 │   ├── dw-observability/
 │   ├── dw-connectors/
