@@ -33,12 +33,12 @@ export const checkPolicyHandler: ToolHandler = async (args) => {
   const resource = args.resource as string;
   const agentId = args.agentId as string;
   const customerId = args.customerId as string;
-  const context = args.context as Record<string, unknown> | undefined;
+  const policyContext = args.context as Record<string, unknown> | undefined;
 
   try {
     const start = Date.now();
 
-    const evaluation = await policyStore.evaluateAccess(action, resource, agentId, customerId, context);
+    const evaluation = await policyStore.evaluateAccess(action, resource, agentId, customerId, policyContext);
 
     const result: PolicyCheckResult = {
       allowed: evaluation.allowed,
