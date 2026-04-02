@@ -1,13 +1,13 @@
 {
   "repoName": "dw-claw-oss",
-  "timestamp": "2026-04-02T01:22:46.046Z",
+  "timestamp": "2026-04-02T03:57:40.451Z",
   "summary": {
     "totalAgents": 14,
     "loadedAgents": 14,
     "failedAgents": 0,
     "totalTools": 214,
-    "passedTools": 173,
-    "failedTools": 41,
+    "passedTools": 201,
+    "failedTools": 13,
     "errorTools": 0,
     "timeoutTools": 0
   },
@@ -59,7 +59,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"assetId\": \"src-raw-orders\",\n  \"lastUpdated\": 1775006566133,\n  \"freshnessScore\": 50,\n  \"slaTarget\": 86400000,\n  \"slaCompliant\": false,\n  \"staleSince\": 1775092966133,\n  \"ageHours\": 24,\n  \"alert\": \"",
+          "responsePreview": "{\n  \"assetId\": \"tbl-1\",\n  \"lastUpdated\": 1775015860539,\n  \"freshnessScore\": 50,\n  \"slaTarget\": 86400000,\n  \"slaCompliant\": false,\n  \"staleSince\": 1775102260539,\n  \"ageHours\": 24,\n  \"alert\": \"STALE: or",
           "durationMs": 0
         },
         {
@@ -68,17 +68,17 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"found\": true,\n  \"asset\": {\n    \"id\": \"src-raw-orders\",\n    \"name\": \"raw_orders\",\n    \"type\": \"source\",\n    \"platform\": \"postgres\",\n    \"customerId\": \"cust-1\",\n    \"properties\": {\n      \"schema\": ",
+          "responsePreview": "{\n  \"found\": true,\n  \"asset\": {\n    \"id\": \"tbl-1\",\n    \"name\": \"orders\",\n    \"type\": \"table\",\n    \"platform\": \"snowflake\",\n    \"customerId\": \"cust-1\",\n    \"properties\": {\n      \"schema\": \"public\",\n   ",
           "durationMs": 1
         },
         {
           "name": "explain_table",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "Tool 'explain_table' failed: Parameter \"tableIdentifier\" is required and must be a string.",
-          "durationMs": 0
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"found\": true,\n  \"asset\": {\n    \"id\": \"src-raw-orders\",\n    \"name\": \"raw_orders\",\n    \"type\": \"source\",\n    \"platform\": \"postgres\",\n    \"customerId\": \"cust-1\",\n    \"database\": \"production\",\n    \"s",
+          "durationMs": 1
         },
         {
           "name": "get_lineage",
@@ -104,7 +104,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"lineageEdgeId\": \"edge-tbl-1-tbl-2-3919ad05\",\n  \"sourceDatasetId\": \"tbl-1\",\n  \"targetDatasetId\": \"tbl-2\",\n  \"graphUpdated\": true,\n  \"totalUpstreamNodes\": 2,\n  \"totalDownstreamNodes\": 3,\n  \"auditTr",
+          "responsePreview": "{\n  \"lineageEdgeId\": \"edge-tbl-1-tbl-2-ffef2192\",\n  \"sourceDatasetId\": \"tbl-1\",\n  \"targetDatasetId\": \"tbl-2\",\n  \"graphUpdated\": true,\n  \"totalUpstreamNodes\": 2,\n  \"totalDownstreamNodes\": 3,\n  \"auditTr",
           "durationMs": 0
         },
         {
@@ -113,16 +113,16 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"assetId\": \"src-raw-orders\",\n  \"assetName\": \"raw_orders\",\n  \"severity\": \"HIGH\",\n  \"downstreamCount\": 5,\n  \"affectedByDepth\": [\n    {\n      \"depth\": 1,\n      \"count\": 2,\n      \"assets\": [\n        \"",
+          "responsePreview": "{\n  \"assetId\": \"tbl-1\",\n  \"assetName\": \"orders\",\n  \"severity\": \"HIGH\",\n  \"downstreamCount\": 3,\n  \"affectedByDepth\": [\n    {\n      \"depth\": 1,\n      \"count\": 2,\n      \"assets\": [\n        \"dim_orders\",\n",
           "durationMs": 0
         },
         {
           "name": "blast_radius_analysis",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"assetId is required unless changeType is pr_diff with a prDiff payload.\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"assetId\": \"tbl-1\",\n  \"assetName\": \"orders\",\n  \"severity\": \"HIGH\",\n  \"downstreamCount\": 3,\n  \"affectedByDepth\": [\n    {\n      \"depth\": 1,\n      \"count\": 2,\n      \"assets\": [\n        \"dim_orders\",\n",
           "durationMs": 0
         },
         {
@@ -131,7 +131,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"assetId\": \"src-raw-orders\",\n  \"assetName\": \"raw_orders\",\n  \"description\": \"Source 'raw_orders' on postgres. Schema: public. Database: production.\",\n  \"columns\": [\n    {\n      \"name\": \"order_id\",\n",
+          "responsePreview": "{\n  \"assetId\": \"tbl-1\",\n  \"assetName\": \"orders\",\n  \"description\": \"Table 'orders' on snowflake. Schema: public.\",\n  \"columns\": [\n    {\n      \"name\": \"id\",\n      \"description\": \"Primary key identifier\"",
           "durationMs": 0
         },
         {
@@ -140,7 +140,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "# raw_orders\n\nSource 'raw_orders' on postgres. Schema: public. Database: production.\n> Source: pattern_match (confidence: 0.85)\n\n## Columns\n\n| Name | Type | Description | Source |\n|------|------|-----",
+          "responsePreview": "# orders\n\nTable 'orders' on snowflake. Schema: public.\n> Source: pattern_match (confidence: 0.85)\n\n## Columns\n\n| Name | Type | Description | Source |\n|------|------|-------------|--------|\n| id | INTE",
           "durationMs": 0
         },
         {
@@ -149,7 +149,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"scanId\": \"scan-1775092966140-77f12y\",\n  \"gaps\": [\n    {\n      \"datasetId\": \"src-raw-orders\",\n      \"table\": \"raw_orders\",\n      \"gapType\": \"no_description\",\n      \"severity\": \"medium\",\n      \"las",
+          "responsePreview": "{\n  \"scanId\": \"scan-1775102260546-0odph8\",\n  \"gaps\": [\n    {\n      \"datasetId\": \"src-raw-orders\",\n      \"table\": \"raw_orders\",\n      \"gapType\": \"no_description\",\n      \"severity\": \"medium\",\n      \"las",
           "durationMs": 0
         },
         {
@@ -165,9 +165,9 @@
           "name": "correlate_metadata",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\n  \"assetId\": \"\",\n  \"enrichedMetadata\": {},\n  \"platformContributions\": [],\n  \"entityResolution\": {\n    \"matches\": [],\n    \"method\": \"none\",\n    \"confidence\": 0\n  },\n  \"error\": {\n    \"type\": \"INVALID_",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"assetId\": \"tbl-1\",\n  \"enrichedMetadata\": {},\n  \"platformContributions\": [],\n  \"entityResolution\": {\n    \"matches\": [],\n    \"method\": \"none\",\n    \"confidence\": 0\n  }\n}",
           "durationMs": 0
         },
         {
@@ -176,7 +176,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"taggingId\": \"tag-1775092966141-1\",\n  \"datasetId\": \"src-raw-orders\",\n  \"tagsApplied\": [\n    {\n      \"category\": \"pii\",\n      \"tag\": \"pii:customer_id\",\n      \"confidence\": 0.85,\n      \"source\": \"sc",
+          "responsePreview": "{\n  \"taggingId\": \"tag-1775102260547-1\",\n  \"datasetId\": \"src-raw-orders\",\n  \"tagsApplied\": [\n    {\n      \"category\": \"pii\",\n      \"tag\": \"pii:customer_id\",\n      \"confidence\": 0.85,\n      \"source\": \"sc",
           "durationMs": 1
         },
         {
@@ -194,7 +194,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"success\": true,\n  \"ruleId\": \"rule-5a599dbc\",\n  \"assetId\": \"orders\",\n  \"ruleType\": \"test\",\n  \"content\": \"test\",\n  \"author\": \"unknown\",\n  \"message\": \"Business rule 'rule-5a599dbc' created for asset",
+          "responsePreview": "{\n  \"success\": true,\n  \"ruleId\": \"rule-8693414b\",\n  \"assetId\": \"tbl-1\",\n  \"ruleType\": \"test\",\n  \"content\": \"test\",\n  \"author\": \"unknown\",\n  \"message\": \"Business rule 'rule-8693414b' created for asset ",
           "durationMs": 0
         },
         {
@@ -210,18 +210,18 @@
           "name": "import_tribal_knowledge",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\n  \"error\": \"No entries provided for import.\",\n  \"imported\": 0\n}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"success\": true,\n  \"imported\": 1,\n  \"ruleIds\": [\n    \"rule-8e28d2ed\"\n  ],\n  \"message\": \"Imported 1 tribal knowledge entries as business rules.\"\n}",
           "durationMs": 0
         },
         {
           "name": "update_business_rule",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\n  \"error\": \"Rule 'test-rule' not found.\"\n}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"success\": true,\n  \"ruleId\": \"rule-1\",\n  \"updated\": {\n    \"lastConfirmedAt\": 1775102260547\n  },\n  \"message\": \"Rule 'rule-1' updated successfully.\"\n}",
           "durationMs": 0
         },
         {
@@ -230,7 +230,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"success\": true,\n  \"assetId\": \"orders\",\n  \"domain\": \"test\",\n  \"authorityLevel\": \"authoritative\",\n  \"trustFlag\": \"endorsed\",\n  \"message\": \"Asset 'orders' marked as authoritative source for 'test'.\"",
+          "responsePreview": "{\n  \"success\": true,\n  \"assetId\": \"tbl-1\",\n  \"domain\": \"test\",\n  \"authorityLevel\": \"authoritative\",\n  \"trustFlag\": \"endorsed\",\n  \"message\": \"Asset 'tbl-1' marked as authoritative source for 'test'.\"\n}",
           "durationMs": 0
         },
         {
@@ -239,7 +239,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"domain\": \"test\",\n  \"found\": true,\n  \"assetId\": \"orders\",\n  \"customerId\": \"cust-1\",\n  \"authorityLevel\": \"authoritative\",\n  \"trustFlag\": \"endorsed\",\n  \"reason\": \"\",\n  \"designatedBy\": \"unknown\",\n  \"",
+          "responsePreview": "{\n  \"domain\": \"test\",\n  \"found\": true,\n  \"assetId\": \"tbl-1\",\n  \"customerId\": \"cust-1\",\n  \"authorityLevel\": \"authoritative\",\n  \"trustFlag\": \"endorsed\",\n  \"reason\": \"\",\n  \"designatedBy\": \"unknown\",\n  \"d",
           "durationMs": 0
         },
         {
@@ -257,7 +257,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"assetId\": \"orders\",\n  \"queryCount\": 165,\n  \"uniqueUsers\": 16,\n  \"lastQueried\": 1774747366141,\n  \"trend\": \"stable\",\n  \"periodDays\": 30,\n  \"isHighUsage\": true,\n  \"isGoldenPath\": false\n}",
+          "responsePreview": "{\n  \"assetId\": \"tbl-1\",\n  \"queryCount\": 426,\n  \"uniqueUsers\": 17,\n  \"lastQueried\": 1774843060547,\n  \"trend\": \"decreasing\",\n  \"periodDays\": 30,\n  \"isHighUsage\": true,\n  \"isGoldenPath\": true\n}",
           "durationMs": 0
         },
         {
@@ -275,7 +275,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"success\": true,\n  \"feedbackId\": \"fb-87b8dfa4\",\n  \"assetId\": \"orders\",\n  \"fieldCorrected\": \"general\",\n  \"message\": \"Correction recorded for 'orders'. Feedback ID: fb-87b8dfa4.\"\n}",
+          "responsePreview": "{\n  \"success\": true,\n  \"feedbackId\": \"fb-6ff4bd06\",\n  \"assetId\": \"tbl-1\",\n  \"fieldCorrected\": \"general\",\n  \"message\": \"Correction recorded for 'tbl-1'. Feedback ID: fb-6ff4bd06.\"\n}",
           "durationMs": 0
         },
         {
@@ -284,7 +284,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"assetId\": \"orders\",\n  \"freshnessScore\": 98,\n  \"lastUpdated\": 1775006566133,\n  \"isStale\": false,\n  \"assetFound\": true,\n  \"staleThresholdDays\": 30,\n  \"ageInDays\": 1,\n  \"staleBusinessRules\": 0,\n  \"t",
+          "responsePreview": "{\n  \"assetId\": \"tbl-1\",\n  \"freshnessScore\": 98,\n  \"lastUpdated\": 1775015860539,\n  \"isStale\": false,\n  \"assetFound\": true,\n  \"staleThresholdDays\": 30,\n  \"ageInDays\": 1,\n  \"staleBusinessRules\": 0,\n  \"to",
           "durationMs": 0
         },
         {
@@ -293,7 +293,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"success\": true,\n  \"feedbackId\": \"fb-e292467b\",\n  \"assetId\": \"orders\",\n  \"reason\": \"Context flagged as stale by user.\",\n  \"eventPublished\": \"context.stale\",\n  \"message\": \"Stale context flagged for",
+          "responsePreview": "{\n  \"success\": true,\n  \"feedbackId\": \"fb-fc42f8b8\",\n  \"assetId\": \"tbl-1\",\n  \"reason\": \"Context flagged as stale by user.\",\n  \"eventPublished\": \"context.stale\",\n  \"message\": \"Stale context flagged for ",
           "durationMs": 0
         },
         {
@@ -311,7 +311,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"stewardshipRunId\": \"steward-1775092966142\",\n  \"customerId\": \"cust-1\",\n  \"scope\": \"full\",\n  \"dryRun\": true,\n  \"timestamp\": 1775092966142,\n  \"stub\": true,\n  \"summary\": {\n    \"totalAssetsScanned\": 0",
+          "responsePreview": "{\n  \"stewardshipRunId\": \"steward-1775102260548\",\n  \"customerId\": \"cust-1\",\n  \"scope\": \"full\",\n  \"dryRun\": true,\n  \"timestamp\": 1775102260548,\n  \"stub\": true,\n  \"summary\": {\n    \"totalAssetsScanned\": 0",
           "durationMs": 0
         }
       ]
@@ -327,16 +327,16 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"name\": \"ANALYTICS\",\n    \"owner\": \"SYSADMIN\",\n    \"createdAt\": 1759540966184,\n    \"comment\": \"Analytics data warehouse\"\n  },\n  {\n    \"name\": \"RAW\",\n    \"owner\": \"SYSADMIN\",\n    \"createdAt\": ",
+          "responsePreview": "[\n  {\n    \"name\": \"ANALYTICS\",\n    \"owner\": \"SYSADMIN\",\n    \"createdAt\": 1759550260592,\n    \"comment\": \"Analytics data warehouse\"\n  },\n  {\n    \"name\": \"RAW\",\n    \"owner\": \"SYSADMIN\",\n    \"createdAt\": ",
           "durationMs": 0
         },
         {
           "name": "list_snowflake_tables",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Schema not found: test_db.public\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"ORDERS\",\n    \"namespace\": [\n      \"ANALYTICS\",\n      \"PUBLIC\"\n    ],\n    \"schema\": [],\n    \"properties\": {\n      \"kind\": \"TABLE\",\n      \"rowCount\": \"12000000\",\n      \"bytes\": \"48000",
           "durationMs": 0
         },
         {
@@ -345,7 +345,7 @@
           "hasInputSchema": true,
           "callResult": "fail",
           "isError": true,
-          "responsePreview": "{\"error\":\"Table not found: test_db.public.orders\"}",
+          "responsePreview": "{\"error\":\"Table not found: ANALYTICS.PUBLIC.orders\"}",
           "durationMs": 0
         },
         {
@@ -354,7 +354,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"warehouseName\": \"COMPUTE_WH\",\n    \"creditsUsed\": 245.8,\n    \"queriesExecuted\": 15420,\n    \"avgExecutionTimeMs\": 3200,\n    \"period\": {\n      \"start\": 1774488166184,\n      \"end\": 177509296618",
+          "responsePreview": "[\n  {\n    \"warehouseName\": \"COMPUTE_WH\",\n    \"creditsUsed\": 245.8,\n    \"queriesExecuted\": 15420,\n    \"avgExecutionTimeMs\": 3200,\n    \"period\": {\n      \"start\": 1774497460592,\n      \"end\": 177510226059",
           "durationMs": 0
         },
         {
@@ -363,7 +363,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"datasetId\": \"analytics\",\n    \"projectId\": \"my-project\",\n    \"location\": \"US\",\n    \"createdAt\": 1767316966184,\n    \"description\": \"Core analytics tables\"\n  },\n  {\n    \"datasetId\": \"raw_event",
+          "responsePreview": "[\n  {\n    \"datasetId\": \"analytics\",\n    \"projectId\": \"my-project\",\n    \"location\": \"US\",\n    \"createdAt\": 1767326260592,\n    \"description\": \"Core analytics tables\"\n  },\n  {\n    \"datasetId\": \"raw_event",
           "durationMs": 0
         },
         {
@@ -381,7 +381,7 @@
           "hasInputSchema": true,
           "callResult": "fail",
           "isError": true,
-          "responsePreview": "{\"error\":\"Table not found: orders.test\"}",
+          "responsePreview": "{\"error\":\"Table not found: orders.tbl-001\"}",
           "durationMs": 0
         },
         {
@@ -435,16 +435,16 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"name\": \"main\",\n    \"owner\": \"data-engineering\",\n    \"comment\": \"Primary catalog for production data\",\n    \"createdAt\": 1767316966184\n  },\n  {\n    \"name\": \"hive_metastore\",\n    \"owner\": \"adm",
+          "responsePreview": "[\n  {\n    \"name\": \"main\",\n    \"owner\": \"data-engineering\",\n    \"comment\": \"Primary catalog for production data\",\n    \"createdAt\": 1767326260592\n  },\n  {\n    \"name\": \"hive_metastore\",\n    \"owner\": \"adm",
           "durationMs": 0
         },
         {
           "name": "list_databricks_tables",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Catalog not found: test\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"orders\",\n    \"namespace\": [\n      \"main\",\n      \"default\"\n    ],\n    \"schema\": [\n      {\n        \"name\": \"order_id\",\n        \"type\": \"BIGINT\",\n        \"nullable\": false,\n        \"co",
           "durationMs": 0
         },
         {
@@ -453,7 +453,7 @@
           "hasInputSchema": true,
           "callResult": "fail",
           "isError": true,
-          "responsePreview": "{\"error\":\"Schema not found: test.public\"}",
+          "responsePreview": "{\"error\":\"Schema not found: main.PUBLIC\"}",
           "durationMs": 0
         },
         {
@@ -489,7 +489,7 @@
           "hasInputSchema": true,
           "callResult": "fail",
           "isError": true,
-          "responsePreview": "{\"error\":\"Provider not found: test. Available: snowflake, bigquery, dbt, databricks, iceberg, polaris, glue, hive-metastore, openmetadata, openlineage, datahub, purview, dataplex, nessie\"}",
+          "responsePreview": "{\"error\":\"Namespace must be in \\\"DATABASE.SCHEMA\\\" format, got: default\"}",
           "durationMs": 0
         },
         {
@@ -498,16 +498,16 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"name\": \"analytics_db\",\n    \"description\": \"Analytics data lake database\",\n    \"locationUri\": \"s3://analytics-data-lake/databases/analytics_db/\",\n    \"createTime\": 1757812966184\n  },\n  {\n   ",
+          "responsePreview": "[\n  {\n    \"name\": \"analytics_db\",\n    \"description\": \"Analytics data lake database\",\n    \"locationUri\": \"s3://analytics-data-lake/databases/analytics_db/\",\n    \"createTime\": 1757822260592\n  },\n  {\n   ",
           "durationMs": 0
         },
         {
           "name": "list_glue_tables",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Database not found: test_db\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"user_events\",\n    \"namespace\": [\n      \"analytics_db\"\n    ],\n    \"schema\": [\n      {\n        \"name\": \"event_id\",\n        \"type\": \"string\",\n        \"nullable\": true,\n        \"comment",
           "durationMs": 0
         },
         {
@@ -516,7 +516,7 @@
           "hasInputSchema": true,
           "callResult": "fail",
           "isError": true,
-          "responsePreview": "{\"error\":\"Database not found: test_db\"}",
+          "responsePreview": "{\"error\":\"Table not found: analytics_db.orders\"}",
           "durationMs": 0
         },
         {
@@ -541,9 +541,9 @@
           "name": "list_hive_tables",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Database not found: test_db\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"customer_dim\",\n    \"namespace\": [\n      \"default\"\n    ],\n    \"schema\": [\n      {\n        \"name\": \"customer_id\",\n        \"type\": \"bigint\",\n        \"nullable\": true,\n        \"comment\"",
           "durationMs": 0
         },
         {
@@ -552,7 +552,7 @@
           "hasInputSchema": true,
           "callResult": "fail",
           "isError": true,
-          "responsePreview": "{\"error\":\"Database not found: test_db\"}",
+          "responsePreview": "{\"error\":\"Table not found: default.customers\"}",
           "durationMs": 0
         },
         {
@@ -568,18 +568,18 @@
           "name": "list_om_tables",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Database not found: test_db\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"customers\",\n    \"namespace\": [\n      \"warehouse_db\"\n    ],\n    \"schema\": [\n      {\n        \"name\": \"customer_id\",\n        \"type\": \"BIGINT\",\n        \"nullable\": true,\n        \"commen",
           "durationMs": 0
         },
         {
           "name": "get_om_table",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Table not found: test\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"id\": \"tbl-001\",\n  \"name\": \"customers\",\n  \"fullyQualifiedName\": \"snowflake.warehouse_db.public.customers\",\n  \"columns\": [\n    {\n      \"name\": \"customer_id\",\n      \"dataType\": \"BIGINT\",\n      \"desc",
           "durationMs": 0
         },
         {
@@ -606,16 +606,16 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[]",
+          "responsePreview": "[\n  {\n    \"name\": \"customers_not_null_email\",\n    \"testDefinition\": \"columnValuesToBeNotNull\",\n    \"testCaseStatus\": \"Success\",\n    \"timestamp\": 1775015860593\n  },\n  {\n    \"name\": \"customers_unique_id",
           "durationMs": 0
         },
         {
           "name": "list_lineage_datasets",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Namespace not found: test\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"raw_orders\",\n    \"namespace\": \"default\",\n    \"sourceName\": \"postgres_prod\",\n    \"fields\": [\n      {\n        \"name\": \"order_id\",\n        \"type\": \"BIGINT\",\n        \"description\": \"Ord",
           "durationMs": 0
         },
         {
@@ -642,7 +642,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\"success\":true,\"eventType\":\"test\",\"jobName\":\"test\",\"runId\":\"test\"}",
+          "responsePreview": "{\"success\":true,\"eventType\":\"test\",\"jobName\":\"etl_orders\",\"runId\":\"run-001\"}",
           "durationMs": 0
         },
         {
@@ -658,9 +658,9 @@
           "name": "get_datahub_dataset",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Dataset not found: test\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"urn\": \"urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.public.orders,PROD)\",\n  \"name\": \"analytics.public.orders\",\n  \"platform\": \"snowflake\",\n  \"description\": \"Orders fact table\",\n  \"schem",
           "durationMs": 0
         },
         {
@@ -669,7 +669,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"urn\": \"test\",\n  \"direction\": \"test\",\n  \"entities\": []\n}",
+          "responsePreview": "{\n  \"urn\": \"urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.public.orders,PROD)\",\n  \"direction\": \"downstream\",\n  \"entities\": [\n    {\n      \"urn\": \"urn:li:dataset:(urn:li:dataPlatform:snowflake",
           "durationMs": 0
         },
         {
@@ -721,9 +721,9 @@
           "name": "get_purview_entity",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Entity not found: test\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"guid\": \"pv-001\",\n  \"typeName\": \"azure_sql_table\",\n  \"attributes\": {\n    \"qualifiedName\": \"mssql://server.database.dbo.customers\",\n    \"name\": \"customers\",\n    \"description\": \"Customer master data",
           "durationMs": 0
         },
         {
@@ -732,7 +732,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"guidEntityMap\": {},\n  \"relations\": []\n}",
+          "responsePreview": "{\n  \"guidEntityMap\": {\n    \"pv-001\": {\n      \"guid\": \"pv-001\",\n      \"typeName\": \"azure_sql_table\",\n      \"attributes\": {\n        \"qualifiedName\": \"mssql://server.database.dbo.customers\",\n        \"nam",
           "durationMs": 0
         },
         {
@@ -750,25 +750,25 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"name\": \"projects/my-project/locations/us-central1/lakes/analytics-lake\",\n    \"displayName\": \"Analytics Lake\",\n    \"state\": \"ACTIVE\",\n    \"createTime\": \"2026-04-02T01:22:46.185Z\",\n    \"metas",
+          "responsePreview": "[\n  {\n    \"name\": \"projects/my-project/locations/us-central1/lakes/analytics-lake\",\n    \"displayName\": \"Analytics Lake\",\n    \"state\": \"ACTIVE\",\n    \"createTime\": \"2026-04-02T03:57:40.593Z\",\n    \"metas",
           "durationMs": 0
         },
         {
           "name": "list_dataplex_entities",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Zone not found: test\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"projects/my-project/locations/us-central1/lakes/analytics-lake/zones/curated-zone/entities/customers\",\n    \"displayName\": \"customers\",\n    \"type\": \"TABLE\",\n    \"system\": \"BigQuery\",",
           "durationMs": 0
         },
         {
           "name": "get_dataplex_entity",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Entity not found: test\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"name\": \"projects/my-project/locations/us-central1/lakes/analytics-lake/zones/curated-zone/entities/orders\",\n  \"displayName\": \"orders\",\n  \"type\": \"TABLE\",\n  \"system\": \"BigQuery\",\n  \"schema\": {\n   ",
           "durationMs": 0
         },
         {
@@ -793,9 +793,9 @@
           "name": "list_nessie_tables",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Reference not found: test\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"type\": \"ICEBERG_TABLE\",\n    \"key\": {\n      \"elements\": [\n        \"warehouse\",\n        \"analytics\",\n        \"customers\"\n      ]\n    },\n    \"contentId\": \"tbl-001\"\n  },\n  {\n    \"type\": \"ICEBER",
           "durationMs": 0
         },
         {
@@ -804,25 +804,25 @@
           "hasInputSchema": true,
           "callResult": "fail",
           "isError": true,
-          "responsePreview": "{\"error\":\"Reference not found: test\"}",
+          "responsePreview": "{\"error\":\"Content not found: analytics.customers on main\"}",
           "durationMs": 0
         },
         {
           "name": "create_nessie_branch",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Source reference not found: test\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"name\": \"test-branch\",\n  \"hash\": \"branch-19d4c56f574\",\n  \"type\": \"BRANCH\"\n}",
           "durationMs": 0
         },
         {
           "name": "diff_nessie_refs",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Reference not found: test\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"key\": {\n      \"elements\": [\n        \"warehouse\",\n        \"analytics\",\n        \"user_segments\"\n      ]\n    },\n    \"from\": null,\n    \"to\": \"tbl-007\"\n  },\n  {\n    \"key\": {\n      \"elements\": [\n",
           "durationMs": 0
         },
         {
@@ -831,7 +831,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"triggered\": true,\n  \"dagId\": \"test\",\n  \"runId\": \"manual__1775092966188\",\n  \"status\": \"queued\"\n}",
+          "responsePreview": "{\n  \"triggered\": true,\n  \"dagId\": \"daily_pipeline\",\n  \"runId\": \"manual__1775102260596\",\n  \"status\": \"queued\"\n}",
           "durationMs": 0
         },
         {
@@ -840,7 +840,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"triggered\": true,\n  \"jobName\": \"test\",\n  \"runId\": \"dagster-1775092966188\",\n  \"status\": \"queued\"\n}",
+          "responsePreview": "{\n  \"triggered\": true,\n  \"jobName\": \"etl_orders\",\n  \"runId\": \"dagster-1775102260596\",\n  \"status\": \"queued\"\n}",
           "durationMs": 0
         },
         {
@@ -849,7 +849,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"triggered\": true,\n  \"deploymentId\": \"deploy-churn-001\",\n  \"flowRunId\": \"prefect-1775092966188\",\n  \"status\": \"scheduled\"\n}",
+          "responsePreview": "{\n  \"triggered\": true,\n  \"deploymentId\": \"deploy-churn-001\",\n  \"flowRunId\": \"prefect-1775102260596\",\n  \"status\": \"scheduled\"\n}",
           "durationMs": 0
         },
         {
@@ -858,7 +858,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"triggered\": true,\n  \"stateMachineArn\": \"test\",\n  \"executionArn\": \"test:1775092966188\",\n  \"status\": \"RUNNING\"\n}",
+          "responsePreview": "{\n  \"triggered\": true,\n  \"stateMachineArn\": \"test\",\n  \"executionArn\": \"test:1775102260596\",\n  \"status\": \"RUNNING\"\n}",
           "durationMs": 0
         },
         {
@@ -867,7 +867,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"triggered\": true,\n  \"pipelineName\": \"test\",\n  \"runId\": \"adf-1775092966188\",\n  \"status\": \"InProgress\"\n}",
+          "responsePreview": "{\n  \"triggered\": true,\n  \"pipelineName\": \"test\",\n  \"runId\": \"adf-1775102260596\",\n  \"status\": \"InProgress\"\n}",
           "durationMs": 0
         },
         {
@@ -876,7 +876,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"triggered\": true,\n  \"jobId\": \"test\",\n  \"runId\": 1775092966188,\n  \"status\": \"queued\"\n}",
+          "responsePreview": "{\n  \"triggered\": true,\n  \"jobId\": \"test\",\n  \"runId\": 1775102260596,\n  \"status\": \"queued\"\n}",
           "durationMs": 0
         },
         {
@@ -885,7 +885,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"triggered\": true,\n  \"dagId\": \"test\",\n  \"runId\": \"composer-1775092966188\",\n  \"status\": \"queued\"\n}",
+          "responsePreview": "{\n  \"triggered\": true,\n  \"dagId\": \"daily_pipeline\",\n  \"runId\": \"composer-1775102260596\",\n  \"status\": \"queued\"\n}",
           "durationMs": 0
         },
         {
@@ -894,7 +894,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"pagerduty\",\n  \"summary\": \"test\",\n  \"severity\": \"test\",\n  \"dedupKey\": \"pd-1775092966188\"\n}",
+          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"pagerduty\",\n  \"summary\": \"test\",\n  \"severity\": \"test\",\n  \"dedupKey\": \"pd-1775102260596\"\n}",
           "durationMs": 0
         },
         {
@@ -912,7 +912,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"teams\",\n  \"title\": \"test\",\n  \"timestamp\": \"2026-04-02T01:22:46.188Z\"\n}",
+          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"teams\",\n  \"title\": \"test\",\n  \"timestamp\": \"2026-04-02T03:57:40.596Z\"\n}",
           "durationMs": 0
         },
         {
@@ -921,7 +921,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"opsgenie\",\n  \"message\": \"test\",\n  \"priority\": \"P3\",\n  \"alertId\": \"og-1775092966188\"\n}",
+          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"opsgenie\",\n  \"message\": \"test\",\n  \"priority\": \"P3\",\n  \"alertId\": \"og-1775102260596\"\n}",
           "durationMs": 0
         },
         {
@@ -930,7 +930,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"newrelic\",\n  \"eventType\": \"test\",\n  \"message\": \"test\",\n  \"timestamp\": 1775092966188\n}",
+          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"newrelic\",\n  \"eventType\": \"test\",\n  \"message\": \"test\",\n  \"timestamp\": 1775102260596\n}",
           "durationMs": 0
         },
         {
@@ -939,7 +939,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"registered\": true,\n  \"subject\": \"test\",\n  \"schemaType\": \"AVRO\",\n  \"id\": 1775092966188,\n  \"version\": 1\n}",
+          "responsePreview": "{\n  \"registered\": true,\n  \"subject\": \"orders-value\",\n  \"schemaType\": \"AVRO\",\n  \"id\": 1775102260596,\n  \"version\": 1\n}",
           "durationMs": 0
         },
         {
@@ -948,7 +948,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"executed\": true,\n  \"suite\": \"test\",\n  \"datasource\": \"test\",\n  \"success\": true,\n  \"validations\": 0,\n  \"runId\": \"gx-1775092966188\"\n}",
+          "responsePreview": "{\n  \"executed\": true,\n  \"suite\": \"test\",\n  \"datasource\": \"test\",\n  \"success\": true,\n  \"validations\": 0,\n  \"runId\": \"gx-1775102260596\"\n}",
           "durationMs": 0
         },
         {
@@ -957,7 +957,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"executed\": true,\n  \"checkFile\": \"test\",\n  \"datasource\": \"test\",\n  \"passed\": 0,\n  \"failed\": 0,\n  \"warnings\": 0,\n  \"scanId\": \"soda-1775092966188\"\n}",
+          "responsePreview": "{\n  \"executed\": true,\n  \"checkFile\": \"test\",\n  \"datasource\": \"test\",\n  \"passed\": 0,\n  \"failed\": 0,\n  \"warnings\": 0,\n  \"scanId\": \"soda-1775102260596\"\n}",
           "durationMs": 0
         },
         {
@@ -966,7 +966,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"executed\": true,\n  \"monitorId\": \"test\",\n  \"incidents\": 0,\n  \"status\": \"healthy\",\n  \"runId\": \"mc-1775092966188\"\n}",
+          "responsePreview": "{\n  \"executed\": true,\n  \"monitorId\": \"test\",\n  \"incidents\": 0,\n  \"status\": \"healthy\",\n  \"runId\": \"mc-1775102260596\"\n}",
           "durationMs": 0
         },
         {
@@ -975,7 +975,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"created\": true,\n  \"provider\": \"servicenow\",\n  \"number\": \"INC1775092966188\",\n  \"shortDescription\": \"test\",\n  \"state\": \"New\"\n}",
+          "responsePreview": "{\n  \"created\": true,\n  \"provider\": \"servicenow\",\n  \"number\": \"INC1775102260596\",\n  \"shortDescription\": \"test\",\n  \"state\": \"New\"\n}",
           "durationMs": 0
         },
         {
@@ -984,7 +984,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"updated\": true,\n  \"provider\": \"servicenow\",\n  \"ticketNumber\": \"test\",\n  \"timestamp\": \"2026-04-02T01:22:46.188Z\"\n}",
+          "responsePreview": "{\n  \"updated\": true,\n  \"provider\": \"servicenow\",\n  \"ticketNumber\": \"test\",\n  \"timestamp\": \"2026-04-02T03:57:40.596Z\"\n}",
           "durationMs": 0
         },
         {
@@ -993,7 +993,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"created\": true,\n  \"provider\": \"jira-sm\",\n  \"key\": \"test-6188\",\n  \"summary\": \"test\",\n  \"status\": \"Open\"\n}",
+          "responsePreview": "{\n  \"created\": true,\n  \"provider\": \"jira-sm\",\n  \"key\": \"test-596\",\n  \"summary\": \"test\",\n  \"status\": \"Open\"\n}",
           "durationMs": 0
         },
         {
@@ -1002,7 +1002,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"updated\": true,\n  \"provider\": \"jira-sm\",\n  \"issueKey\": \"test\",\n  \"timestamp\": \"2026-04-02T01:22:46.188Z\"\n}",
+          "responsePreview": "{\n  \"updated\": true,\n  \"provider\": \"jira-sm\",\n  \"issueKey\": \"test\",\n  \"timestamp\": \"2026-04-02T03:57:40.596Z\"\n}",
           "durationMs": 0
         },
         {
@@ -1020,7 +1020,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"resolved\": true,\n  \"provider\": \"opsgenie\",\n  \"alertId\": \"test\",\n  \"status\": \"closed\"\n}",
+          "responsePreview": "{\n  \"resolved\": true,\n  \"provider\": \"opsgenie\",\n  \"alertId\": \"alert-001\",\n  \"status\": \"closed\"\n}",
           "durationMs": 0
         },
         {
@@ -1047,7 +1047,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"resolved\": true,\n  \"provider\": \"teams\",\n  \"alertId\": \"test\",\n  \"status\": \"card_updated\"\n}",
+          "responsePreview": "{\n  \"resolved\": true,\n  \"provider\": \"teams\",\n  \"alertId\": \"alert-001\",\n  \"status\": \"card_updated\"\n}",
           "durationMs": 0
         },
         {
@@ -1065,7 +1065,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"subject\": \"test\",\n  \"registered\": false,\n  \"error\": \"No SCHEMA_REGISTRY_URL configured.\",\n  \"stubFallback\": true\n}",
+          "responsePreview": "{\n  \"subject\": \"orders-value\",\n  \"registered\": false,\n  \"error\": \"No SCHEMA_REGISTRY_URL configured.\",\n  \"stubFallback\": true\n}",
           "durationMs": 0
         }
       ]
@@ -1081,7 +1081,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"tableId\": \"tbl-legacy-orders\",\n    \"customerId\": \"cust-1\",\n    \"tableName\": \"legacy_orders_2022\",\n    \"database\": \"archive\",\n    \"schema\": \"legacy\",\n    \"lastAccessedAt\": 1764724966195,\n   ",
+          "responsePreview": "[\n  {\n    \"tableId\": \"tbl-legacy-orders\",\n    \"customerId\": \"cust-1\",\n    \"tableName\": \"legacy_orders_2022\",\n    \"database\": \"archive\",\n    \"schema\": \"legacy\",\n    \"lastAccessedAt\": 1764734260603,\n   ",
           "durationMs": 0
         },
         {
@@ -1142,7 +1142,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"granted\": true,\n  \"grant\": {\n    \"id\": \"grant-1775092966207\",\n    \"userId\": \"user-1\",\n    \"resource\": \"orders\",\n    \"accessLevel\": \"read\",\n    \"grantedAt\": 1775092966207,\n    \"expiresAt\": 1782868",
+          "responsePreview": "{\n  \"granted\": true,\n  \"grant\": {\n    \"id\": \"grant-1775102260617\",\n    \"userId\": \"user-001\",\n    \"resource\": \"orders\",\n    \"accessLevel\": \"read\",\n    \"grantedAt\": 1775102260617,\n    \"expiresAt\": 17828",
           "durationMs": 0
         },
         {
@@ -1160,7 +1160,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"id\": \"audit-1775092966207\",\n  \"customerId\": \"cust-1\",\n  \"period\": {\n    \"from\": 1772500966207,\n    \"to\": 1775092966207\n  },\n  \"summary\": {\n    \"totalActions\": 2,\n    \"policiesEvaluated\": 1,\n    \"",
+          "responsePreview": "{\n  \"id\": \"audit-1775102260617\",\n  \"customerId\": \"cust-1\",\n  \"period\": {\n    \"from\": 1772510260617,\n    \"to\": 1775102260617\n  },\n  \"summary\": {\n    \"totalActions\": 2,\n    \"policiesEvaluated\": 1,\n    \"",
           "durationMs": 0
         },
         {
@@ -1169,7 +1169,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"applied\": true,\n  \"userId\": \"user-1\",\n  \"resource\": \"orders\",\n  \"role\": \"viewer\",\n  \"permissions\": [\n    \"SELECT\"\n  ],\n  \"columnRestrictions\": \"none (full access)\",\n  \"appliedAt\": 1775092966207,\n",
+          "responsePreview": "{\n  \"applied\": true,\n  \"userId\": \"user-001\",\n  \"resource\": \"orders\",\n  \"role\": \"viewer\",\n  \"permissions\": [\n    \"SELECT\"\n  ],\n  \"columnRestrictions\": \"none (full access)\",\n  \"appliedAt\": 1775102260617",
           "durationMs": 0
         },
         {
@@ -1178,7 +1178,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"reviewId\": \"review-1775092966207-3i8c4o\",\n  \"status\": \"pending\",\n  \"message\": \"Governance review requested for read on orders\",\n  \"review\": {\n    \"id\": \"review-1775092966207-3i8c4o\",\n    \"custome",
+          "responsePreview": "{\n  \"reviewId\": \"review-1775102260617-lk78uk\",\n  \"status\": \"pending\",\n  \"message\": \"Governance review requested for read on orders\",\n  \"review\": {\n    \"id\": \"review-1775102260617-lk78uk\",\n    \"custome",
           "durationMs": 0
         }
       ]
@@ -1194,7 +1194,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"incidentId\": \"inc-1775092966227-2u01cb\",\n  \"type\": \"quality_degradation\",\n  \"severity\": \"info\",\n  \"confidence\": 0.5,\n  \"title\": \"Data quality degradation on unknown\",\n  \"description\": \"quality de",
+          "responsePreview": "{\n  \"incidentId\": \"inc-1775102260634-xth6vt\",\n  \"type\": \"quality_degradation\",\n  \"severity\": \"info\",\n  \"confidence\": 0.5,\n  \"title\": \"Data quality degradation on unknown\",\n  \"description\": \"quality de",
           "durationMs": 0
         },
         {
@@ -1213,7 +1213,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"incidentId\": \"inc-test\",\n  \"playbook\": \"apply_schema_migration\",\n  \"success\": true,\n  \"automated\": true,\n  \"actionsPerformed\": [\n    \"Detected schema change\",\n    \"Requested schema diff from dw-s",
-          "durationMs": 3
+          "durationMs": 1
         },
         {
           "name": "get_incident_history",
@@ -1222,7 +1222,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"totalIncidents\": 14,\n  \"byType\": {\n    \"schema_change\": 3,\n    \"source_delay\": 3,\n    \"resource_exhaustion\": 2,\n    \"code_regression\": 2,\n    \"infrastructure\": 2,\n    \"quality_degradation\": 2\n  }",
-          "durationMs": 1
+          "durationMs": 0
         },
         {
           "name": "monitor_metrics",
@@ -1244,19 +1244,19 @@
           "name": "query_data_nl",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Invalid SQL: Potential SQL injection pattern detected.\"}",
-          "durationMs": 2
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"sql\": \"SELECT SUM(amount) FROM revenue_daily\",\n  \"results\": [\n    {\n      \"total_revenue\": 6099130.44\n    }\n  ],\n  \"rowCount\": 1,\n  \"truncated\": false,\n  \"executionTimeMs\": 1,\n  \"confidence\": 0.8",
+          "durationMs": 1
         },
         {
           "name": "generate_insight",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"results must be a non-empty array\"}",
-          "durationMs": 0
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"summary\": \"Time series analysis of 3 data points for amount. Mean: 1,100, Std Dev: 82.\",\n  \"keyFindings\": [\n    \"The amount metric shows a increasing trend over the analyzed period.\",\n    \"Most r",
+          "durationMs": 21
         },
         {
           "name": "explain_anomaly",
@@ -1265,7 +1265,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"metric\": \"test\",\n  \"currentValue\": 1,\n  \"expectedValue\": 1,\n  \"explanation\": \"The metric \\\"test\\\" is currently at 1, which is 0% lower than the expected value of 1. This represents a minor deviat",
-          "durationMs": 2536
+          "durationMs": 2503
         },
         {
           "name": "schedule_insight",
@@ -1273,7 +1273,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"created\": true,\n  \"id\": \"sched-1775092970810-zc4x\",\n  \"name\": \"test\",\n  \"question\": \"test\",\n  \"cronExpression\": \"test\",\n  \"customerId\": \"cust-1\",\n  \"createdAt\": 1775092970810,\n  \"active\": true\n}",
+          "responsePreview": "{\n  \"created\": true,\n  \"id\": \"sched-1775102265183-b4nw\",\n  \"name\": \"test\",\n  \"question\": \"What is total revenue by month?\",\n  \"cronExpression\": \"test\",\n  \"customerId\": \"cust-1\",\n  \"createdAt\": 1775102",
           "durationMs": 0
         },
         {
@@ -1282,16 +1282,16 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"created\": true,\n  \"id\": \"alert-1775092970811-lup6\",\n  \"name\": \"test\",\n  \"metric\": \"test\",\n  \"condition\": \"test\",\n  \"threshold\": 1,\n  \"customerId\": \"cust-1\",\n  \"createdAt\": 1775092970811,\n  \"activ",
+          "responsePreview": "{\n  \"created\": true,\n  \"id\": \"alert-1775102265183-o6ch\",\n  \"name\": \"test\",\n  \"metric\": \"test\",\n  \"condition\": \"test\",\n  \"threshold\": 1,\n  \"customerId\": \"cust-1\",\n  \"createdAt\": 1775102265183,\n  \"activ",
           "durationMs": 0
         },
         {
           "name": "export_insight",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"results must be a non-empty array\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"format\": \"csv\",\n  \"filename\": \"export-1775102265183.csv\",\n  \"rowCount\": 2,\n  \"data\": \"date,amount\\n2025-01-01,1000\\n2025-02-01,1200\"\n}",
           "durationMs": 0
         }
       ]
@@ -1307,8 +1307,8 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"assessment\": {\n    \"sourceId\": \"test\",\n    \"platform\": \"test\",\n    \"totalObjects\": 0,\n    \"complexityBreakdown\": {\n      \"simple\": 0,\n      \"medium\": 0,\n      \"complex\": 0\n    },\n    \"estimatedEf",
-          "durationMs": 0
+          "responsePreview": "{\n  \"assessment\": {\n    \"sourceId\": \"test\",\n    \"platform\": \"seldon\",\n    \"totalObjects\": 0,\n    \"complexityBreakdown\": {\n      \"simple\": 0,\n      \"medium\": 0,\n      \"complex\": 0\n    },\n    \"estimated",
+          "durationMs": 1
         },
         {
           "name": "translate_sql",
@@ -1317,7 +1317,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"originalSQL\": \"SELECT 1\",\n  \"translatedSQL\": \"SELECT 1\",\n  \"sourceDialect\": \"postgresql\",\n  \"targetDialect\": \"snowflake\",\n  \"confidence\": 1,\n  \"warnings\": [],\n  \"fallbackUsed\": false,\n  \"rulesApp",
-          "durationMs": 3
+          "durationMs": 4
         },
         {
           "name": "validate_migration",
@@ -1325,7 +1325,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"validationId\": \"val-test-1775092970843\",\n  \"checks\": [],\n  \"passCount\": 0,\n  \"failCount\": 0,\n  \"divergencePercentage\": 0,\n  \"message\": \"No objects found for source — nothing to validate\"\n}",
+          "responsePreview": "{\n  \"validationId\": \"val-test-1775102265211\",\n  \"checks\": [],\n  \"passCount\": 0,\n  \"failCount\": 0,\n  \"divergencePercentage\": 0,\n  \"message\": \"No objects found for source — nothing to validate\"\n}",
           "durationMs": 0
         },
         {
@@ -1334,7 +1334,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"comparisonId\": \"cmp-test-test-1775092970844\",\n  \"sourceId\": \"test\",\n  \"targetId\": \"test\",\n  \"sampleSize\": 1000,\n  \"objectsCompared\": 0,\n  \"overallMatchRate\": 100,\n  \"summary\": {\n    \"pass\": 0,\n  ",
+          "responsePreview": "{\n  \"comparisonId\": \"cmp-test-test-1775102265211\",\n  \"sourceId\": \"test\",\n  \"targetId\": \"test\",\n  \"sampleSize\": 1000,\n  \"objectsCompared\": 0,\n  \"overallMatchRate\": 100,\n  \"summary\": {\n    \"pass\": 0,\n  ",
           "durationMs": 0
         },
         {
@@ -1384,9 +1384,9 @@
           "name": "evaluate_model",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Provide model_id or dataset_id (or both)\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"datasetId\": \"ds-churn-001\",\n  \"rankMetric\": \"accuracy\",\n  \"lowerIsBetter\": false,\n  \"modelCount\": 1,\n  \"leaderboard\": [\n    {\n      \"rank\": 1,\n      \"modelId\": \"model-churn-xgb-001\",\n      \"algor",
           "durationMs": 0
         },
         {
@@ -1429,9 +1429,9 @@
           "name": "compare_experiments",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"Experiment \\\"test\\\" not found\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"experimentId\": \"exp-churn-001\",\n  \"experimentName\": \"Churn Prediction Experiment\",\n  \"rankMetric\": \"accuracy\",\n  \"lowerIsBetter\": false,\n  \"totalRuns\": 2,\n  \"availableMetrics\": [\n    \"accuracy\",\n",
           "durationMs": 0
         },
         {
@@ -1447,9 +1447,9 @@
           "name": "get_model_versions",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\"error\":\"No registered model named \\\"test\\\" found\"}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"modelName\": \"churn-predictor\",\n  \"totalVersions\": 1,\n  \"versions\": [\n    {\n      \"registryId\": \"reg-churn-001\",\n      \"version\": 1,\n      \"modelId\": \"model-churn-xgb-001\",\n      \"stage\": \"product",
           "durationMs": 0
         },
         {
@@ -1519,7 +1519,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"id\": \"audit-001\",\n    \"timestamp\": 1775020970871,\n    \"agentName\": \"pipelines\",\n    \"action\": \"pipeline_executed\",\n    \"input\": \"input_for_pipeline_executed\",\n    \"output\": \"result_of_pipel",
+          "responsePreview": "[\n  {\n    \"id\": \"audit-001\",\n    \"timestamp\": 1775030265246,\n    \"agentName\": \"pipelines\",\n    \"action\": \"pipeline_executed\",\n    \"input\": \"input_for_pipeline_executed\",\n    \"output\": \"result_of_pipel",
           "durationMs": 0
         },
         {
@@ -1528,7 +1528,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"agentName\": \"pipelines\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775092960871,\n    \"uptime\": 259200001,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"incidents\",\n    \"status",
+          "responsePreview": "[\n  {\n    \"agentName\": \"pipelines\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775102255246,\n    \"uptime\": 259200001,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"incidents\",\n    \"status",
           "durationMs": 0
         },
         {
@@ -1537,7 +1537,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"agentName\": \"governance\",\n    \"metric\": \"error_rate\",\n    \"currentValue\": 0.08,\n    \"baselineValue\": 0.08,\n    \"threshold\": 0.05,\n    \"severity\": \"warning\",\n    \"detectedAt\": 1775092970872\n",
+          "responsePreview": "[\n  {\n    \"agentName\": \"governance\",\n    \"metric\": \"error_rate\",\n    \"currentValue\": 0.08,\n    \"baselineValue\": 0.08,\n    \"threshold\": 0.05,\n    \"severity\": \"warning\",\n    \"detectedAt\": 1775102265247\n",
           "durationMs": 0
         },
         {
@@ -1555,7 +1555,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"agentName\": \"catalog\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775092960871,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"governance\",\n    \"status\": \"degraded\",\n    \"lastHe",
+          "responsePreview": "[\n  {\n    \"agentName\": \"catalog\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775102255246,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"governance\",\n    \"status\": \"degraded\",\n    \"lastHe",
           "durationMs": 1
         }
       ]
@@ -1632,7 +1632,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"created\": true,\n  \"sla\": {\n    \"id\": \"sla-1775092970895\",\n    \"datasetId\": \"orders\",\n    \"customerId\": \"cust-1\",\n    \"rules\": [\n      {\n        \"metric\": \"freshness\",\n        \"operator\": \"lte\",\n ",
+          "responsePreview": "{\n  \"created\": true,\n  \"sla\": {\n    \"id\": \"sla-1775102265273\",\n    \"datasetId\": \"orders\",\n    \"customerId\": \"cust-1\",\n    \"rules\": [\n      {\n        \"metric\": \"freshness\",\n        \"operator\": \"lte\",\n ",
           "durationMs": 0
         },
         {
@@ -1641,8 +1641,8 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"totalAnomalies\": 2,\n  \"actionableAnomalies\": 2,\n  \"anomalies\": [\n    {\n      \"id\": \"anom-orders-null_rate-1775092970894\",\n      \"metric\": \"null_rate_orders\",\n      \"severity\": \"warning\",\n      \"v",
-          "durationMs": 0
+          "responsePreview": "{\n  \"totalAnomalies\": 2,\n  \"actionableAnomalies\": 2,\n  \"anomalies\": [\n    {\n      \"id\": \"anom-orders-null_rate-1775102265272\",\n      \"metric\": \"null_rate_orders\",\n      \"severity\": \"warning\",\n      \"v",
+          "durationMs": 1
         },
         {
           "name": "create_quality_tests_for_pipeline",
@@ -1650,7 +1650,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"pipelineId\": \"test-pipe\",\n  \"customerId\": \"cust-1\",\n  \"testsGenerated\": 0,\n  \"tests\": [],\n  \"generatedAt\": 1775092970895\n}",
+          "responsePreview": "{\n  \"pipelineId\": \"test-pipe\",\n  \"customerId\": \"cust-1\",\n  \"testsGenerated\": 0,\n  \"tests\": [],\n  \"generatedAt\": 1775102265274\n}",
           "durationMs": 0
         },
         {
@@ -1682,9 +1682,9 @@
           "name": "assess_impact",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\n  \"error\": \"Cannot read properties of undefined (reading 'toLowerCase')\"\n}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"changeId\": \"chg-1\",\n  \"affectedEntities\": [\n    {\n      \"id\": \"mart-dim-orders\",\n      \"name\": \"dim_orders\",\n      \"type\": \"dbt_model\",\n      \"impact\": \"direct\",\n      \"severity\": \"non-breaking\",",
           "durationMs": 0
         },
         {
@@ -1693,16 +1693,16 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"id\": \"mig-1775092970915-qsv2k8\",\n  \"customerId\": \"cust-1\",\n  \"status\": \"pending\",\n  \"forwardSql\": \"-- Migration for column_added on undefined.undefined.undefined (details pending)\",\n  \"rollbackSq",
+          "responsePreview": "{\n  \"id\": \"mig-1775102265285-6srfw8\",\n  \"changeId\": \"chg-1\",\n  \"customerId\": \"cust-1\",\n  \"status\": \"pending\",\n  \"forwardSql\": \"ALTER TABLE analytics.public.orders\\nADD COLUMN test_col TEXT;\",\n  \"rollb",
           "durationMs": 0
         },
         {
           "name": "apply_migration",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\n  \"success\": false,\n  \"error\": \"No migration SQL provided\"\n}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"migrationId\": \"mig-1\",\n  \"success\": true,\n  \"strategy\": \"blue_green\",\n  \"deployedAt\": 1775102265286,\n  \"rollbackAvailable\": true,\n  \"downstreamNotified\": [\n    \"dw-pipelines\",\n    \"dw-quality\",\n ",
           "durationMs": 0
         },
         {
@@ -1720,7 +1720,7 @@
           "hasInputSchema": true,
           "callResult": "fail",
           "isError": true,
-          "responsePreview": "{\n  \"error\": \"Table not found: analytics.public.orders\",\n  \"source\": \"test\",\n  \"customerId\": \"cust-1\"\n}",
+          "responsePreview": "{\n  \"error\": \"Table not found: ANALYTICS.PUBLIC.ORDERS\",\n  \"source\": \"snowflake\",\n  \"customerId\": \"cust-1\"\n}",
           "durationMs": 0
         },
         {
@@ -1736,18 +1736,18 @@
           "name": "validate_schema_compatibility",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\n  \"error\": \"Either change or migrationSql must be provided\"\n}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"valid\": true,\n  \"validationResults\": [\n    {\n      \"type\": \"syntax_check\",\n      \"passed\": true,\n      \"message\": \"SQL syntax appears valid\"\n    },\n    {\n      \"type\": \"dry_run\",\n      \"passed\": ",
           "durationMs": 0
         },
         {
           "name": "rollback_migration",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "fail",
-          "isError": true,
-          "responsePreview": "{\n  \"success\": false,\n  \"error\": \"No rollback SQL provided in migration\"\n}",
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"success\": true,\n  \"migrationId\": \"mig-1\",\n  \"rolledBackAt\": 1775102265286,\n  \"reason\": \"No reason provided\",\n  \"rollbackSql\": \"ALTER TABLE analytics.public.orders DROP COLUMN test_col\",\n  \"downst",
           "durationMs": 0
         }
       ]
@@ -1763,7 +1763,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"topologyId\": \"topo-test-1775092970922\",\n  \"streamConfig\": {\n    \"sourceConnector\": \"test\",\n    \"sinkConnector\": \"test\",\n    \"topic\": \"test\",\n    \"partitions\": 1,\n    \"replicationFactor\": 1\n  },\n ",
+          "responsePreview": "{\n  \"topologyId\": \"topo-test-1775102265295\",\n  \"streamConfig\": {\n    \"sourceConnector\": \"test\",\n    \"sinkConnector\": \"test\",\n    \"topic\": \"test\",\n    \"partitions\": 1,\n    \"replicationFactor\": 1\n  },\n ",
           "durationMs": 0
         },
         {
@@ -1781,16 +1781,16 @@
           "hasInputSchema": true,
           "callResult": "fail",
           "isError": true,
-          "responsePreview": "{\"error\":\"No connectors found for topology 'test'\"}",
+          "responsePreview": "{\"error\":\"Topology 'topo-orders-cdc' not found\"}",
           "durationMs": 0
         },
         {
           "name": "get_recommendations",
           "hasDescription": true,
           "hasInputSchema": true,
-          "callResult": "pass",
-          "isError": false,
-          "responsePreview": "{\n  \"topology\": \"test\",\n  \"analyzedAt\": 1775092970923,\n  \"slaStatus\": \"MET\",\n  \"totalLag\": 0,\n  \"totalThroughput\": 0,\n  \"maxErrorRate\": 0,\n  \"recommendationCount\": 0,\n  \"recommendations\": []\n}",
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Topology 'topo-orders-cdc' not found\"}",
           "durationMs": 0
         }
       ]
@@ -1815,7 +1815,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"entries\": [\n    {\n      \"id\": \"evt-06469\",\n      \"timestamp\": 1775152010939,\n      \"userId\": \"eng-sarah\",\n      \"agentName\": \"pipelines\",\n      \"toolName\": \"build_pipeline\",\n      \"inputSummary\":",
+          "responsePreview": "{\n  \"entries\": [\n    {\n      \"id\": \"evt-06469\",\n      \"timestamp\": 1775161305314,\n      \"userId\": \"eng-sarah\",\n      \"agentName\": \"pipelines\",\n      \"toolName\": \"build_pipeline\",\n      \"inputSummary\":",
           "durationMs": 0
         },
         {
@@ -1825,7 +1825,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"period\": \"30d\",\n  \"agents\": [\n    {\n      \"agentName\": \"pipelines\",\n      \"status\": \"fully_adopted\",\n      \"totalUsers\": 20,\n      \"activeUsers\": 19,\n      \"adoptionRate\": 0.95,\n      \"totalCalls",
-          "durationMs": 2
+          "durationMs": 3
         },
         {
           "name": "detect_usage_anomalies",
@@ -1843,7 +1843,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"patterns\": [\n    {\n      \"rank\": 1,\n      \"sequence\": [\n        \"governance:check_policy\",\n        \"governance:scan_pii\",\n        \"catalog:get_lineage\",\n        \"governance:audit_compliance\"\n    ",
-          "durationMs": 5
+          "durationMs": 8
         },
         {
           "name": "get_usage_heatmap",
@@ -1851,7 +1851,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"dimension\": \"hourly\",\n  \"period\": \"7d\",\n  \"heatmap\": [\n    {\n      \"bucket\": 0,\n      \"totalCalls\": 6,\n      \"uniqueUsers\": 5,\n      \"topAgent\": \"pipelines\"\n    },\n    {\n      \"bucket\": 1,\n      ",
+          "responsePreview": "{\n  \"dimension\": \"hourly\",\n  \"period\": \"7d\",\n  \"heatmap\": [\n    {\n      \"bucket\": 0,\n      \"totalCalls\": 20,\n      \"uniqueUsers\": 10,\n      \"topAgent\": \"streaming\"\n    },\n    {\n      \"bucket\": 1,\n    ",
           "durationMs": 1
         },
         {
@@ -1878,7 +1878,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"id\": \"audit-001\",\n    \"timestamp\": 1775020970939,\n    \"agentName\": \"pipelines\",\n    \"action\": \"pipeline_executed\",\n    \"input\": \"input_for_pipeline_executed\",\n    \"output\": \"result_of_pipel",
+          "responsePreview": "[\n  {\n    \"id\": \"audit-001\",\n    \"timestamp\": 1775030265314,\n    \"agentName\": \"pipelines\",\n    \"action\": \"pipeline_executed\",\n    \"input\": \"input_for_pipeline_executed\",\n    \"output\": \"result_of_pipel",
           "durationMs": 0
         },
         {
@@ -1887,7 +1887,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"agentName\": \"pipelines\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775092960939,\n    \"uptime\": 259200026,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"incidents\",\n    \"status",
+          "responsePreview": "[\n  {\n    \"agentName\": \"pipelines\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775102255314,\n    \"uptime\": 259200031,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"incidents\",\n    \"status",
           "durationMs": 0
         },
         {
@@ -1896,7 +1896,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"agentName\": \"governance\",\n    \"metric\": \"error_rate\",\n    \"currentValue\": 0.08,\n    \"baselineValue\": 0.08,\n    \"threshold\": 0.05,\n    \"severity\": \"warning\",\n    \"detectedAt\": 1775092970965\n",
+          "responsePreview": "[\n  {\n    \"agentName\": \"governance\",\n    \"metric\": \"error_rate\",\n    \"currentValue\": 0.08,\n    \"baselineValue\": 0.08,\n    \"threshold\": 0.05,\n    \"severity\": \"warning\",\n    \"detectedAt\": 1775102265345\n",
           "durationMs": 0
         },
         {
@@ -1914,8 +1914,8 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "[\n  {\n    \"agentName\": \"catalog\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775092960939,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"governance\",\n    \"status\": \"degraded\",\n    \"lastHe",
-          "durationMs": 0
+          "responsePreview": "[\n  {\n    \"agentName\": \"catalog\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775102255314,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"governance\",\n    \"status\": \"degraded\",\n    \"lastHe",
+          "durationMs": 1
         },
         {
           "name": "schedule_anomaly_scan",
@@ -1923,7 +1923,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"scheduleId\": \"scan-1775092970965-ickj\",\n  \"cron\": \"0 */6 * * *\",\n  \"sensitivity\": \"medium\",\n  \"agentName\": \"all\",\n  \"enabled\": true,\n  \"createdAt\": 1775092970965,\n  \"updatedAt\": 1775092970965,\n  ",
+          "responsePreview": "{\n  \"scheduleId\": \"scan-1775102265346-5l32\",\n  \"cron\": \"0 */6 * * *\",\n  \"sensitivity\": \"medium\",\n  \"agentName\": \"all\",\n  \"enabled\": true,\n  \"createdAt\": 1775102265346,\n  \"updatedAt\": 1775102265346,\n  ",
           "durationMs": 0
         },
         {
@@ -1932,7 +1932,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"format\": \"json\",\n  \"rowCount\": 500,\n  \"data\": [\n    {\n      \"id\": \"evt-05130\",\n      \"timestamp\": 1774488590939,\n      \"userId\": \"eng-priya\",\n      \"teamId\": \"analytics\",\n      \"agentName\": \"cata",
+          "responsePreview": "{\n  \"format\": \"json\",\n  \"rowCount\": 500,\n  \"data\": [\n    {\n      \"id\": \"evt-05130\",\n      \"timestamp\": 1774497885314,\n      \"userId\": \"eng-priya\",\n      \"teamId\": \"analytics\",\n      \"agentName\": \"cata",
           "durationMs": 1
         },
         {
@@ -1941,7 +1941,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"alertId\": \"alert-1775092970966-ruun\",\n  \"agentName\": \"all\",\n  \"metric\": \"usage_drop\",\n  \"threshold\": 0.3,\n  \"enabled\": true,\n  \"createdAt\": 1775092970966,\n  \"updatedAt\": 1775092970966,\n  \"status\"",
+          "responsePreview": "{\n  \"alertId\": \"alert-1775102265347-n1s4\",\n  \"agentName\": \"all\",\n  \"metric\": \"usage_drop\",\n  \"threshold\": 0.3,\n  \"enabled\": true,\n  \"createdAt\": 1775102265347,\n  \"updatedAt\": 1775102265347,\n  \"status\"",
           "durationMs": 0
         },
         {
@@ -1950,7 +1950,7 @@
           "hasInputSchema": true,
           "callResult": "pass",
           "isError": false,
-          "responsePreview": "{\n  \"agentName\": \"test\",\n  \"targetActiveUsers\": 10,\n  \"targetCallsPerDay\": 50,\n  \"targetAdoptionRate\": 0.8,\n  \"createdAt\": 1775092970966,\n  \"updatedAt\": 1775092970966,\n  \"status\": \"target_set\"\n}",
+          "responsePreview": "{\n  \"agentName\": \"test\",\n  \"targetActiveUsers\": 10,\n  \"targetCallsPerDay\": 50,\n  \"targetAdoptionRate\": 0.8,\n  \"createdAt\": 1775102265347,\n  \"updatedAt\": 1775102265347,\n  \"status\": \"target_set\"\n}",
           "durationMs": 0
         },
         {
@@ -1969,7 +1969,7 @@
           "callResult": "fail",
           "isError": true,
           "responsePreview": "{\"error\":\"Request to 'test.test' timed out after 5000ms\",\"targetAgent\":\"test\",\"queryType\":\"test\"}",
-          "durationMs": 5002
+          "durationMs": 5004
         },
         {
           "name": "get_metering_summary",
@@ -1978,7 +1978,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"available\": false,\n  \"message\": \"Metering service not reachable: Request to 'metering.get_usage' timed out after 500ms\",\n  \"customerId\": \"cust-1\",\n  \"period\": \"7d\"\n}",
-          "durationMs": 502
+          "durationMs": 501
         },
         {
           "name": "get_cost_enrichment",
@@ -1987,7 +1987,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"available\": false,\n  \"message\": \"Cost agent not reachable: Request to 'dw-cost.get_cost_report' timed out after 500ms\",\n  \"agentName\": \"all\",\n  \"period\": \"7d\"\n}",
-          "durationMs": 502
+          "durationMs": 501
         },
         {
           "name": "publish_usage_events",
@@ -1996,7 +1996,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"anomaliesPublished\": 0,\n  \"adoptionPublished\": 1\n}",
-          "durationMs": 4
+          "durationMs": 8
         },
         {
           "name": "get_anomaly_context",
@@ -2005,7 +2005,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"agentName\": \"test\",\n  \"detectedAt\": 1,\n  \"deployments\": {\n    \"available\": false,\n    \"message\": \"Pipeline agent not reachable\"\n  },\n  \"incidents\": {\n    \"available\": false,\n    \"message\": \"Incid",
-          "durationMs": 1003
+          "durationMs": 1004
         },
         {
           "name": "register_usage_datasets",
@@ -2014,7 +2014,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"registered\": 4,\n  \"totalDatasets\": 4,\n  \"datasets\": [\n    \"usage_events\",\n    \"agent_metrics\",\n    \"audit_trail\",\n    \"evaluation_scores\"\n  ]\n}",
-          "durationMs": 2006
+          "durationMs": 2005
         },
         {
           "name": "ingest_otel_spans",
@@ -2032,7 +2032,7 @@
           "callResult": "pass",
           "isError": false,
           "responsePreview": "{\n  \"resourceSpans\": [\n    {\n      \"resource\": {\n        \"attributes\": {\n          \"service.name\": \"dw-usage-intelligence\",\n          \"service.version\": \"0.1.0\"\n        }\n      },\n      \"scopeSpans\": ",
-          "durationMs": 3
+          "durationMs": 4
         }
       ]
     }
