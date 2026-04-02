@@ -73,9 +73,67 @@ const AGENTS = [
   // dw-orchestration excluded: internal service, not an MCP agent
 ];
 
+// Per-tool argument overrides — when a tool needs specific arg shapes
+const TOOL_ARG_OVERRIDES: Record<string, Record<string, unknown>> = {
+  // Schema tools
+  assess_impact: { change: { id: 'chg-1', customerId: 'cust-1', source: 'snowflake', database: 'analytics', schema: 'public', table: 'orders', changeType: 'column_added', severity: 'non-breaking', details: { column: 'test_col', newType: 'TEXT' } } },
+  apply_migration: { migration: { id: 'mig-1', changeId: 'chg-1', customerId: 'cust-1', status: 'pending', forwardSql: 'ALTER TABLE analytics.public.orders ADD COLUMN test_col TEXT', rollbackSql: 'ALTER TABLE analytics.public.orders DROP COLUMN test_col', affectedSystems: ['analytics'], backwardCompatible: true, estimatedEffortHours: 0.5 } },
+  rollback_migration: { migration: { id: 'mig-1', changeId: 'chg-1', customerId: 'cust-1', status: 'deployed', forwardSql: 'ALTER TABLE analytics.public.orders ADD COLUMN test_col TEXT', rollbackSql: 'ALTER TABLE analytics.public.orders DROP COLUMN test_col', affectedSystems: ['analytics'], backwardCompatible: true, estimatedEffortHours: 0.5 } },
+  get_schema_snapshot: { source: 'snowflake', database: 'ANALYTICS', schema: 'PUBLIC', table: 'ORDERS' },
+  validate_schema_compatibility: { change: { id: 'chg-1', customerId: 'cust-1', source: 'snowflake', database: 'analytics', schema: 'public', table: 'orders', changeType: 'column_added', severity: 'non-breaking', details: { column: 'test_col', newType: 'TEXT' } } },
+  // Insights tools
+  query_data_nl: { question: 'What is total revenue by month?' },
+  generate_insight: { sql: 'SELECT date, amount FROM revenue_daily', results: [{ date: '2025-01-01', amount: 1000 }, { date: '2025-02-01', amount: 1200 }, { date: '2025-03-01', amount: 1100 }] },
+  export_insight: { results: [{ date: '2025-01-01', amount: 1000 }, { date: '2025-02-01', amount: 1200 }], format: 'csv' },
+  // Context Catalog tools
+  explain_table: { tableIdentifier: 'orders' },
+  blast_radius_analysis: { assetId: 'tbl-1', changeType: 'column_drop', columnName: 'status' },
+  correlate_metadata: { assetId: 'tbl-1' },
+  import_tribal_knowledge: { entries: [{ content: 'The orders table is the source of truth for all order data', tags: ['orders', 'sot'] }] },
+  update_business_rule: { ruleId: 'rule-1', description: 'Updated rule for testing' },
+  // ML tools
+  evaluate_model: { model_id: 'model-churn-xgb-001', dataset_id: 'ds-churn-001' },
+  compare_experiments: { experiment_ids: ['exp-churn-001'] },
+  log_metrics: { experiment_id: 'exp-churn-001', run_id: 'run-001', metrics: [{ name: 'accuracy', value: 0.95 }] },
+  create_feature_pipeline: { name: 'test-pipeline', dataset_id: 'ds-churn-001', transforms: [{ column: 'age', type: 'normalize', outputColumn: 'age_normalized' }] },
+  materialize_features: { pipeline_id: 'fp-churn-001' },
+  detect_model_drift: { model_id: 'model-churn-xgb-001', baseline_dataset_id: 'ds-churn-001' },
+  ab_test_models: { model_a_id: 'model-churn-xgb-001', model_b_id: 'model-revenue-lgbm-001', dataset_id: 'ds-churn-001' },
+  model_serve: { model_id: 'model-churn-xgb-001', platform: 'seldon' },
+  get_model_versions: { model_name: 'churn-predictor' },
+  // Streaming
+  get_stream_health: { topology: 'topo-orders-cdc' },
+  // Connector-specific database overrides
+  list_glue_tables: { database: 'analytics_db' },
+  get_glue_table: { database: 'analytics_db', table: 'orders' },
+  list_hive_tables: { database: 'default' },
+  get_hive_table_schema: { database: 'default', table: 'customers' },
+  list_om_tables: { database: 'warehouse_db' },
+  get_om_table: { tableId: 'tbl-001' },
+  // Nessie
+  list_nessie_tables: { ref: 'main' },
+  get_nessie_content: { ref: 'main', key: 'analytics.customers' },
+  create_nessie_branch: { name: 'test-branch', from: 'main' },
+  diff_nessie_refs: { from: 'main', to: 'develop' },
+  // Dataplex
+  list_dataplex_entities: { zone: 'projects/my-project/locations/us-central1/lakes/analytics-lake/zones/curated-zone' },
+  get_dataplex_entity: { name: 'projects/my-project/locations/us-central1/lakes/analytics-lake/zones/curated-zone/entities/orders' },
+  // DataHub
+  get_datahub_dataset: { urn: 'urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.public.orders,PROD)' },
+  get_datahub_lineage: { urn: 'urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.public.orders,PROD)', direction: 'downstream' },
+  // Purview
+  get_purview_entity: { guid: 'pv-001' },
+  // OpenLineage
+  get_lineage_graph: { namespace: 'default', jobName: 'etl_orders' },
+  list_lineage_datasets: { namespace: 'default' },
+  // Catalog registry
+  get_table_from_any_catalog: { provider: 'snowflake', database: 'ANALYTICS', schema: 'PUBLIC', table: 'ORDERS' },
+};
+
 // Default args for common required fields
-function generateArgs(inputSchema: Record<string, unknown>): Record<string, unknown> {
-  const args: Record<string, unknown> = { customerId: 'cust-1' };
+function generateArgs(toolName: string, inputSchema: Record<string, unknown>): Record<string, unknown> {
+  const overrides = TOOL_ARG_OVERRIDES[toolName] || {};
+  const args: Record<string, unknown> = { customerId: 'cust-1', ...overrides };
   const properties = (inputSchema as any)?.properties || {};
   const required: string[] = (inputSchema as any)?.required || [];
 
@@ -84,17 +142,17 @@ function generateArgs(inputSchema: Record<string, unknown>): Record<string, unkn
     const prop = properties[field] || {};
     switch (prop.type) {
       case 'string':
-        // Smart defaults for known field names
+        // Smart defaults for known field names — matched to actual seed data IDs
         if (field === 'datasetId') args[field] = 'orders';
         else if (field === 'pipelineId') args[field] = 'test-pipe';
         else if (field === 'incidentId') args[field] = 'inc-test';
         else if (field === 'migrationId') args[field] = 'mig-test';
-        else if (field === 'streamId') args[field] = 'stream-test';
+        else if (field === 'streamId') args[field] = 'topo-orders-cdc';
         else if (field === 'metricName') args[field] = 'revenue';
         else if (field === 'resource') args[field] = 'orders';
         else if (field === 'action') args[field] = 'read';
         else if (field === 'agentId') args[field] = 'dw-pipelines';
-        else if (field === 'userId') args[field] = 'user-1';
+        else if (field === 'userId') args[field] = 'user-001';
         else if (field === 'accessLevel') args[field] = 'read';
         else if (field === 'justification') args[field] = 'testing';
         else if (field === 'role') args[field] = 'viewer';
@@ -103,27 +161,53 @@ function generateArgs(inputSchema: Record<string, unknown>): Record<string, unkn
         else if (field === 'sourceDialect' || field === 'sourceSystem') args[field] = 'postgresql';
         else if (field === 'targetDialect' || field === 'targetSystem') args[field] = 'snowflake';
         else if (field === 'incidentType') args[field] = 'schema_change';
-        else if (field === 'database') args[field] = 'test_db';
-        else if (field === 'schema') args[field] = 'public';
+        else if (field === 'database') args[field] = 'ANALYTICS';
+        else if (field === 'schema') args[field] = 'PUBLIC';
         else if (field === 'table') args[field] = 'orders';
         else if (field === 'connectorId') args[field] = 'snowflake';
         else if (field === 'tableIdentifier') args[field] = 'orders';
-        else if (field === 'assetId') args[field] = 'orders';
+        else if (field === 'assetId') args[field] = 'tbl-1';
         else if (field === 'sourceDatasetId') args[field] = 'orders';
         else if (field === 'targetDatasetId') args[field] = 'customers';
         else if (field === 'changeType') args[field] = 'schema_change';
-        else if (field === 'entries') args[field] = [{ key: 'test', value: 'test' }];
-        else if (field === 'ruleId') args[field] = 'test-rule';
+        else if (field === 'ruleId') args[field] = 'rule-1';
         else if (field === 'model_id' || field === 'modelId') args[field] = 'model-churn-xgb-001';
         else if (field === 'dataset_id') args[field] = 'ds-churn-001';
-        else if (field === 'datasetId') args[field] = 'orders';
         else if (field === 'query') args[field] = 'SELECT * FROM orders LIMIT 10';
-        else if (field === 'results') args[field] = [{ column: 'id', value: 1 }];
-        else if (field === 'migrationSql') args[field] = 'ALTER TABLE orders ADD COLUMN test TEXT';
-        else if (field === 'change') args[field] = { type: 'column_added', column: 'test', dataType: 'TEXT' };
-        else if (field === 'experimentId') args[field] = 'exp-churn-001';
+        else if (field === 'migrationSql') args[field] = 'ALTER TABLE orders ADD COLUMN test_col TEXT';
+        else if (field === 'experimentId' || field === 'experiment_id') args[field] = 'exp-churn-001';
         else if (field === 'featurePipelineId') args[field] = 'fp-churn-001';
         else if (field === 'deploymentId') args[field] = 'deploy-churn-001';
+        else if (field === 'dagId') args[field] = 'daily_pipeline';
+        else if (field === 'runId') args[field] = 'run-001';
+        else if (field === 'alertId') args[field] = 'alert-001';
+        else if (field === 'subject') args[field] = 'orders-value';
+        else if (field === 'traceId') args[field] = 'trace-001';
+        else if (field === 'groupId') args[field] = 'group-001';
+        else if (field === 'guid') args[field] = 'pv-001';
+        else if (field === 'urn') args[field] = 'urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.public.orders,PROD)';
+        else if (field === 'direction') args[field] = 'downstream';
+        else if (field === 'namespace') args[field] = 'default';
+        else if (field === 'jobName') args[field] = 'etl_orders';
+        else if (field === 'ref') args[field] = 'main';
+        else if (field === 'from') args[field] = 'main';
+        else if (field === 'to') args[field] = 'develop';
+        else if (field === 'key') args[field] = 'analytics.customers';
+        else if (field === 'catalog') args[field] = 'main';
+        else if (field === 'provider') args[field] = 'snowflake';
+        else if (field === 'tableId') args[field] = 'tbl-001';
+        else if (field === 'topology') args[field] = 'topo-orders-cdc';
+        else if (field === 'pipeline_id') args[field] = 'fp-churn-001';
+        else if (field === 'baseline_dataset_id') args[field] = 'ds-churn-001';
+        else if (field === 'model_a_id') args[field] = 'model-churn-xgb-001';
+        else if (field === 'model_b_id') args[field] = 'model-revenue-lgbm-001';
+        else if (field === 'model_name') args[field] = 'churn-predictor';
+        else if (field === 'suiteId') args[field] = 'gx-suite-1';
+        else if (field === 'dashboardId') args[field] = 'dash-001';
+        else if (field === 'ticketId') args[field] = 'INC0001';
+        else if (field === 'question') args[field] = 'What is total revenue by month?';
+        else if (field === 'format') args[field] = 'csv';
+        else if (field === 'platform') args[field] = 'seldon';
         else args[field] = 'test';
         break;
       case 'number':
@@ -137,11 +221,17 @@ function generateArgs(inputSchema: Record<string, unknown>): Record<string, unkn
         if (field === 'affectedResources') args[field] = ['orders'];
         else if (field === 'rules') args[field] = [{ metric: 'freshness', operator: 'lte', threshold: 24, severity: 'warning', description: 'test' }];
         else if (field === 'metrics') args[field] = [{ name: 'accuracy', value: 0.95 }];
+        else if (field === 'results') args[field] = [{ date: '2025-01-01', amount: 1000 }, { date: '2025-02-01', amount: 1200 }];
+        else if (field === 'entries') args[field] = [{ content: 'The orders table is the source of truth', tags: ['orders'] }];
+        else if (field === 'transforms') args[field] = [{ column: 'age', type: 'normalize', outputColumn: 'age_normalized' }];
+        else if (field === 'experiment_ids') args[field] = ['exp-churn-001'];
         else args[field] = [];
         break;
       case 'object':
         if (field === 'pipelineSpec') args[field] = { name: 'test', tasks: [], dag: { nodes: [], edges: [] } };
         else if (field === 'config') args[field] = {};
+        else if (field === 'change') args[field] = { id: 'chg-1', customerId: 'cust-1', source: 'snowflake', database: 'analytics', schema: 'public', table: 'orders', changeType: 'column_added', severity: 'non-breaking', details: { column: 'test_col', newType: 'TEXT' } };
+        else if (field === 'migration') args[field] = { id: 'mig-1', changeId: 'chg-1', customerId: 'cust-1', status: 'pending', forwardSql: 'ALTER TABLE orders ADD COLUMN test_col TEXT', rollbackSql: 'ALTER TABLE orders DROP COLUMN test_col', affectedSystems: ['analytics'], backwardCompatible: true, estimatedEffortHours: 0.5 };
         else args[field] = {};
         break;
       default:
@@ -200,7 +290,7 @@ async function testAgent(agentName: string): Promise<AgentResult> {
       durationMs: 0,
     };
 
-    const args = generateArgs(tool.inputSchema || {});
+    const args = generateArgs(tool.name, tool.inputSchema || {});
     const start = performance.now();
 
     try {
