@@ -1,0 +1,2040 @@
+{
+  "repoName": "dw-claw-oss",
+  "timestamp": "2026-04-02T01:22:46.046Z",
+  "summary": {
+    "totalAgents": 14,
+    "loadedAgents": 14,
+    "failedAgents": 0,
+    "totalTools": 214,
+    "passedTools": 173,
+    "failedTools": 41,
+    "errorTools": 0,
+    "timeoutTools": 0
+  },
+  "agents": [
+    {
+      "name": "dw-context-catalog",
+      "loaded": true,
+      "toolCount": 33,
+      "tools": [
+        {
+          "name": "search_datasets",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"totalResults\": 20,\n  \"results\": [\n    {\n      \"asset\": {\n        \"id\": \"src-raw-orders\",\n        \"customerId\": \"cust-1\",\n        \"name\": \"raw_orders\",\n        \"type\": \"source\",\n        \"platform\"",
+          "durationMs": 2
+        },
+        {
+          "name": "search_across_platforms",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"totalResults\": 20,\n  \"results\": [\n    {\n      \"asset\": {\n        \"id\": \"src-raw-orders\",\n        \"customerId\": \"cust-1\",\n        \"name\": \"raw_orders\",\n        \"type\": \"source\",\n        \"platform\"",
+          "durationMs": 0
+        },
+        {
+          "name": "resolve_metric",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"query\": \"revenue\",\n  \"exactMatch\": false,\n  \"ambiguous\": true,\n  \"notFound\": false,\n  \"matches\": [\n    {\n      \"id\": \"met-f01\",\n      \"name\": \"Revenue\",\n      \"canonicalName\": \"total_revenue\",\n  ",
+          "durationMs": 0
+        },
+        {
+          "name": "list_semantic_definitions",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"total\": 26,\n  \"limit\": 50,\n  \"offset\": 0,\n  \"definitions\": [\n    {\n      \"id\": \"sem-f01\",\n      \"name\": \"total_revenue\",\n      \"type\": \"metric\",\n      \"definition\": \"SUM(orders.total_amount)\",\n  ",
+          "durationMs": 0
+        },
+        {
+          "name": "check_freshness",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"assetId\": \"src-raw-orders\",\n  \"lastUpdated\": 1775006566133,\n  \"freshnessScore\": 50,\n  \"slaTarget\": 86400000,\n  \"slaCompliant\": false,\n  \"staleSince\": 1775092966133,\n  \"ageHours\": 24,\n  \"alert\": \"",
+          "durationMs": 0
+        },
+        {
+          "name": "get_context",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"found\": true,\n  \"asset\": {\n    \"id\": \"src-raw-orders\",\n    \"name\": \"raw_orders\",\n    \"type\": \"source\",\n    \"platform\": \"postgres\",\n    \"customerId\": \"cust-1\",\n    \"properties\": {\n      \"schema\": ",
+          "durationMs": 1
+        },
+        {
+          "name": "explain_table",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "Tool 'explain_table' failed: Parameter \"tableIdentifier\" is required and must be a string.",
+          "durationMs": 0
+        },
+        {
+          "name": "get_lineage",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"assetId\": \"tbl-1\",\n  \"upstream\": [\n    {\n      \"id\": \"src-raw-orders\",\n      \"name\": \"raw_orders\",\n      \"type\": \"source\",\n      \"platform\": \"postgres\",\n      \"relationship\": \"derives_from\",\n    ",
+          "durationMs": 0
+        },
+        {
+          "name": "trace_cross_platform_lineage",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"assetId\": \"tbl-1\",\n  \"upstream\": [\n    {\n      \"id\": \"src-raw-orders\",\n      \"name\": \"raw_orders\",\n      \"type\": \"source\",\n      \"platform\": \"postgres\",\n      \"relationship\": \"derives_from\",\n    ",
+          "durationMs": 0
+        },
+        {
+          "name": "update_lineage",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"lineageEdgeId\": \"edge-tbl-1-tbl-2-3919ad05\",\n  \"sourceDatasetId\": \"tbl-1\",\n  \"targetDatasetId\": \"tbl-2\",\n  \"graphUpdated\": true,\n  \"totalUpstreamNodes\": 2,\n  \"totalDownstreamNodes\": 3,\n  \"auditTr",
+          "durationMs": 0
+        },
+        {
+          "name": "assess_impact",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"assetId\": \"src-raw-orders\",\n  \"assetName\": \"raw_orders\",\n  \"severity\": \"HIGH\",\n  \"downstreamCount\": 5,\n  \"affectedByDepth\": [\n    {\n      \"depth\": 1,\n      \"count\": 2,\n      \"assets\": [\n        \"",
+          "durationMs": 0
+        },
+        {
+          "name": "blast_radius_analysis",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"assetId is required unless changeType is pr_diff with a prDiff payload.\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_documentation",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"assetId\": \"src-raw-orders\",\n  \"assetName\": \"raw_orders\",\n  \"description\": \"Source 'raw_orders' on postgres. Schema: public. Database: production.\",\n  \"columns\": [\n    {\n      \"name\": \"order_id\",\n",
+          "durationMs": 0
+        },
+        {
+          "name": "generate_documentation",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "# raw_orders\n\nSource 'raw_orders' on postgres. Schema: public. Database: production.\n> Source: pattern_match (confidence: 0.85)\n\n## Columns\n\n| Name | Type | Description | Source |\n|------|------|-----",
+          "durationMs": 0
+        },
+        {
+          "name": "flag_documentation_gap",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"scanId\": \"scan-1775092966140-77f12y\",\n  \"gaps\": [\n    {\n      \"datasetId\": \"src-raw-orders\",\n      \"table\": \"raw_orders\",\n      \"gapType\": \"no_description\",\n      \"severity\": \"medium\",\n      \"las",
+          "durationMs": 0
+        },
+        {
+          "name": "detect_dead_assets",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"summary\": {\n    \"totalAssetsScanned\": 16,\n    \"deadAssetsFound\": 0,\n    \"byReason\": {\n      \"no_upstream\": 0,\n      \"no_downstream\": 0,\n      \"stale\": 0,\n      \"never_queried\": 0\n    },\n    \"byRi",
+          "durationMs": 0
+        },
+        {
+          "name": "correlate_metadata",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\n  \"assetId\": \"\",\n  \"enrichedMetadata\": {},\n  \"platformContributions\": [],\n  \"entityResolution\": {\n    \"matches\": [],\n    \"method\": \"none\",\n    \"confidence\": 0\n  },\n  \"error\": {\n    \"type\": \"INVALID_",
+          "durationMs": 0
+        },
+        {
+          "name": "auto_tag_dataset",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"taggingId\": \"tag-1775092966141-1\",\n  \"datasetId\": \"src-raw-orders\",\n  \"tagsApplied\": [\n    {\n      \"category\": \"pii\",\n      \"tag\": \"pii:customer_id\",\n      \"confidence\": 0.85,\n      \"source\": \"sc",
+          "durationMs": 1
+        },
+        {
+          "name": "get_table_schema_for_sql",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"error\": \"Unknown table: test\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "define_business_rule",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"success\": true,\n  \"ruleId\": \"rule-5a599dbc\",\n  \"assetId\": \"orders\",\n  \"ruleType\": \"test\",\n  \"content\": \"test\",\n  \"author\": \"unknown\",\n  \"message\": \"Business rule 'rule-5a599dbc' created for asset",
+          "durationMs": 0
+        },
+        {
+          "name": "query_rules",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"rules\": [\n    {\n      \"id\": \"rule-1\",\n      \"customerId\": \"cust-1\",\n      \"assetId\": \"orders\",\n      \"columnName\": \"total_amount\",\n      \"ruleType\": \"calculation\",\n      \"content\": \"Total amount ",
+          "durationMs": 0
+        },
+        {
+          "name": "import_tribal_knowledge",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\n  \"error\": \"No entries provided for import.\",\n  \"imported\": 0\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "update_business_rule",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\n  \"error\": \"Rule 'test-rule' not found.\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "mark_authoritative",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"success\": true,\n  \"assetId\": \"orders\",\n  \"domain\": \"test\",\n  \"authorityLevel\": \"authoritative\",\n  \"trustFlag\": \"endorsed\",\n  \"message\": \"Asset 'orders' marked as authoritative source for 'test'.\"",
+          "durationMs": 0
+        },
+        {
+          "name": "get_authoritative_source",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"domain\": \"test\",\n  \"found\": true,\n  \"assetId\": \"orders\",\n  \"customerId\": \"cust-1\",\n  \"authorityLevel\": \"authoritative\",\n  \"trustFlag\": \"endorsed\",\n  \"reason\": \"\",\n  \"designatedBy\": \"unknown\",\n  \"",
+          "durationMs": 0
+        },
+        {
+          "name": "revoke_authority",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"success\": true,\n  \"domain\": \"test\",\n  \"previouslyDesignated\": true,\n  \"reason\": \"\",\n  \"message\": \"Authority for 'test' has been revoked.\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "analyze_query_history",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"assetId\": \"orders\",\n  \"queryCount\": 165,\n  \"uniqueUsers\": 16,\n  \"lastQueried\": 1774747366141,\n  \"trend\": \"stable\",\n  \"periodDays\": 30,\n  \"isHighUsage\": true,\n  \"isGoldenPath\": false\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "identify_golden_path",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"domain\": \"test\",\n  \"goldenPath\": [],\n  \"totalCandidates\": 0,\n  \"recommendation\": \"No datasets found matching domain 'test'.\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "correct_response",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"success\": true,\n  \"feedbackId\": \"fb-87b8dfa4\",\n  \"assetId\": \"orders\",\n  \"fieldCorrected\": \"general\",\n  \"message\": \"Correction recorded for 'orders'. Feedback ID: fb-87b8dfa4.\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "check_staleness",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"assetId\": \"orders\",\n  \"freshnessScore\": 98,\n  \"lastUpdated\": 1775006566133,\n  \"isStale\": false,\n  \"assetFound\": true,\n  \"staleThresholdDays\": 30,\n  \"ageInDays\": 1,\n  \"staleBusinessRules\": 0,\n  \"t",
+          "durationMs": 0
+        },
+        {
+          "name": "flag_stale_context",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"success\": true,\n  \"feedbackId\": \"fb-e292467b\",\n  \"assetId\": \"orders\",\n  \"reason\": \"Context flagged as stale by user.\",\n  \"eventPublished\": \"context.stale\",\n  \"message\": \"Stale context flagged for",
+          "durationMs": 0
+        },
+        {
+          "name": "ingest_unstructured_context",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"success\": true,\n  \"source\": \"test\",\n  \"rulesCreated\": 0,\n  \"message\": \"test crawler is a stub. No real crawling performed. Configure crawler credentials and enable in production.\",\n  \"availableCr",
+          "durationMs": 0
+        },
+        {
+          "name": "run_data_steward",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"stewardshipRunId\": \"steward-1775092966142\",\n  \"customerId\": \"cust-1\",\n  \"scope\": \"full\",\n  \"dryRun\": true,\n  \"timestamp\": 1775092966142,\n  \"stub\": true,\n  \"summary\": {\n    \"totalAssetsScanned\": 0",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-connectors",
+      "loaded": true,
+      "toolCount": 83,
+      "tools": [
+        {
+          "name": "list_snowflake_databases",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"ANALYTICS\",\n    \"owner\": \"SYSADMIN\",\n    \"createdAt\": 1759540966184,\n    \"comment\": \"Analytics data warehouse\"\n  },\n  {\n    \"name\": \"RAW\",\n    \"owner\": \"SYSADMIN\",\n    \"createdAt\": ",
+          "durationMs": 0
+        },
+        {
+          "name": "list_snowflake_tables",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Schema not found: test_db.public\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_snowflake_table_ddl",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Table not found: test_db.public.orders\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_snowflake_usage",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"warehouseName\": \"COMPUTE_WH\",\n    \"creditsUsed\": 245.8,\n    \"queriesExecuted\": 15420,\n    \"avgExecutionTimeMs\": 3200,\n    \"period\": {\n      \"start\": 1774488166184,\n      \"end\": 177509296618",
+          "durationMs": 0
+        },
+        {
+          "name": "list_bigquery_datasets",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"datasetId\": \"analytics\",\n    \"projectId\": \"my-project\",\n    \"location\": \"US\",\n    \"createdAt\": 1767316966184,\n    \"description\": \"Core analytics tables\"\n  },\n  {\n    \"datasetId\": \"raw_event",
+          "durationMs": 0
+        },
+        {
+          "name": "list_bigquery_tables",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Dataset not found: orders\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_bigquery_table_schema",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Table not found: orders.test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "estimate_bigquery_cost",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"queryText\": \"test\",\n  \"estimatedBytesProcessed\": 100000000,\n  \"estimatedCostUSD\": 0.0005,\n  \"tier\": \"on-demand\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "list_dbt_models",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"uniqueId\": \"model.project.stg_orders\",\n    \"name\": \"stg_orders\",\n    \"schema\": \"staging\",\n    \"database\": \"analytics\",\n    \"materialization\": \"view\",\n    \"description\": \"Staged orders from ",
+          "durationMs": 0
+        },
+        {
+          "name": "get_dbt_model_lineage",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Model not found: model-churn-xgb-001\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_dbt_test_results",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"testId\": \"test_001\",\n    \"testName\": \"unique_stg_orders_order_id\",\n    \"status\": \"pass\",\n    \"executionTimeMs\": 120\n  },\n  {\n    \"testId\": \"test_002\",\n    \"testName\": \"not_null_stg_orders_o",
+          "durationMs": 0
+        },
+        {
+          "name": "get_dbt_run_history",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"runId\": \"run_003\",\n    \"status\": \"success\",\n    \"startedAt\": \"2026-03-22T08:00:00Z\",\n    \"finishedAt\": \"2026-03-22T08:04:45Z\",\n    \"durationMs\": 285000,\n    \"modelCount\": 5\n  },\n  {\n    \"ru",
+          "durationMs": 0
+        },
+        {
+          "name": "list_databricks_catalogs",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"main\",\n    \"owner\": \"data-engineering\",\n    \"comment\": \"Primary catalog for production data\",\n    \"createdAt\": 1767316966184\n  },\n  {\n    \"name\": \"hive_metastore\",\n    \"owner\": \"adm",
+          "durationMs": 0
+        },
+        {
+          "name": "list_databricks_tables",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Catalog not found: test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_databricks_table",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Schema not found: test.public\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_databricks_query_history",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"queryId\": \"q-002\",\n    \"queryText\": \"SELECT count(*) FROM main.default.customers\",\n    \"status\": \"FINISHED\",\n    \"durationMs\": 890,\n    \"rowsProduced\": 1,\n    \"bytesRead\": 10485760,\n    \"us",
+          "durationMs": 0
+        },
+        {
+          "name": "list_all_catalogs",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"providerType\": \"snowflake\",\n    \"connectorType\": \"snowflake\",\n    \"capabilities\": [\n      \"discovery\"\n    ]\n  },\n  {\n    \"providerType\": \"bigquery\",\n    \"connectorType\": \"bigquery\",\n    \"ca",
+          "durationMs": 0
+        },
+        {
+          "name": "search_across_catalogs",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"glue\": [],\n  \"openmetadata\": [],\n  \"datahub\": [],\n  \"purview\": [],\n  \"dataplex\": []\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_table_from_any_catalog",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Provider not found: test. Available: snowflake, bigquery, dbt, databricks, iceberg, polaris, glue, hive-metastore, openmetadata, openlineage, datahub, purview, dataplex, nessie\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "list_glue_databases",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"analytics_db\",\n    \"description\": \"Analytics data lake database\",\n    \"locationUri\": \"s3://analytics-data-lake/databases/analytics_db/\",\n    \"createTime\": 1757812966184\n  },\n  {\n   ",
+          "durationMs": 0
+        },
+        {
+          "name": "list_glue_tables",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Database not found: test_db\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_glue_table",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Database not found: test_db\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "search_glue_tables",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[]",
+          "durationMs": 0
+        },
+        {
+          "name": "list_hive_databases",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"default\",\n    \"description\": \"Default Hive database\",\n    \"locationUri\": \"hdfs:///user/hive/warehouse\",\n    \"ownerName\": \"hive\",\n    \"ownerType\": \"USER\"\n  },\n  {\n    \"name\": \"analyt",
+          "durationMs": 0
+        },
+        {
+          "name": "list_hive_tables",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Database not found: test_db\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_hive_table_schema",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Database not found: test_db\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_hive_partitions",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[]",
+          "durationMs": 0
+        },
+        {
+          "name": "list_om_tables",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Database not found: test_db\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_om_table",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Table not found: test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "search_om_tables",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[]",
+          "durationMs": 0
+        },
+        {
+          "name": "get_om_lineage",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"nodes\": [],\n  \"edges\": []\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_om_quality_tests",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[]",
+          "durationMs": 0
+        },
+        {
+          "name": "list_lineage_datasets",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Namespace not found: test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "list_lineage_jobs",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[]",
+          "durationMs": 0
+        },
+        {
+          "name": "get_lineage_graph",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"graph\": []\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "emit_lineage_event",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\"success\":true,\"eventType\":\"test\",\"jobName\":\"test\",\"runId\":\"test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "search_datahub_datasets",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[]",
+          "durationMs": 0
+        },
+        {
+          "name": "get_datahub_dataset",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Dataset not found: test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_datahub_lineage",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"urn\": \"test\",\n  \"direction\": \"test\",\n  \"entities\": []\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "list_datahub_domains",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"urn\": \"urn:li:domain:marketing\",\n    \"name\": \"Marketing\",\n    \"description\": \"Marketing analytics domain\"\n  },\n  {\n    \"urn\": \"urn:li:domain:finance\",\n    \"name\": \"Finance\",\n    \"descriptio",
+          "durationMs": 0
+        },
+        {
+          "name": "list_lf_permissions",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[]",
+          "durationMs": 0
+        },
+        {
+          "name": "list_lf_tags",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[]",
+          "durationMs": 0
+        },
+        {
+          "name": "search_lf_by_tags",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[]",
+          "durationMs": 0
+        },
+        {
+          "name": "search_purview_entities",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"entities\": [],\n  \"searchCount\": 0\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_purview_entity",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Entity not found: test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_purview_lineage",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"guidEntityMap\": {},\n  \"relations\": []\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "list_purview_glossary",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"guid\": \"gt-001\",\n    \"qualifiedName\": \"Glossary.Revenue\",\n    \"shortDescription\": \"Total revenue from sales\",\n    \"status\": \"Approved\"\n  },\n  {\n    \"guid\": \"gt-002\",\n    \"qualifiedName\": \"G",
+          "durationMs": 0
+        },
+        {
+          "name": "list_dataplex_lakes",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"projects/my-project/locations/us-central1/lakes/analytics-lake\",\n    \"displayName\": \"Analytics Lake\",\n    \"state\": \"ACTIVE\",\n    \"createTime\": \"2026-04-02T01:22:46.185Z\",\n    \"metas",
+          "durationMs": 0
+        },
+        {
+          "name": "list_dataplex_entities",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Zone not found: test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_dataplex_entity",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Entity not found: test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "search_dataplex_entries",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[]",
+          "durationMs": 0
+        },
+        {
+          "name": "list_nessie_branches",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"name\": \"main\",\n    \"hash\": \"abc123def456\",\n    \"type\": \"BRANCH\"\n  },\n  {\n    \"name\": \"develop\",\n    \"hash\": \"def456ghi789\",\n    \"type\": \"BRANCH\"\n  },\n  {\n    \"name\": \"feature/experiment\",\n ",
+          "durationMs": 0
+        },
+        {
+          "name": "list_nessie_tables",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Reference not found: test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_nessie_content",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Reference not found: test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "create_nessie_branch",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Source reference not found: test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "diff_nessie_refs",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Reference not found: test\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "trigger_airflow_dag",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"triggered\": true,\n  \"dagId\": \"test\",\n  \"runId\": \"manual__1775092966188\",\n  \"status\": \"queued\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "trigger_dagster_job",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"triggered\": true,\n  \"jobName\": \"test\",\n  \"runId\": \"dagster-1775092966188\",\n  \"status\": \"queued\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "trigger_prefect_flow",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"triggered\": true,\n  \"deploymentId\": \"deploy-churn-001\",\n  \"flowRunId\": \"prefect-1775092966188\",\n  \"status\": \"scheduled\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "trigger_step_function",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"triggered\": true,\n  \"stateMachineArn\": \"test\",\n  \"executionArn\": \"test:1775092966188\",\n  \"status\": \"RUNNING\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "trigger_adf_pipeline",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"triggered\": true,\n  \"pipelineName\": \"test\",\n  \"runId\": \"adf-1775092966188\",\n  \"status\": \"InProgress\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "trigger_dbt_cloud_job",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"triggered\": true,\n  \"jobId\": \"test\",\n  \"runId\": 1775092966188,\n  \"status\": \"queued\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "trigger_composer_dag",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"triggered\": true,\n  \"dagId\": \"test\",\n  \"runId\": \"composer-1775092966188\",\n  \"status\": \"queued\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "send_pagerduty_alert",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"pagerduty\",\n  \"summary\": \"test\",\n  \"severity\": \"test\",\n  \"dedupKey\": \"pd-1775092966188\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "send_slack_alert",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"slack\",\n  \"channel\": \"test\",\n  \"messagePreview\": \"test\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "send_teams_alert",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"teams\",\n  \"title\": \"test\",\n  \"timestamp\": \"2026-04-02T01:22:46.188Z\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "send_opsgenie_alert",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"opsgenie\",\n  \"message\": \"test\",\n  \"priority\": \"P3\",\n  \"alertId\": \"og-1775092966188\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "send_newrelic_alert",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"sent\": true,\n  \"provider\": \"newrelic\",\n  \"eventType\": \"test\",\n  \"message\": \"test\",\n  \"timestamp\": 1775092966188\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "register_kafka_schema",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"registered\": true,\n  \"subject\": \"test\",\n  \"schemaType\": \"AVRO\",\n  \"id\": 1775092966188,\n  \"version\": 1\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "run_gx_suite",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"executed\": true,\n  \"suite\": \"test\",\n  \"datasource\": \"test\",\n  \"success\": true,\n  \"validations\": 0,\n  \"runId\": \"gx-1775092966188\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "run_soda_suite",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"executed\": true,\n  \"checkFile\": \"test\",\n  \"datasource\": \"test\",\n  \"passed\": 0,\n  \"failed\": 0,\n  \"warnings\": 0,\n  \"scanId\": \"soda-1775092966188\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "run_monte_carlo_suite",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"executed\": true,\n  \"monitorId\": \"test\",\n  \"incidents\": 0,\n  \"status\": \"healthy\",\n  \"runId\": \"mc-1775092966188\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "create_servicenow_ticket",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"created\": true,\n  \"provider\": \"servicenow\",\n  \"number\": \"INC1775092966188\",\n  \"shortDescription\": \"test\",\n  \"state\": \"New\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "update_servicenow_ticket",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"updated\": true,\n  \"provider\": \"servicenow\",\n  \"ticketNumber\": \"test\",\n  \"timestamp\": \"2026-04-02T01:22:46.188Z\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "create_jira_sm_ticket",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"created\": true,\n  \"provider\": \"jira-sm\",\n  \"key\": \"test-6188\",\n  \"summary\": \"test\",\n  \"status\": \"Open\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "update_jira_sm_ticket",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"updated\": true,\n  \"provider\": \"jira-sm\",\n  \"issueKey\": \"test\",\n  \"timestamp\": \"2026-04-02T01:22:46.188Z\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "resolve_pagerduty_alert",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"resolved\": true,\n  \"provider\": \"pagerduty\",\n  \"incidentId\": \"inc-test\",\n  \"status\": \"resolved\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "resolve_opsgenie_alert",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"resolved\": true,\n  \"provider\": \"opsgenie\",\n  \"alertId\": \"test\",\n  \"status\": \"closed\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "resolve_newrelic_alert",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"resolved\": true,\n  \"provider\": \"newrelic\",\n  \"incidentId\": \"inc-test\",\n  \"status\": \"closed\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "resolve_slack_alert",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"resolved\": true,\n  \"provider\": \"slack\",\n  \"channel\": \"test\",\n  \"status\": \"thread_updated\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "resolve_teams_alert",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"resolved\": true,\n  \"provider\": \"teams\",\n  \"alertId\": \"test\",\n  \"status\": \"card_updated\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_connector_status",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"connectorName\": \"test\",\n  \"status\": \"UNKNOWN\",\n  \"error\": \"No KAFKA_CONNECT_URL configured. Set env var or pass connectUrl parameter.\",\n  \"stubFallback\": true\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "register_stream_schema",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"subject\": \"test\",\n  \"registered\": false,\n  \"error\": \"No SCHEMA_REGISTRY_URL configured.\",\n  \"stubFallback\": true\n}",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-cost",
+      "loaded": true,
+      "toolCount": 5,
+      "tools": [
+        {
+          "name": "find_unused_data",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"tableId\": \"tbl-legacy-orders\",\n    \"customerId\": \"cust-1\",\n    \"tableName\": \"legacy_orders_2022\",\n    \"database\": \"archive\",\n    \"schema\": \"legacy\",\n    \"lastAccessedAt\": 1764724966195,\n   ",
+          "durationMs": 0
+        },
+        {
+          "name": "estimate_savings",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"tableId\": \"tbl-ab-tests\",\n    \"tableName\": \"ab_test_results\",\n    \"storageCostMonthly\": 0.001,\n    \"computeCostMonthly\": 0.475,\n    \"totalCostMonthly\": 0.476,\n    \"potentialSavings\": 0.238,",
+          "durationMs": 0
+        },
+        {
+          "name": "recommend_archival",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"tableId\": \"tbl-tmp-analysis\",\n    \"tableName\": \"tmp_analysis_q3\",\n    \"tier\": \"tier1_safe\",\n    \"reason\": \"Unused for 120 days, 0 queries, no downstream dependencies, size 50.0MB < 100MB\",\n",
+          "durationMs": 0
+        },
+        {
+          "name": "get_cost_dashboard",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"totalCostMonthly\": 152.35,\n  \"costByTeam\": {\n    \"data-eng\": 59.6,\n    \"analytics\": 24.71,\n    \"finance\": 37.3,\n    \"ml-eng\": 6.5,\n    \"supply-chain\": 20.85,\n    \"platform\": 2.04,\n    \"marketing\"",
+          "durationMs": 0
+        },
+        {
+          "name": "estimate_query_cost",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"estimatedRows\": 1,\n  \"complexityMultiplier\": 1,\n  \"credits\": 0,\n  \"estimatedCostUSD\": 0,\n  \"tier\": \"trivial\",\n  \"recommendation\": \"Query cost is within acceptable bounds.\"\n}",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-governance",
+      "loaded": true,
+      "toolCount": 6,
+      "tools": [
+        {
+          "name": "check_policy",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"allowed\": true,\n  \"action\": \"allow\",\n  \"matchedRules\": [\n    {\n      \"id\": \"pol-allow-reads\",\n      \"name\": \"allow_reads\",\n      \"resource\": \"*\",\n      \"action\": \"allow\",\n      \"conditions\": {\n  ",
+          "durationMs": 0
+        },
+        {
+          "name": "provision_access",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"granted\": true,\n  \"grant\": {\n    \"id\": \"grant-1775092966207\",\n    \"userId\": \"user-1\",\n    \"resource\": \"orders\",\n    \"accessLevel\": \"read\",\n    \"grantedAt\": 1775092966207,\n    \"expiresAt\": 1782868",
+          "durationMs": 0
+        },
+        {
+          "name": "scan_pii",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"datasetId\": \"orders\",\n  \"customerId\": \"cust-1\",\n  \"scannedColumns\": 0,\n  \"piiColumnsFound\": 0,\n  \"findings\": [],\n  \"message\": \"Dataset 'orders' not found or contains no data — no PII detected\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "generate_audit_report",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"id\": \"audit-1775092966207\",\n  \"customerId\": \"cust-1\",\n  \"period\": {\n    \"from\": 1772500966207,\n    \"to\": 1775092966207\n  },\n  \"summary\": {\n    \"totalActions\": 2,\n    \"policiesEvaluated\": 1,\n    \"",
+          "durationMs": 0
+        },
+        {
+          "name": "enforce_rbac",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"applied\": true,\n  \"userId\": \"user-1\",\n  \"resource\": \"orders\",\n  \"role\": \"viewer\",\n  \"permissions\": [\n    \"SELECT\"\n  ],\n  \"columnRestrictions\": \"none (full access)\",\n  \"appliedAt\": 1775092966207,\n",
+          "durationMs": 0
+        },
+        {
+          "name": "request_governance_review",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"reviewId\": \"review-1775092966207-3i8c4o\",\n  \"status\": \"pending\",\n  \"message\": \"Governance review requested for read on orders\",\n  \"review\": {\n    \"id\": \"review-1775092966207-3i8c4o\",\n    \"custome",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-incidents",
+      "loaded": true,
+      "toolCount": 5,
+      "tools": [
+        {
+          "name": "diagnose_incident",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"incidentId\": \"inc-1775092966227-2u01cb\",\n  \"type\": \"quality_degradation\",\n  \"severity\": \"info\",\n  \"confidence\": 0.5,\n  \"title\": \"Data quality degradation on unknown\",\n  \"description\": \"quality de",
+          "durationMs": 0
+        },
+        {
+          "name": "get_root_cause",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"incidentId\": \"inc-test\",\n  \"rootCause\": \"schema change: Upstream schema change propagated from raw_orders (entity: raw_orders)\",\n  \"causalChain\": [\n    {\n      \"entity\": \"orders\",\n      \"entityTy",
+          "durationMs": 2002
+        },
+        {
+          "name": "remediate",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"incidentId\": \"inc-test\",\n  \"playbook\": \"apply_schema_migration\",\n  \"success\": true,\n  \"automated\": true,\n  \"actionsPerformed\": [\n    \"Detected schema change\",\n    \"Requested schema diff from dw-s",
+          "durationMs": 3
+        },
+        {
+          "name": "get_incident_history",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"totalIncidents\": 14,\n  \"byType\": {\n    \"schema_change\": 3,\n    \"source_delay\": 3,\n    \"resource_exhaustion\": 2,\n    \"code_regression\": 2,\n    \"infrastructure\": 2,\n    \"quality_degradation\": 2\n  }",
+          "durationMs": 1
+        },
+        {
+          "name": "monitor_metrics",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"recorded\": 0,\n  \"anomaliesDetected\": 0,\n  \"detections\": [],\n  \"monitoredMetrics\": []\n}",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-insights",
+      "loaded": true,
+      "toolCount": 6,
+      "tools": [
+        {
+          "name": "query_data_nl",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Invalid SQL: Potential SQL injection pattern detected.\"}",
+          "durationMs": 2
+        },
+        {
+          "name": "generate_insight",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"results must be a non-empty array\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "explain_anomaly",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"metric\": \"test\",\n  \"currentValue\": 1,\n  \"expectedValue\": 1,\n  \"explanation\": \"The metric \\\"test\\\" is currently at 1, which is 0% lower than the expected value of 1. This represents a minor deviat",
+          "durationMs": 2536
+        },
+        {
+          "name": "schedule_insight",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"created\": true,\n  \"id\": \"sched-1775092970810-zc4x\",\n  \"name\": \"test\",\n  \"question\": \"test\",\n  \"cronExpression\": \"test\",\n  \"customerId\": \"cust-1\",\n  \"createdAt\": 1775092970810,\n  \"active\": true\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "create_alert",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"created\": true,\n  \"id\": \"alert-1775092970811-lup6\",\n  \"name\": \"test\",\n  \"metric\": \"test\",\n  \"condition\": \"test\",\n  \"threshold\": 1,\n  \"customerId\": \"cust-1\",\n  \"createdAt\": 1775092970811,\n  \"activ",
+          "durationMs": 0
+        },
+        {
+          "name": "export_insight",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"results must be a non-empty array\"}",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-migration",
+      "loaded": true,
+      "toolCount": 5,
+      "tools": [
+        {
+          "name": "assess_migration",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"assessment\": {\n    \"sourceId\": \"test\",\n    \"platform\": \"test\",\n    \"totalObjects\": 0,\n    \"complexityBreakdown\": {\n      \"simple\": 0,\n      \"medium\": 0,\n      \"complex\": 0\n    },\n    \"estimatedEf",
+          "durationMs": 0
+        },
+        {
+          "name": "translate_sql",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"originalSQL\": \"SELECT 1\",\n  \"translatedSQL\": \"SELECT 1\",\n  \"sourceDialect\": \"postgresql\",\n  \"targetDialect\": \"snowflake\",\n  \"confidence\": 1,\n  \"warnings\": [],\n  \"fallbackUsed\": false,\n  \"rulesApp",
+          "durationMs": 3
+        },
+        {
+          "name": "validate_migration",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"validationId\": \"val-test-1775092970843\",\n  \"checks\": [],\n  \"passCount\": 0,\n  \"failCount\": 0,\n  \"divergencePercentage\": 0,\n  \"message\": \"No objects found for source — nothing to validate\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "run_parallel_comparison",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"comparisonId\": \"cmp-test-test-1775092970844\",\n  \"sourceId\": \"test\",\n  \"targetId\": \"test\",\n  \"sampleSize\": 1000,\n  \"objectsCompared\": 0,\n  \"overallMatchRate\": 100,\n  \"summary\": {\n    \"pass\": 0,\n  ",
+          "durationMs": 0
+        },
+        {
+          "name": "batch_translate_sql",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"results\": [],\n  \"totalCount\": 0,\n  \"successCount\": 0,\n  \"failCount\": 0\n}",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-ml",
+      "loaded": true,
+      "toolCount": 16,
+      "tools": [
+        {
+          "name": "suggest_features",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"datasetId\": \"ds-churn-001\",\n  \"datasetName\": \"Customer Churn Dataset\",\n  \"totalColumns\": 7,\n  \"suggestionsCount\": 6,\n  \"suggestions\": [\n    {\n      \"column\": \"contract_type\",\n      \"transformatio",
+          "durationMs": 0
+        },
+        {
+          "name": "select_model",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"datasetId\": \"ds-churn-001\",\n  \"datasetName\": \"Customer Churn Dataset\",\n  \"taskType\": \"classification\",\n  \"rowCount\": 50000,\n  \"featureBreakdown\": {\n    \"numeric\": 4,\n    \"categorical\": 2,\n    \"to",
+          "durationMs": 0
+        },
+        {
+          "name": "train_model",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\"error\":\"pro_feature\",\"message\":\"This feature requires Data Workers Pro. Visit https://dataworkers.io/pricing\",\"tool\":\"train_model\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "evaluate_model",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Provide model_id or dataset_id (or both)\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "deploy_model",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\"error\":\"pro_feature\",\"message\":\"This feature requires Data Workers Pro. Visit https://dataworkers.io/pricing\",\"tool\":\"deploy_model\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_ml_status",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"modelId\": \"model-churn-xgb-001\",\n  \"stage\": \"deployed\",\n  \"progress\": 100,\n  \"model\": {\n    \"algorithm\": \"xgboost\",\n    \"taskType\": \"classification\",\n    \"targetColumn\": \"is_churned\",\n    \"metric",
+          "durationMs": 0
+        },
+        {
+          "name": "create_experiment",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\"error\":\"pro_feature\",\"message\":\"This feature requires Data Workers Pro. Visit https://dataworkers.io/pricing\",\"tool\":\"create_experiment\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "log_metrics",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\"error\":\"pro_feature\",\"message\":\"This feature requires Data Workers Pro. Visit https://dataworkers.io/pricing\",\"tool\":\"log_metrics\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "compare_experiments",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Experiment \\\"test\\\" not found\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "register_model",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\"error\":\"pro_feature\",\"message\":\"This feature requires Data Workers Pro. Visit https://dataworkers.io/pricing\",\"tool\":\"register_model\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_model_versions",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"No registered model named \\\"test\\\" found\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "create_feature_pipeline",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\"error\":\"pro_feature\",\"message\":\"This feature requires Data Workers Pro. Visit https://dataworkers.io/pricing\",\"tool\":\"create_feature_pipeline\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_feature_stats",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"datasetId\": \"ds-churn-001\",\n  \"datasetName\": \"Customer Churn Dataset\",\n  \"rowCount\": 50000,\n  \"featureCount\": 7,\n  \"stats\": [\n    {\n      \"feature\": \"customer_id\",\n      \"type\": \"categorical\",\n  ",
+          "durationMs": 0
+        },
+        {
+          "name": "explain_model",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"modelId\": \"model-churn-xgb-001\",\n  \"algorithm\": \"xgboost\",\n  \"method\": \"shap\",\n  \"taskType\": \"classification\",\n  \"featureCount\": 5,\n  \"explanations\": [\n    {\n      \"feature\": \"tenure_months\",\n   ",
+          "durationMs": 0
+        },
+        {
+          "name": "detect_model_drift",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\"error\":\"pro_feature\",\"message\":\"This feature requires Data Workers Pro. Visit https://dataworkers.io/pricing\",\"tool\":\"detect_model_drift\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "ab_test_models",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\"error\":\"pro_feature\",\"message\":\"This feature requires Data Workers Pro. Visit https://dataworkers.io/pricing\",\"tool\":\"ab_test_models\"}",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-observability",
+      "loaded": true,
+      "toolCount": 6,
+      "tools": [
+        {
+          "name": "get_agent_metrics",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"agentName\": \"test\",\n  \"period\": \"7d\",\n  \"latency\": {\n    \"p50\": 0,\n    \"p95\": 0,\n    \"p99\": 0\n  },\n  \"errorRate\": 0,\n  \"totalInvocations\": 0,\n  \"avgTokens\": 0,\n  \"avgConfidence\": 0,\n  \"escalation",
+          "durationMs": 0
+        },
+        {
+          "name": "get_audit_trail",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"id\": \"audit-001\",\n    \"timestamp\": 1775020970871,\n    \"agentName\": \"pipelines\",\n    \"action\": \"pipeline_executed\",\n    \"input\": \"input_for_pipeline_executed\",\n    \"output\": \"result_of_pipel",
+          "durationMs": 0
+        },
+        {
+          "name": "check_agent_health",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"agentName\": \"pipelines\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775092960871,\n    \"uptime\": 259200001,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"incidents\",\n    \"status",
+          "durationMs": 0
+        },
+        {
+          "name": "detect_drift",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"agentName\": \"governance\",\n    \"metric\": \"error_rate\",\n    \"currentValue\": 0.08,\n    \"baselineValue\": 0.08,\n    \"threshold\": 0.05,\n    \"severity\": \"warning\",\n    \"detectedAt\": 1775092970872\n",
+          "durationMs": 0
+        },
+        {
+          "name": "get_evaluation_report",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"agentName\": \"test\",\n  \"period\": \"7d\",\n  \"averageScore\": 0,\n  \"totalEvaluations\": 0,\n  \"breakdown\": {\n    \"accuracy\": 0,\n    \"completeness\": 0,\n    \"safety\": 0,\n    \"helpfulness\": 0\n  },\n  \"messag",
+          "durationMs": 0
+        },
+        {
+          "name": "list_active_agents",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"agentName\": \"catalog\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775092960871,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"governance\",\n    \"status\": \"degraded\",\n    \"lastHe",
+          "durationMs": 1
+        }
+      ]
+    },
+    {
+      "name": "dw-pipelines",
+      "loaded": true,
+      "toolCount": 4,
+      "tools": [
+        {
+          "name": "generate_pipeline",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"error\": \"pro_feature\",\n  \"message\": \"Pipeline generation requires Data Workers Pro. Visit https://dataworkers.io/pricing to upgrade.\",\n  \"tool\": \"generate_pipeline\",\n  \"agent\": \"dw-pipelines\",\n  ",
+          "durationMs": 0
+        },
+        {
+          "name": "validate_pipeline",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"valid\": false,\n  \"syntaxErrors\": [\n    {\n      \"task\": \"pipeline\",\n      \"error\": \"Pipeline must contain at least one task or step\"\n    }\n  ],\n  \"semanticWarnings\": [],\n  \"confidence\": 0.1\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "deploy_pipeline",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"error\": \"pro_feature\",\n  \"message\": \"Pipeline deployment requires Data Workers Pro. Visit https://dataworkers.io/pricing to upgrade.\",\n  \"tool\": \"deploy_pipeline\",\n  \"agent\": \"dw-pipelines\",\n  \"u",
+          "durationMs": 0
+        },
+        {
+          "name": "list_pipeline_templates",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"id\": \"etl-basic\",\n    \"name\": \"Basic ETL Pipeline\",\n    \"description\": \"Extract from a source, transform with SQL, load into target warehouse.\",\n    \"category\": \"etl\",\n    \"orchestrator\": \"",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-quality",
+      "loaded": true,
+      "toolCount": 6,
+      "tools": [
+        {
+          "name": "run_quality_check",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"datasetId\": \"orders\",\n  \"customerId\": \"cust-1\",\n  \"overallScore\": 100,\n  \"metrics\": [\n    {\n      \"name\": \"null_rate_id\",\n      \"type\": \"null_rate\",\n      \"value\": 0,\n      \"threshold\": 0.1,\n    ",
+          "durationMs": 0
+        },
+        {
+          "name": "get_quality_score",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"datasetId\": \"orders\",\n  \"score\": 99,\n  \"breakdown\": {\n    \"completeness\": 100,\n    \"accuracy\": 100,\n    \"consistency\": 93.11,\n    \"freshness\": 100,\n    \"uniqueness\": 100\n  },\n  \"trend\": \"stable\",",
+          "durationMs": 0
+        },
+        {
+          "name": "set_sla",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"created\": true,\n  \"sla\": {\n    \"id\": \"sla-1775092970895\",\n    \"datasetId\": \"orders\",\n    \"customerId\": \"cust-1\",\n    \"rules\": [\n      {\n        \"metric\": \"freshness\",\n        \"operator\": \"lte\",\n ",
+          "durationMs": 0
+        },
+        {
+          "name": "get_anomalies",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"totalAnomalies\": 2,\n  \"actionableAnomalies\": 2,\n  \"anomalies\": [\n    {\n      \"id\": \"anom-orders-null_rate-1775092970894\",\n      \"metric\": \"null_rate_orders\",\n      \"severity\": \"warning\",\n      \"v",
+          "durationMs": 0
+        },
+        {
+          "name": "create_quality_tests_for_pipeline",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"pipelineId\": \"test-pipe\",\n  \"customerId\": \"cust-1\",\n  \"testsGenerated\": 0,\n  \"tests\": [],\n  \"generatedAt\": 1775092970895\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_quality_summary",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"datasetId\": \"orders\",\n  \"score\": 99,\n  \"dimensions\": {\n    \"completeness\": 92,\n    \"accuracy\": 88,\n    \"consistency\": 85,\n    \"freshness\": 80,\n    \"uniqueness\": 95\n  },\n  \"status\": \"cached\"\n}",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-schema",
+      "loaded": true,
+      "toolCount": 9,
+      "tools": [
+        {
+          "name": "detect_schema_change",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"changesDetected\": 0,\n  \"changes\": [],\n  \"detectionTimeMs\": 0,\n  \"source\": \"test\",\n  \"scanType\": \"full_schema\",\n  \"summary\": \"No tables found for this source.\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "assess_impact",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\n  \"error\": \"Cannot read properties of undefined (reading 'toLowerCase')\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "generate_migration",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"id\": \"mig-1775092970915-qsv2k8\",\n  \"customerId\": \"cust-1\",\n  \"status\": \"pending\",\n  \"forwardSql\": \"-- Migration for column_added on undefined.undefined.undefined (details pending)\",\n  \"rollbackSq",
+          "durationMs": 0
+        },
+        {
+          "name": "apply_migration",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\n  \"success\": false,\n  \"error\": \"No migration SQL provided\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "check_compatibility",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"compatible\": true,\n  \"targetTableExists\": false,\n  \"breakingChanges\": [],\n  \"suggestedMigrations\": [],\n  \"message\": \"Target table test does not exist yet — any schema is compatible.\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_schema_snapshot",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\n  \"error\": \"Table not found: analytics.public.orders\",\n  \"source\": \"test\",\n  \"customerId\": \"cust-1\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "list_schema_changes",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"totalEvents\": 0,\n  \"returned\": 0,\n  \"events\": []\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "validate_schema_compatibility",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\n  \"error\": \"Either change or migrationSql must be provided\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "rollback_migration",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\n  \"success\": false,\n  \"error\": \"No rollback SQL provided in migration\"\n}",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-streaming",
+      "loaded": true,
+      "toolCount": 4,
+      "tools": [
+        {
+          "name": "configure_stream",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"topologyId\": \"topo-test-1775092970922\",\n  \"streamConfig\": {\n    \"sourceConnector\": \"test\",\n    \"sinkConnector\": \"test\",\n    \"topic\": \"test\",\n    \"partitions\": 1,\n    \"replicationFactor\": 1\n  },\n ",
+          "durationMs": 0
+        },
+        {
+          "name": "monitor_lag",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"topic\": \"test\",\n  \"partitionCount\": 0,\n  \"totalLag\": 0,\n  \"maxLag\": 0,\n  \"avgLag\": 0,\n  \"partitions\": [],\n  \"message\": \"No lag data found — topic may not exist or has no consumers\",\n  \"timestamp\"",
+          "durationMs": 0
+        },
+        {
+          "name": "get_stream_health",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"No connectors found for topology 'test'\"}",
+          "durationMs": 0
+        },
+        {
+          "name": "get_recommendations",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"topology\": \"test\",\n  \"analyzedAt\": 1775092970923,\n  \"slaStatus\": \"MET\",\n  \"totalLag\": 0,\n  \"totalThroughput\": 0,\n  \"maxErrorRate\": 0,\n  \"recommendationCount\": 0,\n  \"recommendations\": []\n}",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "name": "dw-usage-intelligence",
+      "loaded": true,
+      "toolCount": 26,
+      "tools": [
+        {
+          "name": "get_tool_usage_metrics",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"period\": \"7d\",\n  \"groupBy\": \"tool\",\n  \"metrics\": [\n    {\n      \"name\": \"build_pipeline\",\n      \"agent\": \"pipelines\",\n      \"totalCalls\": 88,\n      \"uniqueUsers\": 9,\n      \"avgCallsPerUser\": 9.8,\n",
+          "durationMs": 2
+        },
+        {
+          "name": "get_usage_activity_log",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"entries\": [\n    {\n      \"id\": \"evt-06469\",\n      \"timestamp\": 1775152010939,\n      \"userId\": \"eng-sarah\",\n      \"agentName\": \"pipelines\",\n      \"toolName\": \"build_pipeline\",\n      \"inputSummary\":",
+          "durationMs": 0
+        },
+        {
+          "name": "get_adoption_dashboard",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"period\": \"30d\",\n  \"agents\": [\n    {\n      \"agentName\": \"pipelines\",\n      \"status\": \"fully_adopted\",\n      \"totalUsers\": 20,\n      \"activeUsers\": 19,\n      \"adoptionRate\": 0.95,\n      \"totalCalls",
+          "durationMs": 2
+        },
+        {
+          "name": "detect_usage_anomalies",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"anomalies\": [\n    {\n      \"type\": \"usage_spike\",\n      \"agentName\": \"cost\",\n      \"toolName\": \"get_cost_report\",\n      \"description\": \"540% increase vs 7-day daily average\",\n      \"currentValue\":",
+          "durationMs": 1
+        },
+        {
+          "name": "get_workflow_patterns",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"patterns\": [\n    {\n      \"rank\": 1,\n      \"sequence\": [\n        \"governance:check_policy\",\n        \"governance:scan_pii\",\n        \"catalog:get_lineage\",\n        \"governance:audit_compliance\"\n    ",
+          "durationMs": 5
+        },
+        {
+          "name": "get_usage_heatmap",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"dimension\": \"hourly\",\n  \"period\": \"7d\",\n  \"heatmap\": [\n    {\n      \"bucket\": 0,\n      \"totalCalls\": 6,\n      \"uniqueUsers\": 5,\n      \"topAgent\": \"pipelines\"\n    },\n    {\n      \"bucket\": 1,\n      ",
+          "durationMs": 1
+        },
+        {
+          "name": "get_session_analytics",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"period\": \"7d\",\n  \"sessionGapMinutes\": 30,\n  \"overview\": {\n    \"totalSessions\": 900,\n    \"avgSessionDurationMinutes\": 13.4,\n    \"avgToolCallsPerSession\": 2,\n    \"avgAgentsPerSession\": 1.6,\n    \"me",
+          "durationMs": 2
+        },
+        {
+          "name": "get_agent_metrics",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"agentName\": \"test\",\n  \"period\": \"7d\",\n  \"latency\": {\n    \"p50\": 0,\n    \"p95\": 0,\n    \"p99\": 0\n  },\n  \"errorRate\": 0,\n  \"totalInvocations\": 0,\n  \"avgTokens\": 0,\n  \"avgConfidence\": 0,\n  \"escalation",
+          "durationMs": 0
+        },
+        {
+          "name": "get_audit_trail",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"id\": \"audit-001\",\n    \"timestamp\": 1775020970939,\n    \"agentName\": \"pipelines\",\n    \"action\": \"pipeline_executed\",\n    \"input\": \"input_for_pipeline_executed\",\n    \"output\": \"result_of_pipel",
+          "durationMs": 0
+        },
+        {
+          "name": "check_agent_health",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"agentName\": \"pipelines\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775092960939,\n    \"uptime\": 259200026,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"incidents\",\n    \"status",
+          "durationMs": 0
+        },
+        {
+          "name": "detect_drift",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"agentName\": \"governance\",\n    \"metric\": \"error_rate\",\n    \"currentValue\": 0.08,\n    \"baselineValue\": 0.08,\n    \"threshold\": 0.05,\n    \"severity\": \"warning\",\n    \"detectedAt\": 1775092970965\n",
+          "durationMs": 0
+        },
+        {
+          "name": "get_evaluation_report",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"agentName\": \"test\",\n  \"period\": \"7d\",\n  \"averageScore\": 0,\n  \"totalEvaluations\": 0,\n  \"breakdown\": {\n    \"accuracy\": 0,\n    \"completeness\": 0,\n    \"safety\": 0,\n    \"helpfulness\": 0\n  },\n  \"messag",
+          "durationMs": 0
+        },
+        {
+          "name": "list_active_agents",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "[\n  {\n    \"agentName\": \"catalog\",\n    \"status\": \"healthy\",\n    \"lastHeartbeat\": 1775092960939,\n    \"errorRateLast5m\": 0.02\n  },\n  {\n    \"agentName\": \"governance\",\n    \"status\": \"degraded\",\n    \"lastHe",
+          "durationMs": 0
+        },
+        {
+          "name": "schedule_anomaly_scan",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"scheduleId\": \"scan-1775092970965-ickj\",\n  \"cron\": \"0 */6 * * *\",\n  \"sensitivity\": \"medium\",\n  \"agentName\": \"all\",\n  \"enabled\": true,\n  \"createdAt\": 1775092970965,\n  \"updatedAt\": 1775092970965,\n  ",
+          "durationMs": 0
+        },
+        {
+          "name": "export_usage_report",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"format\": \"json\",\n  \"rowCount\": 500,\n  \"data\": [\n    {\n      \"id\": \"evt-05130\",\n      \"timestamp\": 1774488590939,\n      \"userId\": \"eng-priya\",\n      \"teamId\": \"analytics\",\n      \"agentName\": \"cata",
+          "durationMs": 1
+        },
+        {
+          "name": "configure_usage_alerts",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"alertId\": \"alert-1775092970966-ruun\",\n  \"agentName\": \"all\",\n  \"metric\": \"usage_drop\",\n  \"threshold\": 0.3,\n  \"enabled\": true,\n  \"createdAt\": 1775092970966,\n  \"updatedAt\": 1775092970966,\n  \"status\"",
+          "durationMs": 0
+        },
+        {
+          "name": "set_adoption_targets",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"agentName\": \"test\",\n  \"targetActiveUsers\": 10,\n  \"targetCallsPerDay\": 50,\n  \"targetAdoptionRate\": 0.8,\n  \"createdAt\": 1775092970966,\n  \"updatedAt\": 1775092970966,\n  \"status\": \"target_set\"\n}",
+          "durationMs": 0
+        },
+        {
+          "name": "verify_global_hash_chain",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"integrity\": \"broken\",\n  \"totalEvents\": 6778,\n  \"agentChains\": [\n    {\n      \"agentName\": \"catalog\",\n      \"eventCount\": 865,\n      \"integrity\": \"broken\"\n    },\n    {\n      \"agentName\": \"cost\",\n  ",
+          "durationMs": 1
+        },
+        {
+          "name": "cross_agent_query",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "fail",
+          "isError": true,
+          "responsePreview": "{\"error\":\"Request to 'test.test' timed out after 5000ms\",\"targetAgent\":\"test\",\"queryType\":\"test\"}",
+          "durationMs": 5002
+        },
+        {
+          "name": "get_metering_summary",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"available\": false,\n  \"message\": \"Metering service not reachable: Request to 'metering.get_usage' timed out after 500ms\",\n  \"customerId\": \"cust-1\",\n  \"period\": \"7d\"\n}",
+          "durationMs": 502
+        },
+        {
+          "name": "get_cost_enrichment",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"available\": false,\n  \"message\": \"Cost agent not reachable: Request to 'dw-cost.get_cost_report' timed out after 500ms\",\n  \"agentName\": \"all\",\n  \"period\": \"7d\"\n}",
+          "durationMs": 502
+        },
+        {
+          "name": "publish_usage_events",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"anomaliesPublished\": 0,\n  \"adoptionPublished\": 1\n}",
+          "durationMs": 4
+        },
+        {
+          "name": "get_anomaly_context",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"agentName\": \"test\",\n  \"detectedAt\": 1,\n  \"deployments\": {\n    \"available\": false,\n    \"message\": \"Pipeline agent not reachable\"\n  },\n  \"incidents\": {\n    \"available\": false,\n    \"message\": \"Incid",
+          "durationMs": 1003
+        },
+        {
+          "name": "register_usage_datasets",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"registered\": 4,\n  \"totalDatasets\": 4,\n  \"datasets\": [\n    \"usage_events\",\n    \"agent_metrics\",\n    \"audit_trail\",\n    \"evaluation_scores\"\n  ]\n}",
+          "durationMs": 2006
+        },
+        {
+          "name": "ingest_otel_spans",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"ingested\": 0,\n  \"skipped\": 0,\n  \"total\": 0\n}",
+          "durationMs": 1
+        },
+        {
+          "name": "export_otel_spans",
+          "hasDescription": true,
+          "hasInputSchema": true,
+          "callResult": "pass",
+          "isError": false,
+          "responsePreview": "{\n  \"resourceSpans\": [\n    {\n      \"resource\": {\n        \"attributes\": {\n          \"service.name\": \"dw-usage-intelligence\",\n          \"service.version\": \"0.1.0\"\n        }\n      },\n      \"scopeSpans\": ",
+          "durationMs": 3
+        }
+      ]
+    }
+  ]
+}

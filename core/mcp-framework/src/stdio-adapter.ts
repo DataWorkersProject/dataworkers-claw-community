@@ -44,8 +44,8 @@ export function startStdioTransport(server: DataWorkersMCPServer): void {
     rl.close();
     process.exit(0);
   };
-  process.on('SIGINT', shutdown);
-  process.on('SIGTERM', shutdown);
+  process.once('SIGINT', shutdown);
+  process.once('SIGTERM', shutdown);
 
   process.stderr.write(
     `[dw-stdio] ${server.config.name} v${server.config.version} ready (pid=${process.pid})\n`,
