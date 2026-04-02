@@ -124,29 +124,34 @@ function generateMigration(change: SchemaChange | undefined, customerId: string)
   let rollbackSql = '';
   let backwardCompatible = true;
 
-  switch (change.changeType) {
-    case 'column_added':
-      forwardSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nADD COLUMN ${change.details.column} ${change.details.newType};`;
-      rollbackSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nDROP COLUMN ${change.details.column};`;
-      break;
-    case 'column_removed':
-      forwardSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nDROP COLUMN ${change.details.column};`;
-      rollbackSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nADD COLUMN ${change.details.column} ${change.details.oldType};`;
-      backwardCompatible = false;
-      break;
-    case 'column_type_changed':
-      forwardSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nALTER COLUMN ${change.details.column} SET DATA TYPE ${change.details.newType};`;
-      rollbackSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nALTER COLUMN ${change.details.column} SET DATA TYPE ${change.details.oldType};`;
-      backwardCompatible = isTypeChangeCompatible(change.details.oldType, change.details.newType);
-      break;
-    case 'column_renamed':
-      forwardSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nRENAME COLUMN ${change.details.oldName} TO ${change.details.newName};`;
-      rollbackSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nRENAME COLUMN ${change.details.newName} TO ${change.details.oldName};`;
-      backwardCompatible = false;
-      break;
-    default:
-      forwardSql = `-- Migration for ${change.changeType} on ${change.table}`;
-      rollbackSql = `-- Rollback for ${change.changeType} on ${change.table}`;
+  if (!change.details) {
+    forwardSql = `-- Migration for ${change.changeType} on ${change.database}.${change.schema}.${change.table} (details pending)`;
+    rollbackSql = `-- Rollback for ${change.changeType} on ${change.table}`;
+  } else {
+    switch (change.changeType) {
+      case 'column_added':
+        forwardSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nADD COLUMN ${change.details.column} ${change.details.newType};`;
+        rollbackSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nDROP COLUMN ${change.details.column};`;
+        break;
+      case 'column_removed':
+        forwardSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nDROP COLUMN ${change.details.column};`;
+        rollbackSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nADD COLUMN ${change.details.column} ${change.details.oldType};`;
+        backwardCompatible = false;
+        break;
+      case 'column_type_changed':
+        forwardSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nALTER COLUMN ${change.details.column} SET DATA TYPE ${change.details.newType};`;
+        rollbackSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nALTER COLUMN ${change.details.column} SET DATA TYPE ${change.details.oldType};`;
+        backwardCompatible = isTypeChangeCompatible(change.details.oldType, change.details.newType);
+        break;
+      case 'column_renamed':
+        forwardSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nRENAME COLUMN ${change.details.oldName} TO ${change.details.newName};`;
+        rollbackSql = `ALTER TABLE ${change.database}.${change.schema}.${change.table}\nRENAME COLUMN ${change.details.newName} TO ${change.details.oldName};`;
+        backwardCompatible = false;
+        break;
+      default:
+        forwardSql = `-- Migration for ${change.changeType} on ${change.table}`;
+        rollbackSql = `-- Rollback for ${change.changeType} on ${change.table}`;
+    }
   }
 
   const affectedSystems = ['sql', 'dbt'];

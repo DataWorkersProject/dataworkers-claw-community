@@ -22,8 +22,8 @@ import { DataplexConnector } from '../../../connectors/dataplex/src/index.js';
 import { NessieConnector } from '../../../connectors/nessie/src/index.js';
 
 
-export const snowflake = SnowflakeConnector.fromEnv();
-export const bigquery = BigQueryConnector.fromEnv();
+export const snowflake = await SnowflakeConnector.fromEnv();
+export const bigquery = await BigQueryConnector.fromEnv();
 export const dbt = new DbtConnector();
 export const databricks = new DatabricksConnector();
 export const glue = new GlueConnector();

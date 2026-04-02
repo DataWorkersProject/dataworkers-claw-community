@@ -118,7 +118,7 @@ export const assessImpactHandler: ToolHandler = async (args) => {
 
     // Filter to exact matches only (case-insensitive) to prevent substring collision
     const exactMatches = matchingNodes.filter(n =>
-      n.name.toLowerCase() === tableName.toLowerCase()
+      n.name != null && n.name.toLowerCase() === tableName.toLowerCase()
     );
 
     // Use exact matches if available, fall back to substring matches
