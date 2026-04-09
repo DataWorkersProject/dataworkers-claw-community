@@ -10,7 +10,8 @@
   <a href="https://www.npmjs.com/org/data-workers"><img src="https://img.shields.io/badge/npm-v0.1.0-cb3837?logo=npm" alt="npm" /></a>
   <a href="https://modelcontextprotocol.io"><img src="https://img.shields.io/badge/MCP-compatible-purple?logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQyIDAtOC0zLjU4LTgtOHMzLjU4LTggOC04IDggMy41OCA4IDgtMy41OCA4LTggOHoiLz48L3N2Zz4=" alt="MCP Compatible" /></a>
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
-  <a href="https://discord.gg/b8DR5J53"><img src="https://img.shields.io/discord/1354986371498082325?color=5865F2&logo=discord&logoColor=white&label=Discord" alt="Discord" /></a>
+  <a href="https://claude.ai/claude-code"><img src="https://img.shields.io/badge/Claude_Code-ready-F96854?logo=anthropic&logoColor=white" alt="Claude Code" /></a>
+  <a href="https://cursor.com"><img src="https://img.shields.io/badge/Cursor-ready-000000?logo=cursor&logoColor=white" alt="Cursor" /></a>
   <a href="https://github.com/DataWorkersProject/dataworkers-claw-community/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" /></a>
 </p>
 
