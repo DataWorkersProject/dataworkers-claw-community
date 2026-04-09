@@ -40,5 +40,5 @@
       "@data-workers/snowflake-connector": ["./connectors/snowflake/src"]
     }
   },
-  "exclude": ["node_modules", "dist", "**/dist", "**/*.test.ts"]
+  "exclude": ["node_modules", "dist", "**/dist", "**/*.test.ts", "agents/dw-insights", "agents/dw-cost", "agents/dw-migration", "agents/dw-streaming"]
 }
