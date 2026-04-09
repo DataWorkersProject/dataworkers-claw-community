@@ -297,11 +297,11 @@ async function testAgent(agentName: string): Promise<AgentResult> {
       const response = await callWithTimeout(
         () => server.callTool(tool.name, args),
         10_000
-      );
+      ) as { content?: { type: string; text?: string }[]; isError?: boolean };
       toolResult.durationMs = Math.round(performance.now() - start);
 
       if (response?.content?.[0]?.type === 'text') {
-        const text = response.content[0].text;
+        const text = response.content![0].text ?? '';
         try {
           JSON.parse(text);
           toolResult.callResult = response.isError ? 'fail' : 'pass';
@@ -313,9 +313,9 @@ async function testAgent(agentName: string): Promise<AgentResult> {
           toolResult.isError = !!response.isError;
           toolResult.responsePreview = text.slice(0, 200);
         }
-      } else if (response?.content?.length > 0) {
+      } else if ((response?.content?.length ?? 0) > 0) {
         toolResult.callResult = 'pass';
-        toolResult.responsePreview = JSON.stringify(response.content[0]).slice(0, 200);
+        toolResult.responsePreview = JSON.stringify(response.content![0]).slice(0, 200);
       } else {
         toolResult.callResult = 'fail';
         toolResult.error = 'Empty response (no content)';
