@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/dataworkersproject-dataworkers-claw-community-badge.png)](https://mseep.ai/app/dataworkersproject-dataworkers-claw-community)
+
 <p align="center">
   <h1 align="center">Data Workers - Open-Source Community Edition</h1>
   <p align="center"><strong>Open-source autonomous AI agents for data engineering</strong></p>
