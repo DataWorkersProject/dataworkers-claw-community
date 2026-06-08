@@ -10,11 +10,65 @@ This guide walks you through installing Data Workers Claw and connecting it to y
 
 ## Installation
 
-### Clone and Install
+### Fastest Path (2 commands, no clone needed)
+
+Run directly from npm — no repo clone required:
+
+```bash
+npx dw-claw init
+claude mcp add data-workers -- npx -y dw-claw
+```
+
+Open Claude Code and start asking questions. Everything works instantly with in-memory seed data.
+
+### Clone-based install (for development or contributing)
+
+Clone the repo first, then install:
+
+```bash
+git clone https://github.com/DataWorkersProject/dataworkers-claw-community.git
+cd dataworkers-claw-community
+npm install              # full install (~3min, includes optional warehouse SDKs)
+# or:
+npm install --ignore-optional    # fast install (~30s, skips heavy warehouse SDKs)
+```
+
+Heavy warehouse SDKs (Snowflake, BigQuery, Databricks) are optional dependencies. You can always install them later when you connect to real warehouses.
+
+### Interactive Setup Wizard
+
+Connect to your data warehouse interactively:
+
+```bash
+npx dw-claw setup
+```
+
+The wizard walks you through:
+1. **Choose your warehouse** — Snowflake, BigQuery, or Databricks
+2. **Enter credentials** — account, username, password/token
+3. **Verify connection** — tests the connection before saving
+4. **Write config** — saves environment variables to `.env`
+
+### Environment Variable Auto-Detection
+
+Data Workers uses factory functions that auto-detect real infrastructure from environment variables. Set the relevant env vars and the agents connect automatically:
+
+```bash
+# Example: set Snowflake credentials and the factory auto-connects
+export SNOWFLAKE_ACCOUNT=myorg-myaccount
+export SNOWFLAKE_USERNAME=myuser
+export SNOWFLAKE_PASSWORD=mypassword
+```
+
+When no env vars are set, all connectors fall back to InMemory stubs with realistic seed data.
+
+### Clone and Install (from source)
+
+For development or contributing:
 
 ```bash
 git clone https://github.com/DataWorkersProject/dataworkers-claw-community
-cd data-workers
+cd dataworkers-claw-community
 npm install
 ```
 
@@ -28,13 +82,18 @@ This runs the full test suite (3,061+ tests across 149+ files) to confirm everyt
 
 ## Quick Start — Single Install Command
 
-The fastest way to get started is the single install command, which registers all Data Workers agents with your MCP client:
+The fastest way to get started is the `init` command, which auto-detects your MCP client and writes its config file:
 
 ```bash
-npx dw-claw
+npx dw-claw init
 ```
 
-This auto-detects your MCP client (Claude Code, Cursor, etc.) and configures all agents.
+This detects whether you're using Claude Code, Cursor, GitHub Copilot, Continue, Windsurf, or OpenCode, and writes the correct MCP server config. Then register the server with your client directly:
+
+```bash
+# Claude Code — one-liner registration:
+claude mcp add data-workers -- npx -y dw-claw
+```
 
 ## Platform Setup
 
@@ -164,9 +223,14 @@ By default, Data Workers uses in-memory stubs that work out of the box with no e
 | `AZURE_TENANT_ID` | Microsoft Purview | Azure AD tenant |
 | `NESSIE_URI` | Project Nessie | API endpoint |
 | `REDIS_URL` | Redis | Connection URL (for real KV/cache) |
-| `POSTGRES_URL` | PostgreSQL | Connection URL (for real relational store) |
+| `DATABASE_URL` | PostgreSQL | Connection URL (for real relational store) |
+| `PGVECTOR_ENABLED` | pgvector | Set to `true` to enable vector store on the PostgreSQL connection |
 | `KAFKA_BROKERS` | Kafka | Broker list (for real message bus) |
 | `NEO4J_URI` | Neo4j | Connection URL (for real graph DB) |
+| `AIRFLOW_URL` | Airflow | Airflow REST API base URL (e.g. `http://localhost:8080`) |
+| `OLLAMA_HOST` | Ollama | Ollama server URL (e.g. `http://localhost:11434`) |
+| `ANTHROPIC_API_KEY` | Anthropic Claude | LLM completions |
+| `OPENAI_API_KEY` | OpenAI | LLM completions |
 
 When no environment variables are set, all connectors return realistic mock data, making Data Workers fully functional for development, testing, and demos without any external services.
 

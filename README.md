@@ -39,10 +39,33 @@ Read more: [Why We Open-Sourced Data Workers](https://dataworkers.io/blog/why-we
 
 ## Get Started
 
+### Fastest path (2 commands)
+
+No clone required — runs straight from npm:
+
+```bash
+npx dw-claw init
+claude mcp add data-workers -- npx -y dw-claw
+```
+
+That's it. Open Claude Code and start asking questions. Everything works instantly with in-memory seed data.
+
+### Connect to your data (optional)
+
+```bash
+npx dw-claw setup    # Interactive: choose Snowflake/BigQuery/Databricks → enter creds → verified
+```
+
+### Clone-based setup
+
+If you prefer to clone the repo and run from source (required for contributing or dev):
+
 ```bash
 git clone https://github.com/DataWorkersProject/dataworkers-claw-community.git
 cd dataworkers-claw-community
-npm install
+npm install          # full install (~3min, includes optional warehouse SDKs)
+# or:
+npm install --ignore-optional    # fast install (~30s, skips heavy warehouse SDKs)
 ```
 
 Then add agents to Claude Code (run from inside the cloned repo):
@@ -299,7 +322,7 @@ cd agents/dw-pipelines && npm run dev  # Run a single agent in dev mode
 
 ## Known Limitations
 
-- **npm packages require the cloned repo.** `npx dw-claw` and `npx data-context-mcp` depend on workspace packages that aren't published individually. Use the `start-agent.sh` approach for now.
+- **Some advanced features require the cloned repo.** The `npx dw-claw` one-liner works for most workflows. For development or contributing, use the clone-based setup.
 - **dw-orchestration is an internal service**, not an MCP agent. It provides task scheduling and agent coordination APIs used by other agents.
 - **Write operations require Pro.** Tools like `generate_pipeline`, `deploy_model`, and `train_model` return upgrade prompts in the Community Edition.
 
