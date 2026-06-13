@@ -2,8 +2,8 @@
  * get_quality_summary — Returns a quality summary for a dataset.
  *
  * Provides overall quality score and dimension breakdown from cached
- * quality data or seed defaults. Used by cross-agent requests from
- * dw-insights for anomaly correlation.
+ * quality data or seed defaults. Used by cross-agent requests for
+ * anomaly correlation.
  */
 
 import type { ToolDefinition, ToolHandler } from '@data-workers/mcp-framework';

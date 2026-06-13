@@ -1,5 +1,5 @@
 # Data Workers Agent Swarm
-# All 14 agents deployed as individual services.
+# Community Edition agents deployed as individual services.
 # Depends on infrastructure from the root docker-compose.yml.
 #
 # Usage: docker compose -f docker-compose.yml -f docker/docker-compose.agents.yml up -d
@@ -54,14 +54,6 @@ services:
       <<: *agent-env
       DW_AGENT_NAME: dw-context-catalog
 
-  dw-cost:
-    <<: *agent-defaults
-    container_name: dw-cost
-    ports: ["3004:3000"]
-    environment:
-      <<: *agent-env
-      DW_AGENT_NAME: dw-cost
-
   dw-governance:
     <<: *agent-defaults
     container_name: dw-governance
@@ -70,22 +62,6 @@ services:
       <<: *agent-env
       DW_AGENT_NAME: dw-governance
 
-  dw-migration:
-    <<: *agent-defaults
-    container_name: dw-migration
-    ports: ["3006:3000"]
-    environment:
-      <<: *agent-env
-      DW_AGENT_NAME: dw-migration
-
-  dw-insights:
-    <<: *agent-defaults
-    container_name: dw-insights
-    ports: ["3007:3000"]
-    environment:
-      <<: *agent-env
-      DW_AGENT_NAME: dw-insights
-
   dw-observability:
     <<: *agent-defaults
     container_name: dw-observability
@@ -93,14 +69,6 @@ services:
     environment:
       <<: *agent-env
       DW_AGENT_NAME: dw-observability
-
-  dw-streaming:
-    <<: *agent-defaults
-    container_name: dw-streaming
-    ports: ["3009:3000"]
-    environment:
-      <<: *agent-env
-      DW_AGENT_NAME: dw-streaming
 
   dw-orchestration:
     <<: *agent-defaults
@@ -143,6 +111,14 @@ services:
     environment:
       <<: *agent-env
       DW_AGENT_NAME: dw-usage-intelligence
+
+  dw-ml:
+    <<: *agent-defaults
+    container_name: dw-ml
+    ports: ["3015:3000"]
+    environment:
+      <<: *agent-env
+      DW_AGENT_NAME: dw-ml
 
   # ---- Infrastructure (defined here for standalone use) ----
 

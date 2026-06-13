@@ -362,7 +362,7 @@ export const explainTableHandler: ToolHandler = async (args) => {
       includeCost
         ? Promise.resolve<Section<CostPlaceholder>>({
             available: false,
-            // TODO: Wire cross-agent call to dw-cost agent when agent mesh is available
+            // TODO: Wire cross-agent cost lookup when the agent mesh is available
             reason: 'cross_agent_not_wired',
           })
         : Promise.resolve<Section<CostPlaceholder>>({ available: false, reason: 'excluded_by_request' }),

@@ -100,7 +100,7 @@ jobs:
 
           # ── Internal docs that should have been stripped ─────────────────
           # Check for internal doc filenames in the tree
-          for doc_pattern in "PRD_*.md" "SPEC_*.md" "DEEP_TEST_*.md" "AUDIT-REPORT.md" "DEEP-TEST-REPORT.md" "GAP-ANALYSIS-REPORT.md" "LAUNCH_AUDIT_REPORT.md" "SECURITY_SCAN_REPORT.md"; do
+          for doc_pattern in "PRD_*.md" "SPEC_*.md" "DEEP_TEST_*.md" "AUDIT-REPORT.md" "DEEP-TEST-REPORT.md" "GAP-ANALYSIS-REPORT.md" "LAUNCH_AUDIT_REPORT.md" "SECURITY_SCAN_REPORT.md" "BENCHMARK_REPORT.md" "PERSONA_BENCHMARK_REPORT.md" "*BENCHMARK_REPORT.md" "PERSONA_BENCHMARK*.md" "EVAL_REPORT.md" "AGENT_REPORT_CARD.md" "PERSONA_BENCHMARK.md" "test-report*.json"; do
             FOUND="$(find . -name "$doc_pattern" -not -path './.git/*' -not -path './node_modules/*' 2>/dev/null || true)"
             if [[ -n "$FOUND" ]]; then
               if [[ $FAILED -eq 0 ]]; then

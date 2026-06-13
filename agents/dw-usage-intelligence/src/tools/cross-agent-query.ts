@@ -16,7 +16,7 @@ export const crossAgentQueryDefinition: ToolDefinition = {
   inputSchema: {
     type: 'object',
     properties: {
-      targetAgent: { type: 'string', description: 'Target agent name (e.g. "dw-cost", "dw-incidents").' },
+      targetAgent: { type: 'string', description: 'Target agent name (e.g. "dw-incidents", "dw-quality").' },
       queryType: { type: 'string', description: 'Query type (e.g. "get_summary", "get_status").' },
       payload: { type: 'object', description: 'Query payload to send.' },
       timeoutMs: { type: 'number', description: 'Timeout in milliseconds. Defaults to 5000.' },

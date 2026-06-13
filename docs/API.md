@@ -2,7 +2,7 @@
 
 > **Auto-generated** from source tool definitions across all Data Workers agents.
 
-**Total tools: 160+** across 11 agents (including 35 enterprise connectors).
+**Total tools: 160+** across 11 agents and 14 catalog connectors.
 
 ---
 

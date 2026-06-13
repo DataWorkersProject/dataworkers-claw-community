@@ -26,7 +26,7 @@ You have access to 11 specialized MCP agents:
 - **Usage Intelligence** (dw-usage-intelligence): Usage analysis, query tracking, index recommendations
 
 ### Connectors & ML
-- **Connectors** (dw-connectors): 49 platform connectors (Snowflake, BigQuery, Databricks, dbt, Iceberg, and more)
+- **Connectors** (dw-connectors): 14 catalog connectors (Snowflake, BigQuery, Databricks, dbt, Iceberg, and more)
 - **MLOps & Models** (dw-ml): Experiment tracking, model registry, feature pipelines, explainability, drift detection
 
 ## How to Work

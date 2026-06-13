@@ -77,7 +77,7 @@ function scopeToTypes(scope: string): string[] | null {
 
 /** Placeholder cost estimator based on qualityScore heuristic. */
 function estimateMonthlyCost(node: { type: string; properties: Record<string, unknown> }): number {
-  // Real cost would come from dw-cost agent; this is a rough heuristic.
+  // Real cost would come from a dedicated cost-optimization service; this is a rough heuristic.
   const qualityScore = typeof node.properties.qualityScore === 'number'
     ? node.properties.qualityScore
     : 0.5;

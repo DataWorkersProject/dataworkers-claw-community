@@ -1,7 +1,8 @@
 /**
- * get_cost_enrichment — Cost enrichment via dw-cost message bus request/reply.
+ * get_cost_enrichment — Cost enrichment via the message bus request/reply pattern.
  *
- * Requests cost data from dw-cost agent to enrich usage analysis with dollar amounts.
+ * Requests cost data from a cost-optimization agent (available in Data Workers Pro)
+ * to enrich usage analysis with dollar amounts.
  * NO LLM calls — purely deterministic.
  */
 
@@ -11,7 +12,7 @@ import { messageBus } from '../backends.js';
 export const getCostEnrichmentDefinition: ToolDefinition = {
   name: 'get_cost_enrichment',
   description:
-    'Enrich usage data with cost information from the dw-cost agent. Adds dollar-amount context to usage metrics via message bus request/reply.',
+    'Enrich usage data with cost information from the cost-optimization agent (available in Data Workers Pro). Adds dollar-amount context to usage metrics via message bus request/reply.',
   inputSchema: {
     type: 'object',
     properties: {

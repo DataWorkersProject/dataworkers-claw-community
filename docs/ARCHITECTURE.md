@@ -21,7 +21,7 @@ Data Workers is a **coordinated mesh of 11 autonomous AI agents** for data engin
 │   ├─ dw-pipelines (write tools require Pro)                      │
 │   ├─ dw-incidents    ├─ dw-observability                         │
 │   ├─ dw-catalog      ├─ dw-orchestration (internal svc)          │
-│   ├─ dw-schema       ├─ dw-connectors (49 connectors)            │
+│   ├─ dw-schema       ├─ dw-connectors (14 connectors)            │
 │   ├─ dw-quality      ├─ dw-usage-intelligence                    │
 │   ├─ dw-governance   └─ dw-ml (write tools require Pro)          │
 └──────────────┬───────────────────────────────────┬───────────────┘
@@ -33,7 +33,7 @@ Data Workers is a **coordinated mesh of 11 autonomous AI agents** for data engin
 │   Redis │ Kafka │ PG+pgvector │ Neo4j │ Airflow │ LLM Bridge    │
 │   Factory auto-detect from env vars │ All 11 agents via backends │
 ├──────────────────────────────────────────────────────────────────┤
-│              Connectors (49: 14 catalog + 35 enterprise)          │
+│              Connectors (14 catalog)                              │
 │   Iceberg │ Polaris │ Snowflake │ BigQuery │ dbt │ Databricks   │
 │   Glue │ Hive │ OpenMetadata │ OpenLineage │ DataHub            │
 │   Purview │ Dataplex │ Nessie │ Lake Formation (in Glue)        │
@@ -137,14 +137,14 @@ All connectors implement `ICatalogProvider` with capability-based feature negoti
 | Language | TypeScript (Node.js 20+) | Same |
 | Test Framework | Vitest (3,061+ tests across 149+ files) | + contract tests, evals |
 | Infrastructure | In-memory stubs + 9 real adapters | PostgreSQL+pgvector, Redis, Neo4j, Kafka, Airflow, LLM bridge, Warehouse bridge (all wired via factories) |
-| Connectors | 49 platforms (14 catalog + 35 enterprise) | Connect via env vars |
+| Connectors | 14 catalog connectors | Connect via env vars |
 | LLM | Stubbed (deterministic) | Claude Sonnet/Haiku via Anthropic SDK |
 | Observability | Stub metrics | OpenTelemetry → Grafana/Datadog |
 | Auth | None | OAuth 2.1 (MCP spec), Vault |
 
 ## Current Status
 
-**Architecture: 100% complete** — 11 agents, 160+ MCP tools, 49 connectors (14 catalog + 35 enterprise), 9 infrastructure stubs + 9 real adapters, 3,061+ tests across 149+ files.
+**Architecture: 100% complete** — 11 agents, 160+ MCP tools, 14 catalog connectors, 9 infrastructure stubs + 9 real adapters, 3,061+ tests across 149+ files.
 
 **Production readiness: ~40%** — All agents use in-memory stubs by default. 9 real infrastructure adapters are implemented with factory-based `fromEnv()` auto-detection. All 11 agents wired through `backends.ts`. Docker Compose available for local integration testing. See [DEPLOYMENT.md](DEPLOYMENT.md) for production setup and [API.md](API.md) for the full tool reference.
 

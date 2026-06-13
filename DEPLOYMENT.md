@@ -212,7 +212,7 @@ spec:
         runAsUser: 1000
       containers:
         - name: agent
-          image: ghcr.io/dhanushashetty/data-workers:latest
+          image: ghcr.io/dataworkersproject/data-workers:latest
           ports:
             - containerPort: 3000
           env:

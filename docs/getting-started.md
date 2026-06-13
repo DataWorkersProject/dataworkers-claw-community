@@ -105,7 +105,7 @@ claude mcp add data-workers -- npx -y dw-claw
 claude mcp add data-workers -- node agents/dw-connectors/dist/index.js
 ```
 
-This registers the unified connector agent with tools spanning all 49 data platform connectors (14 catalog + 35 enterprise).
+This registers the unified connector agent with tools spanning all 14 catalog connectors.
 
 **Option 2: Manual `.mcp.json` configuration**
 

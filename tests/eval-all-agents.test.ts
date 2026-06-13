@@ -1,5 +1,5 @@
 /**
- * Eval script: Runs all tools from dw-streaming, dw-observability,
+ * Eval script: Runs all tools from dw-observability,
  * dw-usage-intelligence, and dw-connectors and captures output.
  *
  * Run with: npx vitest run scripts/eval-all-agents.test.ts

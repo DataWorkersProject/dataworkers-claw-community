@@ -33,7 +33,7 @@ npx dw-claw opencode
 | dw-schema | 4 | Schema diffing, evolution, snapshots |
 | dw-governance | 5 | Compliance, classification, policy enforcement |
 | dw-observability | 6 | Metrics, SLA monitoring, pipeline tracing |
-| dw-connectors | 139 | 49 platform connectors |
+| dw-connectors | 56 | 14 catalog connectors |
 | dw-usage-intelligence | 13 | Usage analysis, query tracking |
 
 ## Links

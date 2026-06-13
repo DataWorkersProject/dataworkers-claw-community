@@ -35,7 +35,7 @@ Data Workers is a coordinated swarm of AI agents that automate the full spectrum
 
 Everything runs locally with in-memory stubs by default. No external services required. No data leaves your machine. BYO model -- use any LLM provider.
 
-Read more: [Why We Open-Sourced Data Workers](https://dataworkers.io/blog/why-we-open-sourced-14-autonomous-data-engineering-agents)
+Read more: [Why We Open-Sourced Data Workers](https://dataworkers.io/blog/why-we-open-sourced-our-data-engineering-agents)
 
 ## Get Started
 

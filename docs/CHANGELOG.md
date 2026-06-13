@@ -73,7 +73,7 @@ Based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - dw-orchestration: priority task scheduler (P0-P3), heartbeat monitor (15s TTL), agent registry with per-tenant toggle, event choreographer with trace ID propagation
 
 ### Removed — Agents moved to Pro (through )
-- dw-cost, dw-migration, dw-insights, dw-streaming removed from Community Edition (available in Pro/Enterprise)
+- Additional specialized agents (cost optimization, data migration, insights / NL-query, streaming / CDC) are available in Data Workers Pro/Enterprise
 
 ### Added — Connectors (, )
 - Apache Iceberg REST Catalog connector: table metadata, time travel, schema evolution, partition specs, snapshot statistics
@@ -100,7 +100,7 @@ Based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Stats
 - 11 agents, 160+ MCP tools
-- 49 connectors (14 catalog + 35 enterprise)
+- 14 catalog connectors
 - 9 infrastructure adapters (stubs + real adapters)
 - 3,061+ passing tests across 149+ files
 - 16,868 lines added

@@ -2,7 +2,7 @@
  * get_table_schema_for_sql — Returns table schema for SQL generation.
  *
  * Provides column names, types, and sample values to help other agents
- * (especially dw-insights) generate correct SQL queries.
+ * generate correct SQL queries.
  */
 
 import type { ToolDefinition, ToolHandler } from '@data-workers/mcp-framework';

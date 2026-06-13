@@ -42,7 +42,7 @@ Data Workers includes:
 
 - **11 agents** — 9 domain agents + 1 unified connector agent + 1 orchestration agent
 - **160+ MCP tools** across all agents and connectors
-- **49 connectors (14 catalog + 35 enterprise)** — 14 catalog connectors (Iceberg, Polaris, Snowflake, BigQuery, dbt, Databricks, Glue, Lake Formation, Hive Metastore, OpenMetadata, OpenLineage, DataHub, Purview, Dataplex) + 35 enterprise connectors — orchestration (Airflow, Dagster, Prefect, Step Functions, Azure Data Factory, dbt Cloud, Temporal, Mage, Kestra, Argo), alerting (PagerDuty, Slack, Teams, OpsGenie, New Relic), identity (Okta, Azure AD), observability (OpenTelemetry, Datadog), quality (Great Expectations, Soda, Monte Carlo, Anomalo, Bigeye, Elementary), BI (Looker, Tableau, Metabase, Sigma, Superset), ITSM (ServiceNow, Jira Service Management)
+- **14 catalog connectors** — Iceberg, Polaris, Snowflake, BigQuery, dbt, Databricks, Glue, Lake Formation, Hive Metastore, OpenMetadata, OpenLineage, DataHub, Purview, Dataplex. Additional integrations (orchestration, alerting, observability, BI, identity, ITSM) are available in Data Workers Pro/Enterprise
 - **9 infrastructure adapters** — VectorStore, GraphDB, Full-Text Search, Key-Value, Relational, MessageBus, LLMClient, OrchestratorAPI, WarehouseConnector (each with in-memory stub + real adapter)
 - **3,061+ tests** across 149+ files
 
@@ -62,7 +62,7 @@ Or add multiple agents individually in your `.mcp.json`. See the [Getting Starte
 
 ## What is the dw-connectors agent?
 
-The `dw-connectors` agent is a unified MCP gateway that exposes tools spanning all 49 data platform connectors (14 catalog + 35 enterprise). Instead of configuring separate connector servers, you register one agent and get access to all connector tools (list tables, get schemas, query lineage, etc.) across every supported platform.
+The `dw-connectors` agent is a unified MCP gateway that exposes tools spanning all 14 catalog connectors. Instead of configuring separate connector servers, you register one agent and get access to all connector tools (list tables, get schemas, query lineage, etc.) across every supported platform.
 
 ## What is the difference between stubs and real adapters?
 

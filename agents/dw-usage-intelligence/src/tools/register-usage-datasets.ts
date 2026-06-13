@@ -1,8 +1,9 @@
 /**
- * register_usage_datasets — Register usage data with dw-insights for NL querying.
+ * register_usage_datasets — Register usage data for natural-language querying.
  *
- * Publishes dataset registration events to the message bus so that dw-insights
- * can include usage data tables in its NL-to-SQL query engine.
+ * Publishes dataset registration events to the message bus so that an insights
+ * agent (available in Data Workers Pro) can include usage data tables in its
+ * NL-to-SQL query engine.
  * NO LLM calls — purely deterministic.
  */
 
@@ -35,7 +36,7 @@ const USAGE_DATASETS = [
 export const registerUsageDatasetsDefinition: ToolDefinition = {
   name: 'register_usage_datasets',
   description:
-    'Register usage intelligence data tables with the dw-insights agent for natural language querying. Enables questions like "which agent has the highest error rate this week?".',
+    'Register usage intelligence data tables for natural language querying (insights agent available in Data Workers Pro). Enables questions like "which agent has the highest error rate this week?".',
   inputSchema: {
     type: 'object',
     properties: {},

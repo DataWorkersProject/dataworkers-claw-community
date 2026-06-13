@@ -71,6 +71,14 @@ docs/SIMPLIFICATION_REPORT.md
 docs/NPM_PUBLISH_CHECKLIST.md
 docs/TECH_STACK_ARCHITECTURE.md
 
+# Internal QA / benchmark / eval artifacts — never publish to OSS
+scripts/test-report*.json
+**/test-report*.json
+**/*BENCHMARK_REPORT.md
+**/PERSONA_BENCHMARK_REPORT.md
+**/AGENT_REPORT_CARD.md
+**/EVAL_REPORT.md
+
 # Paid agents (not included in OSS)
 agents/dw-cost/
 agents/dw-migration/

@@ -58,17 +58,13 @@ interface Report {
 const AGENTS = [
   'dw-context-catalog',
   'dw-connectors',
-  'dw-cost',
   'dw-governance',
   'dw-incidents',
-  'dw-insights',
-  'dw-migration',
   'dw-ml',
   'dw-observability',
   'dw-pipelines',
   'dw-quality',
   'dw-schema',
-  'dw-streaming',
   'dw-usage-intelligence',
   // dw-orchestration excluded: internal service, not an MCP agent
 ];

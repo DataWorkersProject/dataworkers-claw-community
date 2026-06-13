@@ -20,17 +20,14 @@ COPY package.json package-lock.json tsconfig.json ./
 COPY agents/dw-pipelines/package.json ./agents/dw-pipelines/
 COPY agents/dw-incidents/package.json ./agents/dw-incidents/
 COPY agents/dw-context-catalog/package.json ./agents/dw-context-catalog/
-COPY agents/dw-cost/package.json ./agents/dw-cost/
 COPY agents/dw-governance/package.json ./agents/dw-governance/
-COPY agents/dw-migration/package.json ./agents/dw-migration/
-COPY agents/dw-insights/package.json ./agents/dw-insights/
 COPY agents/dw-observability/package.json ./agents/dw-observability/
-COPY agents/dw-streaming/package.json ./agents/dw-streaming/
 COPY agents/dw-orchestration/package.json ./agents/dw-orchestration/
 COPY agents/dw-schema/package.json ./agents/dw-schema/
 COPY agents/dw-quality/package.json ./agents/dw-quality/
 COPY agents/dw-connectors/package.json ./agents/dw-connectors/
 COPY agents/dw-usage-intelligence/package.json ./agents/dw-usage-intelligence/
+COPY agents/dw-ml/package.json ./agents/dw-ml/
 
 COPY core/mcp-framework/package.json ./core/mcp-framework/
 COPY core/context-layer/package.json ./core/context-layer/
@@ -42,7 +39,6 @@ COPY core/llm-provider/package.json ./core/llm-provider/
 COPY core/enterprise/package.json ./core/enterprise/
 COPY core/license/package.json ./core/license/
 COPY core/medallion/package.json ./core/medallion/
-COPY core/metering/package.json ./core/metering/
 COPY core/platform/package.json ./core/platform/
 COPY core/conflict-resolution/package.json ./core/conflict-resolution/
 
@@ -60,7 +56,6 @@ COPY connectors/glue/package.json ./connectors/glue/
 COPY connectors/hive-metastore/package.json ./connectors/hive-metastore/
 COPY connectors/polaris/package.json ./connectors/polaris/
 COPY connectors/dataplex/package.json ./connectors/dataplex/
-COPY connectors/enterprise/package.json ./connectors/enterprise/
 COPY connectors/shared/package.json ./connectors/shared/
 
 COPY packages/cli/package.json ./packages/cli/
