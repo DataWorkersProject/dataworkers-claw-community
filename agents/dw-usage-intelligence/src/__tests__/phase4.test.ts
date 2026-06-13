@@ -13,7 +13,7 @@ describe('Phase 4 — Usage Intelligence P4 integration features', () => {
   describe('cross_agent_query', () => {
     it('gracefully errors when target agent is not available', async () => {
       const result = await server.callTool('cross_agent_query', {
-        targetAgent: 'dw-cost',
+        targetAgent: 'dw-observability',
         queryType: 'get_summary',
         payload: { period: '7d' },
         timeoutMs: 500,
@@ -21,7 +21,7 @@ describe('Phase 4 — Usage Intelligence P4 integration features', () => {
       expect(result.isError).toBe(true);
       const data = JSON.parse(result.content[0].text!);
       expect(data.error).toBeDefined();
-      expect(data.targetAgent).toBe('dw-cost');
+      expect(data.targetAgent).toBe('dw-observability');
     });
 
     it('succeeds when handler is registered on message bus', async () => {

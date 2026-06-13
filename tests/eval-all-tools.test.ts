@@ -78,7 +78,7 @@ async function callAndLog(server: DataWorkersMCPServer, tool: string, args: Reco
 describe('dw-governance', () => {
   test('check_policy', async () => {
     const { result, text } = await callAndLog(govServer, 'check_policy', {
-      action: 'read', resource: 'orders', agentId: 'dw-insights', customerId: 'test-customer-1',
+      action: 'read', resource: 'orders', agentId: 'dw-context-catalog', customerId: 'test-customer-1',
     });
     expect((result as any).isError).toBeFalsy();
     const data = JSON.parse(text);

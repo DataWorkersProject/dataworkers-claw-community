@@ -117,7 +117,7 @@ const TOOL_ARGS: Record<string, Record<string, unknown>> = {
   set_sla: { datasetId: 'fact_orders', customerId: CID, rules: [{ metric: 'null_rate', operator: 'lte', threshold: 0.05, severity: 'critical', description: 'Null rate must not exceed 5%' }] },
 
   // ── dw-governance ──
-  check_policy: { action: 'read', resource: 'table:analytics.public.fact_orders', agentId: 'dw-insights', customerId: CID },
+  check_policy: { action: 'read', resource: 'table:analytics.public.fact_orders', agentId: 'dw-context-catalog', customerId: CID },
   enforce_rbac: { resource: 'table:analytics.public.fact_orders', userId: 'user-1', role: 'analyst', customerId: CID },
   generate_audit_report: { customerId: CID },
   provision_access: { userId: 'user-1', resource: 'table:analytics.public.fact_orders', accessLevel: 'read', justification: 'Quarterly reporting', customerId: CID },
@@ -138,7 +138,7 @@ const TOOL_ARGS: Record<string, Record<string, unknown>> = {
   get_workflow_patterns: {},
   list_active_agents: {},
   set_adoption_targets: { agentName: 'dw-pipelines', targetActiveUsers: 10, targetCallsPerDay: 50, targetAdoptionRate: 0.8 },
-  cross_agent_query: { targetAgent: 'dw-cost', queryType: 'get_summary', payload: { customerId: CID } },
+  cross_agent_query: { targetAgent: 'dw-observability', queryType: 'get_summary', payload: { customerId: CID } },
 
   // ── dw-observability ── (prefixed to avoid key collision with usage-intelligence)
   'obs:check_agent_health': {},

@@ -11,7 +11,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 // Import MCP servers from agent packages to call tools directly
 import { server as pipelinesServer } from '../../agents/dw-pipelines/src/index.js';
 import { server as incidentsServer } from '../../agents/dw-incidents/src/index.js';
-// dw-cost removed (paid agent)
+// cost optimization is a Pro agent, excluded from OSS workflows
 
 // Import backends for event verification and cleanup
 import { messageBus as pipelinesMessageBus } from '../../agents/dw-pipelines/src/backends.js';

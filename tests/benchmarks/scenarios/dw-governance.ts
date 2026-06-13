@@ -20,7 +20,7 @@ export const governanceScenarios: BenchmarkScenario[] = [
     input: {
       action: 'read',
       resource: 'table:analytics.public.fact_orders',
-      agentId: 'dw-insights',
+      agentId: 'dw-context-catalog',
       customerId: CID,
     },
     expectedFields: ['allowed'],

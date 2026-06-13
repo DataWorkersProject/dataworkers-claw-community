@@ -48,7 +48,7 @@ const ALL_AGENTS = [
   'dw-observability',
   'dw-orchestration',
 ] as const;
-// Note: dw-cost, dw-migration, dw-insights, dw-streaming removed (paid agents)
+// Note: Pro-tier agents are not part of the Community edition
 
 const ENTERPRISE_ONLY_AGENTS = new Set(['dw-ml']);
 const COMMUNITY_AGENTS = ALL_AGENTS.filter((a) => !ENTERPRISE_ONLY_AGENTS.has(a));
@@ -182,7 +182,7 @@ describe('OSS Comparison', () => {
       expect(quality!.score).toBeGreaterThanOrEqual(50);
     });
 
-    // Cost Visibility workflow removed — dw-cost is a paid agent
+    // Cost Visibility workflow is a Pro-tier capability, not in Community
   });
 
   describe('Tier Runner', () => {

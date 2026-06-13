@@ -28,7 +28,7 @@ const toolArgs: Record<string, Record<string, unknown>> = {
   get_context: { customerId: 'cust-1' },
   assess_impact: { datasetId: 'orders', customerId: 'cust-1' },
 
-  // dw-cost
+  // cost optimization (Pro agent)
   find_unused_data: { customerId: 'cust-1' },
   estimate_savings: { customerId: 'cust-1' },
   recommend_archival: { customerId: 'cust-1' },
@@ -47,12 +47,12 @@ const toolArgs: Record<string, Record<string, unknown>> = {
   remediate: { incidentId: 'test', customerId: 'cust-1' },
   get_incident_history: { customerId: 'cust-1' },
 
-  // dw-insights
+  // natural-language insights (Pro agent)
   query_data_nl: { customerId: 'cust-1' },
   generate_insight: { customerId: 'cust-1' },
   explain_anomaly: { customerId: 'cust-1' },
 
-  // dw-migration
+  // migration (Pro agent)
   assess_migration: { sourceSystem: 'postgres', targetSystem: 'snowflake', customerId: 'cust-1' },
   translate_sql: { sql: 'SELECT 1', sourceDialect: 'postgres', targetDialect: 'snowflake', customerId: 'cust-1' },
   validate_migration: { migrationId: 'test', customerId: 'cust-1' },
@@ -84,7 +84,7 @@ const toolArgs: Record<string, Record<string, unknown>> = {
   generate_migration: { datasetId: 'orders', customerId: 'cust-1' },
   apply_migration: { migrationId: 'test', customerId: 'cust-1' },
 
-  // dw-streaming
+  // streaming (Pro agent)
   configure_stream: { streamId: 'test', customerId: 'cust-1' },
   monitor_lag: { customerId: 'cust-1' },
   get_stream_health: { customerId: 'cust-1' },

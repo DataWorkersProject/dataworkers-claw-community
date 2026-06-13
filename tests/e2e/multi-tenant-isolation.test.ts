@@ -19,7 +19,7 @@ import { server as catalogServer } from '../../agents/dw-context-catalog/src/ind
 import { server as incidentsServer } from '../../agents/dw-incidents/src/index.js';
 import { server as qualityServer } from '../../agents/dw-quality/src/index.js';
 import { server as governanceServer } from '../../agents/dw-governance/src/index.js';
-// dw-cost removed (paid agent)
+// cost optimization is a Pro agent, excluded from the OSS isolation suite
 import { server as schemaServer } from '../../agents/dw-schema/src/index.js';
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -223,7 +223,7 @@ describe('Multi-Tenant Data Isolation Enforcement', () => {
       const t1Result = await governanceServer.callTool('check_policy', {
         action: 'read',
         resource: 'table:analytics.public.fact_orders',
-        agentId: 'dw-insights',
+        agentId: 'dw-context-catalog',
         customerId: TENANT_1,
       });
       const t1Data = parseToolResponse(t1Result);
@@ -233,7 +233,7 @@ describe('Multi-Tenant Data Isolation Enforcement', () => {
       const t2Result = await governanceServer.callTool('check_policy', {
         action: 'read',
         resource: 'table:analytics.public.fact_orders',
-        agentId: 'dw-insights',
+        agentId: 'dw-context-catalog',
         customerId: TENANT_2,
       });
       const t2Data = parseToolResponse(t2Result);

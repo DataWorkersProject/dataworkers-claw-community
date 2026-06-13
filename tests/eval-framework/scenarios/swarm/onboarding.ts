@@ -58,7 +58,7 @@ export const onboardingScenario: SwarmScenario = {
       tool: 'check_policy',
       inputTemplate: {
         action: 'read',
-        agentId: 'dw-insights',
+        agentId: 'dw-context-catalog',
         customerId: 'test-customer-1',
       },
       dynamicInputs: {

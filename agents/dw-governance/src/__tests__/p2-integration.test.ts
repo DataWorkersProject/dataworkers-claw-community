@@ -224,7 +224,7 @@ describe('P2 Integration: Cross-Agent Flow', () => {
     // Step 2: Request governance review for PII data access
     const reviewResult = await server.callTool('request_governance_review', {
       customerId: 'cust-1',
-      requestedBy: 'dw-insights',
+      requestedBy: 'dw-context-catalog',
       resource: 'customer_notes',
       action: 'READ',
       reason: `PII detected: ${scan.piiColumnsFound} columns. Review needed.`,
@@ -234,7 +234,7 @@ describe('P2 Integration: Cross-Agent Flow', () => {
 
     // Step 3: Check policy
     const policyResult = await server.callTool('check_policy', {
-      action: 'read', resource: 'customer_notes', agentId: 'dw-insights', customerId: 'cust-1',
+      action: 'read', resource: 'customer_notes', agentId: 'dw-context-catalog', customerId: 'cust-1',
     });
     const policy = JSON.parse(policyResult.content[0].text!);
     expect(policy.evaluationTimeMs).toBeLessThan(100);

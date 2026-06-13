@@ -166,7 +166,7 @@ describe('E2E Smoke Test: All 14 Agents', () => {
       const result = await governanceServer.callTool('check_policy', {
         action: 'read',
         resource: 'table:analytics.public.fact_orders',
-        agentId: 'dw-insights',
+        agentId: 'dw-context-catalog',
         customerId: 'smoke-test-cust',
       });
       const data = parseToolResponse(result);

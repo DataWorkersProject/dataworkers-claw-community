@@ -103,7 +103,7 @@ const CORE_WORKFLOWS: WorkflowSpec[] = [
       { agent: 'dw-quality', tool: 'get_quality_score', args: { datasetId: 'orders', customerId: 'cust-1' } },
     ],
   },
-  // dw-cost removed (paid agent) — Cost Visibility workflow not available in OSS
+  // Cost Visibility workflow is a Pro-tier capability — not available in OSS
   {
     name: 'Schema Exploration',
     description: 'Can users explore schemas and understand table structures?',

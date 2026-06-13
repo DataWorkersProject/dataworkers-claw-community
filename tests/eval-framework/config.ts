@@ -114,7 +114,7 @@ export const TOOL_ARGS: Record<string, Record<string, unknown>> = {
   set_sla: { datasetId: 'fact_orders', customerId: CID, rules: [{ metric: 'null_rate', operator: 'lte', threshold: 0.05, severity: 'critical', description: 'Null rate must not exceed 5%' }] },
 
   // -- dw-governance --
-  check_policy: { action: 'read', resource: 'table:analytics.public.fact_orders', agentId: 'dw-insights', customerId: CID },
+  check_policy: { action: 'read', resource: 'table:analytics.public.fact_orders', agentId: 'dw-context-catalog', customerId: CID },
   enforce_rbac: { resource: 'table:analytics.public.fact_orders', userId: 'user-1', role: 'analyst', customerId: CID },
   generate_audit_report: { customerId: CID },
   provision_access: { userId: 'user-1', resource: 'table:analytics.public.fact_orders', accessLevel: 'read', justification: 'Quarterly reporting', customerId: CID },

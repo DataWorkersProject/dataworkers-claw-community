@@ -319,7 +319,7 @@ describe('Multiple agents sharing the same relational store', () => {
     await sharedStore.insert('shared_metrics', { agentId: 'dw-incidents', metric: 'incidents_resolved', value: 2, customerId: 'c1' });
 
     // Cost agent writes metrics
-    await sharedStore.insert('shared_metrics', { agentId: 'dw-cost', metric: 'tables_analyzed', value: 15, customerId: 'c1' });
+    await sharedStore.insert('shared_metrics', { agentId: 'dw-usage-intelligence', metric: 'tables_analyzed', value: 15, customerId: 'c1' });
 
     // All agents see consistent total count
     const allMetrics = await sharedStore.query('shared_metrics');
@@ -332,7 +332,7 @@ describe('Multiple agents sharing the same relational store', () => {
     const incidentMetrics = await sharedStore.query('shared_metrics', (r) => r.agentId === 'dw-incidents');
     expect(incidentMetrics).toHaveLength(2);
 
-    const costMetrics = await sharedStore.query('shared_metrics', (r) => r.agentId === 'dw-cost');
+    const costMetrics = await sharedStore.query('shared_metrics', (r) => r.agentId === 'dw-usage-intelligence');
     expect(costMetrics).toHaveLength(1);
   });
 
@@ -358,7 +358,7 @@ describe('Multiple agents sharing the same relational store', () => {
     for (let i = 0; i < 2; i++) {
       await sharedStore.insert('shared_metrics', { agentId: 'dw-incidents', value: i, customerId: 'c1' });
     }
-    await sharedStore.insert('shared_metrics', { agentId: 'dw-cost', value: 0, customerId: 'c1' });
+    await sharedStore.insert('shared_metrics', { agentId: 'dw-usage-intelligence', value: 0, customerId: 'c1' });
 
     const total = await sharedStore.count('shared_metrics');
     expect(total).toBe(6);

@@ -7,7 +7,7 @@ import { DependencyDiscoverer } from '../dependency-discoverer.js';
 describe('TaskScheduler (REQ-ORCH-001)', () => {
   it('schedules by priority', () => {
     const scheduler = new TaskScheduler();
-    scheduler.enqueue({ id: 't1', agentId: 'dw-cost', customerId: 'c1', priority: 7, payload: {} });
+    scheduler.enqueue({ id: 't1', agentId: 'dw-usage-intelligence', customerId: 'c1', priority: 7, payload: {} });
     scheduler.enqueue({ id: 't2', agentId: 'dw-incidents', customerId: 'c1', priority: 1, payload: {} });
     const next = scheduler.dequeue();
     expect(next?.agentId).toBe('dw-incidents'); // Higher priority (lower number)
@@ -42,11 +42,11 @@ describe('AgentRegistry (REQ-ORCH-005, REQ-ARCH-007)', () => {
 
   it('supports per-tenant agent toggles', () => {
     const registry = new AgentRegistry();
-    registry.register({ agentId: 'dw-cost', name: 'Cost Agent', version: '0.1.0', status: 'active', mcpEndpoint: 'localhost:3003', toolCount: 4 });
-    registry.setTenantConfig('dw-cost', 'cust-1', true);
-    registry.setTenantConfig('dw-cost', 'cust-2', false);
-    expect(registry.isEnabledForTenant('dw-cost', 'cust-1')).toBe(true);
-    expect(registry.isEnabledForTenant('dw-cost', 'cust-2')).toBe(false);
+    registry.register({ agentId: 'dw-usage-intelligence', name: 'Cost Agent', version: '0.1.0', status: 'active', mcpEndpoint: 'localhost:3003', toolCount: 4 });
+    registry.setTenantConfig('dw-usage-intelligence', 'cust-1', true);
+    registry.setTenantConfig('dw-usage-intelligence', 'cust-2', false);
+    expect(registry.isEnabledForTenant('dw-usage-intelligence', 'cust-1')).toBe(true);
+    expect(registry.isEnabledForTenant('dw-usage-intelligence', 'cust-2')).toBe(false);
   });
 });
 

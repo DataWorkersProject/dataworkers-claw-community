@@ -26,7 +26,7 @@ export const costOptimizationScenario: SwarmScenario = {
   steps: [
     {
       id: 'cost-dashboard',
-      agent: 'dw-cost',
+      agent: 'dw-observability',
       tool: 'get_cost_dashboard',
       inputTemplate: {
         customerId: 'test-customer-1',
@@ -40,7 +40,7 @@ export const costOptimizationScenario: SwarmScenario = {
     },
     {
       id: 'unused-data',
-      agent: 'dw-cost',
+      agent: 'dw-observability',
       tool: 'find_unused_data',
       inputTemplate: {
         customerId: 'test-customer-1',
@@ -66,7 +66,7 @@ export const costOptimizationScenario: SwarmScenario = {
     },
     {
       id: 'savings-estimate',
-      agent: 'dw-cost',
+      agent: 'dw-observability',
       tool: 'estimate_savings',
       inputTemplate: {
         customerId: 'test-customer-1',
@@ -79,7 +79,7 @@ export const costOptimizationScenario: SwarmScenario = {
     },
     {
       id: 'archival-plan',
-      agent: 'dw-cost',
+      agent: 'dw-observability',
       tool: 'recommend_archival',
       inputTemplate: {
         customerId: 'test-customer-1',

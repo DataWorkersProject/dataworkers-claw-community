@@ -40,7 +40,7 @@ describe('PriorityResolver (REQ-CONFL-002)', () => {
   });
 
   it('cost cannot preempt incident', () => {
-    expect(resolver.canPreempt('dw-cost', 'dw-incidents')).toBe(false);
+    expect(resolver.canPreempt('dw-usage-intelligence', 'dw-incidents')).toBe(false);
   });
 
   it('follows 8-level hierarchy', () => {
@@ -73,10 +73,10 @@ describe('DeadlockDetector (REQ-CONFL-004)', () => {
   it('selects lowest-priority victim', () => {
     const detector = new DeadlockDetector();
     const victim = detector.selectVictim(
-      ['dw-incidents', 'dw-pipelines', 'dw-cost'],
+      ['dw-incidents', 'dw-pipelines', 'dw-usage-intelligence'],
       AGENT_PRIORITY,
     );
-    expect(victim).toBe('dw-cost'); // Lowest priority = highest number
+    expect(victim).toBe('dw-usage-intelligence'); // Lowest priority = highest number
   });
 });
 

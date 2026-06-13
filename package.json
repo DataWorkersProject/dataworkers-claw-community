@@ -26,8 +26,7 @@
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "typecheck": "tsc --noEmit",
     "clean": "npm run clean --workspaces --if-present",
-    "benchmark": "vitest run tests/benchmarks/",
-    "persona-benchmark": "vitest run tests/eval/persona-benchmark/"
+    "benchmark": "vitest run tests/benchmarks/"
   },
   "keywords": [
     "data-engineering",

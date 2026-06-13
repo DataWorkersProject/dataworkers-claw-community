@@ -380,7 +380,7 @@ describe('dw-governance MCP Server', () => {
 
       // Check policy for accessing PII data
       const policyResult = await server.callTool('check_policy', {
-        action: 'read', resource: 'customers', agentId: 'dw-insights', customerId: 'cust-e2e',
+        action: 'read', resource: 'customers', agentId: 'dw-context-catalog', customerId: 'cust-e2e',
       });
       const policy = JSON.parse(policyResult.content[0].text!);
       // No policies seeded for cust-e2e, so default deny

@@ -35,8 +35,8 @@ describe('DeadlockDetector (REQ-CONFL-004)', () => {
 
   it('selectVictim picks lowest priority (highest number)', () => {
     const dd = new DeadlockDetector();
-    const priorities = { 'dw-incidents': 1, 'dw-pipelines': 5, 'dw-cost': 7 };
-    expect(dd.selectVictim(['dw-incidents', 'dw-pipelines', 'dw-cost'], priorities)).toBe('dw-cost');
+    const priorities = { 'dw-incidents': 1, 'dw-pipelines': 5, 'dw-usage-intelligence': 7 };
+    expect(dd.selectVictim(['dw-incidents', 'dw-pipelines', 'dw-usage-intelligence'], priorities)).toBe('dw-usage-intelligence');
   });
 
   it('selectVictim handles unknown agents as priority 99', () => {

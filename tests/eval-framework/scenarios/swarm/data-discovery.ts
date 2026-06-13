@@ -56,7 +56,7 @@ export const dataDiscoveryScenario: SwarmScenario = {
     },
     {
       id: 'generate-insight',
-      agent: 'dw-insights',
+      agent: 'dw-observability',
       tool: 'generate_insight',
       inputTemplate: {
         sql: 'SELECT * FROM orders LIMIT 100',

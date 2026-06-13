@@ -9,7 +9,7 @@ export const classificationScenarios: EvalScenario[] = [
     category: 'classification',
     input: 'classify this alert: warehouse compute cost increased by 300% in the last hour',
     expectedOutput: /help|data|pipeline|cost/i,
-    agent: 'dw-cost',
+    agent: 'dw-usage-intelligence',
     difficulty: 'easy',
   },
   {
