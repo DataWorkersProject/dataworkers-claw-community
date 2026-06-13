@@ -9,25 +9,7 @@
 
 ## Quick Start (60 seconds)
 
-### Option 1: Starter config (recommended first step)
-
-Add to your `opencode.json`:
-
-```json
-{
-  "mcp": {
-    "data-context": {
-      "type": "local",
-      "command": ["npx", "-y", "data-context-mcp"],
-      "enabled": true
-    }
-  }
-}
-```
-
-This gives you 5 core tools: catalog search, lineage tracing, quality checks, schema discovery, and asset classification.
-
-### Option 2: Auto-generate full config
+### Option 1: Auto-generate full config (recommended)
 
 ```bash
 npx dw-claw opencode
@@ -35,7 +17,7 @@ npx dw-claw opencode
 
 This creates `opencode.json` with all 11 agents (160+ tools) pre-configured.
 
-### Option 3: Setup script
+### Option 2: Setup script
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/DataWorkersProject/dataworkers-claw-community/main/scripts/setup-opencode.sh | bash
@@ -151,6 +133,6 @@ Data Workers uses the MCP protocol, so it works with any MCP-compatible client:
 - **Tools not showing up** — Restart OpenCode after modifying `opencode.json`.
 - **"Agent not found"** — Ensure Node.js 20+ is installed and `npx` is in your PATH.
 - **Timeout errors** — Some agents take 5-10s to initialize on first run (npm downloads).
-- **Too many tools** — Start with the starter config (`data-context-mcp`) and add agents incrementally.
+- **Too many tools** — Start with `npx dw-claw opencode` and trim the generated config to the agents you need.
 
 Need help? [Open an issue](https://github.com/DataWorkersProject/dataworkers-claw-community/issues) or join [Discord](https://discord.com/invite/b8DR5J53).
