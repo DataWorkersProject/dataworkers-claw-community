@@ -1,0 +1,13 @@
+{
+  "name": "data-workers",
+  "version": "0.1.0",
+  "description": "3 pre-built skills that chain the open-source Data Workers agent swarm into complete data-engineering workflows. Trace end-to-end lineage for any table across catalogs, run a full data-quality audit with anomaly context, and walk a data incident from symptom to root cause — all through one local MCP server with 160+ tools that runs on in-memory sample data until you connect Snowflake, BigQuery, or Databricks.",
+  "author": {
+    "name": "Data Workers, Inc.",
+    "url": "https://dataworkers.io"
+  },
+  "repository": "https://github.com/DataWorkersProject/dataworkers-claw-community",
+  "homepage": "https://dataworkers.io/docs/claude-code-setup/",
+  "license": "Apache-2.0",
+  "keywords": ["data-engineering", "lineage", "data-quality", "catalog", "incidents", "governance", "mcp"]
+}

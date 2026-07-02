@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "data-workers": {
+      "command": "npx",
+      "args": ["-y", "dw-claw"]
+    }
+  }
+}

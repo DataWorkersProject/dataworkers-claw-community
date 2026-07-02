@@ -174,6 +174,17 @@ This repository ships pre-wired configs for Claude Code (`.mcp.json`), OpenCode
 (`opencode.json`), and Codex CLI (`.codex/config.toml`) — cloning it and opening
 your coding agent inside it is enough.
 
+### Claude Code plugin
+
+This repo is also a Claude Code plugin marketplace — one install wires the unified MCP server plus three data-engineering skills (`/data-workers:trace-lineage`, `/data-workers:quality-audit`, `/data-workers:incident-rca`):
+
+```bash
+claude plugin marketplace add DataWorkersProject/dataworkers-claw-community
+claude plugin install data-workers@dataworkers
+```
+
+Grok Build reads Claude Code plugins natively, so the same install works there unchanged.
+
 ### Setup guides
 
 Per-client walkthroughs live in [`docs/setup/`](docs/setup/): [Claude Code](docs/setup/claude-code.md) · [Codex CLI](docs/setup/codex.md) · [OpenCode](docs/setup/opencode.md) · [Gemini CLI](docs/setup/gemini-cli.md) · [Cursor](docs/setup/cursor.md) · [GitHub Copilot](docs/setup/github-copilot.md) · [OpenClaw, Cline & Continue](docs/setup/openclaw.md) · [Microsoft Copilot](docs/setup/microsoft-copilot.md)
