@@ -32,8 +32,8 @@ describe('init command', () => {
 });
 
 // NOTE: connection-tester tests for the real warehouse clients live in the
-// private repo — the OSS enterprise-leak policy ('from.*real-client') keeps
-// real client imports out of Community Edition.
+// private repo — the OSS enterprise-leak policy keeps those imports out of
+// Community Edition.
 
 // ── Test 3: Factory auto-detection returns InMemory by default ───────────────
 
