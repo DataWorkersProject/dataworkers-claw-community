@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-03-27T12:00:00Z",
+  "label": "pre-optimization-baseline-measured",
+  "notes": {
+    "T2": "Estimated — git clone --depth 1 of 13MB .git",
+    "T3_cached": "Measured 7.4s with warm npm cache (671 packages). Cold install estimated 120-180s.",
+    "T3": "Using 180s as baseline — represents cold install for first-time users",
+    "T4_measured": "Measured 454ms for generateMCPConfig(). Baseline uses 45s to include manual JSON editing time.",
+    "T5_measured": "Measured 547ms total (74ms import+init). Using 2500ms as baseline for conservative estimate.",
+    "T6": "Estimated — human time to find docs, get creds from cloud provider, create .env",
+    "T7": "Estimated — first query against real data source",
+    "node_modules_size": "363MB, 467 top-level packages, 671 installed, 43 workspace packages",
+    "repo_size": "401MB total"
+  },
+  "measured": {
+    "npm_install_cached_ms": 7436,
+    "npm_install_full_cached_ms": 7720,
+    "mcp_config_generation_ms": 454,
+    "catalog_agent_import_ms": 547,
+    "catalog_agent_init_internal_ms": 74,
+    "node_modules_size_mb": 363,
+    "git_dir_size_mb": 13,
+    "total_packages_installed": 671,
+    "workspace_packages": 43
+  },
+  "scenarios": {
+    "npx-quickstart": {
+      "T_install": { "durationMs": 45000, "status": "fail" },
+      "T_first_tool": { "durationMs": 3500, "status": "fail" },
+      "T_total": { "durationMs": 52000, "status": "fail" }
+    },
+    "curious-dev": {
+      "T2": { "durationMs": 15000, "status": "pass" },
+      "T3": { "durationMs": 180000, "status": "fail" },
+      "T4": { "durationMs": 45000, "status": "fail" },
+      "T5": { "durationMs": 2500, "status": "pass" }
+    },
+    "snowflake-de": {
+      "T2": { "durationMs": 15000, "status": "pass" },
+      "T3": { "durationMs": 180000, "status": "fail" },
+      "T4": { "durationMs": 45000, "status": "fail" },
+      "T5": { "durationMs": 2500, "status": "pass" },
+      "T6": { "durationMs": 240000, "status": "pass" },
+      "T7": { "durationMs": 8000, "status": "pass" }
+    },
+    "bigquery-analyst": {
+      "T2": { "durationMs": 15000, "status": "pass" },
+      "T3": { "durationMs": 180000, "status": "fail" },
+      "T4": { "durationMs": 50000, "status": "fail" },
+      "T5": { "durationMs": 2500, "status": "pass" },
+      "T6": { "durationMs": 280000, "status": "pass" },
+      "T7": { "durationMs": 8500, "status": "pass" }
+    },
+    "databricks-platform": {
+      "T2": { "durationMs": 15000, "status": "pass" },
+      "T3": { "durationMs": 180000, "status": "fail" },
+      "T4": { "durationMs": 45000, "status": "fail" },
+      "T5": { "durationMs": 2500, "status": "pass" },
+      "T6": { "durationMs": 260000, "status": "pass" },
+      "T7": { "durationMs": 9000, "status": "pass" }
+    }
+  }
+}

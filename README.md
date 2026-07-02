@@ -9,6 +9,8 @@
 <p align="center">
   <a href="https://modelcontextprotocol.io"><img src="https://img.shields.io/badge/MCP-compatible-purple?logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQyIDAtOC0zLjU4LTgtOHMzLjU4LTggOC04IDggMy41OCA4IDgtMy41OCA4LTggOHoiLz48L3N2Zz4=" alt="MCP Compatible" /></a>
   <a href="https://claude.ai/claude-code"><img src="https://img.shields.io/badge/Claude_Code-ready-F96854?logo=anthropic&logoColor=white" alt="Claude Code" /></a>
+  <a href="https://developers.openai.com/codex"><img src="https://img.shields.io/badge/Codex_CLI-ready-10a37f?logo=openai&logoColor=white" alt="Codex CLI" /></a>
+  <a href="https://opencode.ai"><img src="https://img.shields.io/badge/OpenCode-ready-4B32C3" alt="OpenCode" /></a>
   <a href="https://cursor.com"><img src="https://img.shields.io/badge/Cursor-ready-000000?logo=cursor&logoColor=white" alt="Cursor" /></a>
 </p>
 <p align="center">
@@ -27,7 +29,7 @@
 
 ## What is Data Workers?
 
-Data Workers is a coordinated swarm of AI agents that automate the full spectrum of data engineering workflows. Each agent is a standalone [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that exposes domain-specific tools to Claude Code, OpenCode, Cursor, VS Code, and any MCP-compatible client.
+Data Workers is a coordinated swarm of AI agents that automate the full spectrum of data engineering workflows. Each agent is a standalone [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that exposes domain-specific tools to Claude Code, Codex CLI, OpenCode, Gemini CLI, Cursor, VS Code, and any MCP-compatible client.
 
 **The problem:** Data engineers spend 60%+ of their time on undifferentiated work -- writing pipeline boilerplate, debugging data incidents at 2am, chasing schema changes across teams, manually cataloging assets, and fighting governance paperwork.
 
@@ -154,6 +156,28 @@ Each agent can be started via the `start-agent.sh` script, which handles working
 }
 ```
 
+**Codex CLI** — one-liner, or a project-scoped `.codex/config.toml`:
+
+```bash
+codex mcp add data-workers -- npx -y dw-claw
+# or, in your project:
+npx dw-claw init --client codex
+```
+
+**Gemini CLI** (`.gemini/settings.json`):
+
+```bash
+npx dw-claw init --client gemini
+```
+
+This repository ships pre-wired configs for Claude Code (`.mcp.json`), OpenCode
+(`opencode.json`), and Codex CLI (`.codex/config.toml`) — cloning it and opening
+your coding agent inside it is enough.
+
+### Setup guides
+
+Per-client walkthroughs live in [`docs/setup/`](docs/setup/): [Claude Code](docs/setup/claude-code.md) · [Codex CLI](docs/setup/codex.md) · [OpenCode](docs/setup/opencode.md) · [Gemini CLI](docs/setup/gemini-cli.md) · [Cursor](docs/setup/cursor.md) · [GitHub Copilot](docs/setup/github-copilot.md) · [OpenClaw, Cline & Continue](docs/setup/openclaw.md) · [Microsoft Copilot](docs/setup/microsoft-copilot.md)
+
 ---
 
 ## Agents
@@ -179,7 +203,7 @@ Each agent can be started via the `start-agent.sh` script, which handles working
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                         MCP Clients                             │
-│  Claude Code · OpenCode · Cursor · VS Code · Any MCP Client    │
+│  Claude Code · Codex · OpenCode · Gemini · Cursor · Any MCP    │
 └────────────────────────────┬────────────────────────────────────┘
                              │  MCP Protocol (JSON-RPC 2.0 / stdio)
                              │
