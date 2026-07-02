@@ -459,9 +459,9 @@ export async function runOnboardingBenchmark(
     if (cloneDir) cleanupDir(cloneDir);
   }
 
-  // Generate reports
+  // Generate reports (writes JSON to disk and prints the markdown summary)
   console.log('\n');
-  const md = report(allResults);
+  report(allResults);
 
   // Pain point analysis
   console.log('\n## Pain Point Analysis\n');

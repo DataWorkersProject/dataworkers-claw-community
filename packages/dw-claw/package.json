@@ -1,28 +1,41 @@
 {
   "name": "dw-claw",
   "type": "module",
-  "version": "0.1.0",
-  "description": "Data Workers CLI \u2014 autonomous AI agent swarm for data engineering",
+  "version": "0.2.0",
+  "description": "Data Workers CLI — autonomous AI agent swarm for data engineering. Single npx command starts every Community Edition agent as one MCP server.",
   "bin": {
     "dw-claw": "./bin/dw-claw.js"
   },
+  "main": "./dist/server.js",
   "files": [
-    "bin"
+    "bin",
+    "dist"
   ],
-  "dependencies": {
-    "@data-workers/cli": "0.1.0"
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "data-workers",
     "cli",
     "mcp",
     "data-engineering",
-    "ai-agents"
+    "ai-agents",
+    "mcp-server"
   ],
   "author": "Data Workers, Inc.",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/DataWorkersProject/dataworkers-claw-community.git"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1"
   }
 }

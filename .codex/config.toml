@@ -1,0 +1,7 @@
+# Data Workers — project-scoped Codex CLI config
+# Loaded automatically (additively) once you trust this project in Codex.
+# Docs: https://developers.openai.com/codex/config-reference
+
+[mcp_servers.data-workers]
+command = "npx"
+args = ["-y", "dw-claw"]

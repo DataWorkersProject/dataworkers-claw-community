@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "data-workers": {
+      "type": "local",
+      "command": ["npx", "-y", "dw-claw"],
+      "enabled": true
+    }
+  }
+}
