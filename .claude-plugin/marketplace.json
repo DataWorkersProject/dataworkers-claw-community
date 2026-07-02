@@ -1,0 +1,19 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-marketplace.json",
+  "name": "dataworkers",
+  "owner": {
+    "name": "Data Workers, Inc.",
+    "url": "https://dataworkers.io",
+    "email": "hello@dataworkers.io"
+  },
+  "plugins": [
+    {
+      "name": "data-workers",
+      "source": "./plugins/data-workers",
+      "description": "Trace lineage, audit data quality, and root-cause data incidents with the open-source Data Workers agent swarm — one local MCP server with 160+ data-engineering tools that runs on in-memory sample data until you connect Snowflake, BigQuery, or Databricks.",
+      "author": {
+        "name": "Data Workers, Inc."
+      }
+    }
+  ]
+}
