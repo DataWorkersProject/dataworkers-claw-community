@@ -31,32 +31,9 @@ describe('init command', () => {
   });
 });
 
-// ── Test 2: Connection testers work with stubs ───────────────────────────────
-
-import { testSnowflakeConnection } from '../../../connectors/snowflake/src/test-connection.js';
-import { testBigQueryConnection } from '../../../connectors/bigquery/src/test-connection.js';
-import { testDatabricksConnection } from '../../../connectors/databricks/src/test-connection.js';
-
-describe('connection testers', () => {
-  it('snowflake stub connection succeeds', async () => {
-    const result = await testSnowflakeConnection();
-    expect(result.success).toBe(true);
-    expect(result.provider).toBe('snowflake');
-    expect(result.latencyMs).toBeLessThan(1000);
-  });
-
-  it('bigquery stub connection succeeds', async () => {
-    const result = await testBigQueryConnection();
-    expect(result.success).toBe(true);
-    expect(result.provider).toBe('bigquery');
-  });
-
-  it('databricks stub connection succeeds', async () => {
-    const result = await testDatabricksConnection();
-    expect(result.success).toBe(true);
-    expect(result.provider).toBe('databricks');
-  });
-});
+// NOTE: connection-tester tests for the real warehouse clients live in the
+// private repo — the OSS enterprise-leak policy ('from.*real-client') keeps
+// real client imports out of Community Edition.
 
 // ── Test 3: Factory auto-detection returns InMemory by default ───────────────
 
