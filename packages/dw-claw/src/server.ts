@@ -55,7 +55,7 @@ const server = new DataWorkersMCPServer({
 });
 
 const registered = new Set<string>();
-for (const { name: agentName, tools } of allToolSets) {
+for (const { tools } of allToolSets) {
   for (const { definition, handler } of tools) {
     if (registered.has(definition.name)) {
       // Skip duplicate — first agent to register a tool name wins

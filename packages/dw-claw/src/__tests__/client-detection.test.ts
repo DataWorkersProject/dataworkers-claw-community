@@ -5,7 +5,7 @@
  * the actual CLI process, using fs mocks and temp directories.
  */
 
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as os from 'node:os';
@@ -27,7 +27,7 @@ function detectClients(cwd: string): MCPClient[] {
 
   let hasClaude = fs.existsSync(path.join(home, '.claude'));
   if (!hasClaude) {
-    try { execSync('which claude', { stdio: 'ignore' }); hasClaude = true; } catch {}
+    try { execSync('which claude', { stdio: 'ignore' }); hasClaude = true; } catch { /* not on PATH */ }
   }
   if (hasClaude) detected.push('claude-code');
 
@@ -45,7 +45,7 @@ function detectClients(cwd: string): MCPClient[] {
           const content = fs.readFileSync(vscodeSettings, 'utf-8');
           return content.includes('mcp.servers') || content.includes('mcp-servers');
         }
-      } catch {}
+      } catch { /* unreadable settings file */ }
       return false;
     })();
   if (hasGHCopilot) detected.push('github-copilot');

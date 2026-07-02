@@ -8,17 +8,15 @@ import { describe, it, expect } from 'vitest';
 
 // ── Test 1: init command generates valid configs ─────────────────────────────
 
-import {
-  generateMCPConfig,
-  generateNpxConfig,
-} from '../../../packages/cli/src/commands/init.js';
+import { generateMCPConfig } from '../../../packages/cli/src/commands/init.js';
+import { generateNpxConfig } from '../../../packages/dw-claw/src/cli.js';
 
 describe('init command', () => {
   it('generates monorepo MCP config with all agents', () => {
     const config = generateMCPConfig();
     expect(Object.keys(config.mcpServers).length).toBeGreaterThanOrEqual(9);
     // Each agent should have command and args
-    for (const [_name, server] of Object.entries(config.mcpServers)) {
+    for (const server of Object.values(config.mcpServers)) {
       expect(server.command).toBe('node');
       expect(server.args[0]).toContain('agents/');
     }

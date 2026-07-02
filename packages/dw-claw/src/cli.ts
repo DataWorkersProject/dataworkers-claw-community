@@ -140,7 +140,7 @@ function generateMCPConfig(): MCPConfig {
   return { mcpServers };
 }
 
-function generateNpxConfig(): MCPConfig {
+export function generateNpxConfig(): MCPConfig {
   return {
     mcpServers: {
       'data-workers': { command: 'npx', args: ['-y', 'dw-claw'] },
@@ -171,7 +171,7 @@ export function detectClients(cwd: string): MCPClient[] {
   // Claude Code
   let hasClaude = fs.existsSync(path.join(home, '.claude'));
   if (!hasClaude) {
-    try { execSync('which claude', { stdio: 'ignore' }); hasClaude = true; } catch {}
+    try { execSync('which claude', { stdio: 'ignore' }); hasClaude = true; } catch { /* not on PATH */ }
   }
   if (hasClaude) detected.push('claude-code');
 
@@ -191,7 +191,7 @@ export function detectClients(cwd: string): MCPClient[] {
           const content = fs.readFileSync(vscodeSettings, 'utf-8');
           return content.includes('mcp.servers') || content.includes('mcp-servers');
         }
-      } catch {}
+      } catch { /* unreadable settings file */ }
       return false;
     })();
   if (hasGHCopilot) detected.push('github-copilot');
@@ -520,7 +520,7 @@ async function promptClientSelection(clients: MCPClient[]): Promise<MCPClient> {
     }
     console.log('');
 
-    while (true) {
+    for (;;) {
       const answer = await rl.question(`  ${cyan('Choose client')} [1-${clients.length}]: `);
       const idx = parseInt(answer.trim(), 10) - 1;
       if (idx >= 0 && idx < clients.length) return clients[idx];
@@ -624,7 +624,7 @@ interface DataSourceConfig {
 }
 
 async function promptLine(rl: readline.Interface, prompt: string, required = true): Promise<string> {
-  while (true) {
+  for (;;) {
     const answer = (await rl.question(prompt)).trim();
     if (answer || !required) return answer;
     console.log(red('  This field is required.'));
@@ -930,7 +930,10 @@ async function main(): Promise<void> {
   showHelp();
 }
 
-main().catch((err) => {
-  console.error(`Fatal: ${err instanceof Error ? err.message : String(err)}`);
-  process.exit(1);
-});
+// Don't execute when imported by tests — only when run as the CLI entry point.
+if (!process.env.VITEST) {
+  main().catch((err) => {
+    console.error(`Fatal: ${err instanceof Error ? err.message : String(err)}`);
+    process.exit(1);
+  });
+}
