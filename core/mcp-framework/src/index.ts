@@ -37,6 +37,8 @@ export {
 export { createGatedHandler, registerToolWithGate } from './tool-registration.js';
 export type { ToolErrorCode, ToolErrorPayload } from './error-handler.js';
 export { startStdioTransport, startStdioServer } from './stdio-adapter.js';
+export { startHttpTransport, startHttpServer } from './http-adapter.js';
+export type { HttpTransportOptions } from './http-adapter.js';
 export { HealthChecker } from './health-check.js';
 export type { HealthStatus, HealthCheck, HealthCheckFn, CheckStatus, OverallStatus } from './health-check.js';
 export { startHealthServer } from './health-server.js';

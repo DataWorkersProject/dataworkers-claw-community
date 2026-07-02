@@ -17,6 +17,7 @@
 import {
   DataWorkersMCPServer,
   startStdioServer,
+  startHttpServer,
 } from '@data-workers/mcp-framework';
 
 // ── Import tool arrays from each agent ────────────────────────────────
@@ -72,6 +73,15 @@ for (const { tools } of allToolSets) {
  */
 export function startUnifiedServer(): void {
   startStdioServer(server);
+}
+
+/**
+ * Start the unified MCP server on a Streamable HTTP endpoint.
+ * Called by the CLI when --http is passed. Binds 127.0.0.1 by default;
+ * pass a host explicitly (e.g. 0.0.0.0 behind a proxy) to expose it.
+ */
+export function startUnifiedHttpServer(port?: number, host?: string): void {
+  startHttpServer(server, { port, host });
 }
 
 export { server };

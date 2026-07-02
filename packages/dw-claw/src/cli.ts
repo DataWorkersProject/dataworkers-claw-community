@@ -79,6 +79,7 @@ function showHelp(): void {
   console.log(`    ${cyan('dw-claw')} ${yellow('codex')}               Print the Codex CLI one-liner`);
   console.log(`    ${cyan('dw-claw')} ${yellow('setup')}               Interactive data source credential wizard`);
   console.log(`    ${cyan('dw-claw')} ${yellow('--stdio')}              Start unified MCP server on stdin/stdout`);
+  console.log(`    ${cyan('dw-claw')} ${yellow('--http [port]')}        Start unified MCP server on Streamable HTTP (default 8808)`);
   console.log(`    ${cyan('dw-claw')} ${yellow('--list')}              List available agents and tool counts`);
   console.log(`    ${cyan('dw-claw')} ${yellow('--version')}           Show version`);
   console.log(`    ${cyan('dw-claw')} ${yellow('--help')}              Show this help message`);
@@ -866,6 +867,19 @@ async function main(): Promise<void> {
   if (args.includes('--version') || args.includes('-v')) { showVersion(); return; }
   if (args.includes('--help') || args.includes('-h')) { showHelp(); return; }
   if (args.includes('--list') || args.includes('-l')) { showList(); return; }
+
+  // --http [port]: start the unified server on a Streamable HTTP endpoint
+  // (what ChatGPT full MCP connectors / Grok BYO-MCP / remote clients speak).
+  const httpIdx = args.indexOf('--http');
+  if (httpIdx !== -1) {
+    const portArg = args[httpIdx + 1];
+    const port = portArg && /^\d+$/.test(portArg) ? parseInt(portArg, 10) : undefined;
+    const hostIdx = args.indexOf('--host');
+    const host = hostIdx !== -1 ? args[hostIdx + 1] : undefined;
+    const { startUnifiedHttpServer } = await import('./server.js');
+    startUnifiedHttpServer(port, host);
+    return;
+  }
 
   const positional = args.filter(a => !a.startsWith('-'));
 
