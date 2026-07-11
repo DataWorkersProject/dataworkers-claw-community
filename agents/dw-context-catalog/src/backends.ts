@@ -67,7 +67,7 @@ await messageBus.subscribe('schema.changed', (event) => {
   const payload = event.payload as Record<string, unknown> | undefined;
   if (payload?.assetId) {
     const assetId = payload.assetId as string;
-    const customerId = (payload.customerId as string) || 'cust-1';
+    const customerId = (payload.customerId as string) || 'cust-001';
     // Fire-and-forget: publish a context.stale event
     void messageBus.publish('context.stale', {
       id: `ctx-stale-${Date.now()}`,
@@ -95,7 +95,7 @@ export const contextFeedbackStore = new InMemoryContextFeedbackStore();
 const seedRules: BusinessRuleRecord[] = [
   {
     id: 'rule-1',
-    customerId: 'cust-1',
+    customerId: 'cust-001',
     assetId: 'orders',
     columnName: 'total_amount',
     ruleType: 'calculation',
@@ -110,7 +110,7 @@ const seedRules: BusinessRuleRecord[] = [
   },
   {
     id: 'rule-2',
-    customerId: 'cust-1',
+    customerId: 'cust-001',
     assetId: 'customers',
     ruleType: 'definition',
     content: 'Active customer = at least one order in the last 90 days. Do NOT use last_login for activity.',
@@ -124,7 +124,7 @@ const seedRules: BusinessRuleRecord[] = [
   },
   {
     id: 'rule-3',
-    customerId: 'cust-1',
+    customerId: 'cust-001',
     assetId: 'revenue_daily',
     ruleType: 'freshness',
     content: 'Revenue daily table must be refreshed by 6am UTC. Stale data after 6am is an incident.',

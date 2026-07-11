@@ -129,10 +129,10 @@ export class InMemoryWarehouseConnector implements IWarehouseConnector {
 
   /**
    * Pre-load the connector with seed table schemas.
-   * Tables are seeded for customerId 'cust-1', source 'snowflake', database 'analytics', schema 'public'.
+   * Tables are seeded for customerId 'cust-001', source 'snowflake', database 'analytics', schema 'public'.
    */
   seed(): void {
-    const customerId = 'cust-1';
+    const customerId = 'cust-001';
     const source = 'snowflake';
     const database = 'analytics';
     const schema = 'public';

@@ -90,7 +90,7 @@ export class MetricStore {
     ];
 
     // Also add metrics for cust-1 (matches graphDB seed customerId)
-    this.metrics.set('cust-1', cust001Metrics);
+    this.metrics.set('cust-001', cust001Metrics);
     this.metrics.set('cust-001', cust001Metrics);
     this.metrics.set('cust-002', cust002Metrics);
 
@@ -135,7 +135,7 @@ export class MetricStore {
       { id: 'sem-2e01', name: 'customer', type: 'entity', definition: 'customers', source: 'looker', domain: 'core', metadata: {} },
     ];
 
-    this.semanticDefs.set('cust-1', cust001Defs);
+    this.semanticDefs.set('cust-001', cust001Defs);
     this.semanticDefs.set('cust-001', cust001Defs);
     this.semanticDefs.set('cust-002', cust002Defs);
   }

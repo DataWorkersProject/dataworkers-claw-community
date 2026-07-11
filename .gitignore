@@ -84,3 +84,7 @@ agents/dw-cost/
 agents/dw-migration/
 agents/dw-insights/
 agents/dw-streaming/
+
+# Local machine config
+.mcp.json
+.claude/settings.local.json

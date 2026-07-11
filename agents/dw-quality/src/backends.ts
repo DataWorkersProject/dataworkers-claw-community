@@ -46,7 +46,7 @@ if (relationalStore instanceof InMemoryRelationalStore) {
 export function addTestTable(tableName: string, nullableColumns: boolean): void {
   if (!(warehouseConnector instanceof InMemoryWarehouseConnector)) return;
 
-  const customerId = 'cust-1';
+  const customerId = 'cust-001';
   const source = 'snowflake';
   const database = 'analytics';
   const schema = 'public';

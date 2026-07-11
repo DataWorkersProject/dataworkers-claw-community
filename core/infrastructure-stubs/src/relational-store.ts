@@ -194,7 +194,7 @@ export class InMemoryRelationalStore implements IRelationalStore {
 
       this.insert('quality_metrics', {
         datasetId: 'orders',
-        customerId: 'cust-1',
+        customerId: 'cust-001',
         metric: 'null_rate',
         value: Math.round(nullRate * 10000) / 10000,
         timestamp,
@@ -202,7 +202,7 @@ export class InMemoryRelationalStore implements IRelationalStore {
 
       this.insert('quality_metrics', {
         datasetId: 'orders',
-        customerId: 'cust-1',
+        customerId: 'cust-001',
         metric: 'row_count',
         value: Math.round(rowCount),
         timestamp,
@@ -210,7 +210,7 @@ export class InMemoryRelationalStore implements IRelationalStore {
 
       this.insert('quality_metrics', {
         datasetId: 'orders',
-        customerId: 'cust-1',
+        customerId: 'cust-001',
         metric: 'uniqueness',
         value: Math.round(uniqueness * 10000) / 10000,
         timestamp,
@@ -218,7 +218,7 @@ export class InMemoryRelationalStore implements IRelationalStore {
 
       this.insert('quality_metrics', {
         datasetId: 'orders',
-        customerId: 'cust-1',
+        customerId: 'cust-001',
         metric: 'freshness_hours',
         value: Math.round(freshnessHours * 100) / 100,
         timestamp,

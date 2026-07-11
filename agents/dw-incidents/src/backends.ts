@@ -77,7 +77,7 @@ if (relationalStore instanceof InMemoryRelationalStore && vectorStore instanceof
 
     await relationalStore.insert('incidents', {
       id: `hist-inc-${day}`,
-      customerId: 'cust-1',
+      customerId: 'cust-001',
       type: incType,
       severity,
       status: 'resolved',
@@ -103,7 +103,7 @@ if (relationalStore instanceof InMemoryRelationalStore && vectorStore instanceof
 
     await vectorStore.upsert(`hist-inc-${day}`, vector, {
       id: `hist-inc-${day}`,
-      customerId: 'cust-1',
+      customerId: 'cust-001',
       type: incType,
       severity: SEVERITIES[day % SEVERITIES.length],
       description,

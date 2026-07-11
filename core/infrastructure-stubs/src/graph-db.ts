@@ -174,7 +174,7 @@ export class InMemoryGraphDB implements IGraphDB {
   }
 
   seed(): void {
-    const customerId = 'cust-1';
+    const customerId = 'cust-001';
     const now = Date.now();
     const DAY = 86_400_000;
 
