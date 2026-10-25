@@ -1,9 +1,15 @@
 [![MseeP.ai Security Assessment Badge](https://mseep.net/pr/dataworkersproject-dataworkers-claw-community-badge.png)](https://mseep.ai/app/dataworkersproject-dataworkers-claw-community)
 
 <p align="center">
-  <h1 align="center">Data Workers - Open-Source Community Edition</h1>
-  <p align="center"><strong>Open-source autonomous AI agents for data engineering</strong></p>
-  <p align="center">Stop writing boilerplate pipelines. Stop debugging data incidents manually.<br/>Describe what you need in natural language. The agents handle execution.</p>
+  <h1 align="center">Data Workers</h1>
+  <p align="center"><strong>The Autonomous Agentic Data Platform. Reduce your data ops to zero.</strong></p>
+  <p align="center">Agents run the whole data platform, not one slice of it. They detect, diagnose, fix, review and verify data work across Snowflake, Databricks and BigQuery, with a named human in control.</p>
+  <p align="center">
+    <a href="https://dataworkers.io"><strong>dataworkers.io</strong></a> &middot;
+    <a href="https://dataworkers.io/product">Product</a> &middot;
+    <a href="https://dataworkers.io/product/autonomous-data-conductor">Autonomous Data Conductor</a> &middot;
+    <a href="https://dataworkers.io/blog/">Compare</a>
+  </p>
 </p>
 
 <p align="center">
@@ -21,29 +27,32 @@
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
 </p>
 
-<p align="center">
-  11 AI agents &middot; 160+ MCP tools &middot; 15 connectors &middot; 2,900+ tests &middot; Zero config to start
-</p>
-
 ---
 
 ## What is Data Workers?
 
-Data Workers is a coordinated swarm of AI agents that automate the full spectrum of data engineering workflows. Each agent is a standalone [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that exposes domain-specific tools to Claude Code, Codex CLI, OpenCode, Gemini CLI, Cursor, VS Code, and any MCP-compatible client.
+Data Workers is the Autonomous Agentic Data Platform: specialised data agents and a living context graph that run your data platform, with a receipt on every change. The platform lives at **[dataworkers.io](https://dataworkers.io)**.
 
-**The problem:** Data engineers spend 60%+ of their time on undifferentiated work -- writing pipeline boilerplate, debugging data incidents at 2am, chasing schema changes across teams, manually cataloging assets, and fighting governance paperwork.
+- **[Autonomous Data Conductor](https://dataworkers.io/product/autonomous-data-conductor)**: the orchestrator. It runs the detect, diagnose, fix, review and verify loop across your stack, directs the whole swarm, and leaves a receipt on every change.
+- **[Data-Agents Swarm](https://dataworkers.io/product)**: specialised agents that own the work end to end: incident resolution, pipeline builds, change review and governance, with governed write access.
+- **[Data Context Wizard](https://dataworkers.io/product/data-context-wizard/)**: the context layer. A living semantic and knowledge graph of the data layer, provenance-stamped and governed, that every agent reads from.
+- **[Spellbook Data Catalog](https://dataworkers.io/product/spellbook-data-catalog/)**: where you command, approve and audit the fleet.
 
-**The solution:** 11 autonomous agents that understand your data stack end-to-end. They build pipelines, detect anomalies, manage catalogs, enforce governance, track ML experiments, and more -- all through natural language via the MCP protocol your AI tools already speak.
+**Compare:** how Data Workers differs from other data tools, on the [Data Workers blog](https://dataworkers.io/blog/).
 
-Everything runs locally with in-memory stubs by default. No external services required. No data leaves your machine. BYO model -- use any LLM provider.
+## What is in this repository
 
-Read more: [Why We Open-Sourced Data Workers](https://dataworkers.io/blog/why-we-open-sourced-our-data-engineering-agents)
+This repository holds Data Workers agents as MCP servers under Apache 2.0. Each agent is a standalone [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that exposes domain-specific tools to Claude Code, Codex CLI, OpenCode, Gemini CLI, Cursor, VS Code, and any MCP-compatible client: 11 agents, 160+ MCP tools and 15 catalog connectors covering pipelines, incidents, catalog and lineage, schema, quality, governance, usage, observability and ML.
+
+Everything runs locally with in-memory stubs by default. No external services required. No data leaves your machine. Bring your own model: use any LLM provider.
+
+For the full platform (the Autonomous Data Conductor, the Data Context Wizard and the Spellbook Data Catalog), go to [dataworkers.io](https://dataworkers.io).
 
 ## Get Started
 
 ### Fastest path (2 commands)
 
-No clone required — runs straight from npm:
+No clone required. It runs straight from npm:
 
 ```bash
 npx dw-claw init
@@ -93,7 +102,7 @@ Start Claude Code and ask:
 - *"Scan the customer schema for PII and suggest masking policies"*
 - *"Compare the last two ML experiments and explain the accuracy difference"*
 
-Everything works instantly with in-memory seed data — no infrastructure required.
+Everything works instantly with in-memory seed data. No infrastructure required.
 
 ### Client configuration
 
@@ -120,7 +129,7 @@ Each agent can be started via the `start-agent.sh` script, which handles working
 }
 ```
 
-**Cursor** (`.cursor/mcp.json`) — same format:
+**Cursor** (`.cursor/mcp.json`), same format:
 
 ```json
 {
@@ -156,7 +165,7 @@ Each agent can be started via the `start-agent.sh` script, which handles working
 }
 ```
 
-**Codex CLI** — one-liner, or a project-scoped `.codex/config.toml`:
+**Codex CLI**: one-liner, or a project-scoped `.codex/config.toml`:
 
 ```bash
 codex mcp add data-workers -- npx -y dw-claw
@@ -171,12 +180,12 @@ npx dw-claw init --client gemini
 ```
 
 This repository ships pre-wired configs for Claude Code (`.mcp.json`), OpenCode
-(`opencode.json`), and Codex CLI (`.codex/config.toml`) — cloning it and opening
+(`opencode.json`), and Codex CLI (`.codex/config.toml`). Cloning it and opening
 your coding agent inside it is enough.
 
 ### Claude Code plugin
 
-This repo is also a Claude Code plugin marketplace — one install wires the unified MCP server plus three data-engineering skills (`/data-workers:trace-lineage`, `/data-workers:quality-audit`, `/data-workers:incident-rca`):
+This repo is also a Claude Code plugin marketplace. One install wires the unified MCP server plus three data-engineering skills (`/data-workers:trace-lineage`, `/data-workers:quality-audit`, `/data-workers:incident-rca`):
 
 ```bash
 claude plugin marketplace add DataWorkersProject/dataworkers-claw-community
@@ -279,7 +288,7 @@ Data Workers includes 15 catalog connectors out of the box. Additional enterpris
 </details>
 
 <details>
-<summary><strong>Enterprise Connectors (35) -- available in Pro/Enterprise editions</strong></summary>
+<summary><strong>Enterprise Connectors (35): available in Pro/Enterprise editions</strong></summary>
 
 | Category | Connectors |
 |----------|------------|
@@ -349,7 +358,7 @@ cd agents/dw-pipelines && npm run dev  # Run a single agent in dev mode
 
 **Agent fails to start:** Ensure you're using `start-agent.sh` (not `node` directly). The script sets the working directory correctly for tsx module resolution. See [docs/MCP-STARTUP-BUG-REPORT.md](docs/MCP-STARTUP-BUG-REPORT.md) for details.
 
-**Module not found errors:** Run `npm install` from the repo root. The monorepo uses npm workspaces — all dependencies are hoisted.
+**Module not found errors:** Run `npm install` from the repo root. The monorepo uses npm workspaces; all dependencies are hoisted.
 
 **Tests fail on fresh clone:** Make sure Node.js >= 20 is installed. Run `npm install` before `npm test`.
 
